@@ -1,0 +1,1256 @@
+{
+    "report_version": "1.0",
+    "generated_at": "2026-11-07T14:44:31.285143+00:00",
+    "metadata": {
+        "target_column": "species",
+        "created_at": "2026-11-07T14:44:16.870628+00:00",
+        "application": "ML Model Doctor"
+    },
+    "executive_summary": {
+        "dataset": {
+            "rows": 500,
+            "columns": 5
+        },
+        "problem_type": "multiclass_classification",
+        "best_model": {
+            "name": "Logistic Regression"
+        },
+        "evaluation": {
+            "generalization": null,
+            "baseline_comparison": null
+        },
+        "diagnosis_status": "issues_found",
+        "diagnostic_findings": {
+            "total_findings": 6,
+            "critical": 0,
+            "warnings": 1,
+            "information": 5
+        },
+        "conclusion": "Review the evaluation metrics and diagnostic findings before using the model in production."
+    },
+    "dataset_profile": {
+        "rows": 500,
+        "columns": 5,
+        "total_cells": 2500,
+        "column_names": [
+            "sepal_length",
+            "sepal_width",
+            "petal_length",
+            "petal_width",
+            "species"
+        ],
+        "numeric_columns": [
+            "sepal_length",
+            "sepal_width",
+            "petal_length",
+            "petal_width"
+        ],
+        "categorical_columns": [
+            "species"
+        ],
+        "boolean_columns": [],
+        "datetime_columns": [],
+        "datetime_candidates": [],
+        "other_columns": [],
+        "data_type_summary": {
+            "numeric": 4,
+            "categorical": 1,
+            "boolean": 0,
+            "datetime": 0,
+            "datetime_candidates": 0,
+            "other": 0
+        },
+        "missing_values": 0,
+        "missing_percentage": 0.0,
+        "columns_with_missing": 0,
+        "duplicate_rows": 11,
+        "duplicate_columns": [],
+        "outlier_values": 2,
+        "outlier_rows": 2,
+        "outlier_details": [
+            {
+                "column": "sepal_width",
+                "count": 2
+            }
+        ],
+        "constant_columns": [],
+        "near_constant_columns": [],
+        "identifier_candidates": [],
+        "high_cardinality_columns": [],
+        "numerical_summary": {
+            "sepal_length": {
+                "mean": 6.1612,
+                "median": 6.3,
+                "std": 0.8321776247883602,
+                "min": 4.3,
+                "max": 7.8,
+                "skewness": -0.2603099129365217,
+                "variance": 0.6925195991983968
+            },
+            "sepal_width": {
+                "mean": 3.3488,
+                "median": 3.3,
+                "std": 0.3266680026692787,
+                "min": 2.4,
+                "max": 4.5,
+                "skewness": 0.22396195116552992,
+                "variance": 0.10671198396793587
+            },
+            "petal_length": {
+                "mean": 4.0778,
+                "median": 4.7,
+                "std": 1.939704117675749,
+                "min": 1.0,
+                "max": 6.7,
+                "skewness": -0.45849586379646284,
+                "variance": 3.762452064128256
+            },
+            "petal_width": {
+                "mean": 1.374,
+                "median": 1.4,
+                "std": 0.8800869878667817,
+                "min": 0.1,
+                "max": 2.5,
+                "skewness": -0.09847866611964286,
+                "variance": 0.7745531062124248
+            }
+        },
+        "column_info": [
+            {
+                "name": "sepal_length",
+                "dtype": "float64",
+                "detected_type": "numeric",
+                "missing": 0,
+                "missing_percentage": 0.0,
+                "unique_values": 36,
+                "unique_ratio": 0.072,
+                "is_numeric": true,
+                "is_constant": false,
+                "is_near_constant": false,
+                "is_identifier_candidate": false,
+                "is_high_cardinality": false,
+                "outliers": 0,
+                "outlier_percentage": 0.0,
+                "outlier_bounds": {
+                    "lower": 3.05,
+                    "upper": 9.05
+                },
+                "dominant_value_percentage": 5.4
+            },
+            {
+                "name": "sepal_width",
+                "dtype": "float64",
+                "detected_type": "numeric",
+                "missing": 0,
+                "missing_percentage": 0.0,
+                "unique_values": 21,
+                "unique_ratio": 0.042,
+                "is_numeric": true,
+                "is_constant": false,
+                "is_near_constant": false,
+                "is_identifier_candidate": false,
+                "is_high_cardinality": false,
+                "outliers": 2,
+                "outlier_percentage": 0.4,
+                "outlier_bounds": {
+                    "lower": 2.35,
+                    "upper": 4.35
+                },
+                "dominant_value_percentage": 12.4
+            },
+            {
+                "name": "petal_length",
+                "dtype": "float64",
+                "detected_type": "numeric",
+                "missing": 0,
+                "missing_percentage": 0.0,
+                "unique_values": 44,
+                "unique_ratio": 0.088,
+                "is_numeric": true,
+                "is_constant": false,
+                "is_near_constant": false,
+                "is_identifier_candidate": false,
+                "is_high_cardinality": false,
+                "outliers": 0,
+                "outlier_percentage": 0.0,
+                "outlier_bounds": {
+                    "lower": -4.6000000000000005,
+                    "upper": 12.200000000000001
+                },
+                "dominant_value_percentage": 5.2
+            },
+            {
+                "name": "petal_width",
+                "dtype": "float64",
+                "detected_type": "numeric",
+                "missing": 0,
+                "missing_percentage": 0.0,
+                "unique_values": 25,
+                "unique_ratio": 0.05,
+                "is_numeric": true,
+                "is_constant": false,
+                "is_near_constant": false,
+                "is_identifier_candidate": false,
+                "is_high_cardinality": false,
+                "outliers": 0,
+                "outlier_percentage": 0.0,
+                "outlier_bounds": {
+                    "lower": -2.1999999999999997,
+                    "upper": 5.0
+                },
+                "dominant_value_percentage": 20.2
+            },
+            {
+                "name": "species",
+                "dtype": "object",
+                "detected_type": "categorical",
+                "missing": 0,
+                "missing_percentage": 0.0,
+                "unique_values": 3,
+                "unique_ratio": 0.006,
+                "is_numeric": false,
+                "is_constant": false,
+                "is_near_constant": false,
+                "is_identifier_candidate": false,
+                "is_high_cardinality": false,
+                "outliers": 0,
+                "outlier_percentage": 0.0,
+                "outlier_bounds": {
+                    "lower": null,
+                    "upper": null
+                },
+                "dominant_value_percentage": 34.2
+            }
+        ],
+        "warnings": [
+            {
+                "type": "duplicate_rows",
+                "severity": "medium",
+                "message": "11 duplicate rows detected. Review before removing them."
+            },
+            {
+                "type": "outliers",
+                "severity": "medium",
+                "message": "2 potential numerical outlier values detected using IQR."
+            }
+        ],
+        "original_missing_values": 0,
+        "original_duplicate_rows": 11,
+        "target_missing_values": 0,
+        "target_distribution": {
+            "versicolor": 170,
+            "virginica": 160,
+            "setosa": 159
+        }
+    },
+    "target_analysis": {
+        "target_column": "species",
+        "problem_type": "multiclass_classification",
+        "suggested_problem_type": "multiclass_classification",
+        "confidence": "user_confirmed",
+        "requires_confirmation": false,
+        "reason": "User explicitly selected multiclass classification.",
+        "target_statistics": {
+            "total_records": 500,
+            "valid_records": 500,
+            "missing_values": 0,
+            "unique_values": 3,
+            "data_type": "object"
+        },
+        "class_analysis": {
+            "class_count": 3,
+            "class_distribution": [
+                {
+                    "class": "versicolor",
+                    "count": 171,
+                    "percentage": 34.2
+                },
+                {
+                    "class": "virginica",
+                    "count": 167,
+                    "percentage": 33.4
+                },
+                {
+                    "class": "setosa",
+                    "count": 162,
+                    "percentage": 32.4
+                }
+            ],
+            "majority_class": "versicolor",
+            "majority_percentage": 34.2,
+            "minority_percentage": 32.4,
+            "imbalance_ratio": 1.06,
+            "is_imbalanced": false
+        },
+        "numeric_analysis": null,
+        "warnings": []
+    },
+    "model_comparison": {
+        "problem_type": "multiclass_classification",
+        "evaluation_method": "80/20 holdout + 5-fold cross-validation",
+        "primary_metric": "macro F1",
+        "selection_metric": "f1_macro",
+        "selection_method": "cross_validation",
+        "cv_folds": 5,
+        "train_rows": 391,
+        "test_rows": 98,
+        "dataset_info": {
+            "total_rows": 489,
+            "total_features": 4,
+            "number_of_classes": 3,
+            "is_imbalanced": false,
+            "imbalance_ratio": 1.0692,
+            "removed_empty_columns": []
+        },
+        "models": [
+            {
+                "model": "Logistic Regression",
+                "model_id": "logistic_regression",
+                "status": "success",
+                "cv_folds": 5,
+                "cv_scoring": "f1_macro",
+                "cv_mean_score": 1.0,
+                "cv_std_score": 0.0,
+                "cv_scores": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "train_rows": 391,
+                "test_rows": 98,
+                "train_accuracy": 1.0,
+                "train_metrics": {
+                    "accuracy": 1.0,
+                    "balanced_accuracy": 1.0,
+                    "precision": 1.0,
+                    "recall": 1.0,
+                    "f1": 1.0,
+                    "confusion_matrix": [
+                        [
+                            127,
+                            0,
+                            0
+                        ],
+                        [
+                            0,
+                            136,
+                            0
+                        ],
+                        [
+                            0,
+                            0,
+                            128
+                        ]
+                    ]
+                },
+                "accuracy": 0.9796,
+                "balanced_accuracy": 0.9798,
+                "precision": 0.9798,
+                "recall": 0.9798,
+                "f1": 0.9798,
+                "confusion_matrix": [
+                    [
+                        32,
+                        0,
+                        0
+                    ],
+                    [
+                        0,
+                        33,
+                        1
+                    ],
+                    [
+                        0,
+                        1,
+                        31
+                    ]
+                ],
+                "score": 0.9798
+            },
+            {
+                "model": "Random Forest Classifier",
+                "model_id": "random_forest",
+                "status": "success",
+                "cv_folds": 5,
+                "cv_scoring": "f1_macro",
+                "cv_mean_score": 1.0,
+                "cv_std_score": 0.0,
+                "cv_scores": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "train_rows": 391,
+                "test_rows": 98,
+                "train_accuracy": 1.0,
+                "train_metrics": {
+                    "accuracy": 1.0,
+                    "balanced_accuracy": 1.0,
+                    "precision": 1.0,
+                    "recall": 1.0,
+                    "f1": 1.0,
+                    "confusion_matrix": [
+                        [
+                            127,
+                            0,
+                            0
+                        ],
+                        [
+                            0,
+                            136,
+                            0
+                        ],
+                        [
+                            0,
+                            0,
+                            128
+                        ]
+                    ]
+                },
+                "accuracy": 1.0,
+                "balanced_accuracy": 1.0,
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1": 1.0,
+                "confusion_matrix": [
+                    [
+                        32,
+                        0,
+                        0
+                    ],
+                    [
+                        0,
+                        34,
+                        0
+                    ],
+                    [
+                        0,
+                        0,
+                        32
+                    ]
+                ],
+                "score": 1.0
+            },
+            {
+                "model": "Extra Trees Classifier",
+                "model_id": "extra_trees",
+                "status": "success",
+                "cv_folds": 5,
+                "cv_scoring": "f1_macro",
+                "cv_mean_score": 1.0,
+                "cv_std_score": 0.0,
+                "cv_scores": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "train_rows": 391,
+                "test_rows": 98,
+                "train_accuracy": 1.0,
+                "train_metrics": {
+                    "accuracy": 1.0,
+                    "balanced_accuracy": 1.0,
+                    "precision": 1.0,
+                    "recall": 1.0,
+                    "f1": 1.0,
+                    "confusion_matrix": [
+                        [
+                            127,
+                            0,
+                            0
+                        ],
+                        [
+                            0,
+                            136,
+                            0
+                        ],
+                        [
+                            0,
+                            0,
+                            128
+                        ]
+                    ]
+                },
+                "accuracy": 1.0,
+                "balanced_accuracy": 1.0,
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1": 1.0,
+                "confusion_matrix": [
+                    [
+                        32,
+                        0,
+                        0
+                    ],
+                    [
+                        0,
+                        34,
+                        0
+                    ],
+                    [
+                        0,
+                        0,
+                        32
+                    ]
+                ],
+                "score": 1.0
+            },
+            {
+                "model": "Gradient Boosting Classifier",
+                "model_id": "gradient_boosting",
+                "status": "success",
+                "cv_folds": 5,
+                "cv_scoring": "f1_macro",
+                "cv_mean_score": 0.9948,
+                "cv_std_score": 0.0103,
+                "cv_scores": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    0.9742
+                ],
+                "train_rows": 391,
+                "test_rows": 98,
+                "train_accuracy": 1.0,
+                "train_metrics": {
+                    "accuracy": 1.0,
+                    "balanced_accuracy": 1.0,
+                    "precision": 1.0,
+                    "recall": 1.0,
+                    "f1": 1.0,
+                    "confusion_matrix": [
+                        [
+                            127,
+                            0,
+                            0
+                        ],
+                        [
+                            0,
+                            136,
+                            0
+                        ],
+                        [
+                            0,
+                            0,
+                            128
+                        ]
+                    ]
+                },
+                "accuracy": 0.9796,
+                "balanced_accuracy": 0.9792,
+                "precision": 0.9815,
+                "recall": 0.9792,
+                "f1": 0.9797,
+                "confusion_matrix": [
+                    [
+                        32,
+                        0,
+                        0
+                    ],
+                    [
+                        0,
+                        34,
+                        0
+                    ],
+                    [
+                        0,
+                        2,
+                        30
+                    ]
+                ],
+                "score": 0.9797
+            },
+            {
+                "model": "K-Nearest Neighbors",
+                "model_id": "knn",
+                "status": "success",
+                "cv_folds": 5,
+                "cv_scoring": "f1_macro",
+                "cv_mean_score": 1.0,
+                "cv_std_score": 0.0,
+                "cv_scores": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "train_rows": 391,
+                "test_rows": 98,
+                "train_accuracy": 1.0,
+                "train_metrics": {
+                    "accuracy": 1.0,
+                    "balanced_accuracy": 1.0,
+                    "precision": 1.0,
+                    "recall": 1.0,
+                    "f1": 1.0,
+                    "confusion_matrix": [
+                        [
+                            127,
+                            0,
+                            0
+                        ],
+                        [
+                            0,
+                            136,
+                            0
+                        ],
+                        [
+                            0,
+                            0,
+                            128
+                        ]
+                    ]
+                },
+                "accuracy": 0.9898,
+                "balanced_accuracy": 0.9896,
+                "precision": 0.9905,
+                "recall": 0.9896,
+                "f1": 0.9899,
+                "confusion_matrix": [
+                    [
+                        32,
+                        0,
+                        0
+                    ],
+                    [
+                        0,
+                        34,
+                        0
+                    ],
+                    [
+                        0,
+                        1,
+                        31
+                    ]
+                ],
+                "score": 0.9899
+            },
+            {
+                "model": "Gaussian Naive Bayes",
+                "model_id": "naive_bayes",
+                "status": "success",
+                "cv_folds": 5,
+                "cv_scoring": "f1_macro",
+                "cv_mean_score": 1.0,
+                "cv_std_score": 0.0,
+                "cv_scores": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "train_rows": 391,
+                "test_rows": 98,
+                "train_accuracy": 1.0,
+                "train_metrics": {
+                    "accuracy": 1.0,
+                    "balanced_accuracy": 1.0,
+                    "precision": 1.0,
+                    "recall": 1.0,
+                    "f1": 1.0,
+                    "confusion_matrix": [
+                        [
+                            127,
+                            0,
+                            0
+                        ],
+                        [
+                            0,
+                            136,
+                            0
+                        ],
+                        [
+                            0,
+                            0,
+                            128
+                        ]
+                    ]
+                },
+                "accuracy": 1.0,
+                "balanced_accuracy": 1.0,
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1": 1.0,
+                "confusion_matrix": [
+                    [
+                        32,
+                        0,
+                        0
+                    ],
+                    [
+                        0,
+                        34,
+                        0
+                    ],
+                    [
+                        0,
+                        0,
+                        32
+                    ]
+                ],
+                "score": 1.0
+            }
+        ],
+        "cv_results": {
+            "logistic_regression": {
+                "mean_score": 1.0,
+                "std_score": 0.0,
+                "fold_scores": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ]
+            },
+            "random_forest": {
+                "mean_score": 1.0,
+                "std_score": 0.0,
+                "fold_scores": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ]
+            },
+            "extra_trees": {
+                "mean_score": 1.0,
+                "std_score": 0.0,
+                "fold_scores": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ]
+            },
+            "gradient_boosting": {
+                "mean_score": 0.9948,
+                "std_score": 0.0103,
+                "fold_scores": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    0.9742
+                ]
+            },
+            "knn": {
+                "mean_score": 1.0,
+                "std_score": 0.0,
+                "fold_scores": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ]
+            },
+            "naive_bayes": {
+                "mean_score": 1.0,
+                "std_score": 0.0,
+                "fold_scores": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ]
+            }
+        },
+        "best_model": "Logistic Regression",
+        "best_model_id": "logistic_regression",
+        "best_score": 1.0,
+        "best_cv_std": 0.0,
+        "best_test_score": 0.9798,
+        "baseline": {
+            "accuracy": 0.3469,
+            "balanced_accuracy": 0.3333,
+            "precision": 0.1156,
+            "recall": 0.3333,
+            "f1": 0.1717,
+            "train_metrics": {
+                "accuracy": 0.3478,
+                "balanced_accuracy": 0.3333,
+                "precision": 0.1159,
+                "recall": 0.3333,
+                "f1": 0.172
+            }
+        },
+        "selection": {
+            "problem_type": "multiclass_classification",
+            "dataset_info": {
+                "n_samples": 489,
+                "n_features": 4,
+                "n_classes": 3,
+                "is_imbalanced": false
+            },
+            "selected_models": [
+                "logistic_regression",
+                "random_forest",
+                "extra_trees",
+                "gradient_boosting",
+                "knn",
+                "naive_bayes"
+            ],
+            "model_details": {
+                "logistic_regression": {
+                    "name": "Logistic Regression",
+                    "description": "Linear model for binary and multiclass classification.",
+                    "requires_scaling": true,
+                    "supports_probability": true
+                },
+                "random_forest": {
+                    "name": "Random Forest Classifier",
+                    "description": "Ensemble of decision trees.",
+                    "requires_scaling": false,
+                    "supports_probability": true
+                },
+                "extra_trees": {
+                    "name": "Extra Trees Classifier",
+                    "description": "Ensemble of highly randomized decision trees.",
+                    "requires_scaling": false,
+                    "supports_probability": true
+                },
+                "gradient_boosting": {
+                    "name": "Gradient Boosting Classifier",
+                    "description": "Sequential boosting-based classification model.",
+                    "requires_scaling": false,
+                    "supports_probability": true
+                },
+                "knn": {
+                    "name": "K-Nearest Neighbors",
+                    "description": "Distance-based classification algorithm.",
+                    "requires_scaling": true,
+                    "supports_probability": true
+                },
+                "naive_bayes": {
+                    "name": "Gaussian Naive Bayes",
+                    "description": "Probabilistic classification algorithm.",
+                    "requires_scaling": false,
+                    "supports_probability": true
+                }
+            },
+            "selection_reasons": [
+                "Candidates selected using dataset size and feature count."
+            ],
+            "selection_note": "These are candidate models, not guaranteed best models. Train and evaluate them using leakage-safe validation before selecting a final model."
+        },
+        "successful_models": 6,
+        "failed_models": 0,
+        "score_interpretation": "The best candidate was selected using cross-validation scores from training data only. The holdout test set was not used for model selection and is reserved for final evaluation. The final test score is still an estimate based on one holdout split and may vary with new data.",
+        "explainability": {
+            "available": true,
+            "methods": [
+                "model_coefficients",
+                "permutation_importance"
+            ],
+            "native_importance": {
+                "available": false,
+                "reason": "This estimator does not expose native feature_importances_."
+            },
+            "coefficients": {
+                "available": true,
+                "method": "model_coefficients",
+                "total_features": 4,
+                "top_features": [
+                    {
+                        "feature": "sepal_length",
+                        "importance": 1.6959535669977088,
+                        "absolute_importance": 1.6959535669977088
+                    },
+                    {
+                        "feature": "petal_width",
+                        "importance": 1.5740109282615198,
+                        "absolute_importance": 1.5740109282615198
+                    },
+                    {
+                        "feature": "petal_length",
+                        "importance": 1.556438657117498,
+                        "absolute_importance": 1.556438657117498
+                    },
+                    {
+                        "feature": "sepal_width",
+                        "importance": 0.17770409792005193,
+                        "absolute_importance": 0.17770409792005193
+                    }
+                ],
+                "all_features": [
+                    {
+                        "feature": "sepal_length",
+                        "importance": 1.6959535669977088,
+                        "absolute_importance": 1.6959535669977088
+                    },
+                    {
+                        "feature": "petal_width",
+                        "importance": 1.5740109282615198,
+                        "absolute_importance": 1.5740109282615198
+                    },
+                    {
+                        "feature": "petal_length",
+                        "importance": 1.556438657117498,
+                        "absolute_importance": 1.556438657117498
+                    },
+                    {
+                        "feature": "sepal_width",
+                        "importance": 0.17770409792005193,
+                        "absolute_importance": 0.17770409792005193
+                    }
+                ],
+                "interpretation": "Importance represents model-specific feature influence. It does not establish causation."
+            },
+            "permutation_importance": {
+                "available": true,
+                "method": "permutation_importance",
+                "total_features": 4,
+                "top_features": [
+                    {
+                        "feature": "sepal_length",
+                        "importance": 0.28367346938775506,
+                        "absolute_importance": 0.28367346938775506,
+                        "importance_std": 0.03785150406324777
+                    },
+                    {
+                        "feature": "petal_width",
+                        "importance": 0.17959183673469387,
+                        "absolute_importance": 0.17959183673469387,
+                        "importance_std": 0.013841489761480153
+                    },
+                    {
+                        "feature": "petal_length",
+                        "importance": 0.11224489795918366,
+                        "absolute_importance": 0.11224489795918366,
+                        "importance_std": 0.014430750636460139
+                    },
+                    {
+                        "feature": "sepal_width",
+                        "importance": -0.010204081632653073,
+                        "absolute_importance": 0.010204081632653073,
+                        "importance_std": 0.006453627877894659
+                    }
+                ],
+                "all_features": [
+                    {
+                        "feature": "sepal_length",
+                        "importance": 0.28367346938775506,
+                        "absolute_importance": 0.28367346938775506,
+                        "importance_std": 0.03785150406324777
+                    },
+                    {
+                        "feature": "petal_width",
+                        "importance": 0.17959183673469387,
+                        "absolute_importance": 0.17959183673469387,
+                        "importance_std": 0.013841489761480153
+                    },
+                    {
+                        "feature": "petal_length",
+                        "importance": 0.11224489795918366,
+                        "absolute_importance": 0.11224489795918366,
+                        "importance_std": 0.014430750636460139
+                    },
+                    {
+                        "feature": "sepal_width",
+                        "importance": -0.010204081632653073,
+                        "absolute_importance": 0.010204081632653073,
+                        "importance_std": 0.006453627877894659
+                    }
+                ],
+                "interpretation": "Importance represents model-specific feature influence. It does not establish causation."
+            },
+            "limitations": [
+                "Feature importance does not prove causation.",
+                "Native importance values are model-specific.",
+                "Correlated features can share or distort importance.",
+                "Permutation importance depends on the evaluation dataset."
+            ]
+        },
+        "evaluation": {
+            "problem_type": "multiclass_classification",
+            "train_metrics": {
+                "accuracy": 1.0,
+                "balanced_accuracy": 1.0,
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1": 1.0,
+                "confusion_matrix": [
+                    [
+                        127,
+                        0,
+                        0
+                    ],
+                    [
+                        0,
+                        136,
+                        0
+                    ],
+                    [
+                        0,
+                        0,
+                        128
+                    ]
+                ]
+            },
+            "test_metrics": {
+                "accuracy": 0.9796,
+                "balanced_accuracy": 0.9798,
+                "precision": 0.9798,
+                "recall": 0.9798,
+                "f1": 0.9798,
+                "confusion_matrix": [
+                    [
+                        32,
+                        0,
+                        0
+                    ],
+                    [
+                        0,
+                        33,
+                        1
+                    ],
+                    [
+                        0,
+                        1,
+                        31
+                    ]
+                ]
+            },
+            "baseline_train_metrics": {
+                "accuracy": 0.3478,
+                "balanced_accuracy": 0.3333,
+                "precision": 0.1159,
+                "recall": 0.3333,
+                "f1": 0.172
+            },
+            "baseline_test_metrics": {
+                "accuracy": 0.3469,
+                "balanced_accuracy": 0.3333,
+                "precision": 0.1156,
+                "recall": 0.3333,
+                "f1": 0.1717
+            },
+            "generalization": {
+                "metric": "f1",
+                "train_score": 1.0,
+                "test_score": 0.9798,
+                "performance_gap": 0.0202,
+                "gap_threshold": 0.1,
+                "overfitting_suspected": false,
+                "status": "no_large_generalization_gap_detected",
+                "interpretation": "No large train-test performance gap was detected. This does not guarantee that the model generalizes well."
+            },
+            "baseline_comparison": {
+                "primary_metric": "f1",
+                "status": "better_than_baseline",
+                "metrics": {
+                    "accuracy": {
+                        "model": 0.9796,
+                        "baseline": 0.3469,
+                        "difference": 0.6327,
+                        "improved": true
+                    },
+                    "balanced_accuracy": {
+                        "model": 0.9798,
+                        "baseline": 0.3333,
+                        "difference": 0.6465,
+                        "improved": true
+                    },
+                    "f1": {
+                        "model": 0.9798,
+                        "baseline": 0.1717,
+                        "difference": 0.8081,
+                        "improved": true
+                    }
+                }
+            },
+            "underfitting": {
+                "metric": "f1",
+                "train_score": 1.0,
+                "baseline_score": 0.172,
+                "underfitting_suspected": false,
+                "interpretation": "Training performance exceeds the dummy baseline. This alone does not rule out underfitting."
+            },
+            "warnings": [
+                "No major warning was identified by the current evaluation checks. Further validation is still recommended."
+            ],
+            "evaluation_note": "These checks provide diagnostic indicators, not proof of model quality. Use cross-validation and an independent test dataset for stronger evidence.",
+            "available": true,
+            "selected_model": "Logistic Regression"
+        }
+    },
+    "evaluation": null,
+    "diagnosis": {
+        "model_name": "Logistic Regression",
+        "status": "issues_found",
+        "summary": {
+            "total_findings": 6,
+            "critical": 0,
+            "warnings": 1,
+            "information": 5
+        },
+        "findings": [
+            {
+                "code": "duplicate_rows_detected",
+                "title": "Duplicate Rows Detected",
+                "severity": "warning",
+                "message": "The dataset contains duplicate rows.",
+                "evidence": {
+                    "duplicate_rows": 11
+                },
+                "recommendation": "Inspect duplicates and determine whether they represent valid observations."
+            },
+            {
+                "code": "no_large_generalization_gap",
+                "title": "No Large Generalization Gap Detected",
+                "severity": "info",
+                "message": "No large train-test performance gap was identified. This does not guarantee good real-world performance.",
+                "evidence": {
+                    "metric": "f1",
+                    "train_score": 1.0,
+                    "test_score": 0.9798,
+                    "performance_gap": 0.0202
+                },
+                "recommendation": "Validate performance with cross-validation and independent data where possible."
+            },
+            {
+                "code": "better_than_baseline",
+                "title": "Model Outperforms Dummy Baseline",
+                "severity": "info",
+                "message": "The model performs better than the dummy baseline on the primary evaluation metric.",
+                "evidence": {
+                    "primary_metric": "f1",
+                    "status": "better_than_baseline",
+                    "metrics": {
+                        "accuracy": {
+                            "model": 0.9796,
+                            "baseline": 0.3469,
+                            "difference": 0.6327,
+                            "improved": true
+                        },
+                        "balanced_accuracy": {
+                            "model": 0.9798,
+                            "baseline": 0.3333,
+                            "difference": 0.6465,
+                            "improved": true
+                        },
+                        "f1": {
+                            "model": 0.9798,
+                            "baseline": 0.1717,
+                            "difference": 0.8081,
+                            "improved": true
+                        }
+                    }
+                },
+                "recommendation": "Continue evaluating with cross-validation and check whether the improvement is consistent."
+            },
+            {
+                "code": "possible_outliers_detected",
+                "title": "Possible Outliers Detected",
+                "severity": "info",
+                "message": "The profiler identified possible statistical outliers. These values are not automatically data errors.",
+                "evidence": {
+                    "outlier_rows": 2,
+                    "outlier_values": 2,
+                    "outlier_details": [
+                        {
+                            "column": "sepal_width",
+                            "count": 2
+                        }
+                    ]
+                },
+                "recommendation": "Inspect outliers using domain knowledge before removing or transforming them."
+            },
+            {
+                "code": "profiler_warnings",
+                "title": "Dataset Profiler Warnings",
+                "severity": "info",
+                "message": "The dataset profiler reported additional observations.",
+                "evidence": {
+                    "warnings": [
+                        {
+                            "type": "duplicate_rows",
+                            "severity": "medium",
+                            "message": "11 duplicate rows detected. Review before removing them."
+                        },
+                        {
+                            "type": "outliers",
+                            "severity": "medium",
+                            "message": "2 potential numerical outlier values detected using IQR."
+                        }
+                    ]
+                },
+                "recommendation": "Review the profiler warnings before finalizing dataset preparation."
+            },
+            {
+                "code": "feature_importance_available",
+                "title": "Feature Importance Available",
+                "severity": "info",
+                "message": "Feature importance information is available for the evaluated model.",
+                "evidence": {
+                    "available": true,
+                    "top_features": [
+                        {
+                            "feature": "sepal_length",
+                            "importance": 1.6959535669977088
+                        },
+                        {
+                            "feature": "petal_width",
+                            "importance": 1.5740109282615198
+                        },
+                        {
+                            "feature": "petal_length",
+                            "importance": 1.556438657117498
+                        },
+                        {
+                            "feature": "sepal_width",
+                            "importance": 0.17770409792005193
+                        }
+                    ],
+                    "total_features": 4,
+                    "interpretation": "Importance indicates relative model reliance, not causation."
+                },
+                "recommendation": "Review important features with domain knowledge. Do not interpret importance as causation."
+            }
+        ],
+        "feature_importance": {
+            "available": true,
+            "top_features": [
+                {
+                    "feature": "sepal_length",
+                    "importance": 1.6959535669977088
+                },
+                {
+                    "feature": "petal_width",
+                    "importance": 1.5740109282615198
+                },
+                {
+                    "feature": "petal_length",
+                    "importance": 1.556438657117498
+                },
+                {
+                    "feature": "sepal_width",
+                    "importance": 0.17770409792005193
+                }
+            ],
+            "total_features": 4,
+            "interpretation": "Importance indicates relative model reliance, not causation."
+        },
+        "limitations": [
+            "Diagnosis depends on the completeness of supplied inputs.",
+            "Heuristic findings are signals for investigation, not proof.",
+            "Feature importance does not establish causation.",
+            "A small train-test gap does not guarantee real-world performance."
+        ]
+    },
+    "explainability": null,
+    "hyperparameter_tuning": null
+}

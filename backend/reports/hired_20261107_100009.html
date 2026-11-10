@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ML Model Doctor Report</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 30px;
+    font-family: Arial, sans-serif;
+    background: #f4f6fa;
+    color: #202938;
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+}
+
+header {
+    background: #182338;
+    color: white;
+    padding: 30px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+}
+
+header h1 {
+    margin: 0 0 10px;
+}
+
+.card {
+    background: white;
+    padding: 22px;
+    margin-bottom: 18px;
+    border-radius: 10px;
+    border: 1px solid #e1e6ed;
+    overflow-wrap: anywhere;
+}
+
+.card h2 {
+    margin-top: 0;
+    color: #244a80;
+}
+
+pre {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    background: #f4f6fa;
+    padding: 14px;
+    border-radius: 6px;
+}
+
+footer {
+    text-align: center;
+    color: #667085;
+    margin-top: 25px;
+}
+
+@media print {
+    body {
+        background: white;
+        padding: 10px;
+    }
+
+    .card, header {
+        break-inside: avoid;
+    }
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<header>
+    <h1>ML Model Doctor</h1>
+    <p>Automated Machine Learning Analysis Report</p>
+    <small>Generated: 2026-11-07T10:00:14.184205+00:00</small>
+</header>
+
+
+            <section class="card">
+                <h2>Executive Summary</h2>
+                <pre>{
+  &quot;dataset&quot;: {
+    &quot;rows&quot;: 80,
+    &quot;columns&quot;: 5
+  },
+  &quot;problem_type&quot;: &quot;binary_classification&quot;,
+  &quot;best_model&quot;: {
+    &quot;name&quot;: &quot;Logistic Regression&quot;
+  },
+  &quot;evaluation&quot;: {
+    &quot;generalization&quot;: null,
+    &quot;baseline_comparison&quot;: null
+  },
+  &quot;diagnosis_status&quot;: &quot;issues_found&quot;,
+  &quot;diagnostic_findings&quot;: {
+    &quot;total_findings&quot;: 4,
+    &quot;critical&quot;: 0,
+    &quot;warnings&quot;: 1,
+    &quot;information&quot;: 3
+  },
+  &quot;conclusion&quot;: &quot;Review the evaluation metrics and diagnostic findings before using the model in production.&quot;
+}</pre>
+            </section>
+            
+            <section class="card">
+                <h2>Dataset Profile</h2>
+                <pre>{
+  &quot;rows&quot;: 80,
+  &quot;columns&quot;: 5,
+  &quot;total_cells&quot;: 400,
+  &quot;column_names&quot;: [
+    &quot;age&quot;,
+    &quot;experience&quot;,
+    &quot;salary&quot;,
+    &quot;score&quot;,
+    &quot;hired&quot;
+  ],
+  &quot;numeric_columns&quot;: [
+    &quot;age&quot;,
+    &quot;experience&quot;,
+    &quot;salary&quot;,
+    &quot;score&quot;,
+    &quot;hired&quot;
+  ],
+  &quot;categorical_columns&quot;: [],
+  &quot;boolean_columns&quot;: [],
+  &quot;datetime_columns&quot;: [],
+  &quot;datetime_candidates&quot;: [],
+  &quot;other_columns&quot;: [],
+  &quot;data_type_summary&quot;: {
+    &quot;numeric&quot;: 5,
+    &quot;categorical&quot;: 0,
+    &quot;boolean&quot;: 0,
+    &quot;datetime&quot;: 0,
+    &quot;datetime_candidates&quot;: 0,
+    &quot;other&quot;: 0
+  },
+  &quot;missing_values&quot;: 0,
+  &quot;missing_percentage&quot;: 0.0,
+  &quot;columns_with_missing&quot;: 0,
+  &quot;duplicate_rows&quot;: 0,
+  &quot;duplicate_columns&quot;: [],
+  &quot;outlier_values&quot;: 0,
+  &quot;outlier_rows&quot;: 0,
+  &quot;outlier_details&quot;: [],
+  &quot;constant_columns&quot;: [],
+  &quot;near_constant_columns&quot;: [],
+  &quot;identifier_candidates&quot;: [
+    &quot;age&quot;,
+    &quot;experience&quot;,
+    &quot;salary&quot;,
+    &quot;score&quot;
+  ],
+  &quot;high_cardinality_columns&quot;: [],
+  &quot;numerical_summary&quot;: {
+    &quot;age&quot;: {
+      &quot;mean&quot;: 59.5,
+      &quot;median&quot;: 59.5,
+      &quot;std&quot;: 23.2379000772445,
+      &quot;min&quot;: 20,
+      &quot;max&quot;: 99,
+      &quot;skewness&quot;: 0.0,
+      &quot;variance&quot;: 540.0
+    },
+    &quot;experience&quot;: {
+      &quot;mean&quot;: 39.5,
+      &quot;median&quot;: 39.5,
+      &quot;std&quot;: 23.2379000772445,
+      &quot;min&quot;: 0,
+      &quot;max&quot;: 79,
+      &quot;skewness&quot;: 0.0,
+      &quot;variance&quot;: 540.0
+    },
+    &quot;salary&quot;: {
+      &quot;mean&quot;: 84250.0,
+      &quot;median&quot;: 84250.0,
+      &quot;std&quot;: 34856.85011586675,
+      &quot;min&quot;: 25000,
+      &quot;max&quot;: 143500,
+      &quot;skewness&quot;: 0.0,
+      &quot;variance&quot;: 1215000000.0
+    },
+    &quot;score&quot;: {
+      &quot;mean&quot;: 81.0,
+      &quot;median&quot;: 81.0,
+      &quot;std&quot;: 46.58461744265462,
+      &quot;min&quot;: 0,
+      &quot;max&quot;: 162,
+      &quot;skewness&quot;: 0.0,
+      &quot;variance&quot;: 2170.1265822784812
+    },
+    &quot;hired&quot;: {
+      &quot;mean&quot;: 0.5,
+      &quot;median&quot;: 0.5,
+      &quot;std&quot;: 0.5031546054266276,
+      &quot;min&quot;: 0,
+      &quot;max&quot;: 1,
+      &quot;skewness&quot;: 0.0,
+      &quot;variance&quot;: 0.25316455696202533
+    }
+  },
+  &quot;column_info&quot;: [
+    {
+      &quot;name&quot;: &quot;age&quot;,
+      &quot;dtype&quot;: &quot;int64&quot;,
+      &quot;detected_type&quot;: &quot;numeric&quot;,
+      &quot;missing&quot;: 0,
+      &quot;missing_percentage&quot;: 0.0,
+      &quot;unique_values&quot;: 80,
+      &quot;unique_ratio&quot;: 1.0,
+      &quot;is_numeric&quot;: true,
+      &quot;is_constant&quot;: false,
+      &quot;is_near_constant&quot;: false,
+      &quot;is_identifier_candidate&quot;: true,
+      &quot;is_high_cardinality&quot;: false,
+      &quot;outliers&quot;: 0,
+      &quot;outlier_percentage&quot;: 0.0,
+      &quot;outlier_bounds&quot;: {
+        &quot;lower&quot;: -19.5,
+        &quot;upper&quot;: 138.5
+      },
+      &quot;dominant_value_percentage&quot;: 1.25
+    },
+    {
+      &quot;name&quot;: &quot;experience&quot;,
+      &quot;dtype&quot;: &quot;int64&quot;,
+      &quot;detected_type&quot;: &quot;numeric&quot;,
+      &quot;missing&quot;: 0,
+      &quot;missing_percentage&quot;: 0.0,
+      &quot;unique_values&quot;: 80,
+      &quot;unique_ratio&quot;: 1.0,
+      &quot;is_numeric&quot;: true,
+      &quot;is_constant&quot;: false,
+      &quot;is_near_constant&quot;: false,
+      &quot;is_identifier_candidate&quot;: true,
+      &quot;is_high_cardinality&quot;: false,
+      &quot;outliers&quot;: 0,
+      &quot;outlier_percentage&quot;: 0.0,
+      &quot;outlier_bounds&quot;: {
+        &quot;lower&quot;: -39.5,
+        &quot;upper&quot;: 118.5
+      },
+      &quot;dominant_value_percentage&quot;: 1.25
+    },
+    {
+      &quot;name&quot;: &quot;salary&quot;,
+      &quot;dtype&quot;: &quot;int64&quot;,
+      &quot;detected_type&quot;: &quot;numeric&quot;,
+      &quot;missing&quot;: 0,
+      &quot;missing_percentage&quot;: 0.0,
+      &quot;unique_values&quot;: 80,
+      &quot;unique_ratio&quot;: 1.0,
+      &quot;is_numeric&quot;: true,
+      &quot;is_constant&quot;: false,
+      &quot;is_near_constant&quot;: false,
+      &quot;is_identifier_candidate&quot;: true,
+      &quot;is_high_cardinality&quot;: false,
+      &quot;outliers&quot;: 0,
+      &quot;outlier_percentage&quot;: 0.0,
+      &quot;outlier_bounds&quot;: {
+        &quot;lower&quot;: -34250.0,
+        &quot;upper&quot;: 202750.0
+      },
+      &quot;dominant_value_percentage&quot;: 1.25
+    },
+    {
+      &quot;name&quot;: &quot;score&quot;,
+      &quot;dtype&quot;: &quot;int64&quot;,
+      &quot;detected_type&quot;: &quot;numeric&quot;,
+      &quot;missing&quot;: 0,
+      &quot;missing_percentage&quot;: 0.0,
+      &quot;unique_values&quot;: 80,
+      &quot;unique_ratio&quot;: 1.0,
+      &quot;is_numeric&quot;: true,
+      &quot;is_constant&quot;: false,
+      &quot;is_near_constant&quot;: false,
+      &quot;is_identifier_candidate&quot;: true,
+      &quot;is_high_cardinality&quot;: false,
+      &quot;outliers&quot;: 0,
+      &quot;outlier_percentage&quot;: 0.0,
+      &quot;outlier_bounds&quot;: {
+        &quot;lower&quot;: -77.0,
+        &quot;upper&quot;: 239.0
+      },
+      &quot;dominant_value_percentage&quot;: 1.25
+    },
+    {
+      &quot;name&quot;: &quot;hired&quot;,
+      &quot;dtype&quot;: &quot;int64&quot;,
+      &quot;detected_type&quot;: &quot;numeric&quot;,
+      &quot;missing&quot;: 0,
+      &quot;missing_percentage&quot;: 0.0,
+      &quot;unique_values&quot;: 2,
+      &quot;unique_ratio&quot;: 0.025,
+      &quot;is_numeric&quot;: true,
+      &quot;is_constant&quot;: false,
+      &quot;is_near_constant&quot;: false,
+      &quot;is_identifier_candidate&quot;: false,
+      &quot;is_high_cardinality&quot;: false,
+      &quot;outliers&quot;: 0,
+      &quot;outlier_percentage&quot;: 0.0,
+      &quot;outlier_bounds&quot;: {
+        &quot;lower&quot;: -1.5,
+        &quot;upper&quot;: 2.5
+      },
+      &quot;dominant_value_percentage&quot;: 50.0
+    }
+  ],
+  &quot;warnings&quot;: [
+    {
+      &quot;type&quot;: &quot;identifier_candidates&quot;,
+      &quot;severity&quot;: &quot;low&quot;,
+      &quot;message&quot;: &quot;Potential identifier columns detected. Review whether they should be used as features.&quot;
+    }
+  ],
+  &quot;original_missing_values&quot;: 0,
+  &quot;original_duplicate_rows&quot;: 0,
+  &quot;target_missing_values&quot;: 0,
+  &quot;target_distribution&quot;: {
+    &quot;1&quot;: 40,
+    &quot;0&quot;: 40
+  }
+}</pre>
+            </section>
+            
+            <section class="card">
+                <h2>Target Analysis</h2>
+                <pre>{
+  &quot;target_column&quot;: &quot;hired&quot;,
+  &quot;problem_type&quot;: &quot;binary_classification&quot;,
+  &quot;suggested_problem_type&quot;: &quot;binary_classification&quot;,
+  &quot;confidence&quot;: &quot;user_confirmed&quot;,
+  &quot;requires_confirmation&quot;: false,
+  &quot;reason&quot;: &quot;User explicitly selected binary classification.&quot;,
+  &quot;target_statistics&quot;: {
+    &quot;total_records&quot;: 80,
+    &quot;valid_records&quot;: 80,
+    &quot;missing_values&quot;: 0,
+    &quot;unique_values&quot;: 2,
+    &quot;data_type&quot;: &quot;int64&quot;
+  },
+  &quot;class_analysis&quot;: {
+    &quot;class_count&quot;: 2,
+    &quot;class_distribution&quot;: [
+      {
+        &quot;class&quot;: 1,
+        &quot;count&quot;: 40,
+        &quot;percentage&quot;: 50.0
+      },
+      {
+        &quot;class&quot;: 0,
+        &quot;count&quot;: 40,
+        &quot;percentage&quot;: 50.0
+      }
+    ],
+    &quot;majority_class&quot;: 1,
+    &quot;majority_percentage&quot;: 50.0,
+    &quot;minority_percentage&quot;: 50.0,
+    &quot;imbalance_ratio&quot;: 1.0,
+    &quot;is_imbalanced&quot;: false
+  },
+  &quot;numeric_analysis&quot;: {
+    &quot;mean&quot;: 0.5,
+    &quot;median&quot;: 0.5,
+    &quot;std&quot;: 0.5031546054266276,
+    &quot;min&quot;: 0.0,
+    &quot;max&quot;: 1.0,
+    &quot;unique_values&quot;: 2,
+    &quot;skewness&quot;: 0.0
+  },
+  &quot;warnings&quot;: []
+}</pre>
+            </section>
+            
+            <section class="card">
+                <h2>Model Comparison</h2>
+                <pre>{
+  &quot;problem_type&quot;: &quot;binary_classification&quot;,
+  &quot;evaluation_method&quot;: &quot;80/20 holdout + 5-fold cross-validation&quot;,
+  &quot;primary_metric&quot;: &quot;macro F1&quot;,
+  &quot;selection_metric&quot;: &quot;f1_macro&quot;,
+  &quot;selection_method&quot;: &quot;cross_validation&quot;,
+  &quot;cv_folds&quot;: 5,
+  &quot;train_rows&quot;: 64,
+  &quot;test_rows&quot;: 16,
+  &quot;dataset_info&quot;: {
+    &quot;total_rows&quot;: 80,
+    &quot;total_features&quot;: 4,
+    &quot;number_of_classes&quot;: 2,
+    &quot;is_imbalanced&quot;: false,
+    &quot;imbalance_ratio&quot;: 1.0,
+    &quot;removed_empty_columns&quot;: []
+  },
+  &quot;models&quot;: [
+    {
+      &quot;model&quot;: &quot;Logistic Regression&quot;,
+      &quot;model_id&quot;: &quot;logistic_regression&quot;,
+      &quot;status&quot;: &quot;success&quot;,
+      &quot;cv_folds&quot;: 5,
+      &quot;cv_scoring&quot;: &quot;f1_macro&quot;,
+      &quot;cv_mean_score&quot;: 0.3424,
+      &quot;cv_std_score&quot;: 0.0972,
+      &quot;cv_scores&quot;: [
+        0.35,
+        0.1875,
+        0.3077,
+        0.381,
+        0.4857
+      ],
+      &quot;train_rows&quot;: 64,
+      &quot;test_rows&quot;: 16,
+      &quot;train_accuracy&quot;: 0.5156,
+      &quot;train_metrics&quot;: {
+        &quot;accuracy&quot;: 0.5156,
+        &quot;balanced_accuracy&quot;: 0.5156,
+        &quot;precision&quot;: 0.5156,
+        &quot;recall&quot;: 0.5156,
+        &quot;f1&quot;: 0.5155,
+        &quot;confusion_matrix&quot;: [
+          [
+            17,
+            15
+          ],
+          [
+            16,
+            16
+          ]
+        ]
+      },
+      &quot;accuracy&quot;: 0.5,
+      &quot;balanced_accuracy&quot;: 0.5,
+      &quot;precision&quot;: 0.5,
+      &quot;recall&quot;: 0.5,
+      &quot;f1&quot;: 0.5,
+      &quot;confusion_matrix&quot;: [
+        [
+          4,
+          4
+        ],
+        [
+          4,
+          4
+        ]
+      ],
+      &quot;score&quot;: 0.5
+    },
+    {
+      &quot;model&quot;: &quot;Random Forest Classifier&quot;,
+      &quot;model_id&quot;: &quot;random_forest&quot;,
+      &quot;status&quot;: &quot;success&quot;,
+      &quot;cv_folds&quot;: 5,
+      &quot;cv_scoring&quot;: &quot;f1_macro&quot;,
+      &quot;cv_mean_score&quot;: 0.1252,
+      &quot;cv_std_score&quot;: 0.12,
+      &quot;cv_scores&quot;: [
+        0.1333,
+        0.0714,
+        0.35,
+        0.0714,
+        0.0
+      ],
+      &quot;train_rows&quot;: 64,
+      &quot;test_rows&quot;: 16,
+      &quot;train_accuracy&quot;: 1.0,
+      &quot;train_metrics&quot;: {
+        &quot;accuracy&quot;: 1.0,
+        &quot;balanced_accuracy&quot;: 1.0,
+        &quot;precision&quot;: 1.0,
+        &quot;recall&quot;: 1.0,
+        &quot;f1&quot;: 1.0,
+        &quot;confusion_matrix&quot;: [
+          [
+            32,
+            0
+          ],
+          [
+            0,
+            32
+          ]
+        ]
+      },
+      &quot;accuracy&quot;: 0.0625,
+      &quot;balanced_accuracy&quot;: 0.0625,
+      &quot;precision&quot;: 0.0556,
+      &quot;recall&quot;: 0.0625,
+      &quot;f1&quot;: 0.0588,
+      &quot;confusion_matrix&quot;: [
+        [
+          1,
+          7
+        ],
+        [
+          8,
+          0
+        ]
+      ],
+      &quot;score&quot;: 0.0588
+    },
+    {
+      &quot;model&quot;: &quot;Extra Trees Classifier&quot;,
+      &quot;model_id&quot;: &quot;extra_trees&quot;,
+      &quot;status&quot;: &quot;success&quot;,
+      &quot;cv_folds&quot;: 5,
+      &quot;cv_scoring&quot;: &quot;f1_macro&quot;,
+      &quot;cv_mean_score&quot;: 0.1571,
+      &quot;cv_std_score&quot;: 0.1015,
+      &quot;cv_scores&quot;: [
+        0.1333,
+        0.0714,
+        0.35,
+        0.1538,
+        0.0769
+      ],
+      &quot;train_rows&quot;: 64,
+      &quot;test_rows&quot;: 16,
+      &quot;train_accuracy&quot;: 1.0,
+      &quot;train_metrics&quot;: {
+        &quot;accuracy&quot;: 1.0,
+        &quot;balanced_accuracy&quot;: 1.0,
+        &quot;precision&quot;: 1.0,
+        &quot;recall&quot;: 1.0,
+        &quot;f1&quot;: 1.0,
+        &quot;confusion_matrix&quot;: [
+          [
+            32,
+            0
+          ],
+          [
+            0,
+            32
+          ]
+        ]
+      },
+      &quot;accuracy&quot;: 0.0625,
+      &quot;balanced_accuracy&quot;: 0.0625,
+      &quot;precision&quot;: 0.0556,
+      &quot;recall&quot;: 0.0625,
+      &quot;f1&quot;: 0.0588,
+      &quot;confusion_matrix&quot;: [
+        [
+          1,
+          7
+        ],
+        [
+          8,
+          0
+        ]
+      ],
+      &quot;score&quot;: 0.0588
+    }
+  ],
+  &quot;cv_results&quot;: {
+    &quot;logistic_regression&quot;: {
+      &quot;mean_score&quot;: 0.3424,
+      &quot;std_score&quot;: 0.0972,
+      &quot;fold_scores&quot;: [
+        0.35,
+        0.1875,
+        0.3077,
+        0.381,
+        0.4857
+      ]
+    },
+    &quot;random_forest&quot;: {
+      &quot;mean_score&quot;: 0.1252,
+      &quot;std_score&quot;: 0.12,
+      &quot;fold_scores&quot;: [
+        0.1333,
+        0.0714,
+        0.35,
+        0.0714,
+        0.0
+      ]
+    },
+    &quot;extra_trees&quot;: {
+      &quot;mean_score&quot;: 0.1571,
+      &quot;std_score&quot;: 0.1015,
+      &quot;fold_scores&quot;: [
+        0.1333,
+        0.0714,
+        0.35,
+        0.1538,
+        0.0769
+      ]
+    }
+  },
+  &quot;best_model&quot;: &quot;Logistic Regression&quot;,
+  &quot;best_model_id&quot;: &quot;logistic_regression&quot;,
+  &quot;best_score&quot;: 0.3424,
+  &quot;best_cv_std&quot;: 0.0972,
+  &quot;best_test_score&quot;: 0.5,
+  &quot;baseline&quot;: {
+    &quot;accuracy&quot;: 0.5,
+    &quot;balanced_accuracy&quot;: 0.5,
+    &quot;precision&quot;: 0.25,
+    &quot;recall&quot;: 0.5,
+    &quot;f1&quot;: 0.3333,
+    &quot;train_metrics&quot;: {
+      &quot;accuracy&quot;: 0.5,
+      &quot;balanced_accuracy&quot;: 0.5,
+      &quot;precision&quot;: 0.25,
+      &quot;recall&quot;: 0.5,
+      &quot;f1&quot;: 0.3333
+    }
+  },
+  &quot;selection&quot;: {
+    &quot;problem_type&quot;: &quot;binary_classification&quot;,
+    &quot;dataset_info&quot;: {
+      &quot;n_samples&quot;: 80,
+      &quot;n_features&quot;: 4,
+      &quot;n_classes&quot;: 2,
+      &quot;is_imbalanced&quot;: false
+    },
+    &quot;selected_models&quot;: [
+      &quot;logistic_regression&quot;,
+      &quot;random_forest&quot;,
+      &quot;extra_trees&quot;
+    ],
+    &quot;model_details&quot;: {
+      &quot;logistic_regression&quot;: {
+        &quot;name&quot;: &quot;Logistic Regression&quot;,
+        &quot;description&quot;: &quot;Linear model for binary and multiclass classification.&quot;,
+        &quot;requires_scaling&quot;: true,
+        &quot;supports_probability&quot;: true
+      },
+      &quot;random_forest&quot;: {
+        &quot;name&quot;: &quot;Random Forest Classifier&quot;,
+        &quot;description&quot;: &quot;Ensemble of decision trees.&quot;,
+        &quot;requires_scaling&quot;: false,
+        &quot;supports_probability&quot;: true
+      },
+      &quot;extra_trees&quot;: {
+        &quot;name&quot;: &quot;Extra Trees Classifier&quot;,
+        &quot;description&quot;: &quot;Ensemble of highly randomized decision trees.&quot;,
+        &quot;requires_scaling&quot;: false,
+        &quot;supports_probability&quot;: true
+      }
+    },
+    &quot;selection_reasons&quot;: [
+      &quot;Small dataset: model performance may be unstable.&quot;
+    ],
+    &quot;selection_note&quot;: &quot;These are candidate models, not guaranteed best models. Train and evaluate them using leakage-safe validation before selecting a final model.&quot;
+  },
+  &quot;successful_models&quot;: 3,
+  &quot;failed_models&quot;: 0,
+  &quot;score_interpretation&quot;: &quot;The best candidate was selected using cross-validation scores from training data only. The holdout test set was not used for model selection and is reserved for final evaluation. The final test score is still an estimate based on one holdout split and may vary with new data.&quot;,
+  &quot;explainability&quot;: {
+    &quot;available&quot;: false,
+    &quot;methods&quot;: [],
+    &quot;native_importance&quot;: {
+      &quot;available&quot;: false,
+      &quot;reason&quot;: &quot;No selected trained model was available.&quot;
+    },
+    &quot;coefficients&quot;: {
+      &quot;available&quot;: false,
+      &quot;reason&quot;: &quot;No selected trained model was available.&quot;
+    },
+    &quot;permutation_importance&quot;: null,
+    &quot;limitations&quot;: [
+      &quot;Feature importance does not prove causation.&quot;,
+      &quot;Native importance values are model-specific.&quot;,
+      &quot;Correlated features can share or distort importance.&quot;,
+      &quot;Permutation importance depends on evaluation data.&quot;
+    ]
+  },
+  &quot;evaluation&quot;: {
+    &quot;problem_type&quot;: &quot;binary_classification&quot;,
+    &quot;train_metrics&quot;: {
+      &quot;accuracy&quot;: 0.5156,
+      &quot;balanced_accuracy&quot;: 0.5156,
+      &quot;precision&quot;: 0.5156,
+      &quot;recall&quot;: 0.5156,
+      &quot;f1&quot;: 0.5155,
+      &quot;confusion_matrix&quot;: [
+        [
+          17,
+          15
+        ],
+        [
+          16,
+          16
+        ]
+      ]
+    },
+    &quot;test_metrics&quot;: {
+      &quot;accuracy&quot;: 0.5,
+      &quot;balanced_accuracy&quot;: 0.5,
+      &quot;precision&quot;: 0.5,
+      &quot;recall&quot;: 0.5,
+      &quot;f1&quot;: 0.5,
+      &quot;confusion_matrix&quot;: [
+        [
+          4,
+          4
+        ],
+        [
+          4,
+          4
+        ]
+      ]
+    },
+    &quot;baseline_train_metrics&quot;: {
+      &quot;accuracy&quot;: 0.5,
+      &quot;balanced_accuracy&quot;: 0.5,
+      &quot;precision&quot;: 0.25,
+      &quot;recall&quot;: 0.5,
+      &quot;f1&quot;: 0.3333
+    },
+    &quot;baseline_test_metrics&quot;: {
+      &quot;accuracy&quot;: 0.5,
+      &quot;balanced_accuracy&quot;: 0.5,
+      &quot;precision&quot;: 0.25,
+      &quot;recall&quot;: 0.5,
+      &quot;f1&quot;: 0.3333
+    },
+    &quot;generalization&quot;: {
+      &quot;metric&quot;: &quot;f1&quot;,
+      &quot;train_score&quot;: 0.5155,
+      &quot;test_score&quot;: 0.5,
+      &quot;performance_gap&quot;: 0.0155,
+      &quot;gap_threshold&quot;: 0.1,
+      &quot;overfitting_suspected&quot;: false,
+      &quot;status&quot;: &quot;no_large_generalization_gap_detected&quot;,
+      &quot;interpretation&quot;: &quot;No large train-test performance gap was detected. This does not guarantee that the model generalizes well.&quot;
+    },
+    &quot;baseline_comparison&quot;: {
+      &quot;primary_metric&quot;: &quot;f1&quot;,
+      &quot;status&quot;: &quot;better_than_baseline&quot;,
+      &quot;metrics&quot;: {
+        &quot;accuracy&quot;: {
+          &quot;model&quot;: 0.5,
+          &quot;baseline&quot;: 0.5,
+          &quot;difference&quot;: 0.0,
+          &quot;improved&quot;: false
+        },
+        &quot;balanced_accuracy&quot;: {
+          &quot;model&quot;: 0.5,
+          &quot;baseline&quot;: 0.5,
+          &quot;difference&quot;: 0.0,
+          &quot;improved&quot;: false
+        },
+        &quot;f1&quot;: {
+          &quot;model&quot;: 0.5,
+          &quot;baseline&quot;: 0.3333,
+          &quot;difference&quot;: 0.1667,
+          &quot;improved&quot;: true
+        }
+      }
+    },
+    &quot;underfitting&quot;: {
+      &quot;metric&quot;: &quot;f1&quot;,
+      &quot;train_score&quot;: 0.5155,
+      &quot;baseline_score&quot;: 0.3333,
+      &quot;underfitting_suspected&quot;: false,
+      &quot;interpretation&quot;: &quot;Training performance exceeds the dummy baseline. This alone does not rule out underfitting.&quot;
+    },
+    &quot;warnings&quot;: [
+      &quot;No major warning was identified by the current evaluation checks. Further validation is still recommended.&quot;
+    ],
+    &quot;evaluation_note&quot;: &quot;These checks provide diagnostic indicators, not proof of model quality. Use cross-validation and an independent test dataset for stronger evidence.&quot;,
+    &quot;available&quot;: true,
+    &quot;selected_model&quot;: &quot;Logistic Regression&quot;
+  }
+}</pre>
+            </section>
+            
+            <section class="card">
+                <h2>Evaluation</h2>
+                Not available
+            </section>
+            
+            <section class="card">
+                <h2>Diagnosis</h2>
+                <pre>{
+  &quot;model_name&quot;: &quot;Logistic Regression&quot;,
+  &quot;status&quot;: &quot;issues_found&quot;,
+  &quot;summary&quot;: {
+    &quot;total_findings&quot;: 4,
+    &quot;critical&quot;: 0,
+    &quot;warnings&quot;: 1,
+    &quot;information&quot;: 3
+  },
+  &quot;findings&quot;: [
+    {
+      &quot;code&quot;: &quot;possible_identifier_features&quot;,
+      &quot;title&quot;: &quot;Possible Identifier Columns&quot;,
+      &quot;severity&quot;: &quot;warning&quot;,
+      &quot;message&quot;: &quot;Some columns appear to contain identifiers and may not provide useful predictive information.&quot;,
+      &quot;evidence&quot;: {
+        &quot;columns&quot;: [
+          &quot;age&quot;,
+          &quot;experience&quot;,
+          &quot;salary&quot;,
+          &quot;score&quot;
+        ]
+      },
+      &quot;recommendation&quot;: &quot;Check whether these columns represent genuine identifiers and remove them if they are not useful.&quot;
+    },
+    {
+      &quot;code&quot;: &quot;no_large_generalization_gap&quot;,
+      &quot;title&quot;: &quot;No Large Generalization Gap Detected&quot;,
+      &quot;severity&quot;: &quot;info&quot;,
+      &quot;message&quot;: &quot;No large train-test performance gap was identified. This does not guarantee good real-world performance.&quot;,
+      &quot;evidence&quot;: {
+        &quot;metric&quot;: &quot;f1&quot;,
+        &quot;train_score&quot;: 0.5155,
+        &quot;test_score&quot;: 0.5,
+        &quot;performance_gap&quot;: 0.0155
+      },
+      &quot;recommendation&quot;: &quot;Validate performance with cross-validation and independent data where possible.&quot;
+    },
+    {
+      &quot;code&quot;: &quot;better_than_baseline&quot;,
+      &quot;title&quot;: &quot;Model Outperforms Dummy Baseline&quot;,
+      &quot;severity&quot;: &quot;info&quot;,
+      &quot;message&quot;: &quot;The model performs better than the dummy baseline on the primary evaluation metric.&quot;,
+      &quot;evidence&quot;: {
+        &quot;primary_metric&quot;: &quot;f1&quot;,
+        &quot;status&quot;: &quot;better_than_baseline&quot;,
+        &quot;metrics&quot;: {
+          &quot;accuracy&quot;: {
+            &quot;model&quot;: 0.5,
+            &quot;baseline&quot;: 0.5,
+            &quot;difference&quot;: 0.0,
+            &quot;improved&quot;: false
+          },
+          &quot;balanced_accuracy&quot;: {
+            &quot;model&quot;: 0.5,
+            &quot;baseline&quot;: 0.5,
+            &quot;difference&quot;: 0.0,
+            &quot;improved&quot;: false
+          },
+          &quot;f1&quot;: {
+            &quot;model&quot;: 0.5,
+            &quot;baseline&quot;: 0.3333,
+            &quot;difference&quot;: 0.1667,
+            &quot;improved&quot;: true
+          }
+        }
+      },
+      &quot;recommendation&quot;: &quot;Continue evaluating with cross-validation and check whether the improvement is consistent.&quot;
+    },
+    {
+      &quot;code&quot;: &quot;profiler_warnings&quot;,
+      &quot;title&quot;: &quot;Dataset Profiler Warnings&quot;,
+      &quot;severity&quot;: &quot;info&quot;,
+      &quot;message&quot;: &quot;The dataset profiler reported additional observations.&quot;,
+      &quot;evidence&quot;: {
+        &quot;warnings&quot;: [
+          {
+            &quot;type&quot;: &quot;identifier_candidates&quot;,
+            &quot;severity&quot;: &quot;low&quot;,
+            &quot;message&quot;: &quot;Potential identifier columns detected. Review whether they should be used as features.&quot;
+          }
+        ]
+      },
+      &quot;recommendation&quot;: &quot;Review the profiler warnings before finalizing dataset preparation.&quot;
+    }
+  ],
+  &quot;feature_importance&quot;: null,
+  &quot;limitations&quot;: [
+    &quot;Diagnosis depends on the completeness of supplied inputs.&quot;,
+    &quot;Heuristic findings are signals for investigation, not proof.&quot;,
+    &quot;Feature importance does not establish causation.&quot;,
+    &quot;A small train-test gap does not guarantee real-world performance.&quot;
+  ]
+}</pre>
+            </section>
+            
+            <section class="card">
+                <h2>Explainability</h2>
+                Not available
+            </section>
+            
+            <section class="card">
+                <h2>Hyperparameter Tuning</h2>
+                Not available
+            </section>
+            
+
+<footer>
+    Generated by ML Model Doctor
+</footer>
+
+</div>
+</body>
+</html>

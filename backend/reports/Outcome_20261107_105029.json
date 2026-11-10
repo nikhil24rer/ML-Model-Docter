@@ -1,0 +1,1167 @@
+{
+    "report_version": "1.0",
+    "generated_at": "2026-11-07T10:50:33.613088+00:00",
+    "metadata": {
+        "target_column": "Outcome",
+        "created_at": "2026-11-07T10:50:29.722109+00:00",
+        "application": "ML Model Doctor"
+    },
+    "executive_summary": {
+        "dataset": {
+            "rows": 200,
+            "columns": 6
+        },
+        "problem_type": "binary_classification",
+        "best_model": {
+            "name": "Logistic Regression"
+        },
+        "evaluation": {
+            "generalization": null,
+            "baseline_comparison": null
+        },
+        "diagnosis_status": "issues_found",
+        "diagnostic_findings": {
+            "total_findings": 3,
+            "critical": 0,
+            "warnings": 1,
+            "information": 2
+        },
+        "conclusion": "Review the evaluation metrics and diagnostic findings before using the model in production."
+    },
+    "dataset_profile": {
+        "rows": 200,
+        "columns": 6,
+        "total_cells": 1200,
+        "column_names": [
+            "Glucose",
+            "BloodPres",
+            "SkinThickn",
+            "BMI",
+            "Age",
+            "Outcome"
+        ],
+        "numeric_columns": [
+            "Glucose",
+            "BloodPres",
+            "SkinThickn",
+            "BMI",
+            "Age",
+            "Outcome"
+        ],
+        "categorical_columns": [],
+        "boolean_columns": [],
+        "datetime_columns": [],
+        "datetime_candidates": [],
+        "other_columns": [],
+        "data_type_summary": {
+            "numeric": 6,
+            "categorical": 0,
+            "boolean": 0,
+            "datetime": 0,
+            "datetime_candidates": 0,
+            "other": 0
+        },
+        "missing_values": 0,
+        "missing_percentage": 0.0,
+        "columns_with_missing": 0,
+        "duplicate_rows": 0,
+        "duplicate_columns": [],
+        "outlier_values": 0,
+        "outlier_rows": 0,
+        "outlier_details": [],
+        "constant_columns": [],
+        "near_constant_columns": [],
+        "identifier_candidates": [],
+        "high_cardinality_columns": [],
+        "numerical_summary": {
+            "Glucose": {
+                "mean": 138.5,
+                "median": 139.5,
+                "std": 38.55805516478304,
+                "min": 70,
+                "max": 199,
+                "skewness": -0.11912146603534235,
+                "variance": 1486.7236180904522
+            },
+            "BloodPres": {
+                "mean": 72.28,
+                "median": 72.0,
+                "std": 16.879162617063272,
+                "min": 40,
+                "max": 99,
+                "skewness": -0.1872410830080296,
+                "variance": 284.9061306532663
+            },
+            "SkinThickn": {
+                "mean": 34.99,
+                "median": 35.0,
+                "std": 14.19391546335628,
+                "min": 10,
+                "max": 59,
+                "skewness": -0.01757142394749162,
+                "variance": 201.4672361809045
+            },
+            "BMI": {
+                "mean": 31.383499999999998,
+                "median": 31.3,
+                "std": 8.06744046948245,
+                "min": 18.3,
+                "max": 45.0,
+                "skewness": 0.06151927980569344,
+                "variance": 65.08359572864322
+            },
+            "Age": {
+                "mean": 44.43,
+                "median": 46.0,
+                "std": 14.524804637197146,
+                "min": 21,
+                "max": 69,
+                "skewness": -0.03897648810442509,
+                "variance": 210.96994974874374
+            },
+            "Outcome": {
+                "mean": 0.49,
+                "median": 0.0,
+                "std": 0.5011544461485624,
+                "min": 0,
+                "max": 1,
+                "skewness": 0.04031096672348286,
+                "variance": 0.2511557788944724
+            }
+        },
+        "column_info": [
+            {
+                "name": "Glucose",
+                "dtype": "int64",
+                "detected_type": "numeric",
+                "missing": 0,
+                "missing_percentage": 0.0,
+                "unique_values": 93,
+                "unique_ratio": 0.465,
+                "is_numeric": true,
+                "is_constant": false,
+                "is_near_constant": false,
+                "is_identifier_candidate": false,
+                "is_high_cardinality": false,
+                "outliers": 0,
+                "outlier_percentage": 0.0,
+                "outlier_bounds": {
+                    "lower": 11.375,
+                    "upper": 268.375
+                },
+                "dominant_value_percentage": 3.0
+            },
+            {
+                "name": "BloodPres",
+                "dtype": "int64",
+                "detected_type": "numeric",
+                "missing": 0,
+                "missing_percentage": 0.0,
+                "unique_values": 58,
+                "unique_ratio": 0.29,
+                "is_numeric": true,
+                "is_constant": false,
+                "is_near_constant": false,
+                "is_identifier_candidate": false,
+                "is_high_cardinality": false,
+                "outliers": 0,
+                "outlier_percentage": 0.0,
+                "outlier_bounds": {
+                    "lower": 21.375,
+                    "upper": 126.375
+                },
+                "dominant_value_percentage": 4.5
+            },
+            {
+                "name": "SkinThickn",
+                "dtype": "int64",
+                "detected_type": "numeric",
+                "missing": 0,
+                "missing_percentage": 0.0,
+                "unique_values": 48,
+                "unique_ratio": 0.24,
+                "is_numeric": true,
+                "is_constant": false,
+                "is_near_constant": false,
+                "is_identifier_candidate": false,
+                "is_high_cardinality": false,
+                "outliers": 0,
+                "outlier_percentage": 0.0,
+                "outlier_bounds": {
+                    "lower": -14.0,
+                    "upper": 82.0
+                },
+                "dominant_value_percentage": 5.0
+            },
+            {
+                "name": "BMI",
+                "dtype": "float64",
+                "detected_type": "numeric",
+                "missing": 0,
+                "missing_percentage": 0.0,
+                "unique_values": 153,
+                "unique_ratio": 0.765,
+                "is_numeric": true,
+                "is_constant": false,
+                "is_near_constant": false,
+                "is_identifier_candidate": false,
+                "is_high_cardinality": false,
+                "outliers": 0,
+                "outlier_percentage": 0.0,
+                "outlier_bounds": {
+                    "lower": 2.9999999999999964,
+                    "upper": 59.400000000000006
+                },
+                "dominant_value_percentage": 2.0
+            },
+            {
+                "name": "Age",
+                "dtype": "int64",
+                "detected_type": "numeric",
+                "missing": 0,
+                "missing_percentage": 0.0,
+                "unique_values": 47,
+                "unique_ratio": 0.235,
+                "is_numeric": true,
+                "is_constant": false,
+                "is_near_constant": false,
+                "is_identifier_candidate": false,
+                "is_high_cardinality": false,
+                "outliers": 0,
+                "outlier_percentage": 0.0,
+                "outlier_bounds": {
+                    "lower": -8.0,
+                    "upper": 96.0
+                },
+                "dominant_value_percentage": 5.0
+            },
+            {
+                "name": "Outcome",
+                "dtype": "int64",
+                "detected_type": "numeric",
+                "missing": 0,
+                "missing_percentage": 0.0,
+                "unique_values": 2,
+                "unique_ratio": 0.01,
+                "is_numeric": true,
+                "is_constant": false,
+                "is_near_constant": false,
+                "is_identifier_candidate": false,
+                "is_high_cardinality": false,
+                "outliers": 0,
+                "outlier_percentage": 0.0,
+                "outlier_bounds": {
+                    "lower": -1.5,
+                    "upper": 2.5
+                },
+                "dominant_value_percentage": 51.0
+            }
+        ],
+        "warnings": [],
+        "original_missing_values": 0,
+        "original_duplicate_rows": 0,
+        "target_missing_values": 0,
+        "target_distribution": {
+            "0": 102,
+            "1": 98
+        }
+    },
+    "target_analysis": {
+        "target_column": "Outcome",
+        "problem_type": "binary_classification",
+        "suggested_problem_type": "binary_classification",
+        "confidence": "user_confirmed",
+        "requires_confirmation": false,
+        "reason": "User explicitly selected binary classification.",
+        "target_statistics": {
+            "total_records": 200,
+            "valid_records": 200,
+            "missing_values": 0,
+            "unique_values": 2,
+            "data_type": "int64"
+        },
+        "class_analysis": {
+            "class_count": 2,
+            "class_distribution": [
+                {
+                    "class": 0,
+                    "count": 102,
+                    "percentage": 51.0
+                },
+                {
+                    "class": 1,
+                    "count": 98,
+                    "percentage": 49.0
+                }
+            ],
+            "majority_class": 0,
+            "majority_percentage": 51.0,
+            "minority_percentage": 49.0,
+            "imbalance_ratio": 1.04,
+            "is_imbalanced": false
+        },
+        "numeric_analysis": {
+            "mean": 0.49,
+            "median": 0.0,
+            "std": 0.5011544461485624,
+            "min": 0.0,
+            "max": 1.0,
+            "unique_values": 2,
+            "skewness": 0.04031096672348286
+        },
+        "warnings": []
+    },
+    "model_comparison": {
+        "problem_type": "binary_classification",
+        "evaluation_method": "80/20 holdout + 5-fold cross-validation",
+        "primary_metric": "macro F1",
+        "selection_metric": "f1_macro",
+        "selection_method": "cross_validation",
+        "cv_folds": 5,
+        "train_rows": 160,
+        "test_rows": 40,
+        "dataset_info": {
+            "total_rows": 200,
+            "total_features": 5,
+            "number_of_classes": 2,
+            "is_imbalanced": false,
+            "imbalance_ratio": 1.0408,
+            "removed_empty_columns": []
+        },
+        "models": [
+            {
+                "model": "Logistic Regression",
+                "model_id": "logistic_regression",
+                "status": "success",
+                "cv_folds": 5,
+                "cv_scoring": "f1_macro",
+                "cv_mean_score": 0.5284,
+                "cv_std_score": 0.0286,
+                "cv_scores": [
+                    0.5,
+                    0.5836,
+                    0.5195,
+                    0.5195,
+                    0.5195
+                ],
+                "train_rows": 160,
+                "test_rows": 40,
+                "train_accuracy": 0.5875,
+                "train_metrics": {
+                    "accuracy": 0.5875,
+                    "balanced_accuracy": 0.5876,
+                    "precision": 0.5875,
+                    "recall": 0.5876,
+                    "f1": 0.5874,
+                    "confusion_matrix": [
+                        [
+                            48,
+                            34
+                        ],
+                        [
+                            32,
+                            46
+                        ]
+                    ]
+                },
+                "accuracy": 0.425,
+                "balanced_accuracy": 0.425,
+                "precision": 0.4233,
+                "recall": 0.425,
+                "f1": 0.4217,
+                "confusion_matrix": [
+                    [
+                        7,
+                        13
+                    ],
+                    [
+                        10,
+                        10
+                    ]
+                ],
+                "score": 0.4217
+            },
+            {
+                "model": "Random Forest Classifier",
+                "model_id": "random_forest",
+                "status": "success",
+                "cv_folds": 5,
+                "cv_scoring": "f1_macro",
+                "cv_mean_score": 0.47,
+                "cv_std_score": 0.0307,
+                "cv_scores": [
+                    0.4555,
+                    0.5271,
+                    0.4353,
+                    0.464,
+                    0.4682
+                ],
+                "train_rows": 160,
+                "test_rows": 40,
+                "train_accuracy": 1.0,
+                "train_metrics": {
+                    "accuracy": 1.0,
+                    "balanced_accuracy": 1.0,
+                    "precision": 1.0,
+                    "recall": 1.0,
+                    "f1": 1.0,
+                    "confusion_matrix": [
+                        [
+                            82,
+                            0
+                        ],
+                        [
+                            0,
+                            78
+                        ]
+                    ]
+                },
+                "accuracy": 0.475,
+                "balanced_accuracy": 0.475,
+                "precision": 0.4749,
+                "recall": 0.475,
+                "f1": 0.4747,
+                "confusion_matrix": [
+                    [
+                        9,
+                        11
+                    ],
+                    [
+                        10,
+                        10
+                    ]
+                ],
+                "score": 0.4747
+            },
+            {
+                "model": "Extra Trees Classifier",
+                "model_id": "extra_trees",
+                "status": "success",
+                "cv_folds": 5,
+                "cv_scoring": "f1_macro",
+                "cv_mean_score": 0.4135,
+                "cv_std_score": 0.0477,
+                "cv_scores": [
+                    0.3914,
+                    0.4286,
+                    0.375,
+                    0.3725,
+                    0.5
+                ],
+                "train_rows": 160,
+                "test_rows": 40,
+                "train_accuracy": 1.0,
+                "train_metrics": {
+                    "accuracy": 1.0,
+                    "balanced_accuracy": 1.0,
+                    "precision": 1.0,
+                    "recall": 1.0,
+                    "f1": 1.0,
+                    "confusion_matrix": [
+                        [
+                            82,
+                            0
+                        ],
+                        [
+                            0,
+                            78
+                        ]
+                    ]
+                },
+                "accuracy": 0.575,
+                "balanced_accuracy": 0.575,
+                "precision": 0.5752,
+                "recall": 0.575,
+                "f1": 0.5747,
+                "confusion_matrix": [
+                    [
+                        11,
+                        9
+                    ],
+                    [
+                        8,
+                        12
+                    ]
+                ],
+                "score": 0.5747
+            },
+            {
+                "model": "Gradient Boosting Classifier",
+                "model_id": "gradient_boosting",
+                "status": "success",
+                "cv_folds": 5,
+                "cv_scoring": "f1_macro",
+                "cv_mean_score": 0.4584,
+                "cv_std_score": 0.0635,
+                "cv_scores": [
+                    0.3725,
+                    0.401,
+                    0.464,
+                    0.5271,
+                    0.5271
+                ],
+                "train_rows": 160,
+                "test_rows": 40,
+                "train_accuracy": 0.9938,
+                "train_metrics": {
+                    "accuracy": 0.9938,
+                    "balanced_accuracy": 0.9939,
+                    "precision": 0.9937,
+                    "recall": 0.9939,
+                    "f1": 0.9937,
+                    "confusion_matrix": [
+                        [
+                            81,
+                            1
+                        ],
+                        [
+                            0,
+                            78
+                        ]
+                    ]
+                },
+                "accuracy": 0.425,
+                "balanced_accuracy": 0.425,
+                "precision": 0.4233,
+                "recall": 0.425,
+                "f1": 0.4217,
+                "confusion_matrix": [
+                    [
+                        10,
+                        10
+                    ],
+                    [
+                        13,
+                        7
+                    ]
+                ],
+                "score": 0.4217
+            },
+            {
+                "model": "K-Nearest Neighbors",
+                "model_id": "knn",
+                "status": "success",
+                "cv_folds": 5,
+                "cv_scoring": "f1_macro",
+                "cv_mean_score": 0.4794,
+                "cv_std_score": 0.0767,
+                "cv_scores": [
+                    0.3651,
+                    0.5195,
+                    0.4818,
+                    0.5934,
+                    0.4375
+                ],
+                "train_rows": 160,
+                "test_rows": 40,
+                "train_accuracy": 0.6438,
+                "train_metrics": {
+                    "accuracy": 0.6438,
+                    "balanced_accuracy": 0.6415,
+                    "precision": 0.6466,
+                    "recall": 0.6415,
+                    "f1": 0.6397,
+                    "confusion_matrix": [
+                        [
+                            60,
+                            22
+                        ],
+                        [
+                            35,
+                            43
+                        ]
+                    ]
+                },
+                "accuracy": 0.6,
+                "balanced_accuracy": 0.6,
+                "precision": 0.6042,
+                "recall": 0.6,
+                "f1": 0.596,
+                "confusion_matrix": [
+                    [
+                        10,
+                        10
+                    ],
+                    [
+                        6,
+                        14
+                    ]
+                ],
+                "score": 0.596
+            },
+            {
+                "model": "Gaussian Naive Bayes",
+                "model_id": "naive_bayes",
+                "status": "success",
+                "cv_folds": 5,
+                "cv_scoring": "f1_macro",
+                "cv_mean_score": 0.5071,
+                "cv_std_score": 0.0634,
+                "cv_scores": [
+                    0.498,
+                    0.5271,
+                    0.4818,
+                    0.6113,
+                    0.417
+                ],
+                "train_rows": 160,
+                "test_rows": 40,
+                "train_accuracy": 0.6062,
+                "train_metrics": {
+                    "accuracy": 0.6062,
+                    "balanced_accuracy": 0.6058,
+                    "precision": 0.6059,
+                    "recall": 0.6058,
+                    "f1": 0.6059,
+                    "confusion_matrix": [
+                        [
+                            51,
+                            31
+                        ],
+                        [
+                            32,
+                            46
+                        ]
+                    ]
+                },
+                "accuracy": 0.475,
+                "balanced_accuracy": 0.475,
+                "precision": 0.4744,
+                "recall": 0.475,
+                "f1": 0.472,
+                "confusion_matrix": [
+                    [
+                        8,
+                        12
+                    ],
+                    [
+                        9,
+                        11
+                    ]
+                ],
+                "score": 0.472
+            }
+        ],
+        "cv_results": {
+            "logistic_regression": {
+                "mean_score": 0.5284,
+                "std_score": 0.0286,
+                "fold_scores": [
+                    0.5,
+                    0.5836,
+                    0.5195,
+                    0.5195,
+                    0.5195
+                ]
+            },
+            "random_forest": {
+                "mean_score": 0.47,
+                "std_score": 0.0307,
+                "fold_scores": [
+                    0.4555,
+                    0.5271,
+                    0.4353,
+                    0.464,
+                    0.4682
+                ]
+            },
+            "extra_trees": {
+                "mean_score": 0.4135,
+                "std_score": 0.0477,
+                "fold_scores": [
+                    0.3914,
+                    0.4286,
+                    0.375,
+                    0.3725,
+                    0.5
+                ]
+            },
+            "gradient_boosting": {
+                "mean_score": 0.4584,
+                "std_score": 0.0635,
+                "fold_scores": [
+                    0.3725,
+                    0.401,
+                    0.464,
+                    0.5271,
+                    0.5271
+                ]
+            },
+            "knn": {
+                "mean_score": 0.4794,
+                "std_score": 0.0767,
+                "fold_scores": [
+                    0.3651,
+                    0.5195,
+                    0.4818,
+                    0.5934,
+                    0.4375
+                ]
+            },
+            "naive_bayes": {
+                "mean_score": 0.5071,
+                "std_score": 0.0634,
+                "fold_scores": [
+                    0.498,
+                    0.5271,
+                    0.4818,
+                    0.6113,
+                    0.417
+                ]
+            }
+        },
+        "best_model": "Logistic Regression",
+        "best_model_id": "logistic_regression",
+        "best_score": 0.5284,
+        "best_cv_std": 0.0286,
+        "best_test_score": 0.4217,
+        "baseline": {
+            "accuracy": 0.5,
+            "balanced_accuracy": 0.5,
+            "precision": 0.25,
+            "recall": 0.5,
+            "f1": 0.3333,
+            "train_metrics": {
+                "accuracy": 0.5125,
+                "balanced_accuracy": 0.5,
+                "precision": 0.2562,
+                "recall": 0.5,
+                "f1": 0.3388
+            }
+        },
+        "selection": {
+            "problem_type": "binary_classification",
+            "dataset_info": {
+                "n_samples": 200,
+                "n_features": 5,
+                "n_classes": 2,
+                "is_imbalanced": false
+            },
+            "selected_models": [
+                "logistic_regression",
+                "random_forest",
+                "extra_trees",
+                "gradient_boosting",
+                "knn",
+                "naive_bayes"
+            ],
+            "model_details": {
+                "logistic_regression": {
+                    "name": "Logistic Regression",
+                    "description": "Linear model for binary and multiclass classification.",
+                    "requires_scaling": true,
+                    "supports_probability": true
+                },
+                "random_forest": {
+                    "name": "Random Forest Classifier",
+                    "description": "Ensemble of decision trees.",
+                    "requires_scaling": false,
+                    "supports_probability": true
+                },
+                "extra_trees": {
+                    "name": "Extra Trees Classifier",
+                    "description": "Ensemble of highly randomized decision trees.",
+                    "requires_scaling": false,
+                    "supports_probability": true
+                },
+                "gradient_boosting": {
+                    "name": "Gradient Boosting Classifier",
+                    "description": "Sequential boosting-based classification model.",
+                    "requires_scaling": false,
+                    "supports_probability": true
+                },
+                "knn": {
+                    "name": "K-Nearest Neighbors",
+                    "description": "Distance-based classification algorithm.",
+                    "requires_scaling": true,
+                    "supports_probability": true
+                },
+                "naive_bayes": {
+                    "name": "Gaussian Naive Bayes",
+                    "description": "Probabilistic classification algorithm.",
+                    "requires_scaling": false,
+                    "supports_probability": true
+                }
+            },
+            "selection_reasons": [
+                "Candidates selected using dataset size and feature count."
+            ],
+            "selection_note": "These are candidate models, not guaranteed best models. Train and evaluate them using leakage-safe validation before selecting a final model."
+        },
+        "successful_models": 6,
+        "failed_models": 0,
+        "score_interpretation": "The best candidate was selected using cross-validation scores from training data only. The holdout test set was not used for model selection and is reserved for final evaluation. The final test score is still an estimate based on one holdout split and may vary with new data.",
+        "explainability": {
+            "available": true,
+            "methods": [
+                "model_coefficients",
+                "permutation_importance"
+            ],
+            "native_importance": {
+                "available": false,
+                "reason": "This estimator does not expose native feature_importances_."
+            },
+            "coefficients": {
+                "available": true,
+                "method": "model_coefficients",
+                "total_features": 5,
+                "top_features": [
+                    {
+                        "feature": "BloodPres",
+                        "importance": 0.37637817446145483,
+                        "absolute_importance": 0.37637817446145483
+                    },
+                    {
+                        "feature": "BMI",
+                        "importance": 0.21221170880293053,
+                        "absolute_importance": 0.21221170880293053
+                    },
+                    {
+                        "feature": "SkinThickn",
+                        "importance": 0.08188817526321769,
+                        "absolute_importance": 0.08188817526321769
+                    },
+                    {
+                        "feature": "Age",
+                        "importance": 0.05303677348147059,
+                        "absolute_importance": 0.05303677348147059
+                    },
+                    {
+                        "feature": "Glucose",
+                        "importance": 0.01434174834043708,
+                        "absolute_importance": 0.01434174834043708
+                    }
+                ],
+                "all_features": [
+                    {
+                        "feature": "BloodPres",
+                        "importance": 0.37637817446145483,
+                        "absolute_importance": 0.37637817446145483
+                    },
+                    {
+                        "feature": "BMI",
+                        "importance": 0.21221170880293053,
+                        "absolute_importance": 0.21221170880293053
+                    },
+                    {
+                        "feature": "SkinThickn",
+                        "importance": 0.08188817526321769,
+                        "absolute_importance": 0.08188817526321769
+                    },
+                    {
+                        "feature": "Age",
+                        "importance": 0.05303677348147059,
+                        "absolute_importance": 0.05303677348147059
+                    },
+                    {
+                        "feature": "Glucose",
+                        "importance": 0.01434174834043708,
+                        "absolute_importance": 0.01434174834043708
+                    }
+                ],
+                "interpretation": "Importance represents model-specific feature influence. It does not establish causation."
+            },
+            "permutation_importance": {
+                "available": true,
+                "method": "permutation_importance",
+                "total_features": 5,
+                "top_features": [
+                    {
+                        "feature": "SkinThickn",
+                        "importance": -0.055000000000000014,
+                        "absolute_importance": 0.055000000000000014,
+                        "importance_std": 0.04301162633521315
+                    },
+                    {
+                        "feature": "BloodPres",
+                        "importance": -0.045000000000000005,
+                        "absolute_importance": 0.045000000000000005,
+                        "importance_std": 0.08860022573334675
+                    },
+                    {
+                        "feature": "Age",
+                        "importance": -0.045000000000000005,
+                        "absolute_importance": 0.045000000000000005,
+                        "importance_std": 0.0291547594742265
+                    },
+                    {
+                        "feature": "BMI",
+                        "importance": -0.040000000000000036,
+                        "absolute_importance": 0.040000000000000036,
+                        "importance_std": 0.06244997998398399
+                    },
+                    {
+                        "feature": "Glucose",
+                        "importance": -0.0050000000000000044,
+                        "absolute_importance": 0.0050000000000000044,
+                        "importance_std": 0.024494897427831768
+                    }
+                ],
+                "all_features": [
+                    {
+                        "feature": "SkinThickn",
+                        "importance": -0.055000000000000014,
+                        "absolute_importance": 0.055000000000000014,
+                        "importance_std": 0.04301162633521315
+                    },
+                    {
+                        "feature": "BloodPres",
+                        "importance": -0.045000000000000005,
+                        "absolute_importance": 0.045000000000000005,
+                        "importance_std": 0.08860022573334675
+                    },
+                    {
+                        "feature": "Age",
+                        "importance": -0.045000000000000005,
+                        "absolute_importance": 0.045000000000000005,
+                        "importance_std": 0.0291547594742265
+                    },
+                    {
+                        "feature": "BMI",
+                        "importance": -0.040000000000000036,
+                        "absolute_importance": 0.040000000000000036,
+                        "importance_std": 0.06244997998398399
+                    },
+                    {
+                        "feature": "Glucose",
+                        "importance": -0.0050000000000000044,
+                        "absolute_importance": 0.0050000000000000044,
+                        "importance_std": 0.024494897427831768
+                    }
+                ],
+                "interpretation": "Importance represents model-specific feature influence. It does not establish causation."
+            },
+            "limitations": [
+                "Feature importance does not prove causation.",
+                "Native importance values are model-specific.",
+                "Correlated features can share or distort importance.",
+                "Permutation importance depends on the evaluation dataset."
+            ]
+        },
+        "evaluation": {
+            "problem_type": "binary_classification",
+            "train_metrics": {
+                "accuracy": 0.5875,
+                "balanced_accuracy": 0.5876,
+                "precision": 0.5875,
+                "recall": 0.5876,
+                "f1": 0.5874,
+                "confusion_matrix": [
+                    [
+                        48,
+                        34
+                    ],
+                    [
+                        32,
+                        46
+                    ]
+                ]
+            },
+            "test_metrics": {
+                "accuracy": 0.425,
+                "balanced_accuracy": 0.425,
+                "precision": 0.4233,
+                "recall": 0.425,
+                "f1": 0.4217,
+                "confusion_matrix": [
+                    [
+                        7,
+                        13
+                    ],
+                    [
+                        10,
+                        10
+                    ]
+                ]
+            },
+            "baseline_train_metrics": {
+                "accuracy": 0.5125,
+                "balanced_accuracy": 0.5,
+                "precision": 0.2562,
+                "recall": 0.5,
+                "f1": 0.3388
+            },
+            "baseline_test_metrics": {
+                "accuracy": 0.5,
+                "balanced_accuracy": 0.5,
+                "precision": 0.25,
+                "recall": 0.5,
+                "f1": 0.3333
+            },
+            "generalization": {
+                "metric": "f1",
+                "train_score": 0.5874,
+                "test_score": 0.4217,
+                "performance_gap": 0.1657,
+                "gap_threshold": 0.1,
+                "overfitting_suspected": true,
+                "status": "possible_overfitting",
+                "interpretation": "Training performance is substantially higher than testing performance. Possible overfitting should be investigated."
+            },
+            "baseline_comparison": {
+                "primary_metric": "f1",
+                "status": "better_than_baseline",
+                "metrics": {
+                    "accuracy": {
+                        "model": 0.425,
+                        "baseline": 0.5,
+                        "difference": -0.075,
+                        "improved": false
+                    },
+                    "balanced_accuracy": {
+                        "model": 0.425,
+                        "baseline": 0.5,
+                        "difference": -0.075,
+                        "improved": false
+                    },
+                    "f1": {
+                        "model": 0.4217,
+                        "baseline": 0.3333,
+                        "difference": 0.0884,
+                        "improved": true
+                    }
+                }
+            },
+            "underfitting": {
+                "metric": "f1",
+                "train_score": 0.5874,
+                "baseline_score": 0.3388,
+                "underfitting_suspected": false,
+                "interpretation": "Training performance exceeds the dummy baseline. This alone does not rule out underfitting."
+            },
+            "warnings": [
+                "Possible overfitting: training performance is substantially higher than testing performance."
+            ],
+            "evaluation_note": "These checks provide diagnostic indicators, not proof of model quality. Use cross-validation and an independent test dataset for stronger evidence.",
+            "available": true,
+            "selected_model": "Logistic Regression"
+        }
+    },
+    "evaluation": null,
+    "diagnosis": {
+        "model_name": "Logistic Regression",
+        "status": "issues_found",
+        "summary": {
+            "total_findings": 3,
+            "critical": 0,
+            "warnings": 1,
+            "information": 2
+        },
+        "findings": [
+            {
+                "code": "possible_overfitting",
+                "title": "Possible Overfitting",
+                "severity": "warning",
+                "message": "Training performance is substantially higher than testing performance. The model may not generalize well to unseen data.",
+                "evidence": {
+                    "metric": "f1",
+                    "train_score": 0.5874,
+                    "test_score": 0.4217,
+                    "performance_gap": 0.1657,
+                    "gap_threshold": 0.1
+                },
+                "recommendation": "Investigate model complexity, possible data leakage, dataset size and validation strategy. Consider regularization or simpler models."
+            },
+            {
+                "code": "better_than_baseline",
+                "title": "Model Outperforms Dummy Baseline",
+                "severity": "info",
+                "message": "The model performs better than the dummy baseline on the primary evaluation metric.",
+                "evidence": {
+                    "primary_metric": "f1",
+                    "status": "better_than_baseline",
+                    "metrics": {
+                        "accuracy": {
+                            "model": 0.425,
+                            "baseline": 0.5,
+                            "difference": -0.075,
+                            "improved": false
+                        },
+                        "balanced_accuracy": {
+                            "model": 0.425,
+                            "baseline": 0.5,
+                            "difference": -0.075,
+                            "improved": false
+                        },
+                        "f1": {
+                            "model": 0.4217,
+                            "baseline": 0.3333,
+                            "difference": 0.0884,
+                            "improved": true
+                        }
+                    }
+                },
+                "recommendation": "Continue evaluating with cross-validation and check whether the improvement is consistent."
+            },
+            {
+                "code": "feature_importance_available",
+                "title": "Feature Importance Available",
+                "severity": "info",
+                "message": "Feature importance information is available for the evaluated model.",
+                "evidence": {
+                    "available": true,
+                    "top_features": [
+                        {
+                            "feature": "BloodPres",
+                            "importance": 0.37637817446145483
+                        },
+                        {
+                            "feature": "BMI",
+                            "importance": 0.21221170880293053
+                        },
+                        {
+                            "feature": "SkinThickn",
+                            "importance": 0.08188817526321769
+                        },
+                        {
+                            "feature": "Age",
+                            "importance": 0.05303677348147059
+                        },
+                        {
+                            "feature": "Glucose",
+                            "importance": 0.01434174834043708
+                        }
+                    ],
+                    "total_features": 5,
+                    "interpretation": "Importance indicates relative model reliance, not causation."
+                },
+                "recommendation": "Review important features with domain knowledge. Do not interpret importance as causation."
+            }
+        ],
+        "feature_importance": {
+            "available": true,
+            "top_features": [
+                {
+                    "feature": "BloodPres",
+                    "importance": 0.37637817446145483
+                },
+                {
+                    "feature": "BMI",
+                    "importance": 0.21221170880293053
+                },
+                {
+                    "feature": "SkinThickn",
+                    "importance": 0.08188817526321769
+                },
+                {
+                    "feature": "Age",
+                    "importance": 0.05303677348147059
+                },
+                {
+                    "feature": "Glucose",
+                    "importance": 0.01434174834043708
+                }
+            ],
+            "total_features": 5,
+            "interpretation": "Importance indicates relative model reliance, not causation."
+        },
+        "limitations": [
+            "Diagnosis depends on the completeness of supplied inputs.",
+            "Heuristic findings are signals for investigation, not proof.",
+            "Feature importance does not establish causation.",
+            "A small train-test gap does not guarantee real-world performance."
+        ]
+    },
+    "explainability": null,
+    "hyperparameter_tuning": null
+}

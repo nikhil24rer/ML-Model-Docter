@@ -1,0 +1,397 @@
+{
+    "report_version": "1.0",
+    "generated_at": "2026-11-07T09:34:31.372267+00:00",
+    "metadata": {
+        "target_column": "hired",
+        "created_at": "2026-11-07T09:34:31.028271+00:00",
+        "application": "ML Model Doctor"
+    },
+    "executive_summary": {
+        "dataset": {
+            "rows": 40,
+            "columns": 4
+        },
+        "problem_type": "binary_classification",
+        "best_model": {
+            "name": "Random Forest Classifier"
+        },
+        "evaluation": {
+            "generalization": null,
+            "baseline_comparison": null
+        },
+        "diagnosis_status": "issues_found",
+        "diagnostic_findings": {
+            "total_findings": 2,
+            "critical": 0,
+            "warnings": 1,
+            "information": 1
+        },
+        "conclusion": "Review the evaluation metrics and diagnostic findings before using the model in production."
+    },
+    "dataset_profile": {
+        "rows": 40,
+        "columns": 4,
+        "total_cells": 160,
+        "column_names": [
+            "age",
+            "salary",
+            "experience",
+            "hired"
+        ],
+        "numeric_columns": [
+            "age",
+            "salary",
+            "experience"
+        ],
+        "categorical_columns": [
+            "hired"
+        ],
+        "boolean_columns": [],
+        "datetime_columns": [],
+        "datetime_candidates": [],
+        "other_columns": [],
+        "data_type_summary": {
+            "numeric": 3,
+            "categorical": 1,
+            "boolean": 0,
+            "datetime": 0,
+            "datetime_candidates": 0,
+            "other": 0
+        },
+        "missing_values": 0,
+        "missing_percentage": 0.0,
+        "columns_with_missing": 0,
+        "duplicate_rows": 10,
+        "duplicate_columns": [],
+        "outlier_values": 0,
+        "outlier_rows": 0,
+        "outlier_details": [],
+        "constant_columns": [],
+        "near_constant_columns": [],
+        "identifier_candidates": [],
+        "high_cardinality_columns": [],
+        "numerical_summary": {
+            "age": {
+                "mean": 28.525,
+                "median": 28.5,
+                "std": 4.113688843050225,
+                "min": 21,
+                "max": 36,
+                "skewness": 0.009984257801746272,
+                "variance": 16.922435897435896
+            },
+            "salary": {
+                "mean": 36275.0,
+                "median": 36500.0,
+                "std": 7334.455042416633,
+                "min": 24000,
+                "max": 49000,
+                "skewness": -0.006065157527674777,
+                "variance": 53794230.76923077
+            },
+            "experience": {
+                "mean": 3.9,
+                "median": 4.0,
+                "std": 2.216488329051275,
+                "min": 1,
+                "max": 8,
+                "skewness": 0.1921450519516123,
+                "variance": 4.912820512820513
+            }
+        },
+        "column_info": [
+            {
+                "name": "age",
+                "dtype": "int64",
+                "detected_type": "numeric",
+                "missing": 0,
+                "missing_percentage": 0.0,
+                "unique_values": 16,
+                "unique_ratio": 0.4,
+                "is_numeric": true,
+                "is_constant": false,
+                "is_near_constant": false,
+                "is_identifier_candidate": false,
+                "is_high_cardinality": false,
+                "outliers": 0,
+                "outlier_percentage": 0.0,
+                "outlier_bounds": {
+                    "lower": 14.5,
+                    "upper": 42.5
+                },
+                "dominant_value_percentage": 7.5
+            },
+            {
+                "name": "salary",
+                "dtype": "int64",
+                "detected_type": "numeric",
+                "missing": 0,
+                "missing_percentage": 0.0,
+                "unique_values": 26,
+                "unique_ratio": 0.65,
+                "is_numeric": true,
+                "is_constant": false,
+                "is_near_constant": false,
+                "is_identifier_candidate": false,
+                "is_high_cardinality": false,
+                "outliers": 0,
+                "outlier_percentage": 0.0,
+                "outlier_bounds": {
+                    "lower": 11625.0,
+                    "upper": 60625.0
+                },
+                "dominant_value_percentage": 5.0
+            },
+            {
+                "name": "experience",
+                "dtype": "int64",
+                "detected_type": "numeric",
+                "missing": 0,
+                "missing_percentage": 0.0,
+                "unique_values": 8,
+                "unique_ratio": 0.2,
+                "is_numeric": true,
+                "is_constant": false,
+                "is_near_constant": false,
+                "is_identifier_candidate": false,
+                "is_high_cardinality": false,
+                "outliers": 0,
+                "outlier_percentage": 0.0,
+                "outlier_bounds": {
+                    "lower": -4.0,
+                    "upper": 12.0
+                },
+                "dominant_value_percentage": 20.0
+            },
+            {
+                "name": "hired",
+                "dtype": "object",
+                "detected_type": "categorical",
+                "missing": 0,
+                "missing_percentage": 0.0,
+                "unique_values": 2,
+                "unique_ratio": 0.05,
+                "is_numeric": false,
+                "is_constant": false,
+                "is_near_constant": false,
+                "is_identifier_candidate": false,
+                "is_high_cardinality": false,
+                "outliers": 0,
+                "outlier_percentage": 0.0,
+                "outlier_bounds": {
+                    "lower": null,
+                    "upper": null
+                },
+                "dominant_value_percentage": 67.5
+            }
+        ],
+        "warnings": [
+            {
+                "type": "duplicate_rows",
+                "severity": "medium",
+                "message": "10 duplicate rows detected. Review before removing them."
+            }
+        ],
+        "original_missing_values": 0,
+        "original_duplicate_rows": 10,
+        "target_missing_values": 0,
+        "target_distribution": {
+            "Yes": 22,
+            "No": 8
+        }
+    },
+    "target_analysis": {
+        "target_column": "hired",
+        "problem_type": "binary_classification",
+        "suggested_problem_type": "binary_classification",
+        "confidence": "high",
+        "requires_confirmation": false,
+        "reason": "Non-numerical target contains categorical labels. Classification is suggested.",
+        "target_statistics": {
+            "total_records": 40,
+            "valid_records": 40,
+            "missing_values": 0,
+            "unique_values": 2,
+            "data_type": "object"
+        },
+        "class_analysis": {
+            "class_count": 2,
+            "class_distribution": [
+                {
+                    "class": "Yes",
+                    "count": 27,
+                    "percentage": 67.5
+                },
+                {
+                    "class": "No",
+                    "count": 13,
+                    "percentage": 32.5
+                }
+            ],
+            "majority_class": "Yes",
+            "majority_percentage": 67.5,
+            "minority_percentage": 32.5,
+            "imbalance_ratio": 2.08,
+            "is_imbalanced": false
+        },
+        "numeric_analysis": null,
+        "warnings": []
+    },
+    "model_comparison": {
+        "problem_type": "binary_classification",
+        "evaluation_method": "80/20 holdout",
+        "primary_metric": "macro F1",
+        "train_rows": 24,
+        "test_rows": 6,
+        "dataset_info": {
+            "total_rows": 30,
+            "total_features": 3,
+            "number_of_classes": 2,
+            "is_imbalanced": false,
+            "imbalance_ratio": 2.75,
+            "removed_empty_columns": []
+        },
+        "models": [
+            {
+                "model": "Logistic Regression",
+                "model_id": "logistic_regression",
+                "train_rows": 24,
+                "test_rows": 6,
+                "status": "success",
+                "train_accuracy": 1.0,
+                "accuracy": 0.8333,
+                "balanced_accuracy": 0.75,
+                "precision": 0.9,
+                "recall": 0.75,
+                "f1": 0.7778,
+                "confusion_matrix": [
+                    [
+                        1,
+                        1
+                    ],
+                    [
+                        0,
+                        4
+                    ]
+                ],
+                "score": 0.7778
+            },
+            {
+                "model": "Random Forest Classifier",
+                "model_id": "random_forest",
+                "train_rows": 24,
+                "test_rows": 6,
+                "status": "success",
+                "train_accuracy": 1.0,
+                "accuracy": 1.0,
+                "balanced_accuracy": 1.0,
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1": 1.0,
+                "confusion_matrix": [
+                    [
+                        2,
+                        0
+                    ],
+                    [
+                        0,
+                        4
+                    ]
+                ],
+                "score": 1.0
+            }
+        ],
+        "best_model": "Random Forest Classifier",
+        "best_model_id": "random_forest",
+        "best_score": 1.0,
+        "baseline": {
+            "accuracy": 0.6667,
+            "balanced_accuracy": 0.5,
+            "precision": 0.3333,
+            "recall": 0.5,
+            "f1": 0.4
+        },
+        "selection": {
+            "problem_type": "binary_classification",
+            "dataset_info": {
+                "n_samples": 30,
+                "n_features": 3,
+                "n_classes": 2,
+                "is_imbalanced": false
+            },
+            "selected_models": [
+                "logistic_regression",
+                "random_forest"
+            ],
+            "model_details": {
+                "logistic_regression": {
+                    "name": "Logistic Regression",
+                    "description": "Linear model for binary and multiclass classification.",
+                    "requires_scaling": true,
+                    "supports_probability": true
+                },
+                "random_forest": {
+                    "name": "Random Forest Classifier",
+                    "description": "Ensemble of decision trees.",
+                    "requires_scaling": false,
+                    "supports_probability": true
+                }
+            },
+            "selection_reasons": [
+                "Small dataset: model performance may be unstable."
+            ],
+            "selection_note": "These are candidate models, not guaranteed best models. Train and evaluate them using leakage-safe validation before selecting a final model."
+        },
+        "successful_models": 2,
+        "failed_models": 0,
+        "score_interpretation": "The best candidate was selected using holdout scores. Its reported score is exploratory and may be optimistic. Use separate validation or nested cross-validation for an unbiased model-selection estimate."
+    },
+    "evaluation": null,
+    "diagnosis": {
+        "model_name": "Random Forest Classifier",
+        "status": "issues_found",
+        "summary": {
+            "total_findings": 2,
+            "critical": 0,
+            "warnings": 1,
+            "information": 1
+        },
+        "findings": [
+            {
+                "code": "duplicate_rows_detected",
+                "title": "Duplicate Rows Detected",
+                "severity": "warning",
+                "message": "The dataset contains duplicate rows.",
+                "evidence": {
+                    "duplicate_rows": 10
+                },
+                "recommendation": "Inspect duplicates and determine whether they represent valid observations."
+            },
+            {
+                "code": "profiler_warnings",
+                "title": "Dataset Profiler Warnings",
+                "severity": "info",
+                "message": "The dataset profiler reported additional observations.",
+                "evidence": {
+                    "warnings": [
+                        {
+                            "type": "duplicate_rows",
+                            "severity": "medium",
+                            "message": "10 duplicate rows detected. Review before removing them."
+                        }
+                    ]
+                },
+                "recommendation": "Review the profiler warnings before finalizing dataset preparation."
+            }
+        ],
+        "feature_importance": null,
+        "limitations": [
+            "Diagnosis depends on the completeness of supplied inputs.",
+            "Heuristic findings are signals for investigation, not proof.",
+            "Feature importance does not establish causation.",
+            "A small train-test gap does not guarantee real-world performance."
+        ]
+    },
+    "explainability": null,
+    "hyperparameter_tuning": null
+}

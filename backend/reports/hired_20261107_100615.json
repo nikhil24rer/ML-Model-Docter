@@ -1,0 +1,778 @@
+{
+    "report_version": "1.0",
+    "generated_at": "2026-11-07T10:06:20.301409+00:00",
+    "metadata": {
+        "target_column": "hired",
+        "created_at": "2026-11-07T10:06:15.201013+00:00",
+        "application": "ML Model Doctor"
+    },
+    "executive_summary": {
+        "dataset": {
+            "rows": 80,
+            "columns": 5
+        },
+        "problem_type": "binary_classification",
+        "best_model": {
+            "name": "Logistic Regression"
+        },
+        "evaluation": {
+            "generalization": null,
+            "baseline_comparison": null
+        },
+        "diagnosis_status": "issues_found",
+        "diagnostic_findings": {
+            "total_findings": 4,
+            "critical": 0,
+            "warnings": 1,
+            "information": 3
+        },
+        "conclusion": "Review the evaluation metrics and diagnostic findings before using the model in production."
+    },
+    "dataset_profile": {
+        "rows": 80,
+        "columns": 5,
+        "total_cells": 400,
+        "column_names": [
+            "age",
+            "experience",
+            "salary",
+            "score",
+            "hired"
+        ],
+        "numeric_columns": [
+            "age",
+            "experience",
+            "salary",
+            "score",
+            "hired"
+        ],
+        "categorical_columns": [],
+        "boolean_columns": [],
+        "datetime_columns": [],
+        "datetime_candidates": [],
+        "other_columns": [],
+        "data_type_summary": {
+            "numeric": 5,
+            "categorical": 0,
+            "boolean": 0,
+            "datetime": 0,
+            "datetime_candidates": 0,
+            "other": 0
+        },
+        "missing_values": 0,
+        "missing_percentage": 0.0,
+        "columns_with_missing": 0,
+        "duplicate_rows": 0,
+        "duplicate_columns": [],
+        "outlier_values": 0,
+        "outlier_rows": 0,
+        "outlier_details": [],
+        "constant_columns": [],
+        "near_constant_columns": [],
+        "identifier_candidates": [
+            "age",
+            "experience",
+            "salary",
+            "score"
+        ],
+        "high_cardinality_columns": [],
+        "numerical_summary": {
+            "age": {
+                "mean": 59.5,
+                "median": 59.5,
+                "std": 23.2379000772445,
+                "min": 20,
+                "max": 99,
+                "skewness": 0.0,
+                "variance": 540.0
+            },
+            "experience": {
+                "mean": 39.5,
+                "median": 39.5,
+                "std": 23.2379000772445,
+                "min": 0,
+                "max": 79,
+                "skewness": 0.0,
+                "variance": 540.0
+            },
+            "salary": {
+                "mean": 84250.0,
+                "median": 84250.0,
+                "std": 34856.85011586675,
+                "min": 25000,
+                "max": 143500,
+                "skewness": 0.0,
+                "variance": 1215000000.0
+            },
+            "score": {
+                "mean": 81.0,
+                "median": 81.0,
+                "std": 46.58461744265462,
+                "min": 0,
+                "max": 162,
+                "skewness": 0.0,
+                "variance": 2170.1265822784812
+            },
+            "hired": {
+                "mean": 0.5,
+                "median": 0.5,
+                "std": 0.5031546054266276,
+                "min": 0,
+                "max": 1,
+                "skewness": 0.0,
+                "variance": 0.25316455696202533
+            }
+        },
+        "column_info": [
+            {
+                "name": "age",
+                "dtype": "int64",
+                "detected_type": "numeric",
+                "missing": 0,
+                "missing_percentage": 0.0,
+                "unique_values": 80,
+                "unique_ratio": 1.0,
+                "is_numeric": true,
+                "is_constant": false,
+                "is_near_constant": false,
+                "is_identifier_candidate": true,
+                "is_high_cardinality": false,
+                "outliers": 0,
+                "outlier_percentage": 0.0,
+                "outlier_bounds": {
+                    "lower": -19.5,
+                    "upper": 138.5
+                },
+                "dominant_value_percentage": 1.25
+            },
+            {
+                "name": "experience",
+                "dtype": "int64",
+                "detected_type": "numeric",
+                "missing": 0,
+                "missing_percentage": 0.0,
+                "unique_values": 80,
+                "unique_ratio": 1.0,
+                "is_numeric": true,
+                "is_constant": false,
+                "is_near_constant": false,
+                "is_identifier_candidate": true,
+                "is_high_cardinality": false,
+                "outliers": 0,
+                "outlier_percentage": 0.0,
+                "outlier_bounds": {
+                    "lower": -39.5,
+                    "upper": 118.5
+                },
+                "dominant_value_percentage": 1.25
+            },
+            {
+                "name": "salary",
+                "dtype": "int64",
+                "detected_type": "numeric",
+                "missing": 0,
+                "missing_percentage": 0.0,
+                "unique_values": 80,
+                "unique_ratio": 1.0,
+                "is_numeric": true,
+                "is_constant": false,
+                "is_near_constant": false,
+                "is_identifier_candidate": true,
+                "is_high_cardinality": false,
+                "outliers": 0,
+                "outlier_percentage": 0.0,
+                "outlier_bounds": {
+                    "lower": -34250.0,
+                    "upper": 202750.0
+                },
+                "dominant_value_percentage": 1.25
+            },
+            {
+                "name": "score",
+                "dtype": "int64",
+                "detected_type": "numeric",
+                "missing": 0,
+                "missing_percentage": 0.0,
+                "unique_values": 80,
+                "unique_ratio": 1.0,
+                "is_numeric": true,
+                "is_constant": false,
+                "is_near_constant": false,
+                "is_identifier_candidate": true,
+                "is_high_cardinality": false,
+                "outliers": 0,
+                "outlier_percentage": 0.0,
+                "outlier_bounds": {
+                    "lower": -77.0,
+                    "upper": 239.0
+                },
+                "dominant_value_percentage": 1.25
+            },
+            {
+                "name": "hired",
+                "dtype": "int64",
+                "detected_type": "numeric",
+                "missing": 0,
+                "missing_percentage": 0.0,
+                "unique_values": 2,
+                "unique_ratio": 0.025,
+                "is_numeric": true,
+                "is_constant": false,
+                "is_near_constant": false,
+                "is_identifier_candidate": false,
+                "is_high_cardinality": false,
+                "outliers": 0,
+                "outlier_percentage": 0.0,
+                "outlier_bounds": {
+                    "lower": -1.5,
+                    "upper": 2.5
+                },
+                "dominant_value_percentage": 50.0
+            }
+        ],
+        "warnings": [
+            {
+                "type": "identifier_candidates",
+                "severity": "low",
+                "message": "Potential identifier columns detected. Review whether they should be used as features."
+            }
+        ],
+        "original_missing_values": 0,
+        "original_duplicate_rows": 0,
+        "target_missing_values": 0,
+        "target_distribution": {
+            "1": 40,
+            "0": 40
+        }
+    },
+    "target_analysis": {
+        "target_column": "hired",
+        "problem_type": "binary_classification",
+        "suggested_problem_type": "binary_classification",
+        "confidence": "user_confirmed",
+        "requires_confirmation": false,
+        "reason": "User explicitly selected binary classification.",
+        "target_statistics": {
+            "total_records": 80,
+            "valid_records": 80,
+            "missing_values": 0,
+            "unique_values": 2,
+            "data_type": "int64"
+        },
+        "class_analysis": {
+            "class_count": 2,
+            "class_distribution": [
+                {
+                    "class": 1,
+                    "count": 40,
+                    "percentage": 50.0
+                },
+                {
+                    "class": 0,
+                    "count": 40,
+                    "percentage": 50.0
+                }
+            ],
+            "majority_class": 1,
+            "majority_percentage": 50.0,
+            "minority_percentage": 50.0,
+            "imbalance_ratio": 1.0,
+            "is_imbalanced": false
+        },
+        "numeric_analysis": {
+            "mean": 0.5,
+            "median": 0.5,
+            "std": 0.5031546054266276,
+            "min": 0.0,
+            "max": 1.0,
+            "unique_values": 2,
+            "skewness": 0.0
+        },
+        "warnings": []
+    },
+    "model_comparison": {
+        "problem_type": "binary_classification",
+        "evaluation_method": "80/20 holdout + 5-fold cross-validation",
+        "primary_metric": "macro F1",
+        "selection_metric": "f1_macro",
+        "selection_method": "cross_validation",
+        "cv_folds": 5,
+        "train_rows": 64,
+        "test_rows": 16,
+        "dataset_info": {
+            "total_rows": 80,
+            "total_features": 4,
+            "number_of_classes": 2,
+            "is_imbalanced": false,
+            "imbalance_ratio": 1.0,
+            "removed_empty_columns": []
+        },
+        "models": [
+            {
+                "model": "Logistic Regression",
+                "model_id": "logistic_regression",
+                "status": "success",
+                "cv_folds": 5,
+                "cv_scoring": "f1_macro",
+                "cv_mean_score": 0.3424,
+                "cv_std_score": 0.0972,
+                "cv_scores": [
+                    0.35,
+                    0.1875,
+                    0.3077,
+                    0.381,
+                    0.4857
+                ],
+                "train_rows": 64,
+                "test_rows": 16,
+                "train_accuracy": 0.5156,
+                "train_metrics": {
+                    "accuracy": 0.5156,
+                    "balanced_accuracy": 0.5156,
+                    "precision": 0.5156,
+                    "recall": 0.5156,
+                    "f1": 0.5155,
+                    "confusion_matrix": [
+                        [
+                            17,
+                            15
+                        ],
+                        [
+                            16,
+                            16
+                        ]
+                    ]
+                },
+                "accuracy": 0.5,
+                "balanced_accuracy": 0.5,
+                "precision": 0.5,
+                "recall": 0.5,
+                "f1": 0.5,
+                "confusion_matrix": [
+                    [
+                        4,
+                        4
+                    ],
+                    [
+                        4,
+                        4
+                    ]
+                ],
+                "score": 0.5
+            },
+            {
+                "model": "Random Forest Classifier",
+                "model_id": "random_forest",
+                "status": "success",
+                "cv_folds": 5,
+                "cv_scoring": "f1_macro",
+                "cv_mean_score": 0.1252,
+                "cv_std_score": 0.12,
+                "cv_scores": [
+                    0.1333,
+                    0.0714,
+                    0.35,
+                    0.0714,
+                    0.0
+                ],
+                "train_rows": 64,
+                "test_rows": 16,
+                "train_accuracy": 1.0,
+                "train_metrics": {
+                    "accuracy": 1.0,
+                    "balanced_accuracy": 1.0,
+                    "precision": 1.0,
+                    "recall": 1.0,
+                    "f1": 1.0,
+                    "confusion_matrix": [
+                        [
+                            32,
+                            0
+                        ],
+                        [
+                            0,
+                            32
+                        ]
+                    ]
+                },
+                "accuracy": 0.0625,
+                "balanced_accuracy": 0.0625,
+                "precision": 0.0556,
+                "recall": 0.0625,
+                "f1": 0.0588,
+                "confusion_matrix": [
+                    [
+                        1,
+                        7
+                    ],
+                    [
+                        8,
+                        0
+                    ]
+                ],
+                "score": 0.0588
+            },
+            {
+                "model": "Extra Trees Classifier",
+                "model_id": "extra_trees",
+                "status": "success",
+                "cv_folds": 5,
+                "cv_scoring": "f1_macro",
+                "cv_mean_score": 0.1571,
+                "cv_std_score": 0.1015,
+                "cv_scores": [
+                    0.1333,
+                    0.0714,
+                    0.35,
+                    0.1538,
+                    0.0769
+                ],
+                "train_rows": 64,
+                "test_rows": 16,
+                "train_accuracy": 1.0,
+                "train_metrics": {
+                    "accuracy": 1.0,
+                    "balanced_accuracy": 1.0,
+                    "precision": 1.0,
+                    "recall": 1.0,
+                    "f1": 1.0,
+                    "confusion_matrix": [
+                        [
+                            32,
+                            0
+                        ],
+                        [
+                            0,
+                            32
+                        ]
+                    ]
+                },
+                "accuracy": 0.0625,
+                "balanced_accuracy": 0.0625,
+                "precision": 0.0556,
+                "recall": 0.0625,
+                "f1": 0.0588,
+                "confusion_matrix": [
+                    [
+                        1,
+                        7
+                    ],
+                    [
+                        8,
+                        0
+                    ]
+                ],
+                "score": 0.0588
+            }
+        ],
+        "cv_results": {
+            "logistic_regression": {
+                "mean_score": 0.3424,
+                "std_score": 0.0972,
+                "fold_scores": [
+                    0.35,
+                    0.1875,
+                    0.3077,
+                    0.381,
+                    0.4857
+                ]
+            },
+            "random_forest": {
+                "mean_score": 0.1252,
+                "std_score": 0.12,
+                "fold_scores": [
+                    0.1333,
+                    0.0714,
+                    0.35,
+                    0.0714,
+                    0.0
+                ]
+            },
+            "extra_trees": {
+                "mean_score": 0.1571,
+                "std_score": 0.1015,
+                "fold_scores": [
+                    0.1333,
+                    0.0714,
+                    0.35,
+                    0.1538,
+                    0.0769
+                ]
+            }
+        },
+        "best_model": "Logistic Regression",
+        "best_model_id": "logistic_regression",
+        "best_score": 0.3424,
+        "best_cv_std": 0.0972,
+        "best_test_score": 0.5,
+        "baseline": {
+            "accuracy": 0.5,
+            "balanced_accuracy": 0.5,
+            "precision": 0.25,
+            "recall": 0.5,
+            "f1": 0.3333,
+            "train_metrics": {
+                "accuracy": 0.5,
+                "balanced_accuracy": 0.5,
+                "precision": 0.25,
+                "recall": 0.5,
+                "f1": 0.3333
+            }
+        },
+        "selection": {
+            "problem_type": "binary_classification",
+            "dataset_info": {
+                "n_samples": 80,
+                "n_features": 4,
+                "n_classes": 2,
+                "is_imbalanced": false
+            },
+            "selected_models": [
+                "logistic_regression",
+                "random_forest",
+                "extra_trees"
+            ],
+            "model_details": {
+                "logistic_regression": {
+                    "name": "Logistic Regression",
+                    "description": "Linear model for binary and multiclass classification.",
+                    "requires_scaling": true,
+                    "supports_probability": true
+                },
+                "random_forest": {
+                    "name": "Random Forest Classifier",
+                    "description": "Ensemble of decision trees.",
+                    "requires_scaling": false,
+                    "supports_probability": true
+                },
+                "extra_trees": {
+                    "name": "Extra Trees Classifier",
+                    "description": "Ensemble of highly randomized decision trees.",
+                    "requires_scaling": false,
+                    "supports_probability": true
+                }
+            },
+            "selection_reasons": [
+                "Small dataset: model performance may be unstable."
+            ],
+            "selection_note": "These are candidate models, not guaranteed best models. Train and evaluate them using leakage-safe validation before selecting a final model."
+        },
+        "successful_models": 3,
+        "failed_models": 0,
+        "score_interpretation": "The best candidate was selected using cross-validation scores from training data only. The holdout test set was not used for model selection and is reserved for final evaluation. The final test score is still an estimate based on one holdout split and may vary with new data.",
+        "explainability": {
+            "available": false,
+            "methods": [],
+            "native_importance": {
+                "available": false,
+                "reason": "No selected trained model was available."
+            },
+            "coefficients": {
+                "available": false,
+                "reason": "No selected trained model was available."
+            },
+            "permutation_importance": null,
+            "limitations": [
+                "Feature importance does not prove causation.",
+                "Native importance values are model-specific.",
+                "Correlated features can share or distort importance.",
+                "Permutation importance depends on evaluation data."
+            ]
+        },
+        "evaluation": {
+            "problem_type": "binary_classification",
+            "train_metrics": {
+                "accuracy": 0.5156,
+                "balanced_accuracy": 0.5156,
+                "precision": 0.5156,
+                "recall": 0.5156,
+                "f1": 0.5155,
+                "confusion_matrix": [
+                    [
+                        17,
+                        15
+                    ],
+                    [
+                        16,
+                        16
+                    ]
+                ]
+            },
+            "test_metrics": {
+                "accuracy": 0.5,
+                "balanced_accuracy": 0.5,
+                "precision": 0.5,
+                "recall": 0.5,
+                "f1": 0.5,
+                "confusion_matrix": [
+                    [
+                        4,
+                        4
+                    ],
+                    [
+                        4,
+                        4
+                    ]
+                ]
+            },
+            "baseline_train_metrics": {
+                "accuracy": 0.5,
+                "balanced_accuracy": 0.5,
+                "precision": 0.25,
+                "recall": 0.5,
+                "f1": 0.3333
+            },
+            "baseline_test_metrics": {
+                "accuracy": 0.5,
+                "balanced_accuracy": 0.5,
+                "precision": 0.25,
+                "recall": 0.5,
+                "f1": 0.3333
+            },
+            "generalization": {
+                "metric": "f1",
+                "train_score": 0.5155,
+                "test_score": 0.5,
+                "performance_gap": 0.0155,
+                "gap_threshold": 0.1,
+                "overfitting_suspected": false,
+                "status": "no_large_generalization_gap_detected",
+                "interpretation": "No large train-test performance gap was detected. This does not guarantee that the model generalizes well."
+            },
+            "baseline_comparison": {
+                "primary_metric": "f1",
+                "status": "better_than_baseline",
+                "metrics": {
+                    "accuracy": {
+                        "model": 0.5,
+                        "baseline": 0.5,
+                        "difference": 0.0,
+                        "improved": false
+                    },
+                    "balanced_accuracy": {
+                        "model": 0.5,
+                        "baseline": 0.5,
+                        "difference": 0.0,
+                        "improved": false
+                    },
+                    "f1": {
+                        "model": 0.5,
+                        "baseline": 0.3333,
+                        "difference": 0.1667,
+                        "improved": true
+                    }
+                }
+            },
+            "underfitting": {
+                "metric": "f1",
+                "train_score": 0.5155,
+                "baseline_score": 0.3333,
+                "underfitting_suspected": false,
+                "interpretation": "Training performance exceeds the dummy baseline. This alone does not rule out underfitting."
+            },
+            "warnings": [
+                "No major warning was identified by the current evaluation checks. Further validation is still recommended."
+            ],
+            "evaluation_note": "These checks provide diagnostic indicators, not proof of model quality. Use cross-validation and an independent test dataset for stronger evidence.",
+            "available": true,
+            "selected_model": "Logistic Regression"
+        }
+    },
+    "evaluation": null,
+    "diagnosis": {
+        "model_name": "Logistic Regression",
+        "status": "issues_found",
+        "summary": {
+            "total_findings": 4,
+            "critical": 0,
+            "warnings": 1,
+            "information": 3
+        },
+        "findings": [
+            {
+                "code": "possible_identifier_features",
+                "title": "Possible Identifier Columns",
+                "severity": "warning",
+                "message": "Some columns appear to contain identifiers and may not provide useful predictive information.",
+                "evidence": {
+                    "columns": [
+                        "age",
+                        "experience",
+                        "salary",
+                        "score"
+                    ]
+                },
+                "recommendation": "Check whether these columns represent genuine identifiers and remove them if they are not useful."
+            },
+            {
+                "code": "no_large_generalization_gap",
+                "title": "No Large Generalization Gap Detected",
+                "severity": "info",
+                "message": "No large train-test performance gap was identified. This does not guarantee good real-world performance.",
+                "evidence": {
+                    "metric": "f1",
+                    "train_score": 0.5155,
+                    "test_score": 0.5,
+                    "performance_gap": 0.0155
+                },
+                "recommendation": "Validate performance with cross-validation and independent data where possible."
+            },
+            {
+                "code": "better_than_baseline",
+                "title": "Model Outperforms Dummy Baseline",
+                "severity": "info",
+                "message": "The model performs better than the dummy baseline on the primary evaluation metric.",
+                "evidence": {
+                    "primary_metric": "f1",
+                    "status": "better_than_baseline",
+                    "metrics": {
+                        "accuracy": {
+                            "model": 0.5,
+                            "baseline": 0.5,
+                            "difference": 0.0,
+                            "improved": false
+                        },
+                        "balanced_accuracy": {
+                            "model": 0.5,
+                            "baseline": 0.5,
+                            "difference": 0.0,
+                            "improved": false
+                        },
+                        "f1": {
+                            "model": 0.5,
+                            "baseline": 0.3333,
+                            "difference": 0.1667,
+                            "improved": true
+                        }
+                    }
+                },
+                "recommendation": "Continue evaluating with cross-validation and check whether the improvement is consistent."
+            },
+            {
+                "code": "profiler_warnings",
+                "title": "Dataset Profiler Warnings",
+                "severity": "info",
+                "message": "The dataset profiler reported additional observations.",
+                "evidence": {
+                    "warnings": [
+                        {
+                            "type": "identifier_candidates",
+                            "severity": "low",
+                            "message": "Potential identifier columns detected. Review whether they should be used as features."
+                        }
+                    ]
+                },
+                "recommendation": "Review the profiler warnings before finalizing dataset preparation."
+            }
+        ],
+        "feature_importance": null,
+        "limitations": [
+            "Diagnosis depends on the completeness of supplied inputs.",
+            "Heuristic findings are signals for investigation, not proof.",
+            "Feature importance does not establish causation.",
+            "A small train-test gap does not guarantee real-world performance."
+        ]
+    },
+    "explainability": null,
+    "hyperparameter_tuning": null
+}

@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ML Model Doctor Report</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 30px;
+    font-family: Arial, sans-serif;
+    background: #f4f6fa;
+    color: #202938;
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+}
+
+header {
+    background: #182338;
+    color: white;
+    padding: 30px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+}
+
+header h1 {
+    margin: 0 0 10px;
+}
+
+.card {
+    background: white;
+    padding: 22px;
+    margin-bottom: 18px;
+    border-radius: 10px;
+    border: 1px solid #e1e6ed;
+    overflow-wrap: anywhere;
+}
+
+.card h2 {
+    margin-top: 0;
+    color: #244a80;
+}
+
+pre {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    background: #f4f6fa;
+    padding: 14px;
+    border-radius: 6px;
+}
+
+footer {
+    text-align: center;
+    color: #667085;
+    margin-top: 25px;
+}
+
+@media print {
+    body {
+        background: white;
+        padding: 10px;
+    }
+
+    .card, header {
+        break-inside: avoid;
+    }
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<header>
+    <h1>ML Model Doctor</h1>
+    <p>Automated Machine Learning Analysis Report</p>
+    <small>Generated: 2026-11-07T10:14:39.004509+00:00</small>
+</header>
+
+
+            <section class="card">
+                <h2>Executive Summary</h2>
+                <pre>{
+  &quot;dataset&quot;: {
+    &quot;rows&quot;: 220,
+    &quot;columns&quot;: 2
+  },
+  &quot;problem_type&quot;: &quot;regression&quot;,
+  &quot;best_model&quot;: {
+    &quot;name&quot;: &quot;Gradient Boosting Regressor&quot;
+  },
+  &quot;evaluation&quot;: {
+    &quot;generalization&quot;: null,
+    &quot;baseline_comparison&quot;: null
+  },
+  &quot;diagnosis_status&quot;: &quot;issues_found&quot;,
+  &quot;diagnostic_findings&quot;: {
+    &quot;total_findings&quot;: 4,
+    &quot;critical&quot;: 0,
+    &quot;warnings&quot;: 2,
+    &quot;information&quot;: 2
+  },
+  &quot;conclusion&quot;: &quot;Review the evaluation metrics and diagnostic findings before using the model in production.&quot;
+}</pre>
+            </section>
+            
+            <section class="card">
+                <h2>Dataset Profile</h2>
+                <pre>{
+  &quot;rows&quot;: 220,
+  &quot;columns&quot;: 2,
+  &quot;total_cells&quot;: 440,
+  &quot;column_names&quot;: [
+    &quot;cgpa&quot;,
+    &quot;package&quot;
+  ],
+  &quot;numeric_columns&quot;: [
+    &quot;cgpa&quot;,
+    &quot;package&quot;
+  ],
+  &quot;categorical_columns&quot;: [],
+  &quot;boolean_columns&quot;: [],
+  &quot;datetime_columns&quot;: [],
+  &quot;datetime_candidates&quot;: [],
+  &quot;other_columns&quot;: [],
+  &quot;data_type_summary&quot;: {
+    &quot;numeric&quot;: 2,
+    &quot;categorical&quot;: 0,
+    &quot;boolean&quot;: 0,
+    &quot;datetime&quot;: 0,
+    &quot;datetime_candidates&quot;: 0,
+    &quot;other&quot;: 0
+  },
+  &quot;missing_values&quot;: 0,
+  &quot;missing_percentage&quot;: 0.0,
+  &quot;columns_with_missing&quot;: 0,
+  &quot;duplicate_rows&quot;: 1,
+  &quot;duplicate_columns&quot;: [],
+  &quot;outlier_values&quot;: 0,
+  &quot;outlier_rows&quot;: 0,
+  &quot;outlier_details&quot;: [],
+  &quot;constant_columns&quot;: [],
+  &quot;near_constant_columns&quot;: [],
+  &quot;identifier_candidates&quot;: [],
+  &quot;high_cardinality_columns&quot;: [],
+  &quot;numerical_summary&quot;: {
+    &quot;cgpa&quot;: {
+      &quot;mean&quot;: 6.824227272727274,
+      &quot;median&quot;: 6.859999999999999,
+      &quot;std&quot;: 0.9656676509225056,
+      &quot;min&quot;: 4.73,
+      &quot;max&quot;: 8.66,
+      &quot;skewness&quot;: -0.33725641498317893,
+      &quot;variance&quot;: 0.9325140120381901
+    },
+    &quot;package&quot;: {
+      &quot;mean&quot;: 2.8363181818181817,
+      &quot;median&quot;: 2.85,
+      &quot;std&quot;: 0.6156902712973424,
+      &quot;min&quot;: 1.61,
+      &quot;max&quot;: 3.93,
+      &quot;skewness&quot;: -0.11365571913869126,
+      &quot;variance&quot;: 0.3790745101701951
+    }
+  },
+  &quot;column_info&quot;: [
+    {
+      &quot;name&quot;: &quot;cgpa&quot;,
+      &quot;dtype&quot;: &quot;float64&quot;,
+      &quot;detected_type&quot;: &quot;numeric&quot;,
+      &quot;missing&quot;: 0,
+      &quot;missing_percentage&quot;: 0.0,
+      &quot;unique_values&quot;: 150,
+      &quot;unique_ratio&quot;: 0.6818,
+      &quot;is_numeric&quot;: true,
+      &quot;is_constant&quot;: false,
+      &quot;is_near_constant&quot;: false,
+      &quot;is_identifier_candidate&quot;: false,
+      &quot;is_high_cardinality&quot;: false,
+      &quot;outliers&quot;: 0,
+      &quot;outlier_percentage&quot;: 0.0,
+      &quot;outlier_bounds&quot;: {
+        &quot;lower&quot;: 4.493750000000002,
+        &quot;upper&quot;: 9.38375
+      },
+      &quot;dominant_value_percentage&quot;: 2.73
+    },
+    {
+      &quot;name&quot;: &quot;package&quot;,
+      &quot;dtype&quot;: &quot;float64&quot;,
+      &quot;detected_type&quot;: &quot;numeric&quot;,
+      &quot;missing&quot;: 0,
+      &quot;missing_percentage&quot;: 0.0,
+      &quot;unique_values&quot;: 139,
+      &quot;unique_ratio&quot;: 0.6318,
+      &quot;is_numeric&quot;: true,
+      &quot;is_constant&quot;: false,
+      &quot;is_near_constant&quot;: false,
+      &quot;is_identifier_candidate&quot;: false,
+      &quot;is_high_cardinality&quot;: false,
+      &quot;outliers&quot;: 0,
+      &quot;outlier_percentage&quot;: 0.0,
+      &quot;outlier_bounds&quot;: {
+        &quot;lower&quot;: 0.8037500000000004,
+        &quot;upper&quot;: 4.91375
+      },
+      &quot;dominant_value_percentage&quot;: 1.82
+    }
+  ],
+  &quot;warnings&quot;: [
+    {
+      &quot;type&quot;: &quot;duplicate_rows&quot;,
+      &quot;severity&quot;: &quot;medium&quot;,
+      &quot;message&quot;: &quot;1 duplicate rows detected. Review before removing them.&quot;
+    }
+  ],
+  &quot;original_missing_values&quot;: 0,
+  &quot;original_duplicate_rows&quot;: 1,
+  &quot;target_missing_values&quot;: 0,
+  &quot;target_distribution&quot;: {
+    &quot;6.94&quot;: 5,
+    &quot;6.82&quot;: 5,
+    &quot;6.78&quot;: 4,
+    &quot;6.74&quot;: 4,
+    &quot;7.95&quot;: 3,
+    &quot;5.23&quot;: 3,
+    &quot;6.92&quot;: 3,
+    &quot;6.95&quot;: 3,
+    &quot;6.75&quot;: 3,
+    &quot;6.96&quot;: 3,
+    &quot;7.92&quot;: 3,
+    &quot;7.83&quot;: 3,
+    &quot;6.76&quot;: 3,
+    &quot;7.55&quot;: 2,
+    &quot;6.52&quot;: 2,
+    &quot;8.42&quot;: 2,
+    &quot;7.72&quot;: 2,
+    &quot;7.05&quot;: 2,
+    &quot;6.47&quot;: 2,
+    &quot;6.9&quot;: 2,
+    &quot;6.89&quot;: 2,
+    &quot;6.99&quot;: 2,
+    &quot;6.64&quot;: 2,
+    &quot;6.84&quot;: 2,
+    &quot;6.28&quot;: 2,
+    &quot;7.04&quot;: 2,
+    &quot;7.52&quot;: 2,
+    &quot;7.26&quot;: 2,
+    &quot;8.1&quot;: 2,
+    &quot;5.95&quot;: 2,
+    &quot;6.09&quot;: 2,
+    &quot;5.21&quot;: 2,
+    &quot;8.01&quot;: 2,
+    &quot;6.93&quot;: 2,
+    &quot;5.92&quot;: 2,
+    &quot;5.48&quot;: 2,
+    &quot;6.61&quot;: 2,
+    &quot;5.39&quot;: 2,
+    &quot;6.79&quot;: 2,
+    &quot;8.38&quot;: 2,
+    &quot;6.16&quot;: 2,
+    &quot;7.58&quot;: 2,
+    &quot;6.81&quot;: 2,
+    &quot;6.69&quot;: 2,
+    &quot;6.66&quot;: 2,
+    &quot;7.5&quot;: 2,
+    &quot;6.59&quot;: 2,
+    &quot;8.39&quot;: 2,
+    &quot;7.64&quot;: 2,
+    &quot;7.44&quot;: 2,
+    &quot;5.09&quot;: 1,
+    &quot;7.84&quot;: 1,
+    &quot;6.0&quot;: 1,
+    &quot;4.74&quot;: 1,
+    &quot;5.33&quot;: 1,
+    &quot;8.26&quot;: 1,
+    &quot;6.38&quot;: 1,
+    &quot;6.55&quot;: 1,
+    &quot;7.48&quot;: 1,
+    &quot;7.31&quot;: 1,
+    &quot;7.34&quot;: 1,
+    &quot;7.88&quot;: 1,
+    &quot;8.25&quot;: 1,
+    &quot;6.72&quot;: 1,
+    &quot;7.1&quot;: 1,
+    &quot;7.18&quot;: 1,
+    &quot;8.18&quot;: 1,
+    &quot;8.16&quot;: 1,
+    &quot;5.08&quot;: 1,
+    &quot;7.6&quot;: 1,
+    &quot;7.3&quot;: 1,
+    &quot;5.43&quot;: 1,
+    &quot;6.88&quot;: 1,
+    &quot;6.8&quot;: 1,
+    &quot;4.77&quot;: 1,
+    &quot;7.09&quot;: 1,
+    &quot;5.79&quot;: 1,
+    &quot;8.17&quot;: 1,
+    &quot;7.46&quot;: 1,
+    &quot;4.73&quot;: 1,
+    &quot;7.12&quot;: 1,
+    &quot;6.37&quot;: 1,
+    &quot;6.33&quot;: 1,
+    &quot;7.59&quot;: 1,
+    &quot;6.71&quot;: 1,
+    &quot;5.14&quot;: 1,
+    &quot;6.32&quot;: 1,
+    &quot;5.24&quot;: 1,
+    &quot;8.24&quot;: 1,
+    &quot;7.99&quot;: 1,
+    &quot;7.49&quot;: 1,
+    &quot;6.83&quot;: 1,
+    &quot;8.0&quot;: 1,
+    &quot;5.02&quot;: 1,
+    &quot;6.05&quot;: 1,
+    &quot;6.73&quot;: 1,
+    &quot;6.51&quot;: 1,
+    &quot;5.62&quot;: 1,
+    &quot;6.35&quot;: 1,
+    &quot;6.06&quot;: 1,
+    &quot;5.7&quot;: 1,
+    &quot;7.81&quot;: 1,
+    &quot;5.55&quot;: 1,
+    &quot;8.08&quot;: 1,
+    &quot;6.08&quot;: 1,
+    &quot;4.94&quot;: 1,
+    &quot;8.33&quot;: 1,
+    &quot;6.53&quot;: 1,
+    &quot;7.14&quot;: 1,
+    &quot;7.06&quot;: 1,
+    &quot;8.21&quot;: 1,
+    &quot;6.11&quot;: 1,
+    &quot;6.62&quot;: 1,
+    &quot;5.11&quot;: 1,
+    &quot;7.41&quot;: 1,
+    &quot;7.82&quot;: 1,
+    &quot;7.37&quot;: 1,
+    &quot;5.17&quot;: 1,
+    &quot;6.14&quot;: 1,
+    &quot;6.5&quot;: 1,
+    &quot;7.73&quot;: 1,
+    &quot;6.68&quot;: 1,
+    &quot;5.01&quot;: 1,
+    &quot;5.28&quot;: 1,
+    &quot;6.65&quot;: 1,
+    &quot;8.57&quot;: 1,
+    &quot;8.36&quot;: 1,
+    &quot;7.16&quot;: 1,
+    &quot;7.57&quot;: 1,
+    &quot;5.38&quot;: 1,
+    &quot;8.05&quot;: 1,
+    &quot;4.97&quot;: 1,
+    &quot;7.96&quot;: 1,
+    &quot;5.0&quot;: 1,
+    &quot;8.6&quot;: 1,
+    &quot;5.27&quot;: 1,
+    &quot;7.02&quot;: 1,
+    &quot;7.15&quot;: 1,
+    &quot;4.95&quot;: 1,
+    &quot;7.61&quot;: 1,
+    &quot;8.03&quot;: 1,
+    &quot;4.87&quot;: 1,
+    &quot;7.85&quot;: 1,
+    &quot;5.54&quot;: 1,
+    &quot;4.93&quot;: 1,
+    &quot;8.66&quot;: 1,
+    &quot;6.98&quot;: 1,
+    &quot;8.44&quot;: 1,
+    &quot;5.26&quot;: 1,
+    &quot;5.07&quot;: 1
+  }
+}</pre>
+            </section>
+            
+            <section class="card">
+                <h2>Target Analysis</h2>
+                <pre>{
+  &quot;target_column&quot;: &quot;cgpa&quot;,
+  &quot;problem_type&quot;: &quot;regression&quot;,
+  &quot;suggested_problem_type&quot;: &quot;regression&quot;,
+  &quot;confidence&quot;: &quot;user_confirmed&quot;,
+  &quot;requires_confirmation&quot;: false,
+  &quot;reason&quot;: &quot;User explicitly selected regression.&quot;,
+  &quot;target_statistics&quot;: {
+    &quot;total_records&quot;: 220,
+    &quot;valid_records&quot;: 220,
+    &quot;missing_values&quot;: 0,
+    &quot;unique_values&quot;: 150,
+    &quot;data_type&quot;: &quot;float64&quot;
+  },
+  &quot;class_analysis&quot;: null,
+  &quot;numeric_analysis&quot;: {
+    &quot;mean&quot;: 6.824227272727274,
+    &quot;median&quot;: 6.859999999999999,
+    &quot;std&quot;: 0.9656676509225056,
+    &quot;min&quot;: 4.73,
+    &quot;max&quot;: 8.66,
+    &quot;unique_values&quot;: 150,
+    &quot;skewness&quot;: -0.33725641498317893
+  },
+  &quot;warnings&quot;: []
+}</pre>
+            </section>
+            
+            <section class="card">
+                <h2>Model Comparison</h2>
+                <pre>{
+  &quot;problem_type&quot;: &quot;regression&quot;,
+  &quot;evaluation_method&quot;: &quot;80/20 holdout + 5-fold cross-validation&quot;,
+  &quot;primary_metric&quot;: &quot;R2&quot;,
+  &quot;selection_metric&quot;: &quot;r2&quot;,
+  &quot;selection_method&quot;: &quot;cross_validation&quot;,
+  &quot;cv_folds&quot;: 5,
+  &quot;train_rows&quot;: 175,
+  &quot;test_rows&quot;: 44,
+  &quot;dataset_info&quot;: {
+    &quot;total_rows&quot;: 219,
+    &quot;total_features&quot;: 1,
+    &quot;number_of_classes&quot;: null,
+    &quot;is_imbalanced&quot;: false,
+    &quot;imbalance_ratio&quot;: null,
+    &quot;removed_empty_columns&quot;: []
+  },
+  &quot;models&quot;: [
+    {
+      &quot;model&quot;: &quot;Linear Regression&quot;,
+      &quot;model_id&quot;: &quot;linear_regression&quot;,
+      &quot;status&quot;: &quot;success&quot;,
+      &quot;cv_folds&quot;: 5,
+      &quot;cv_scoring&quot;: &quot;r2&quot;,
+      &quot;cv_mean_score&quot;: 0.564,
+      &quot;cv_std_score&quot;: 0.1343,
+      &quot;cv_scores&quot;: [
+        0.4803,
+        0.4355,
+        0.6968,
+        0.7553,
+        0.4524
+      ],
+      &quot;train_rows&quot;: 175,
+      &quot;test_rows&quot;: 44,
+      &quot;train_r2&quot;: 0.5966,
+      &quot;train_metrics&quot;: {
+        &quot;r2&quot;: 0.5966,
+        &quot;mae&quot;: 0.5006,
+        &quot;rmse&quot;: 0.6026
+      },
+      &quot;r2&quot;: 0.6726,
+      &quot;mae&quot;: 0.4819,
+      &quot;rmse&quot;: 0.5881,
+      &quot;score&quot;: 0.6726
+    },
+    {
+      &quot;model&quot;: &quot;Ridge Regression&quot;,
+      &quot;model_id&quot;: &quot;ridge&quot;,
+      &quot;status&quot;: &quot;success&quot;,
+      &quot;cv_folds&quot;: 5,
+      &quot;cv_scoring&quot;: &quot;r2&quot;,
+      &quot;cv_mean_score&quot;: 0.5643,
+      &quot;cv_std_score&quot;: 0.1332,
+      &quot;cv_scores&quot;: [
+        0.4824,
+        0.4368,
+        0.6958,
+        0.754,
+        0.4524
+      ],
+      &quot;train_rows&quot;: 175,
+      &quot;test_rows&quot;: 44,
+      &quot;train_r2&quot;: 0.5966,
+      &quot;train_metrics&quot;: {
+        &quot;r2&quot;: 0.5966,
+        &quot;mae&quot;: 0.5006,
+        &quot;rmse&quot;: 0.6026
+      },
+      &quot;r2&quot;: 0.672,
+      &quot;mae&quot;: 0.4829,
+      &quot;rmse&quot;: 0.5886,
+      &quot;score&quot;: 0.672
+    },
+    {
+      &quot;model&quot;: &quot;Random Forest Regressor&quot;,
+      &quot;model_id&quot;: &quot;random_forest_regressor&quot;,
+      &quot;status&quot;: &quot;success&quot;,
+      &quot;cv_folds&quot;: 5,
+      &quot;cv_scoring&quot;: &quot;r2&quot;,
+      &quot;cv_mean_score&quot;: 0.6262,
+      &quot;cv_std_score&quot;: 0.1652,
+      &quot;cv_scores&quot;: [
+        0.329,
+        0.6357,
+        0.8235,
+        0.7217,
+        0.6212
+      ],
+      &quot;train_rows&quot;: 175,
+      &quot;test_rows&quot;: 44,
+      &quot;train_r2&quot;: 0.9202,
+      &quot;train_metrics&quot;: {
+        &quot;r2&quot;: 0.9202,
+        &quot;mae&quot;: 0.2027,
+        &quot;rmse&quot;: 0.2681
+      },
+      &quot;r2&quot;: 0.5285,
+      &quot;mae&quot;: 0.5471,
+      &quot;rmse&quot;: 0.7058,
+      &quot;score&quot;: 0.5285
+    },
+    {
+      &quot;model&quot;: &quot;Extra Trees Regressor&quot;,
+      &quot;model_id&quot;: &quot;extra_trees_regressor&quot;,
+      &quot;status&quot;: &quot;success&quot;,
+      &quot;cv_folds&quot;: 5,
+      &quot;cv_scoring&quot;: &quot;r2&quot;,
+      &quot;cv_mean_score&quot;: 0.5967,
+      &quot;cv_std_score&quot;: 0.1869,
+      &quot;cv_scores&quot;: [
+        0.2467,
+        0.6305,
+        0.7718,
+        0.7391,
+        0.5953
+      ],
+      &quot;train_rows&quot;: 175,
+      &quot;test_rows&quot;: 44,
+      &quot;train_r2&quot;: 0.9436,
+      &quot;train_metrics&quot;: {
+        &quot;r2&quot;: 0.9436,
+        &quot;mae&quot;: 0.1307,
+        &quot;rmse&quot;: 0.2254
+      },
+      &quot;r2&quot;: 0.4803,
+      &quot;mae&quot;: 0.5756,
+      &quot;rmse&quot;: 0.741,
+      &quot;score&quot;: 0.4803
+    },
+    {
+      &quot;model&quot;: &quot;Gradient Boosting Regressor&quot;,
+      &quot;model_id&quot;: &quot;gradient_boosting_regressor&quot;,
+      &quot;status&quot;: &quot;success&quot;,
+      &quot;cv_folds&quot;: 5,
+      &quot;cv_scoring&quot;: &quot;r2&quot;,
+      &quot;cv_mean_score&quot;: 0.6542,
+      &quot;cv_std_score&quot;: 0.1558,
+      &quot;cv_scores&quot;: [
+        0.3684,
+        0.6922,
+        0.8332,
+        0.7327,
+        0.6443
+      ],
+      &quot;train_rows&quot;: 175,
+      &quot;test_rows&quot;: 44,
+      &quot;train_r2&quot;: 0.9036,
+      &quot;train_metrics&quot;: {
+        &quot;r2&quot;: 0.9036,
+        &quot;mae&quot;: 0.2297,
+        &quot;rmse&quot;: 0.2946
+      },
+      &quot;r2&quot;: 0.6047,
+      &quot;mae&quot;: 0.513,
+      &quot;rmse&quot;: 0.6462,
+      &quot;score&quot;: 0.6047
+    },
+    {
+      &quot;model&quot;: &quot;K-Nearest Neighbors Regressor&quot;,
+      &quot;model_id&quot;: &quot;knn_regressor&quot;,
+      &quot;status&quot;: &quot;success&quot;,
+      &quot;cv_folds&quot;: 5,
+      &quot;cv_scoring&quot;: &quot;r2&quot;,
+      &quot;cv_mean_score&quot;: 0.6343,
+      &quot;cv_std_score&quot;: 0.1503,
+      &quot;cv_scores&quot;: [
+        0.3581,
+        0.669,
+        0.803,
+        0.7171,
+        0.6244
+      ],
+      &quot;train_rows&quot;: 175,
+      &quot;test_rows&quot;: 44,
+      &quot;train_r2&quot;: 0.7925,
+      &quot;train_metrics&quot;: {
+        &quot;r2&quot;: 0.7925,
+        &quot;mae&quot;: 0.3545,
+        &quot;rmse&quot;: 0.4322
+      },
+      &quot;r2&quot;: 0.6992,
+      &quot;mae&quot;: 0.4505,
+      &quot;rmse&quot;: 0.5637,
+      &quot;score&quot;: 0.6992
+    }
+  ],
+  &quot;cv_results&quot;: {
+    &quot;linear_regression&quot;: {
+      &quot;mean_score&quot;: 0.564,
+      &quot;std_score&quot;: 0.1343,
+      &quot;fold_scores&quot;: [
+        0.4803,
+        0.4355,
+        0.6968,
+        0.7553,
+        0.4524
+      ]
+    },
+    &quot;ridge&quot;: {
+      &quot;mean_score&quot;: 0.5643,
+      &quot;std_score&quot;: 0.1332,
+      &quot;fold_scores&quot;: [
+        0.4824,
+        0.4368,
+        0.6958,
+        0.754,
+        0.4524
+      ]
+    },
+    &quot;random_forest_regressor&quot;: {
+      &quot;mean_score&quot;: 0.6262,
+      &quot;std_score&quot;: 0.1652,
+      &quot;fold_scores&quot;: [
+        0.329,
+        0.6357,
+        0.8235,
+        0.7217,
+        0.6212
+      ]
+    },
+    &quot;extra_trees_regressor&quot;: {
+      &quot;mean_score&quot;: 0.5967,
+      &quot;std_score&quot;: 0.1869,
+      &quot;fold_scores&quot;: [
+        0.2467,
+        0.6305,
+        0.7718,
+        0.7391,
+        0.5953
+      ]
+    },
+    &quot;gradient_boosting_regressor&quot;: {
+      &quot;mean_score&quot;: 0.6542,
+      &quot;std_score&quot;: 0.1558,
+      &quot;fold_scores&quot;: [
+        0.3684,
+        0.6922,
+        0.8332,
+        0.7327,
+        0.6443
+      ]
+    },
+    &quot;knn_regressor&quot;: {
+      &quot;mean_score&quot;: 0.6343,
+      &quot;std_score&quot;: 0.1503,
+      &quot;fold_scores&quot;: [
+        0.3581,
+        0.669,
+        0.803,
+        0.7171,
+        0.6244
+      ]
+    }
+  },
+  &quot;best_model&quot;: &quot;Gradient Boosting Regressor&quot;,
+  &quot;best_model_id&quot;: &quot;gradient_boosting_regressor&quot;,
+  &quot;best_score&quot;: 0.6542,
+  &quot;best_cv_std&quot;: 0.1558,
+  &quot;best_test_score&quot;: 0.6047,
+  &quot;baseline&quot;: {
+    &quot;r2&quot;: -0.005,
+    &quot;mae&quot;: 0.8195,
+    &quot;rmse&quot;: 1.0304,
+    &quot;train_metrics&quot;: {
+      &quot;r2&quot;: 0.0,
+      &quot;mae&quot;: 0.7313,
+      &quot;rmse&quot;: 0.9488
+    }
+  },
+  &quot;selection&quot;: {
+    &quot;problem_type&quot;: &quot;regression&quot;,
+    &quot;dataset_info&quot;: {
+      &quot;n_samples&quot;: 219,
+      &quot;n_features&quot;: 1,
+      &quot;n_classes&quot;: null,
+      &quot;is_imbalanced&quot;: false
+    },
+    &quot;selected_models&quot;: [
+      &quot;linear_regression&quot;,
+      &quot;ridge&quot;,
+      &quot;random_forest_regressor&quot;,
+      &quot;extra_trees_regressor&quot;,
+      &quot;gradient_boosting_regressor&quot;,
+      &quot;knn_regressor&quot;
+    ],
+    &quot;model_details&quot;: {
+      &quot;linear_regression&quot;: {
+        &quot;name&quot;: &quot;Linear Regression&quot;,
+        &quot;description&quot;: &quot;Linear model for continuous value prediction.&quot;,
+        &quot;requires_scaling&quot;: true,
+        &quot;supports_probability&quot;: false
+      },
+      &quot;ridge&quot;: {
+        &quot;name&quot;: &quot;Ridge Regression&quot;,
+        &quot;description&quot;: &quot;Regularized linear regression algorithm.&quot;,
+        &quot;requires_scaling&quot;: true,
+        &quot;supports_probability&quot;: false
+      },
+      &quot;random_forest_regressor&quot;: {
+        &quot;name&quot;: &quot;Random Forest Regressor&quot;,
+        &quot;description&quot;: &quot;Ensemble of regression trees.&quot;,
+        &quot;requires_scaling&quot;: false,
+        &quot;supports_probability&quot;: false
+      },
+      &quot;extra_trees_regressor&quot;: {
+        &quot;name&quot;: &quot;Extra Trees Regressor&quot;,
+        &quot;description&quot;: &quot;Ensemble of randomized regression trees.&quot;,
+        &quot;requires_scaling&quot;: false,
+        &quot;supports_probability&quot;: false
+      },
+      &quot;gradient_boosting_regressor&quot;: {
+        &quot;name&quot;: &quot;Gradient Boosting Regressor&quot;,
+        &quot;description&quot;: &quot;Sequential boosting-based regression model.&quot;,
+        &quot;requires_scaling&quot;: false,
+        &quot;supports_probability&quot;: false
+      },
+      &quot;knn_regressor&quot;: {
+        &quot;name&quot;: &quot;K-Nearest Neighbors Regressor&quot;,
+        &quot;description&quot;: &quot;Distance-based regression algorithm.&quot;,
+        &quot;requires_scaling&quot;: true,
+        &quot;supports_probability&quot;: false
+      }
+    },
+    &quot;selection_reasons&quot;: [
+      &quot;Candidates selected using dataset size and feature count.&quot;
+    ],
+    &quot;selection_note&quot;: &quot;These are candidate models, not guaranteed best models. Train and evaluate them using leakage-safe validation before selecting a final model.&quot;
+  },
+  &quot;successful_models&quot;: 6,
+  &quot;failed_models&quot;: 0,
+  &quot;score_interpretation&quot;: &quot;The best candidate was selected using cross-validation scores from training data only. The holdout test set was not used for model selection and is reserved for final evaluation. The final test score is still an estimate based on one holdout split and may vary with new data.&quot;,
+  &quot;explainability&quot;: {
+    &quot;available&quot;: false,
+    &quot;methods&quot;: [],
+    &quot;native_importance&quot;: {
+      &quot;available&quot;: false,
+      &quot;reason&quot;: &quot;No selected trained model was available.&quot;
+    },
+    &quot;coefficients&quot;: {
+      &quot;available&quot;: false,
+      &quot;reason&quot;: &quot;No selected trained model was available.&quot;
+    },
+    &quot;permutation_importance&quot;: null,
+    &quot;limitations&quot;: [
+      &quot;Feature importance does not prove causation.&quot;,
+      &quot;Native importance values are model-specific.&quot;,
+      &quot;Correlated features can share or distort importance.&quot;,
+      &quot;Permutation importance depends on evaluation data.&quot;
+    ]
+  },
+  &quot;evaluation&quot;: {
+    &quot;problem_type&quot;: &quot;regression&quot;,
+    &quot;train_metrics&quot;: {
+      &quot;r2&quot;: 0.9036,
+      &quot;mae&quot;: 0.2297,
+      &quot;rmse&quot;: 0.2946
+    },
+    &quot;test_metrics&quot;: {
+      &quot;r2&quot;: 0.6047,
+      &quot;mae&quot;: 0.513,
+      &quot;rmse&quot;: 0.6462
+    },
+    &quot;baseline_train_metrics&quot;: {
+      &quot;r2&quot;: 0.0,
+      &quot;mae&quot;: 0.7313,
+      &quot;rmse&quot;: 0.9488
+    },
+    &quot;baseline_test_metrics&quot;: {
+      &quot;r2&quot;: -0.005,
+      &quot;mae&quot;: 0.8195,
+      &quot;rmse&quot;: 1.0304
+    },
+    &quot;generalization&quot;: {
+      &quot;metric&quot;: &quot;r2&quot;,
+      &quot;train_score&quot;: 0.9036,
+      &quot;test_score&quot;: 0.6047,
+      &quot;performance_gap&quot;: 0.2989,
+      &quot;gap_threshold&quot;: 0.1,
+      &quot;overfitting_suspected&quot;: true,
+      &quot;status&quot;: &quot;possible_overfitting&quot;,
+      &quot;interpretation&quot;: &quot;Training performance is substantially higher than testing performance. Possible overfitting should be investigated.&quot;
+    },
+    &quot;baseline_comparison&quot;: {
+      &quot;primary_metric&quot;: &quot;r2&quot;,
+      &quot;status&quot;: &quot;better_than_baseline&quot;,
+      &quot;metrics&quot;: {
+        &quot;r2&quot;: {
+          &quot;model&quot;: 0.6047,
+          &quot;baseline&quot;: -0.005,
+          &quot;difference&quot;: 0.6097,
+          &quot;improved&quot;: true
+        },
+        &quot;mae&quot;: {
+          &quot;model&quot;: 0.513,
+          &quot;baseline&quot;: 0.8195,
+          &quot;difference&quot;: -0.3065,
+          &quot;improved&quot;: true
+        },
+        &quot;rmse&quot;: {
+          &quot;model&quot;: 0.6462,
+          &quot;baseline&quot;: 1.0304,
+          &quot;difference&quot;: -0.3842,
+          &quot;improved&quot;: true
+        }
+      }
+    },
+    &quot;underfitting&quot;: {
+      &quot;metric&quot;: &quot;r2&quot;,
+      &quot;train_score&quot;: 0.9036,
+      &quot;baseline_score&quot;: 0.0,
+      &quot;underfitting_suspected&quot;: false,
+      &quot;interpretation&quot;: &quot;Training performance exceeds the dummy baseline. This alone does not rule out underfitting.&quot;
+    },
+    &quot;warnings&quot;: [
+      &quot;Possible overfitting: training performance is substantially higher than testing performance.&quot;
+    ],
+    &quot;evaluation_note&quot;: &quot;These checks provide diagnostic indicators, not proof of model quality. Use cross-validation and an independent test dataset for stronger evidence.&quot;,
+    &quot;available&quot;: true,
+    &quot;selected_model&quot;: &quot;Gradient Boosting Regressor&quot;
+  }
+}</pre>
+            </section>
+            
+            <section class="card">
+                <h2>Evaluation</h2>
+                Not available
+            </section>
+            
+            <section class="card">
+                <h2>Diagnosis</h2>
+                <pre>{
+  &quot;model_name&quot;: &quot;Gradient Boosting Regressor&quot;,
+  &quot;status&quot;: &quot;issues_found&quot;,
+  &quot;summary&quot;: {
+    &quot;total_findings&quot;: 4,
+    &quot;critical&quot;: 0,
+    &quot;warnings&quot;: 2,
+    &quot;information&quot;: 2
+  },
+  &quot;findings&quot;: [
+    {
+      &quot;code&quot;: &quot;possible_overfitting&quot;,
+      &quot;title&quot;: &quot;Possible Overfitting&quot;,
+      &quot;severity&quot;: &quot;warning&quot;,
+      &quot;message&quot;: &quot;Training performance is substantially higher than testing performance. The model may not generalize well to unseen data.&quot;,
+      &quot;evidence&quot;: {
+        &quot;metric&quot;: &quot;r2&quot;,
+        &quot;train_score&quot;: 0.9036,
+        &quot;test_score&quot;: 0.6047,
+        &quot;performance_gap&quot;: 0.2989,
+        &quot;gap_threshold&quot;: 0.1
+      },
+      &quot;recommendation&quot;: &quot;Investigate model complexity, possible data leakage, dataset size and validation strategy. Consider regularization or simpler models.&quot;
+    },
+    {
+      &quot;code&quot;: &quot;duplicate_rows_detected&quot;,
+      &quot;title&quot;: &quot;Duplicate Rows Detected&quot;,
+      &quot;severity&quot;: &quot;warning&quot;,
+      &quot;message&quot;: &quot;The dataset contains duplicate rows.&quot;,
+      &quot;evidence&quot;: {
+        &quot;duplicate_rows&quot;: 1
+      },
+      &quot;recommendation&quot;: &quot;Inspect duplicates and determine whether they represent valid observations.&quot;
+    },
+    {
+      &quot;code&quot;: &quot;better_than_baseline&quot;,
+      &quot;title&quot;: &quot;Model Outperforms Dummy Baseline&quot;,
+      &quot;severity&quot;: &quot;info&quot;,
+      &quot;message&quot;: &quot;The model performs better than the dummy baseline on the primary evaluation metric.&quot;,
+      &quot;evidence&quot;: {
+        &quot;primary_metric&quot;: &quot;r2&quot;,
+        &quot;status&quot;: &quot;better_than_baseline&quot;,
+        &quot;metrics&quot;: {
+          &quot;r2&quot;: {
+            &quot;model&quot;: 0.6047,
+            &quot;baseline&quot;: -0.005,
+            &quot;difference&quot;: 0.6097,
+            &quot;improved&quot;: true
+          },
+          &quot;mae&quot;: {
+            &quot;model&quot;: 0.513,
+            &quot;baseline&quot;: 0.8195,
+            &quot;difference&quot;: -0.3065,
+            &quot;improved&quot;: true
+          },
+          &quot;rmse&quot;: {
+            &quot;model&quot;: 0.6462,
+            &quot;baseline&quot;: 1.0304,
+            &quot;difference&quot;: -0.3842,
+            &quot;improved&quot;: true
+          }
+        }
+      },
+      &quot;recommendation&quot;: &quot;Continue evaluating with cross-validation and check whether the improvement is consistent.&quot;
+    },
+    {
+      &quot;code&quot;: &quot;profiler_warnings&quot;,
+      &quot;title&quot;: &quot;Dataset Profiler Warnings&quot;,
+      &quot;severity&quot;: &quot;info&quot;,
+      &quot;message&quot;: &quot;The dataset profiler reported additional observations.&quot;,
+      &quot;evidence&quot;: {
+        &quot;warnings&quot;: [
+          {
+            &quot;type&quot;: &quot;duplicate_rows&quot;,
+            &quot;severity&quot;: &quot;medium&quot;,
+            &quot;message&quot;: &quot;1 duplicate rows detected. Review before removing them.&quot;
+          }
+        ]
+      },
+      &quot;recommendation&quot;: &quot;Review the profiler warnings before finalizing dataset preparation.&quot;
+    }
+  ],
+  &quot;feature_importance&quot;: null,
+  &quot;limitations&quot;: [
+    &quot;Diagnosis depends on the completeness of supplied inputs.&quot;,
+    &quot;Heuristic findings are signals for investigation, not proof.&quot;,
+    &quot;Feature importance does not establish causation.&quot;,
+    &quot;A small train-test gap does not guarantee real-world performance.&quot;
+  ]
+}</pre>
+            </section>
+            
+            <section class="card">
+                <h2>Explainability</h2>
+                Not available
+            </section>
+            
+            <section class="card">
+                <h2>Hyperparameter Tuning</h2>
+                Not available
+            </section>
+            
+
+<footer>
+    Generated by ML Model Doctor
+</footer>
+
+</div>
+</body>
+</html>

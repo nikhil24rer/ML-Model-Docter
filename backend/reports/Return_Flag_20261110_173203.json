@@ -1,0 +1,1942 @@
+{
+    "report_version": "1.0",
+    "generated_at": "2026-11-10T17:45:51.691321+00:00",
+    "metadata": {
+        "target_column": "Return_Flag",
+        "created_at": "2026-11-10T17:32:03.149559+00:00",
+        "application": "ML Model Doctor"
+    },
+    "executive_summary": {
+        "dataset": {
+            "rows": 18045,
+            "columns": 36
+        },
+        "problem_type": "binary_classification",
+        "best_model": {
+            "name": "Logistic Regression"
+        },
+        "evaluation": {
+            "generalization": null,
+            "baseline_comparison": null
+        },
+        "diagnosis_status": "issues_found",
+        "diagnostic_findings": {
+            "total_findings": 8,
+            "critical": 0,
+            "warnings": 3,
+            "information": 5
+        },
+        "conclusion": "Review the evaluation metrics and diagnostic findings before using the model in production."
+    },
+    "dataset_profile": {
+        "rows": 18045,
+        "columns": 36,
+        "total_cells": 649620,
+        "column_names": [
+            "Transaction_ID",
+            "Order_ID",
+            "Customer_ID",
+            "Customer_Name",
+            "Customer_Age",
+            "Customer_Gender",
+            "Customer_Segment",
+            "Order_Date",
+            "Order_Time",
+            "Sales_Channel",
+            "Store_ID",
+            "Store_Name",
+            "Country",
+            "Region",
+            "City",
+            "Product_ID",
+            "Product_Name",
+            "Product_Category",
+            "Product_Subcategory",
+            "Quantity",
+            "Unit_Price",
+            "Discount_Percentage",
+            "Sales_Amount",
+            "Cost_Amount",
+            "Profit",
+            "Payment_Method",
+            "Order_Status",
+            "Shipping_Method",
+            "Delivery_Days",
+            "Return_Flag",
+            "Return_Reason",
+            "Sales_Representative",
+            "Promotion_Code",
+            "Customer_Rating",
+            "Inventory_Level",
+            "Order_Year"
+        ],
+        "numeric_columns": [
+            "Customer_Age",
+            "Quantity",
+            "Unit_Price",
+            "Discount_Percentage",
+            "Sales_Amount",
+            "Cost_Amount",
+            "Profit",
+            "Delivery_Days",
+            "Customer_Rating",
+            "Inventory_Level",
+            "Order_Year"
+        ],
+        "categorical_columns": [
+            "Transaction_ID",
+            "Order_ID",
+            "Customer_ID",
+            "Customer_Name",
+            "Customer_Gender",
+            "Customer_Segment",
+            "Sales_Channel",
+            "Store_ID",
+            "Store_Name",
+            "Country",
+            "Region",
+            "City",
+            "Product_ID",
+            "Product_Name",
+            "Product_Category",
+            "Product_Subcategory",
+            "Payment_Method",
+            "Order_Status",
+            "Shipping_Method",
+            "Return_Flag",
+            "Return_Reason",
+            "Sales_Representative",
+            "Promotion_Code"
+        ],
+        "boolean_columns": [],
+        "datetime_columns": [],
+        "datetime_candidates": [
+            "Order_Date",
+            "Order_Time"
+        ],
+        "other_columns": [],
+        "data_type_summary": {
+            "numeric": 11,
+            "categorical": 23,
+            "boolean": 0,
+            "datetime": 0,
+            "datetime_candidates": 2,
+            "other": 0
+        },
+        "missing_values": 30479,
+        "missing_percentage": 4.69,
+        "columns_with_missing": 10,
+        "duplicate_rows": 45,
+        "duplicate_columns": [],
+        "outlier_values": 9781,
+        "outlier_rows": 4583,
+        "outlier_details": [
+            {
+                "column": "Unit_Price",
+                "count": 2051
+            },
+            {
+                "column": "Profit",
+                "count": 1877
+            },
+            {
+                "column": "Cost_Amount",
+                "count": 1829
+            },
+            {
+                "column": "Sales_Amount",
+                "count": 1793
+            },
+            {
+                "column": "Customer_Rating",
+                "count": 1318
+            },
+            {
+                "column": "Quantity",
+                "count": 698
+            },
+            {
+                "column": "Inventory_Level",
+                "count": 114
+            },
+            {
+                "column": "Customer_Age",
+                "count": 88
+            },
+            {
+                "column": "Discount_Percentage",
+                "count": 13
+            }
+        ],
+        "constant_columns": [],
+        "near_constant_columns": [],
+        "identifier_candidates": [
+            "Transaction_ID",
+            "Order_ID",
+            "Customer_ID",
+            "Store_ID",
+            "Product_ID"
+        ],
+        "high_cardinality_columns": [
+            "Transaction_ID",
+            "Order_ID"
+        ],
+        "numerical_summary": {
+            "Customer_Age": {
+                "mean": 38.91692376731923,
+                "median": 39.0,
+                "std": 10.727356563733347,
+                "min": 4.0,
+                "max": 112.0,
+                "skewness": 0.20189716923787515,
+                "variance": 115.0761788454729
+            },
+            "Quantity": {
+                "mean": 2.1271266278747576,
+                "median": 2.0,
+                "std": 1.786212428307723,
+                "min": -3,
+                "max": 11,
+                "skewness": 2.6081578626150774,
+                "variance": 3.1905548390409724
+            },
+            "Unit_Price": {
+                "mean": 232.68563291770576,
+                "median": 99.87,
+                "std": 294.2080215641972,
+                "min": 21.39,
+                "max": 1425.09,
+                "skewness": 2.072664332188734,
+                "variance": 86558.35995271915
+            },
+            "Discount_Percentage": {
+                "mean": 6.256857855361596,
+                "median": 5.0,
+                "std": 6.88117818102154,
+                "min": 0.0,
+                "max": 110.0,
+                "skewness": 1.0421915009178024,
+                "variance": 47.350613158966915
+            },
+            "Sales_Amount": {
+                "mean": 457.30902743142144,
+                "median": 168.81,
+                "std": 856.5971807912753,
+                "min": 16.68,
+                "max": 14303.07,
+                "skewness": 5.722245277404069,
+                "variance": 733758.7301395606
+            },
+            "Cost_Amount": {
+                "mean": 366.0011559988917,
+                "median": 122.3,
+                "std": 705.8667375328109,
+                "min": 12.17,
+                "max": 10791.0,
+                "skewness": 5.714736232859776,
+                "variance": 498247.85115521424
+            },
+            "Profit": {
+                "mean": 91.40413078415074,
+                "median": 40.19,
+                "std": 167.8278834893265,
+                "min": -299.31,
+                "max": 3512.08,
+                "skewness": 6.603985074773834,
+                "variance": 28166.198476506946
+            },
+            "Delivery_Days": {
+                "mean": 2.2622043281328637,
+                "median": 1.0,
+                "std": 2.321655947490571,
+                "min": 0.0,
+                "max": 10.0,
+                "skewness": 0.5709724841798681,
+                "variance": 5.3900863385183415
+            },
+            "Customer_Rating": {
+                "mean": 3.985968514715948,
+                "median": 4.0,
+                "std": 1.0084224524804215,
+                "min": 1.0,
+                "max": 5.0,
+                "skewness": -1.0021630987180654,
+                "variance": 1.016915842666628
+            },
+            "Inventory_Level": {
+                "mean": 70.25791449543341,
+                "median": 70.0,
+                "std": 22.042608758840224,
+                "min": 0.0,
+                "max": 157.0,
+                "skewness": 0.02468765041212122,
+                "variance": 485.8766008952998
+            },
+            "Order_Year": {
+                "mean": 2023.5664172901081,
+                "median": 2024.0,
+                "std": 1.1187438148304194,
+                "min": 2022,
+                "max": 2025,
+                "skewness": -0.061731622132885265,
+                "variance": 1.2515877232213197
+            }
+        },
+        "column_info": [
+            {
+                "name": "Transaction_ID",
+                "dtype": "object",
+                "detected_type": "categorical",
+                "missing": 0,
+                "missing_percentage": 0.0,
+                "unique_values": 18000,
+                "unique_ratio": 0.9975,
+                "is_numeric": false,
+                "is_constant": false,
+                "is_near_constant": false,
+                "is_identifier_candidate": true,
+                "is_high_cardinality": true,
+                "outliers": 0,
+                "outlier_percentage": 0.0,
+                "outlier_bounds": {
+                    "lower": null,
+                    "upper": null
+                },
+                "dominant_value_percentage": 0.01
+            },
+            {
+                "name": "Order_ID",
+                "dtype": "object",
+                "detected_type": "categorical",
+                "missing": 0,
+                "missing_percentage": 0.0,
+                "unique_values": 14541,
+                "unique_ratio": 0.8058,
+                "is_numeric": false,
+                "is_constant": false,
+                "is_near_constant": false,
+                "is_identifier_candidate": true,
+                "is_high_cardinality": true,
+                "outliers": 0,
+                "outlier_percentage": 0.0,
+                "outlier_bounds": {
+                    "lower": null,
+                    "upper": null
+                },
+                "dominant_value_percentage": 0.02
+            },
+            {
+                "name": "Customer_ID",
+                "dtype": "object",
+                "detected_type": "categorical",
+                "missing": 0,
+                "missing_percentage": 0.0,
+                "unique_values": 4882,
+                "unique_ratio": 0.2705,
+                "is_numeric": false,
+                "is_constant": false,
+                "is_near_constant": false,
+                "is_identifier_candidate": true,
+                "is_high_cardinality": false,
+                "outliers": 0,
+                "outlier_percentage": 0.0,
+                "outlier_bounds": {
+                    "lower": null,
+                    "upper": null
+                },
+                "dominant_value_percentage": 0.12
+            },
+            {
+                "name": "Customer_Name",
+                "dtype": "object",
+                "detected_type": "categorical",
+                "missing": 108,
+                "missing_percentage": 0.6,
+                "unique_values": 1179,
+                "unique_ratio": 0.0653,
+                "is_numeric": false,
+                "is_constant": false,
+                "is_near_constant": false,
+                "is_identifier_candidate": false,
+                "is_high_cardinality": false,
+                "outliers": 0,
+                "outlier_percentage": 0.0,
+                "outlier_bounds": {
+                    "lower": null,
+                    "upper": null
+                },
+                "dominant_value_percentage": 0.6
+            },
+            {
+                "name": "Customer_Age",
+                "dtype": "float64",
+                "detected_type": "numeric",
+                "missing": 218,
+                "missing_percentage": 1.21,
+                "unique_values": 60,
+                "unique_ratio": 0.0033,
+                "is_numeric": true,
+                "is_constant": false,
+                "is_near_constant": false,
+                "is_identifier_candidate": false,
+                "is_high_cardinality": false,
+                "outliers": 88,
+                "outlier_percentage": 0.49,
+                "outlier_bounds": {
+                    "lower": 11.0,
+                    "upper": 67.0
+                },
+                "dominant_value_percentage": 3.94
+            },
+            {
+                "name": "Customer_Gender",
+                "dtype": "object",
+                "detected_type": "categorical",
+                "missing": 162,
+                "missing_percentage": 0.9,
+                "unique_values": 6,
+                "unique_ratio": 0.0003,
+                "is_numeric": false,
+                "is_constant": false,
+                "is_near_constant": false,
+                "is_identifier_candidate": false,
+                "is_high_cardinality": false,
+                "outliers": 0,
+                "outlier_percentage": 0.0,
+                "outlier_bounds": {
+                    "lower": null,
+                    "upper": null
+                },
+                "dominant_value_percentage": 48.45
+            },
+            {
+                "name": "Customer_Segment",
+                "dtype": "object",
+                "detected_type": "categorical",
+                "missing": 0,
+                "missing_percentage": 0.0,
+                "unique_values": 6,
+                "unique_ratio": 0.0003,
+                "is_numeric": false,
+                "is_constant": false,
+                "is_near_constant": false,
+                "is_identifier_candidate": false,
+                "is_high_cardinality": false,
+                "outliers": 0,
+                "outlier_percentage": 0.0,
+                "outlier_bounds": {
+                    "lower": null,
+                    "upper": null
+                },
+                "dominant_value_percentage": 44.55
+            },
+            {
+                "name": "Order_Date",
+                "dtype": "object",
+                "detected_type": "datetime_candidate",
+                "missing": 0,
+                "missing_percentage": 0.0,
+                "unique_values": 1461,
+                "unique_ratio": 0.081,
+                "is_numeric": false,
+                "is_constant": false,
+                "is_near_constant": false,
+                "is_identifier_candidate": false,
+                "is_high_cardinality": false,
+                "outliers": 0,
+                "outlier_percentage": 0.0,
+                "outlier_bounds": {
+                    "lower": null,
+                    "upper": null
+                },
+                "dominant_value_percentage": 0.18
+            },
+            {
+                "name": "Order_Time",
+                "dtype": "object",
+                "detected_type": "datetime_candidate",
+                "missing": 0,
+                "missing_percentage": 0.0,
+                "unique_values": 15201,
+                "unique_ratio": 0.8424,
+                "is_numeric": false,
+                "is_constant": false,
+                "is_near_constant": false,
+                "is_identifier_candidate": false,
+                "is_high_cardinality": false,
+                "outliers": 0,
+                "outlier_percentage": 0.0,
+                "outlier_bounds": {
+                    "lower": null,
+                    "upper": null
+                },
+                "dominant_value_percentage": 0.03
+            },
+            {
+                "name": "Sales_Channel",
+                "dtype": "object",
+                "detected_type": "categorical",
+                "missing": 0,
+                "missing_percentage": 0.0,
+                "unique_values": 4,
+                "unique_ratio": 0.0002,
+                "is_numeric": false,
+                "is_constant": false,
+                "is_near_constant": false,
+                "is_identifier_candidate": false,
+                "is_high_cardinality": false,
+                "outliers": 0,
+                "outlier_percentage": 0.0,
+                "outlier_bounds": {
+                    "lower": null,
+                    "upper": null
+                },
+                "dominant_value_percentage": 45.5
+            },
+            {
+                "name": "Store_ID",
+                "dtype": "object",
+                "detected_type": "categorical",
+                "missing": 0,
+                "missing_percentage": 0.0,
+                "unique_values": 12,
+                "unique_ratio": 0.0007,
+                "is_numeric": false,
+                "is_constant": false,
+                "is_near_constant": false,
+                "is_identifier_candidate": true,
+                "is_high_cardinality": false,
+                "outliers": 0,
+                "outlier_percentage": 0.0,
+                "outlier_bounds": {
+                    "lower": null,
+                    "upper": null
+                },
+                "dominant_value_percentage": 12.05
+            },
+            {
+                "name": "Store_Name",
+                "dtype": "object",
+                "detected_type": "categorical",
+                "missing": 0,
+                "missing_percentage": 0.0,
+                "unique_values": 12,
+                "unique_ratio": 0.0007,
+                "is_numeric": false,
+                "is_constant": false,
+                "is_near_constant": false,
+                "is_identifier_candidate": false,
+                "is_high_cardinality": false,
+                "outliers": 0,
+                "outlier_percentage": 0.0,
+                "outlier_bounds": {
+                    "lower": null,
+                    "upper": null
+                },
+                "dominant_value_percentage": 12.05
+            },
+            {
+                "name": "Country",
+                "dtype": "object",
+                "detected_type": "categorical",
+                "missing": 0,
+                "missing_percentage": 0.0,
+                "unique_values": 6,
+                "unique_ratio": 0.0003,
+                "is_numeric": false,
+                "is_constant": false,
+                "is_near_constant": false,
+                "is_identifier_candidate": false,
+                "is_high_cardinality": false,
+                "outliers": 0,
+                "outlier_percentage": 0.0,
+                "outlier_bounds": {
+                    "lower": null,
+                    "upper": null
+                },
+                "dominant_value_percentage": 41.81
+            },
+            {
+                "name": "Region",
+                "dtype": "object",
+                "detected_type": "categorical",
+                "missing": 0,
+                "missing_percentage": 0.0,
+                "unique_values": 14,
+                "unique_ratio": 0.0008,
+                "is_numeric": false,
+                "is_constant": false,
+                "is_near_constant": false,
+                "is_identifier_candidate": false,
+                "is_high_cardinality": false,
+                "outliers": 0,
+                "outlier_percentage": 0.0,
+                "outlier_bounds": {
+                    "lower": null,
+                    "upper": null
+                },
+                "dominant_value_percentage": 16.52
+            },
+            {
+                "name": "City",
+                "dtype": "object",
+                "detected_type": "categorical",
+                "missing": 0,
+                "missing_percentage": 0.0,
+                "unique_values": 15,
+                "unique_ratio": 0.0008,
+                "is_numeric": false,
+                "is_constant": false,
+                "is_near_constant": false,
+                "is_identifier_candidate": false,
+                "is_high_cardinality": false,
+                "outliers": 0,
+                "outlier_percentage": 0.0,
+                "outlier_bounds": {
+                    "lower": null,
+                    "upper": null
+                },
+                "dominant_value_percentage": 11.98
+            },
+            {
+                "name": "Product_ID",
+                "dtype": "object",
+                "detected_type": "categorical",
+                "missing": 0,
+                "missing_percentage": 0.0,
+                "unique_values": 28,
+                "unique_ratio": 0.0016,
+                "is_numeric": false,
+                "is_constant": false,
+                "is_near_constant": false,
+                "is_identifier_candidate": true,
+                "is_high_cardinality": false,
+                "outliers": 0,
+                "outlier_percentage": 0.0,
+                "outlier_bounds": {
+                    "lower": null,
+                    "upper": null
+                },
+                "dominant_value_percentage": 5.45
+            },
+            {
+                "name": "Product_Name",
+                "dtype": "object",
+                "detected_type": "categorical",
+                "missing": 144,
+                "missing_percentage": 0.8,
+                "unique_values": 28,
+                "unique_ratio": 0.0016,
+                "is_numeric": false,
+                "is_constant": false,
+                "is_near_constant": false,
+                "is_identifier_candidate": false,
+                "is_high_cardinality": false,
+                "outliers": 0,
+                "outlier_percentage": 0.0,
+                "outlier_bounds": {
+                    "lower": null,
+                    "upper": null
+                },
+                "dominant_value_percentage": 5.4
+            },
+            {
+                "name": "Product_Category",
+                "dtype": "object",
+                "detected_type": "categorical",
+                "missing": 0,
+                "missing_percentage": 0.0,
+                "unique_values": 7,
+                "unique_ratio": 0.0004,
+                "is_numeric": false,
+                "is_constant": false,
+                "is_near_constant": false,
+                "is_identifier_candidate": false,
+                "is_high_cardinality": false,
+                "outliers": 0,
+                "outlier_percentage": 0.0,
+                "outlier_bounds": {
+                    "lower": null,
+                    "upper": null
+                },
+                "dominant_value_percentage": 45.12
+            },
+            {
+                "name": "Product_Subcategory",
+                "dtype": "object",
+                "detected_type": "categorical",
+                "missing": 0,
+                "missing_percentage": 0.0,
+                "unique_values": 17,
+                "unique_ratio": 0.0009,
+                "is_numeric": false,
+                "is_constant": false,
+                "is_near_constant": false,
+                "is_identifier_candidate": false,
+                "is_high_cardinality": false,
+                "outliers": 0,
+                "outlier_percentage": 0.0,
+                "outlier_bounds": {
+                    "lower": null,
+                    "upper": null
+                },
+                "dominant_value_percentage": 17.98
+            },
+            {
+                "name": "Quantity",
+                "dtype": "int64",
+                "detected_type": "numeric",
+                "missing": 0,
+                "missing_percentage": 0.0,
+                "unique_values": 15,
+                "unique_ratio": 0.0008,
+                "is_numeric": true,
+                "is_constant": false,
+                "is_near_constant": false,
+                "is_identifier_candidate": false,
+                "is_high_cardinality": false,
+                "outliers": 698,
+                "outlier_percentage": 3.87,
+                "outlier_bounds": {
+                    "lower": -2.0,
+                    "upper": 6.0
+                },
+                "dominant_value_percentage": 49.81
+            },
+            {
+                "name": "Unit_Price",
+                "dtype": "float64",
+                "detected_type": "numeric",
+                "missing": 0,
+                "missing_percentage": 0.0,
+                "unique_values": 12445,
+                "unique_ratio": 0.6897,
+                "is_numeric": true,
+                "is_constant": false,
+                "is_near_constant": false,
+                "is_identifier_candidate": false,
+                "is_high_cardinality": false,
+                "outliers": 2051,
+                "outlier_percentage": 11.37,
+                "outlier_bounds": {
+                    "lower": -294.91999999999996,
+                    "upper": 633.8799999999999
+                },
+                "dominant_value_percentage": 0.06
+            },
+            {
+                "name": "Discount_Percentage",
+                "dtype": "float64",
+                "detected_type": "numeric",
+                "missing": 0,
+                "missing_percentage": 0.0,
+                "unique_values": 10,
+                "unique_ratio": 0.0006,
+                "is_numeric": true,
+                "is_constant": false,
+                "is_near_constant": false,
+                "is_identifier_candidate": false,
+                "is_high_cardinality": false,
+                "outliers": 13,
+                "outlier_percentage": 0.07,
+                "outlier_bounds": {
+                    "lower": -15.0,
+                    "upper": 25.0
+                },
+                "dominant_value_percentage": 42.4
+            },
+            {
+                "name": "Sales_Amount",
+                "dtype": "float64",
+                "detected_type": "numeric",
+                "missing": 0,
+                "missing_percentage": 0.0,
+                "unique_values": 15083,
+                "unique_ratio": 0.8359,
+                "is_numeric": true,
+                "is_constant": false,
+                "is_near_constant": false,
+                "is_identifier_candidate": false,
+                "is_high_cardinality": false,
+                "outliers": 1793,
+                "outlier_percentage": 9.94,
+                "outlier_bounds": {
+                    "lower": -512.3499999999999,
+                    "upper": 1063.33
+                },
+                "dominant_value_percentage": 0.04
+            },
+            {
+                "name": "Cost_Amount",
+                "dtype": "float64",
+                "detected_type": "numeric",
+                "missing": 0,
+                "missing_percentage": 0.0,
+                "unique_values": 14213,
+                "unique_ratio": 0.7876,
+                "is_numeric": true,
+                "is_constant": false,
+                "is_near_constant": false,
+                "is_identifier_candidate": false,
+                "is_high_cardinality": false,
+                "outliers": 1829,
+                "outlier_percentage": 10.14,
+                "outlier_bounds": {
+                    "lower": -423.72999999999996,
+                    "upper": 855.8699999999999
+                },
+                "dominant_value_percentage": 0.04
+            },
+            {
+                "name": "Profit",
+                "dtype": "float64",
+                "detected_type": "numeric",
+                "missing": 0,
+                "missing_percentage": 0.0,
+                "unique_values": 10667,
+                "unique_ratio": 0.5911,
+                "is_numeric": true,
+                "is_constant": false,
+                "is_near_constant": false,
+                "is_identifier_candidate": false,
+                "is_high_cardinality": false,
+                "outliers": 1877,
+                "outlier_percentage": 10.4,
+                "outlier_bounds": {
+                    "lower": -91.20499999999998,
+                    "upper": 203.95499999999998
+                },
+                "dominant_value_percentage": 0.06
+            },
+            {
+                "name": "Payment_Method",
+                "dtype": "object",
+                "detected_type": "categorical",
+                "missing": 147,
+                "missing_percentage": 0.81,
+                "unique_values": 10,
+                "unique_ratio": 0.0006,
+                "is_numeric": false,
+                "is_constant": false,
+                "is_near_constant": false,
+                "is_identifier_candidate": false,
+                "is_high_cardinality": false,
+                "outliers": 0,
+                "outlier_percentage": 0.0,
+                "outlier_bounds": {
+                    "lower": null,
+                    "upper": null
+                },
+                "dominant_value_percentage": 37.36
+            },
+            {
+                "name": "Order_Status",
+                "dtype": "object",
+                "detected_type": "categorical",
+                "missing": 0,
+                "missing_percentage": 0.0,
+                "unique_values": 8,
+                "unique_ratio": 0.0004,
+                "is_numeric": false,
+                "is_constant": false,
+                "is_near_constant": false,
+                "is_identifier_candidate": false,
+                "is_high_cardinality": false,
+                "outliers": 0,
+                "outlier_percentage": 0.0,
+                "outlier_bounds": {
+                    "lower": null,
+                    "upper": null
+                },
+                "dominant_value_percentage": 63.52
+            },
+            {
+                "name": "Shipping_Method",
+                "dtype": "object",
+                "detected_type": "categorical",
+                "missing": 0,
+                "missing_percentage": 0.0,
+                "unique_values": 4,
+                "unique_ratio": 0.0002,
+                "is_numeric": false,
+                "is_constant": false,
+                "is_near_constant": false,
+                "is_identifier_candidate": false,
+                "is_high_cardinality": false,
+                "outliers": 0,
+                "outlier_percentage": 0.0,
+                "outlier_bounds": {
+                    "lower": null,
+                    "upper": null
+                },
+                "dominant_value_percentage": 42.97
+            },
+            {
+                "name": "Delivery_Days",
+                "dtype": "float64",
+                "detected_type": "numeric",
+                "missing": 162,
+                "missing_percentage": 0.9,
+                "unique_values": 11,
+                "unique_ratio": 0.0006,
+                "is_numeric": true,
+                "is_constant": false,
+                "is_near_constant": false,
+                "is_identifier_candidate": false,
+                "is_high_cardinality": false,
+                "outliers": 0,
+                "outlier_percentage": 0.0,
+                "outlier_bounds": {
+                    "lower": -6.0,
+                    "upper": 10.0
+                },
+                "dominant_value_percentage": 38.18
+            },
+            {
+                "name": "Return_Flag",
+                "dtype": "object",
+                "detected_type": "categorical",
+                "missing": 0,
+                "missing_percentage": 0.0,
+                "unique_values": 2,
+                "unique_ratio": 0.0001,
+                "is_numeric": false,
+                "is_constant": false,
+                "is_near_constant": false,
+                "is_identifier_candidate": false,
+                "is_high_cardinality": false,
+                "outliers": 0,
+                "outlier_percentage": 0.0,
+                "outlier_bounds": {
+                    "lower": null,
+                    "upper": null
+                },
+                "dominant_value_percentage": 89.6
+            },
+            {
+                "name": "Return_Reason",
+                "dtype": "object",
+                "detected_type": "categorical",
+                "missing": 16168,
+                "missing_percentage": 89.6,
+                "unique_values": 6,
+                "unique_ratio": 0.0003,
+                "is_numeric": false,
+                "is_constant": false,
+                "is_near_constant": false,
+                "is_identifier_candidate": false,
+                "is_high_cardinality": false,
+                "outliers": 0,
+                "outlier_percentage": 0.0,
+                "outlier_bounds": {
+                    "lower": null,
+                    "upper": null
+                },
+                "dominant_value_percentage": 89.6
+            },
+            {
+                "name": "Sales_Representative",
+                "dtype": "object",
+                "detected_type": "categorical",
+                "missing": 0,
+                "missing_percentage": 0.0,
+                "unique_values": 16,
+                "unique_ratio": 0.0009,
+                "is_numeric": false,
+                "is_constant": false,
+                "is_near_constant": false,
+                "is_identifier_candidate": false,
+                "is_high_cardinality": false,
+                "outliers": 0,
+                "outlier_percentage": 0.0,
+                "outlier_bounds": {
+                    "lower": null,
+                    "upper": null
+                },
+                "dominant_value_percentage": 6.46
+            },
+            {
+                "name": "Promotion_Code",
+                "dtype": "object",
+                "detected_type": "categorical",
+                "missing": 9737,
+                "missing_percentage": 53.96,
+                "unique_values": 10,
+                "unique_ratio": 0.0006,
+                "is_numeric": false,
+                "is_constant": false,
+                "is_near_constant": false,
+                "is_identifier_candidate": false,
+                "is_high_cardinality": false,
+                "outliers": 0,
+                "outlier_percentage": 0.0,
+                "outlier_bounds": {
+                    "lower": null,
+                    "upper": null
+                },
+                "dominant_value_percentage": 53.96
+            },
+            {
+                "name": "Customer_Rating",
+                "dtype": "float64",
+                "detected_type": "numeric",
+                "missing": 3435,
+                "missing_percentage": 19.04,
+                "unique_values": 5,
+                "unique_ratio": 0.0003,
+                "is_numeric": true,
+                "is_constant": false,
+                "is_near_constant": false,
+                "is_identifier_candidate": false,
+                "is_high_cardinality": false,
+                "outliers": 1318,
+                "outlier_percentage": 9.02,
+                "outlier_bounds": {
+                    "lower": 2.5,
+                    "upper": 6.5
+                },
+                "dominant_value_percentage": 32.11
+            },
+            {
+                "name": "Inventory_Level",
+                "dtype": "float64",
+                "detected_type": "numeric",
+                "missing": 198,
+                "missing_percentage": 1.1,
+                "unique_values": 148,
+                "unique_ratio": 0.0082,
+                "is_numeric": true,
+                "is_constant": false,
+                "is_near_constant": false,
+                "is_identifier_candidate": false,
+                "is_high_cardinality": false,
+                "outliers": 114,
+                "outlier_percentage": 0.64,
+                "outlier_bounds": {
+                    "lower": 10.0,
+                    "upper": 130.0
+                },
+                "dominant_value_percentage": 1.9
+            },
+            {
+                "name": "Order_Year",
+                "dtype": "int64",
+                "detected_type": "numeric",
+                "missing": 0,
+                "missing_percentage": 0.0,
+                "unique_values": 4,
+                "unique_ratio": 0.0002,
+                "is_numeric": true,
+                "is_constant": false,
+                "is_near_constant": false,
+                "is_identifier_candidate": false,
+                "is_high_cardinality": false,
+                "outliers": 0,
+                "outlier_percentage": 0.0,
+                "outlier_bounds": {
+                    "lower": 2020.0,
+                    "upper": 2028.0
+                },
+                "dominant_value_percentage": 27.59
+            }
+        ],
+        "warnings": [
+            {
+                "type": "missing_values",
+                "severity": "medium",
+                "message": "30479 missing values detected (4.69% of all cells)."
+            },
+            {
+                "type": "duplicate_rows",
+                "severity": "medium",
+                "message": "45 duplicate rows detected. Review before removing them."
+            },
+            {
+                "type": "identifier_candidates",
+                "severity": "low",
+                "message": "Potential identifier columns detected. Review whether they should be used as features."
+            },
+            {
+                "type": "high_cardinality",
+                "severity": "medium",
+                "message": "High-cardinality categorical columns detected."
+            },
+            {
+                "type": "datetime_candidates",
+                "severity": "low",
+                "message": "Some string columns appear to contain dates. Review their data types."
+            },
+            {
+                "type": "outliers",
+                "severity": "medium",
+                "message": "9781 potential numerical outlier values detected using IQR."
+            }
+        ],
+        "original_missing_values": 30479,
+        "original_duplicate_rows": 45,
+        "target_missing_values": 0,
+        "target_distribution": {
+            "No": 16127,
+            "Yes": 1873
+        }
+    },
+    "target_analysis": {
+        "target_column": "Return_Flag",
+        "problem_type": "binary_classification",
+        "suggested_problem_type": "binary_classification",
+        "confidence": "user_confirmed",
+        "requires_confirmation": false,
+        "reason": "User explicitly selected binary classification.",
+        "target_statistics": {
+            "total_records": 18045,
+            "valid_records": 18045,
+            "missing_values": 0,
+            "unique_values": 2,
+            "data_type": "object"
+        },
+        "class_analysis": {
+            "class_count": 2,
+            "class_distribution": [
+                {
+                    "class": "No",
+                    "count": 16168,
+                    "percentage": 89.6
+                },
+                {
+                    "class": "Yes",
+                    "count": 1877,
+                    "percentage": 10.4
+                }
+            ],
+            "majority_class": "No",
+            "majority_percentage": 89.6,
+            "minority_percentage": 10.4,
+            "imbalance_ratio": 8.61,
+            "is_imbalanced": true
+        },
+        "numeric_analysis": null,
+        "warnings": []
+    },
+    "model_comparison": {
+        "problem_type": "binary_classification",
+        "evaluation_method": "80/20 holdout + 5-fold cross-validation",
+        "primary_metric": "macro F1",
+        "selection_metric": "f1_macro",
+        "selection_method": "cross_validation",
+        "cv_folds": 5,
+        "train_rows": 14400,
+        "test_rows": 3600,
+        "dataset_info": {
+            "total_rows": 18000,
+            "total_features": 35,
+            "number_of_classes": 2,
+            "is_imbalanced": true,
+            "imbalance_ratio": 8.6103,
+            "removed_empty_columns": []
+        },
+        "models": [
+            {
+                "model": "Logistic Regression",
+                "model_id": "logistic_regression",
+                "status": "success",
+                "cv_folds": 5,
+                "cv_scoring": "f1_macro",
+                "cv_mean_score": 1.0,
+                "cv_std_score": 0.0,
+                "cv_scores": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "train_rows": 14400,
+                "test_rows": 3600,
+                "train_accuracy": 1.0,
+                "train_metrics": {
+                    "accuracy": 1.0,
+                    "balanced_accuracy": 1.0,
+                    "precision": 1.0,
+                    "recall": 1.0,
+                    "f1": 1.0,
+                    "confusion_matrix": [
+                        [
+                            12902,
+                            0
+                        ],
+                        [
+                            0,
+                            1498
+                        ]
+                    ]
+                },
+                "accuracy": 1.0,
+                "balanced_accuracy": 1.0,
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1": 1.0,
+                "confusion_matrix": [
+                    [
+                        3225,
+                        0
+                    ],
+                    [
+                        0,
+                        375
+                    ]
+                ],
+                "score": 1.0
+            },
+            {
+                "model": "Random Forest Classifier",
+                "model_id": "random_forest",
+                "status": "success",
+                "cv_folds": 5,
+                "cv_scoring": "f1_macro",
+                "cv_mean_score": 1.0,
+                "cv_std_score": 0.0,
+                "cv_scores": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "train_rows": 14400,
+                "test_rows": 3600,
+                "train_accuracy": 1.0,
+                "train_metrics": {
+                    "accuracy": 1.0,
+                    "balanced_accuracy": 1.0,
+                    "precision": 1.0,
+                    "recall": 1.0,
+                    "f1": 1.0,
+                    "confusion_matrix": [
+                        [
+                            12902,
+                            0
+                        ],
+                        [
+                            0,
+                            1498
+                        ]
+                    ]
+                },
+                "accuracy": 1.0,
+                "balanced_accuracy": 1.0,
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1": 1.0,
+                "confusion_matrix": [
+                    [
+                        3225,
+                        0
+                    ],
+                    [
+                        0,
+                        375
+                    ]
+                ],
+                "score": 1.0
+            },
+            {
+                "model": "Extra Trees Classifier",
+                "model_id": "extra_trees",
+                "status": "success",
+                "cv_folds": 5,
+                "cv_scoring": "f1_macro",
+                "cv_mean_score": 1.0,
+                "cv_std_score": 0.0,
+                "cv_scores": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "train_rows": 14400,
+                "test_rows": 3600,
+                "train_accuracy": 1.0,
+                "train_metrics": {
+                    "accuracy": 1.0,
+                    "balanced_accuracy": 1.0,
+                    "precision": 1.0,
+                    "recall": 1.0,
+                    "f1": 1.0,
+                    "confusion_matrix": [
+                        [
+                            12902,
+                            0
+                        ],
+                        [
+                            0,
+                            1498
+                        ]
+                    ]
+                },
+                "accuracy": 1.0,
+                "balanced_accuracy": 1.0,
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1": 1.0,
+                "confusion_matrix": [
+                    [
+                        3225,
+                        0
+                    ],
+                    [
+                        0,
+                        375
+                    ]
+                ],
+                "score": 1.0
+            },
+            {
+                "model": "Gradient Boosting Classifier",
+                "model_id": "gradient_boosting",
+                "status": "success",
+                "cv_folds": 5,
+                "cv_scoring": "f1_macro",
+                "cv_mean_score": 1.0,
+                "cv_std_score": 0.0,
+                "cv_scores": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "train_rows": 14400,
+                "test_rows": 3600,
+                "train_accuracy": 1.0,
+                "train_metrics": {
+                    "accuracy": 1.0,
+                    "balanced_accuracy": 1.0,
+                    "precision": 1.0,
+                    "recall": 1.0,
+                    "f1": 1.0,
+                    "confusion_matrix": [
+                        [
+                            12902,
+                            0
+                        ],
+                        [
+                            0,
+                            1498
+                        ]
+                    ]
+                },
+                "accuracy": 1.0,
+                "balanced_accuracy": 1.0,
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1": 1.0,
+                "confusion_matrix": [
+                    [
+                        3225,
+                        0
+                    ],
+                    [
+                        0,
+                        375
+                    ]
+                ],
+                "score": 1.0
+            },
+            {
+                "model": "K-Nearest Neighbors",
+                "model_id": "knn",
+                "status": "success",
+                "cv_folds": 5,
+                "cv_scoring": "f1_macro",
+                "cv_mean_score": 0.5662,
+                "cv_std_score": 0.0109,
+                "cv_scores": [
+                    0.566,
+                    0.5851,
+                    0.5653,
+                    0.5636,
+                    0.551
+                ],
+                "train_rows": 14400,
+                "test_rows": 3600,
+                "train_accuracy": 0.9206,
+                "train_metrics": {
+                    "accuracy": 0.9206,
+                    "balanced_accuracy": 0.6194,
+                    "precision": 0.9552,
+                    "recall": 0.6194,
+                    "f1": 0.6714,
+                    "confusion_matrix": [
+                        [
+                            12899,
+                            3
+                        ],
+                        [
+                            1140,
+                            358
+                        ]
+                    ]
+                },
+                "accuracy": 0.9011,
+                "balanced_accuracy": 0.5277,
+                "precision": 0.907,
+                "recall": 0.5277,
+                "f1": 0.5266,
+                "confusion_matrix": [
+                    [
+                        3223,
+                        2
+                    ],
+                    [
+                        354,
+                        21
+                    ]
+                ],
+                "score": 0.5266
+            },
+            {
+                "model": "Gaussian Naive Bayes",
+                "model_id": "naive_bayes",
+                "status": "success",
+                "cv_folds": 5,
+                "cv_scoring": "f1_macro",
+                "cv_mean_score": 0.9389,
+                "cv_std_score": 0.0067,
+                "cv_scores": [
+                    0.9364,
+                    0.943,
+                    0.927,
+                    0.9433,
+                    0.945
+                ],
+                "train_rows": 14400,
+                "test_rows": 3600,
+                "train_accuracy": 1.0,
+                "train_metrics": {
+                    "accuracy": 1.0,
+                    "balanced_accuracy": 1.0,
+                    "precision": 1.0,
+                    "recall": 1.0,
+                    "f1": 1.0,
+                    "confusion_matrix": [
+                        [
+                            12902,
+                            0
+                        ],
+                        [
+                            0,
+                            1498
+                        ]
+                    ]
+                },
+                "accuracy": 0.9806,
+                "balanced_accuracy": 0.9679,
+                "precision": 0.9336,
+                "recall": 0.9679,
+                "f1": 0.9499,
+                "confusion_matrix": [
+                    [
+                        3173,
+                        52
+                    ],
+                    [
+                        18,
+                        357
+                    ]
+                ],
+                "score": 0.9499
+            }
+        ],
+        "cv_results": {
+            "logistic_regression": {
+                "mean_score": 1.0,
+                "std_score": 0.0,
+                "fold_scores": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ]
+            },
+            "random_forest": {
+                "mean_score": 1.0,
+                "std_score": 0.0,
+                "fold_scores": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ]
+            },
+            "extra_trees": {
+                "mean_score": 1.0,
+                "std_score": 0.0,
+                "fold_scores": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ]
+            },
+            "gradient_boosting": {
+                "mean_score": 1.0,
+                "std_score": 0.0,
+                "fold_scores": [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                ]
+            },
+            "knn": {
+                "mean_score": 0.5662,
+                "std_score": 0.0109,
+                "fold_scores": [
+                    0.566,
+                    0.5851,
+                    0.5653,
+                    0.5636,
+                    0.551
+                ]
+            },
+            "naive_bayes": {
+                "mean_score": 0.9389,
+                "std_score": 0.0067,
+                "fold_scores": [
+                    0.9364,
+                    0.943,
+                    0.927,
+                    0.9433,
+                    0.945
+                ]
+            }
+        },
+        "best_model": "Logistic Regression",
+        "best_model_id": "logistic_regression",
+        "best_score": 1.0,
+        "best_cv_std": 0.0,
+        "best_test_score": 1.0,
+        "baseline": {
+            "accuracy": 0.8958,
+            "balanced_accuracy": 0.5,
+            "precision": 0.4479,
+            "recall": 0.5,
+            "f1": 0.4725,
+            "train_metrics": {
+                "accuracy": 0.896,
+                "balanced_accuracy": 0.5,
+                "precision": 0.448,
+                "recall": 0.5,
+                "f1": 0.4726
+            }
+        },
+        "selection": {
+            "problem_type": "binary_classification",
+            "dataset_info": {
+                "n_samples": 18000,
+                "n_features": 35,
+                "n_classes": 2,
+                "is_imbalanced": true
+            },
+            "selected_models": [
+                "logistic_regression",
+                "random_forest",
+                "extra_trees",
+                "gradient_boosting",
+                "knn",
+                "naive_bayes"
+            ],
+            "model_details": {
+                "logistic_regression": {
+                    "name": "Logistic Regression",
+                    "description": "Linear model for binary and multiclass classification.",
+                    "requires_scaling": true,
+                    "supports_probability": true
+                },
+                "random_forest": {
+                    "name": "Random Forest Classifier",
+                    "description": "Ensemble of decision trees.",
+                    "requires_scaling": false,
+                    "supports_probability": true
+                },
+                "extra_trees": {
+                    "name": "Extra Trees Classifier",
+                    "description": "Ensemble of highly randomized decision trees.",
+                    "requires_scaling": false,
+                    "supports_probability": true
+                },
+                "gradient_boosting": {
+                    "name": "Gradient Boosting Classifier",
+                    "description": "Sequential boosting-based classification model.",
+                    "requires_scaling": false,
+                    "supports_probability": true
+                },
+                "knn": {
+                    "name": "K-Nearest Neighbors",
+                    "description": "Distance-based classification algorithm.",
+                    "requires_scaling": true,
+                    "supports_probability": true
+                },
+                "naive_bayes": {
+                    "name": "Gaussian Naive Bayes",
+                    "description": "Probabilistic classification algorithm.",
+                    "requires_scaling": false,
+                    "supports_probability": true
+                }
+            },
+            "selection_reasons": [
+                "Large dataset: computational cost should be considered.",
+                "Class imbalance detected: use stratified evaluation and imbalance-aware metrics."
+            ],
+            "selection_note": "These are candidate models, not guaranteed best models. Train and evaluate them using leakage-safe validation before selecting a final model."
+        },
+        "successful_models": 6,
+        "failed_models": 0,
+        "score_interpretation": "The best candidate was selected using cross-validation scores from training data only. The holdout test set was not used for model selection and is reserved for final evaluation. The final test score is still an estimate based on one holdout split and may vary with new data.",
+        "explainability": {
+            "available": false,
+            "methods": [],
+            "native_importance": {
+                "available": false,
+                "reason": "No selected trained model was available."
+            },
+            "coefficients": {
+                "available": false,
+                "reason": "No selected trained model was available."
+            },
+            "permutation_importance": null,
+            "limitations": [
+                "Feature importance does not prove causation.",
+                "Native importance values are model-specific.",
+                "Correlated features can share or distort importance.",
+                "Permutation importance depends on evaluation data."
+            ],
+            "error": "Feature names and importance values must have equal lengths."
+        },
+        "evaluation": {
+            "problem_type": "binary_classification",
+            "train_metrics": {
+                "accuracy": 1.0,
+                "balanced_accuracy": 1.0,
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1": 1.0,
+                "confusion_matrix": [
+                    [
+                        12902,
+                        0
+                    ],
+                    [
+                        0,
+                        1498
+                    ]
+                ]
+            },
+            "test_metrics": {
+                "accuracy": 1.0,
+                "balanced_accuracy": 1.0,
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1": 1.0,
+                "confusion_matrix": [
+                    [
+                        3225,
+                        0
+                    ],
+                    [
+                        0,
+                        375
+                    ]
+                ]
+            },
+            "baseline_train_metrics": {
+                "accuracy": 0.896,
+                "balanced_accuracy": 0.5,
+                "precision": 0.448,
+                "recall": 0.5,
+                "f1": 0.4726
+            },
+            "baseline_test_metrics": {
+                "accuracy": 0.8958,
+                "balanced_accuracy": 0.5,
+                "precision": 0.4479,
+                "recall": 0.5,
+                "f1": 0.4725
+            },
+            "generalization": {
+                "metric": "f1",
+                "train_score": 1.0,
+                "test_score": 1.0,
+                "performance_gap": 0.0,
+                "gap_threshold": 0.1,
+                "overfitting_suspected": false,
+                "status": "no_large_generalization_gap_detected",
+                "interpretation": "No large train-test performance gap was detected. This does not guarantee that the model generalizes well."
+            },
+            "baseline_comparison": {
+                "primary_metric": "f1",
+                "status": "better_than_baseline",
+                "metrics": {
+                    "accuracy": {
+                        "model": 1.0,
+                        "baseline": 0.8958,
+                        "difference": 0.1042,
+                        "improved": true
+                    },
+                    "balanced_accuracy": {
+                        "model": 1.0,
+                        "baseline": 0.5,
+                        "difference": 0.5,
+                        "improved": true
+                    },
+                    "f1": {
+                        "model": 1.0,
+                        "baseline": 0.4725,
+                        "difference": 0.5275,
+                        "improved": true
+                    }
+                }
+            },
+            "underfitting": {
+                "metric": "f1",
+                "train_score": 1.0,
+                "baseline_score": 0.4726,
+                "underfitting_suspected": false,
+                "interpretation": "Training performance exceeds the dummy baseline. This alone does not rule out underfitting."
+            },
+            "warnings": [
+                "No major warning was identified by the current evaluation checks. Further validation is still recommended."
+            ],
+            "evaluation_note": "These checks provide diagnostic indicators, not proof of model quality. Use cross-validation and an independent test dataset for stronger evidence.",
+            "available": true,
+            "selected_model": "Logistic Regression"
+        }
+    },
+    "evaluation": null,
+    "diagnosis": {
+        "model_name": "Logistic Regression",
+        "status": "issues_found",
+        "summary": {
+            "total_findings": 8,
+            "critical": 0,
+            "warnings": 3,
+            "information": 5
+        },
+        "findings": [
+            {
+                "code": "duplicate_rows_detected",
+                "title": "Duplicate Rows Detected",
+                "severity": "warning",
+                "message": "The dataset contains duplicate rows.",
+                "evidence": {
+                    "duplicate_rows": 45
+                },
+                "recommendation": "Inspect duplicates and determine whether they represent valid observations."
+            },
+            {
+                "code": "possible_identifier_features",
+                "title": "Possible Identifier Columns",
+                "severity": "warning",
+                "message": "Some columns appear to contain identifiers and may not provide useful predictive information.",
+                "evidence": {
+                    "columns": [
+                        "Transaction_ID",
+                        "Order_ID",
+                        "Customer_ID",
+                        "Store_ID",
+                        "Product_ID"
+                    ]
+                },
+                "recommendation": "Check whether these columns represent genuine identifiers and remove them if they are not useful."
+            },
+            {
+                "code": "class_imbalance_detected",
+                "title": "Class Imbalance Detected",
+                "severity": "warning",
+                "message": "The target has an uneven class distribution. Accuracy alone may hide poor minority-class performance.",
+                "evidence": {
+                    "class_count": 2,
+                    "class_distribution": [
+                        {
+                            "class": "No",
+                            "count": 16168,
+                            "percentage": 89.6
+                        },
+                        {
+                            "class": "Yes",
+                            "count": 1877,
+                            "percentage": 10.4
+                        }
+                    ],
+                    "majority_class": "No",
+                    "majority_percentage": 89.6,
+                    "minority_percentage": 10.4,
+                    "imbalance_ratio": 8.61,
+                    "is_imbalanced": true
+                },
+                "recommendation": "Review per-class precision, recall, balanced accuracy and the confusion matrix. Consider class weights or resampling when appropriate."
+            },
+            {
+                "code": "no_large_generalization_gap",
+                "title": "No Large Generalization Gap Detected",
+                "severity": "info",
+                "message": "No large train-test performance gap was identified. This does not guarantee good real-world performance.",
+                "evidence": {
+                    "metric": "f1",
+                    "train_score": 1.0,
+                    "test_score": 1.0,
+                    "performance_gap": 0.0
+                },
+                "recommendation": "Validate performance with cross-validation and independent data where possible."
+            },
+            {
+                "code": "better_than_baseline",
+                "title": "Model Outperforms Dummy Baseline",
+                "severity": "info",
+                "message": "The model performs better than the dummy baseline on the primary evaluation metric.",
+                "evidence": {
+                    "primary_metric": "f1",
+                    "status": "better_than_baseline",
+                    "metrics": {
+                        "accuracy": {
+                            "model": 1.0,
+                            "baseline": 0.8958,
+                            "difference": 0.1042,
+                            "improved": true
+                        },
+                        "balanced_accuracy": {
+                            "model": 1.0,
+                            "baseline": 0.5,
+                            "difference": 0.5,
+                            "improved": true
+                        },
+                        "f1": {
+                            "model": 1.0,
+                            "baseline": 0.4725,
+                            "difference": 0.5275,
+                            "improved": true
+                        }
+                    }
+                },
+                "recommendation": "Continue evaluating with cross-validation and check whether the improvement is consistent."
+            },
+            {
+                "code": "possible_outliers_detected",
+                "title": "Possible Outliers Detected",
+                "severity": "info",
+                "message": "The profiler identified possible statistical outliers. These values are not automatically data errors.",
+                "evidence": {
+                    "outlier_rows": 4583,
+                    "outlier_values": 9781,
+                    "outlier_details": [
+                        {
+                            "column": "Unit_Price",
+                            "count": 2051
+                        },
+                        {
+                            "column": "Profit",
+                            "count": 1877
+                        },
+                        {
+                            "column": "Cost_Amount",
+                            "count": 1829
+                        },
+                        {
+                            "column": "Sales_Amount",
+                            "count": 1793
+                        },
+                        {
+                            "column": "Customer_Rating",
+                            "count": 1318
+                        },
+                        {
+                            "column": "Quantity",
+                            "count": 698
+                        },
+                        {
+                            "column": "Inventory_Level",
+                            "count": 114
+                        },
+                        {
+                            "column": "Customer_Age",
+                            "count": 88
+                        },
+                        {
+                            "column": "Discount_Percentage",
+                            "count": 13
+                        }
+                    ]
+                },
+                "recommendation": "Inspect outliers using domain knowledge before removing or transforming them."
+            },
+            {
+                "code": "high_cardinality_features",
+                "title": "High-Cardinality Features Detected",
+                "severity": "info",
+                "message": "Some categorical columns contain many distinct values.",
+                "evidence": {
+                    "columns": [
+                        "Transaction_ID",
+                        "Order_ID"
+                    ]
+                },
+                "recommendation": "Inspect these columns and consider grouping rare categories or using an appropriate encoding strategy."
+            },
+            {
+                "code": "profiler_warnings",
+                "title": "Dataset Profiler Warnings",
+                "severity": "info",
+                "message": "The dataset profiler reported additional observations.",
+                "evidence": {
+                    "warnings": [
+                        {
+                            "type": "missing_values",
+                            "severity": "medium",
+                            "message": "30479 missing values detected (4.69% of all cells)."
+                        },
+                        {
+                            "type": "duplicate_rows",
+                            "severity": "medium",
+                            "message": "45 duplicate rows detected. Review before removing them."
+                        },
+                        {
+                            "type": "identifier_candidates",
+                            "severity": "low",
+                            "message": "Potential identifier columns detected. Review whether they should be used as features."
+                        },
+                        {
+                            "type": "high_cardinality",
+                            "severity": "medium",
+                            "message": "High-cardinality categorical columns detected."
+                        },
+                        {
+                            "type": "datetime_candidates",
+                            "severity": "low",
+                            "message": "Some string columns appear to contain dates. Review their data types."
+                        },
+                        {
+                            "type": "outliers",
+                            "severity": "medium",
+                            "message": "9781 potential numerical outlier values detected using IQR."
+                        }
+                    ]
+                },
+                "recommendation": "Review the profiler warnings before finalizing dataset preparation."
+            }
+        ],
+        "feature_importance": null,
+        "limitations": [
+            "Diagnosis depends on the completeness of supplied inputs.",
+            "Heuristic findings are signals for investigation, not proof.",
+            "Feature importance does not establish causation.",
+            "A small train-test gap does not guarantee real-world performance."
+        ]
+    },
+    "explainability": null,
+    "hyperparameter_tuning": null
+}

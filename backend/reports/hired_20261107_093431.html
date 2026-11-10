@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ML Model Doctor Report</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 30px;
+    font-family: Arial, sans-serif;
+    background: #f4f6fa;
+    color: #202938;
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+}
+
+header {
+    background: #182338;
+    color: white;
+    padding: 30px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+}
+
+header h1 {
+    margin: 0 0 10px;
+}
+
+.card {
+    background: white;
+    padding: 22px;
+    margin-bottom: 18px;
+    border-radius: 10px;
+    border: 1px solid #e1e6ed;
+    overflow-wrap: anywhere;
+}
+
+.card h2 {
+    margin-top: 0;
+    color: #244a80;
+}
+
+pre {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    background: #f4f6fa;
+    padding: 14px;
+    border-radius: 6px;
+}
+
+footer {
+    text-align: center;
+    color: #667085;
+    margin-top: 25px;
+}
+
+@media print {
+    body {
+        background: white;
+        padding: 10px;
+    }
+
+    .card, header {
+        break-inside: avoid;
+    }
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<header>
+    <h1>ML Model Doctor</h1>
+    <p>Automated Machine Learning Analysis Report</p>
+    <small>Generated: 2026-11-07T09:34:31.372267+00:00</small>
+</header>
+
+
+            <section class="card">
+                <h2>Executive Summary</h2>
+                <pre>{
+  &quot;dataset&quot;: {
+    &quot;rows&quot;: 40,
+    &quot;columns&quot;: 4
+  },
+  &quot;problem_type&quot;: &quot;binary_classification&quot;,
+  &quot;best_model&quot;: {
+    &quot;name&quot;: &quot;Random Forest Classifier&quot;
+  },
+  &quot;evaluation&quot;: {
+    &quot;generalization&quot;: null,
+    &quot;baseline_comparison&quot;: null
+  },
+  &quot;diagnosis_status&quot;: &quot;issues_found&quot;,
+  &quot;diagnostic_findings&quot;: {
+    &quot;total_findings&quot;: 2,
+    &quot;critical&quot;: 0,
+    &quot;warnings&quot;: 1,
+    &quot;information&quot;: 1
+  },
+  &quot;conclusion&quot;: &quot;Review the evaluation metrics and diagnostic findings before using the model in production.&quot;
+}</pre>
+            </section>
+            
+            <section class="card">
+                <h2>Dataset Profile</h2>
+                <pre>{
+  &quot;rows&quot;: 40,
+  &quot;columns&quot;: 4,
+  &quot;total_cells&quot;: 160,
+  &quot;column_names&quot;: [
+    &quot;age&quot;,
+    &quot;salary&quot;,
+    &quot;experience&quot;,
+    &quot;hired&quot;
+  ],
+  &quot;numeric_columns&quot;: [
+    &quot;age&quot;,
+    &quot;salary&quot;,
+    &quot;experience&quot;
+  ],
+  &quot;categorical_columns&quot;: [
+    &quot;hired&quot;
+  ],
+  &quot;boolean_columns&quot;: [],
+  &quot;datetime_columns&quot;: [],
+  &quot;datetime_candidates&quot;: [],
+  &quot;other_columns&quot;: [],
+  &quot;data_type_summary&quot;: {
+    &quot;numeric&quot;: 3,
+    &quot;categorical&quot;: 1,
+    &quot;boolean&quot;: 0,
+    &quot;datetime&quot;: 0,
+    &quot;datetime_candidates&quot;: 0,
+    &quot;other&quot;: 0
+  },
+  &quot;missing_values&quot;: 0,
+  &quot;missing_percentage&quot;: 0.0,
+  &quot;columns_with_missing&quot;: 0,
+  &quot;duplicate_rows&quot;: 10,
+  &quot;duplicate_columns&quot;: [],
+  &quot;outlier_values&quot;: 0,
+  &quot;outlier_rows&quot;: 0,
+  &quot;outlier_details&quot;: [],
+  &quot;constant_columns&quot;: [],
+  &quot;near_constant_columns&quot;: [],
+  &quot;identifier_candidates&quot;: [],
+  &quot;high_cardinality_columns&quot;: [],
+  &quot;numerical_summary&quot;: {
+    &quot;age&quot;: {
+      &quot;mean&quot;: 28.525,
+      &quot;median&quot;: 28.5,
+      &quot;std&quot;: 4.113688843050225,
+      &quot;min&quot;: 21,
+      &quot;max&quot;: 36,
+      &quot;skewness&quot;: 0.009984257801746272,
+      &quot;variance&quot;: 16.922435897435896
+    },
+    &quot;salary&quot;: {
+      &quot;mean&quot;: 36275.0,
+      &quot;median&quot;: 36500.0,
+      &quot;std&quot;: 7334.455042416633,
+      &quot;min&quot;: 24000,
+      &quot;max&quot;: 49000,
+      &quot;skewness&quot;: -0.006065157527674777,
+      &quot;variance&quot;: 53794230.76923077
+    },
+    &quot;experience&quot;: {
+      &quot;mean&quot;: 3.9,
+      &quot;median&quot;: 4.0,
+      &quot;std&quot;: 2.216488329051275,
+      &quot;min&quot;: 1,
+      &quot;max&quot;: 8,
+      &quot;skewness&quot;: 0.1921450519516123,
+      &quot;variance&quot;: 4.912820512820513
+    }
+  },
+  &quot;column_info&quot;: [
+    {
+      &quot;name&quot;: &quot;age&quot;,
+      &quot;dtype&quot;: &quot;int64&quot;,
+      &quot;detected_type&quot;: &quot;numeric&quot;,
+      &quot;missing&quot;: 0,
+      &quot;missing_percentage&quot;: 0.0,
+      &quot;unique_values&quot;: 16,
+      &quot;unique_ratio&quot;: 0.4,
+      &quot;is_numeric&quot;: true,
+      &quot;is_constant&quot;: false,
+      &quot;is_near_constant&quot;: false,
+      &quot;is_identifier_candidate&quot;: false,
+      &quot;is_high_cardinality&quot;: false,
+      &quot;outliers&quot;: 0,
+      &quot;outlier_percentage&quot;: 0.0,
+      &quot;outlier_bounds&quot;: {
+        &quot;lower&quot;: 14.5,
+        &quot;upper&quot;: 42.5
+      },
+      &quot;dominant_value_percentage&quot;: 7.5
+    },
+    {
+      &quot;name&quot;: &quot;salary&quot;,
+      &quot;dtype&quot;: &quot;int64&quot;,
+      &quot;detected_type&quot;: &quot;numeric&quot;,
+      &quot;missing&quot;: 0,
+      &quot;missing_percentage&quot;: 0.0,
+      &quot;unique_values&quot;: 26,
+      &quot;unique_ratio&quot;: 0.65,
+      &quot;is_numeric&quot;: true,
+      &quot;is_constant&quot;: false,
+      &quot;is_near_constant&quot;: false,
+      &quot;is_identifier_candidate&quot;: false,
+      &quot;is_high_cardinality&quot;: false,
+      &quot;outliers&quot;: 0,
+      &quot;outlier_percentage&quot;: 0.0,
+      &quot;outlier_bounds&quot;: {
+        &quot;lower&quot;: 11625.0,
+        &quot;upper&quot;: 60625.0
+      },
+      &quot;dominant_value_percentage&quot;: 5.0
+    },
+    {
+      &quot;name&quot;: &quot;experience&quot;,
+      &quot;dtype&quot;: &quot;int64&quot;,
+      &quot;detected_type&quot;: &quot;numeric&quot;,
+      &quot;missing&quot;: 0,
+      &quot;missing_percentage&quot;: 0.0,
+      &quot;unique_values&quot;: 8,
+      &quot;unique_ratio&quot;: 0.2,
+      &quot;is_numeric&quot;: true,
+      &quot;is_constant&quot;: false,
+      &quot;is_near_constant&quot;: false,
+      &quot;is_identifier_candidate&quot;: false,
+      &quot;is_high_cardinality&quot;: false,
+      &quot;outliers&quot;: 0,
+      &quot;outlier_percentage&quot;: 0.0,
+      &quot;outlier_bounds&quot;: {
+        &quot;lower&quot;: -4.0,
+        &quot;upper&quot;: 12.0
+      },
+      &quot;dominant_value_percentage&quot;: 20.0
+    },
+    {
+      &quot;name&quot;: &quot;hired&quot;,
+      &quot;dtype&quot;: &quot;object&quot;,
+      &quot;detected_type&quot;: &quot;categorical&quot;,
+      &quot;missing&quot;: 0,
+      &quot;missing_percentage&quot;: 0.0,
+      &quot;unique_values&quot;: 2,
+      &quot;unique_ratio&quot;: 0.05,
+      &quot;is_numeric&quot;: false,
+      &quot;is_constant&quot;: false,
+      &quot;is_near_constant&quot;: false,
+      &quot;is_identifier_candidate&quot;: false,
+      &quot;is_high_cardinality&quot;: false,
+      &quot;outliers&quot;: 0,
+      &quot;outlier_percentage&quot;: 0.0,
+      &quot;outlier_bounds&quot;: {
+        &quot;lower&quot;: null,
+        &quot;upper&quot;: null
+      },
+      &quot;dominant_value_percentage&quot;: 67.5
+    }
+  ],
+  &quot;warnings&quot;: [
+    {
+      &quot;type&quot;: &quot;duplicate_rows&quot;,
+      &quot;severity&quot;: &quot;medium&quot;,
+      &quot;message&quot;: &quot;10 duplicate rows detected. Review before removing them.&quot;
+    }
+  ],
+  &quot;original_missing_values&quot;: 0,
+  &quot;original_duplicate_rows&quot;: 10,
+  &quot;target_missing_values&quot;: 0,
+  &quot;target_distribution&quot;: {
+    &quot;Yes&quot;: 22,
+    &quot;No&quot;: 8
+  }
+}</pre>
+            </section>
+            
+            <section class="card">
+                <h2>Target Analysis</h2>
+                <pre>{
+  &quot;target_column&quot;: &quot;hired&quot;,
+  &quot;problem_type&quot;: &quot;binary_classification&quot;,
+  &quot;suggested_problem_type&quot;: &quot;binary_classification&quot;,
+  &quot;confidence&quot;: &quot;high&quot;,
+  &quot;requires_confirmation&quot;: false,
+  &quot;reason&quot;: &quot;Non-numerical target contains categorical labels. Classification is suggested.&quot;,
+  &quot;target_statistics&quot;: {
+    &quot;total_records&quot;: 40,
+    &quot;valid_records&quot;: 40,
+    &quot;missing_values&quot;: 0,
+    &quot;unique_values&quot;: 2,
+    &quot;data_type&quot;: &quot;object&quot;
+  },
+  &quot;class_analysis&quot;: {
+    &quot;class_count&quot;: 2,
+    &quot;class_distribution&quot;: [
+      {
+        &quot;class&quot;: &quot;Yes&quot;,
+        &quot;count&quot;: 27,
+        &quot;percentage&quot;: 67.5
+      },
+      {
+        &quot;class&quot;: &quot;No&quot;,
+        &quot;count&quot;: 13,
+        &quot;percentage&quot;: 32.5
+      }
+    ],
+    &quot;majority_class&quot;: &quot;Yes&quot;,
+    &quot;majority_percentage&quot;: 67.5,
+    &quot;minority_percentage&quot;: 32.5,
+    &quot;imbalance_ratio&quot;: 2.08,
+    &quot;is_imbalanced&quot;: false
+  },
+  &quot;numeric_analysis&quot;: null,
+  &quot;warnings&quot;: []
+}</pre>
+            </section>
+            
+            <section class="card">
+                <h2>Model Comparison</h2>
+                <pre>{
+  &quot;problem_type&quot;: &quot;binary_classification&quot;,
+  &quot;evaluation_method&quot;: &quot;80/20 holdout&quot;,
+  &quot;primary_metric&quot;: &quot;macro F1&quot;,
+  &quot;train_rows&quot;: 24,
+  &quot;test_rows&quot;: 6,
+  &quot;dataset_info&quot;: {
+    &quot;total_rows&quot;: 30,
+    &quot;total_features&quot;: 3,
+    &quot;number_of_classes&quot;: 2,
+    &quot;is_imbalanced&quot;: false,
+    &quot;imbalance_ratio&quot;: 2.75,
+    &quot;removed_empty_columns&quot;: []
+  },
+  &quot;models&quot;: [
+    {
+      &quot;model&quot;: &quot;Logistic Regression&quot;,
+      &quot;model_id&quot;: &quot;logistic_regression&quot;,
+      &quot;train_rows&quot;: 24,
+      &quot;test_rows&quot;: 6,
+      &quot;status&quot;: &quot;success&quot;,
+      &quot;train_accuracy&quot;: 1.0,
+      &quot;accuracy&quot;: 0.8333,
+      &quot;balanced_accuracy&quot;: 0.75,
+      &quot;precision&quot;: 0.9,
+      &quot;recall&quot;: 0.75,
+      &quot;f1&quot;: 0.7778,
+      &quot;confusion_matrix&quot;: [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          4
+        ]
+      ],
+      &quot;score&quot;: 0.7778
+    },
+    {
+      &quot;model&quot;: &quot;Random Forest Classifier&quot;,
+      &quot;model_id&quot;: &quot;random_forest&quot;,
+      &quot;train_rows&quot;: 24,
+      &quot;test_rows&quot;: 6,
+      &quot;status&quot;: &quot;success&quot;,
+      &quot;train_accuracy&quot;: 1.0,
+      &quot;accuracy&quot;: 1.0,
+      &quot;balanced_accuracy&quot;: 1.0,
+      &quot;precision&quot;: 1.0,
+      &quot;recall&quot;: 1.0,
+      &quot;f1&quot;: 1.0,
+      &quot;confusion_matrix&quot;: [
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          4
+        ]
+      ],
+      &quot;score&quot;: 1.0
+    }
+  ],
+  &quot;best_model&quot;: &quot;Random Forest Classifier&quot;,
+  &quot;best_model_id&quot;: &quot;random_forest&quot;,
+  &quot;best_score&quot;: 1.0,
+  &quot;baseline&quot;: {
+    &quot;accuracy&quot;: 0.6667,
+    &quot;balanced_accuracy&quot;: 0.5,
+    &quot;precision&quot;: 0.3333,
+    &quot;recall&quot;: 0.5,
+    &quot;f1&quot;: 0.4
+  },
+  &quot;selection&quot;: {
+    &quot;problem_type&quot;: &quot;binary_classification&quot;,
+    &quot;dataset_info&quot;: {
+      &quot;n_samples&quot;: 30,
+      &quot;n_features&quot;: 3,
+      &quot;n_classes&quot;: 2,
+      &quot;is_imbalanced&quot;: false
+    },
+    &quot;selected_models&quot;: [
+      &quot;logistic_regression&quot;,
+      &quot;random_forest&quot;
+    ],
+    &quot;model_details&quot;: {
+      &quot;logistic_regression&quot;: {
+        &quot;name&quot;: &quot;Logistic Regression&quot;,
+        &quot;description&quot;: &quot;Linear model for binary and multiclass classification.&quot;,
+        &quot;requires_scaling&quot;: true,
+        &quot;supports_probability&quot;: true
+      },
+      &quot;random_forest&quot;: {
+        &quot;name&quot;: &quot;Random Forest Classifier&quot;,
+        &quot;description&quot;: &quot;Ensemble of decision trees.&quot;,
+        &quot;requires_scaling&quot;: false,
+        &quot;supports_probability&quot;: true
+      }
+    },
+    &quot;selection_reasons&quot;: [
+      &quot;Small dataset: model performance may be unstable.&quot;
+    ],
+    &quot;selection_note&quot;: &quot;These are candidate models, not guaranteed best models. Train and evaluate them using leakage-safe validation before selecting a final model.&quot;
+  },
+  &quot;successful_models&quot;: 2,
+  &quot;failed_models&quot;: 0,
+  &quot;score_interpretation&quot;: &quot;The best candidate was selected using holdout scores. Its reported score is exploratory and may be optimistic. Use separate validation or nested cross-validation for an unbiased model-selection estimate.&quot;
+}</pre>
+            </section>
+            
+            <section class="card">
+                <h2>Evaluation</h2>
+                Not available
+            </section>
+            
+            <section class="card">
+                <h2>Diagnosis</h2>
+                <pre>{
+  &quot;model_name&quot;: &quot;Random Forest Classifier&quot;,
+  &quot;status&quot;: &quot;issues_found&quot;,
+  &quot;summary&quot;: {
+    &quot;total_findings&quot;: 2,
+    &quot;critical&quot;: 0,
+    &quot;warnings&quot;: 1,
+    &quot;information&quot;: 1
+  },
+  &quot;findings&quot;: [
+    {
+      &quot;code&quot;: &quot;duplicate_rows_detected&quot;,
+      &quot;title&quot;: &quot;Duplicate Rows Detected&quot;,
+      &quot;severity&quot;: &quot;warning&quot;,
+      &quot;message&quot;: &quot;The dataset contains duplicate rows.&quot;,
+      &quot;evidence&quot;: {
+        &quot;duplicate_rows&quot;: 10
+      },
+      &quot;recommendation&quot;: &quot;Inspect duplicates and determine whether they represent valid observations.&quot;
+    },
+    {
+      &quot;code&quot;: &quot;profiler_warnings&quot;,
+      &quot;title&quot;: &quot;Dataset Profiler Warnings&quot;,
+      &quot;severity&quot;: &quot;info&quot;,
+      &quot;message&quot;: &quot;The dataset profiler reported additional observations.&quot;,
+      &quot;evidence&quot;: {
+        &quot;warnings&quot;: [
+          {
+            &quot;type&quot;: &quot;duplicate_rows&quot;,
+            &quot;severity&quot;: &quot;medium&quot;,
+            &quot;message&quot;: &quot;10 duplicate rows detected. Review before removing them.&quot;
+          }
+        ]
+      },
+      &quot;recommendation&quot;: &quot;Review the profiler warnings before finalizing dataset preparation.&quot;
+    }
+  ],
+  &quot;feature_importance&quot;: null,
+  &quot;limitations&quot;: [
+    &quot;Diagnosis depends on the completeness of supplied inputs.&quot;,
+    &quot;Heuristic findings are signals for investigation, not proof.&quot;,
+    &quot;Feature importance does not establish causation.&quot;,
+    &quot;A small train-test gap does not guarantee real-world performance.&quot;
+  ]
+}</pre>
+            </section>
+            
+            <section class="card">
+                <h2>Explainability</h2>
+                Not available
+            </section>
+            
+            <section class="card">
+                <h2>Hyperparameter Tuning</h2>
+                Not available
+            </section>
+            
+
+<footer>
+    Generated by ML Model Doctor
+</footer>
+
+</div>
+</body>
+</html>

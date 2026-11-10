@@ -1,0 +1,1569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ML Model Doctor Report</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 30px;
+    font-family: Arial, sans-serif;
+    background: #f4f6fa;
+    color: #202938;
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+}
+
+header {
+    background: #182338;
+    color: white;
+    padding: 30px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+}
+
+header h1 {
+    margin: 0 0 10px;
+}
+
+.card {
+    background: white;
+    padding: 22px;
+    margin-bottom: 18px;
+    border-radius: 10px;
+    border: 1px solid #e1e6ed;
+    overflow-wrap: anywhere;
+}
+
+.card h2 {
+    margin-top: 0;
+    color: #244a80;
+}
+
+pre {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    background: #f4f6fa;
+    padding: 14px;
+    border-radius: 6px;
+}
+
+footer {
+    text-align: center;
+    color: #667085;
+    margin-top: 25px;
+}
+
+@media print {
+    body {
+        background: white;
+        padding: 10px;
+    }
+
+    .card, header {
+        break-inside: avoid;
+    }
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<header>
+    <h1>ML Model Doctor</h1>
+    <p>Automated Machine Learning Analysis Report</p>
+    <small>Generated: 2026-11-08T03:41:03.106583+00:00</small>
+</header>
+
+
+            <section class="card">
+                <h2>Executive Summary</h2>
+                <pre>{
+  &quot;dataset&quot;: {
+    &quot;rows&quot;: 508,
+    &quot;columns&quot;: 10
+  },
+  &quot;problem_type&quot;: &quot;regression&quot;,
+  &quot;best_model&quot;: {
+    &quot;name&quot;: &quot;Linear Regression&quot;
+  },
+  &quot;evaluation&quot;: {
+    &quot;generalization&quot;: null,
+    &quot;baseline_comparison&quot;: null
+  },
+  &quot;diagnosis_status&quot;: &quot;issues_found&quot;,
+  &quot;diagnostic_findings&quot;: {
+    &quot;total_findings&quot;: 5,
+    &quot;critical&quot;: 0,
+    &quot;warnings&quot;: 2,
+    &quot;information&quot;: 3
+  },
+  &quot;conclusion&quot;: &quot;Review the evaluation metrics and diagnostic findings before using the model in production.&quot;
+}</pre>
+            </section>
+            
+            <section class="card">
+                <h2>Dataset Profile</h2>
+                <pre>{
+  &quot;rows&quot;: 508,
+  &quot;columns&quot;: 10,
+  &quot;total_cells&quot;: 5080,
+  &quot;column_names&quot;: [
+    &quot;area_sqft&quot;,
+    &quot;bedrooms&quot;,
+    &quot;bathrooms&quot;,
+    &quot;property_age_years&quot;,
+    &quot;distance_to_city_km&quot;,
+    &quot;parking_spaces&quot;,
+    &quot;location&quot;,
+    &quot;property_type&quot;,
+    &quot;condition&quot;,
+    &quot;house_price_inr&quot;
+  ],
+  &quot;numeric_columns&quot;: [
+    &quot;area_sqft&quot;,
+    &quot;bedrooms&quot;,
+    &quot;bathrooms&quot;,
+    &quot;property_age_years&quot;,
+    &quot;distance_to_city_km&quot;,
+    &quot;parking_spaces&quot;,
+    &quot;house_price_inr&quot;
+  ],
+  &quot;categorical_columns&quot;: [
+    &quot;location&quot;,
+    &quot;property_type&quot;,
+    &quot;condition&quot;
+  ],
+  &quot;boolean_columns&quot;: [],
+  &quot;datetime_columns&quot;: [],
+  &quot;datetime_candidates&quot;: [],
+  &quot;other_columns&quot;: [],
+  &quot;data_type_summary&quot;: {
+    &quot;numeric&quot;: 7,
+    &quot;categorical&quot;: 3,
+    &quot;boolean&quot;: 0,
+    &quot;datetime&quot;: 0,
+    &quot;datetime_candidates&quot;: 0,
+    &quot;other&quot;: 0
+  },
+  &quot;missing_values&quot;: 26,
+  &quot;missing_percentage&quot;: 0.51,
+  &quot;columns_with_missing&quot;: 4,
+  &quot;duplicate_rows&quot;: 8,
+  &quot;duplicate_columns&quot;: [],
+  &quot;outlier_values&quot;: 0,
+  &quot;outlier_rows&quot;: 0,
+  &quot;outlier_details&quot;: [],
+  &quot;constant_columns&quot;: [],
+  &quot;near_constant_columns&quot;: [],
+  &quot;identifier_candidates&quot;: [
+    &quot;house_price_inr&quot;
+  ],
+  &quot;high_cardinality_columns&quot;: [],
+  &quot;numerical_summary&quot;: {
+    &quot;area_sqft&quot;: {
+      &quot;mean&quot;: 1885.494,
+      &quot;median&quot;: 1868.5,
+      &quot;std&quot;: 759.1236548882017,
+      &quot;min&quot;: 564.0,
+      &quot;max&quot;: 3195.0,
+      &quot;skewness&quot;: -0.023233201076185893,
+      &quot;variance&quot;: 576268.7234108216
+    },
+    &quot;bedrooms&quot;: {
+      &quot;mean&quot;: 2.9015748031496065,
+      &quot;median&quot;: 3.0,
+      &quot;std&quot;: 1.2956296894652528,
+      &quot;min&quot;: 1,
+      &quot;max&quot;: 5,
+      &quot;skewness&quot;: 0.04168753423162655,
+      &quot;variance&quot;: 1.6786562922238273
+    },
+    &quot;bathrooms&quot;: {
+      &quot;mean&quot;: 2.3307086614173227,
+      &quot;median&quot;: 2.0,
+      &quot;std&quot;: 1.1291729050376575,
+      &quot;min&quot;: 1,
+      &quot;max&quot;: 4,
+      &quot;skewness&quot;: 0.21493848220320583,
+      &quot;variance&quot;: 1.275031449471183
+    },
+    &quot;property_age_years&quot;: {
+      &quot;mean&quot;: 15.464566929133857,
+      &quot;median&quot;: 15.0,
+      &quot;std&quot;: 8.947619013199747,
+      &quot;min&quot;: 0,
+      &quot;max&quot;: 30,
+      &quot;skewness&quot;: 0.0006862230317548863,
+      &quot;variance&quot;: 80.0598860053736
+    },
+    &quot;distance_to_city_km&quot;: {
+      &quot;mean&quot;: 13.179640718562874,
+      &quot;median&quot;: 12.9,
+      &quot;std&quot;: 6.8784580154754655,
+      &quot;min&quot;: 1.0,
+      &quot;max&quot;: 25.0,
+      &quot;skewness&quot;: 0.013840217180730911,
+      &quot;variance&quot;: 47.31318467065868
+    },
+    &quot;parking_spaces&quot;: {
+      &quot;mean&quot;: 0.9744094488188977,
+      &quot;median&quot;: 1.0,
+      &quot;std&quot;: 0.8148853367805147,
+      &quot;min&quot;: 0,
+      &quot;max&quot;: 2,
+      &quot;skewness&quot;: 0.047042294786093945,
+      &quot;variance&quot;: 0.6640381120998928
+    },
+    &quot;house_price_inr&quot;: {
+      &quot;mean&quot;: 10743806.066929134,
+      &quot;median&quot;: 10837907.0,
+      &quot;std&quot;: 3567634.8740406865,
+      &quot;min&quot;: 4090024,
+      &quot;max&quot;: 17739196,
+      &quot;skewness&quot;: -0.02625184348498878,
+      &quot;variance&quot;: 12728018594471.307
+    }
+  },
+  &quot;column_info&quot;: [
+    {
+      &quot;name&quot;: &quot;area_sqft&quot;,
+      &quot;dtype&quot;: &quot;float64&quot;,
+      &quot;detected_type&quot;: &quot;numeric&quot;,
+      &quot;missing&quot;: 8,
+      &quot;missing_percentage&quot;: 1.57,
+      &quot;unique_values&quot;: 447,
+      &quot;unique_ratio&quot;: 0.8799,
+      &quot;is_numeric&quot;: true,
+      &quot;is_constant&quot;: false,
+      &quot;is_near_constant&quot;: false,
+      &quot;is_identifier_candidate&quot;: false,
+      &quot;is_high_cardinality&quot;: false,
+      &quot;outliers&quot;: 0,
+      &quot;outlier_percentage&quot;: 0.0,
+      &quot;outlier_bounds&quot;: {
+        &quot;lower&quot;: -707.625,
+        &quot;upper&quot;: 4519.375
+      },
+      &quot;dominant_value_percentage&quot;: 1.57
+    },
+    {
+      &quot;name&quot;: &quot;bedrooms&quot;,
+      &quot;dtype&quot;: &quot;int64&quot;,
+      &quot;detected_type&quot;: &quot;numeric&quot;,
+      &quot;missing&quot;: 0,
+      &quot;missing_percentage&quot;: 0.0,
+      &quot;unique_values&quot;: 5,
+      &quot;unique_ratio&quot;: 0.0098,
+      &quot;is_numeric&quot;: true,
+      &quot;is_constant&quot;: false,
+      &quot;is_near_constant&quot;: false,
+      &quot;is_identifier_candidate&quot;: false,
+      &quot;is_high_cardinality&quot;: false,
+      &quot;outliers&quot;: 0,
+      &quot;outlier_percentage&quot;: 0.0,
+      &quot;outlier_bounds&quot;: {
+        &quot;lower&quot;: -1.0,
+        &quot;upper&quot;: 7.0
+      },
+      &quot;dominant_value_percentage&quot;: 27.17
+    },
+    {
+      &quot;name&quot;: &quot;bathrooms&quot;,
+      &quot;dtype&quot;: &quot;int64&quot;,
+      &quot;detected_type&quot;: &quot;numeric&quot;,
+      &quot;missing&quot;: 0,
+      &quot;missing_percentage&quot;: 0.0,
+      &quot;unique_values&quot;: 4,
+      &quot;unique_ratio&quot;: 0.0079,
+      &quot;is_numeric&quot;: true,
+      &quot;is_constant&quot;: false,
+      &quot;is_near_constant&quot;: false,
+      &quot;is_identifier_candidate&quot;: false,
+      &quot;is_high_cardinality&quot;: false,
+      &quot;outliers&quot;: 0,
+      &quot;outlier_percentage&quot;: 0.0,
+      &quot;outlier_bounds&quot;: {
+        &quot;lower&quot;: -2.0,
+        &quot;upper&quot;: 6.0
+      },
+      &quot;dominant_value_percentage&quot;: 31.3
+    },
+    {
+      &quot;name&quot;: &quot;property_age_years&quot;,
+      &quot;dtype&quot;: &quot;int64&quot;,
+      &quot;detected_type&quot;: &quot;numeric&quot;,
+      &quot;missing&quot;: 0,
+      &quot;missing_percentage&quot;: 0.0,
+      &quot;unique_values&quot;: 31,
+      &quot;unique_ratio&quot;: 0.061,
+      &quot;is_numeric&quot;: true,
+      &quot;is_constant&quot;: false,
+      &quot;is_near_constant&quot;: false,
+      &quot;is_identifier_candidate&quot;: false,
+      &quot;is_high_cardinality&quot;: false,
+      &quot;outliers&quot;: 0,
+      &quot;outlier_percentage&quot;: 0.0,
+      &quot;outlier_bounds&quot;: {
+        &quot;lower&quot;: -14.5,
+        &quot;upper&quot;: 45.5
+      },
+      &quot;dominant_value_percentage&quot;: 4.92
+    },
+    {
+      &quot;name&quot;: &quot;distance_to_city_km&quot;,
+      &quot;dtype&quot;: &quot;float64&quot;,
+      &quot;detected_type&quot;: &quot;numeric&quot;,
+      &quot;missing&quot;: 7,
+      &quot;missing_percentage&quot;: 1.38,
+      &quot;unique_values&quot;: 208,
+      &quot;unique_ratio&quot;: 0.4094,
+      &quot;is_numeric&quot;: true,
+      &quot;is_constant&quot;: false,
+      &quot;is_near_constant&quot;: false,
+      &quot;is_identifier_candidate&quot;: false,
+      &quot;is_high_cardinality&quot;: false,
+      &quot;outliers&quot;: 0,
+      &quot;outlier_percentage&quot;: 0.0,
+      &quot;outlier_bounds&quot;: {
+        &quot;lower&quot;: -11.700000000000001,
+        &quot;upper&quot;: 37.900000000000006
+      },
+      &quot;dominant_value_percentage&quot;: 1.57
+    },
+    {
+      &quot;name&quot;: &quot;parking_spaces&quot;,
+      &quot;dtype&quot;: &quot;int64&quot;,
+      &quot;detected_type&quot;: &quot;numeric&quot;,
+      &quot;missing&quot;: 0,
+      &quot;missing_percentage&quot;: 0.0,
+      &quot;unique_values&quot;: 3,
+      &quot;unique_ratio&quot;: 0.0059,
+      &quot;is_numeric&quot;: true,
+      &quot;is_constant&quot;: false,
+      &quot;is_near_constant&quot;: false,
+      &quot;is_identifier_candidate&quot;: false,
+      &quot;is_high_cardinality&quot;: false,
+      &quot;outliers&quot;: 0,
+      &quot;outlier_percentage&quot;: 0.0,
+      &quot;outlier_bounds&quot;: {
+        &quot;lower&quot;: -3.0,
+        &quot;upper&quot;: 5.0
+      },
+      &quot;dominant_value_percentage&quot;: 34.45
+    },
+    {
+      &quot;name&quot;: &quot;location&quot;,
+      &quot;dtype&quot;: &quot;object&quot;,
+      &quot;detected_type&quot;: &quot;categorical&quot;,
+      &quot;missing&quot;: 6,
+      &quot;missing_percentage&quot;: 1.18,
+      &quot;unique_values&quot;: 4,
+      &quot;unique_ratio&quot;: 0.0079,
+      &quot;is_numeric&quot;: false,
+      &quot;is_constant&quot;: false,
+      &quot;is_near_constant&quot;: false,
+      &quot;is_identifier_candidate&quot;: false,
+      &quot;is_high_cardinality&quot;: false,
+      &quot;outliers&quot;: 0,
+      &quot;outlier_percentage&quot;: 0.0,
+      &quot;outlier_bounds&quot;: {
+        &quot;lower&quot;: null,
+        &quot;upper&quot;: null
+      },
+      &quot;dominant_value_percentage&quot;: 37.8
+    },
+    {
+      &quot;name&quot;: &quot;property_type&quot;,
+      &quot;dtype&quot;: &quot;object&quot;,
+      &quot;detected_type&quot;: &quot;categorical&quot;,
+      &quot;missing&quot;: 0,
+      &quot;missing_percentage&quot;: 0.0,
+      &quot;unique_values&quot;: 3,
+      &quot;unique_ratio&quot;: 0.0059,
+      &quot;is_numeric&quot;: false,
+      &quot;is_constant&quot;: false,
+      &quot;is_near_constant&quot;: false,
+      &quot;is_identifier_candidate&quot;: false,
+      &quot;is_high_cardinality&quot;: false,
+      &quot;outliers&quot;: 0,
+      &quot;outlier_percentage&quot;: 0.0,
+      &quot;outlier_bounds&quot;: {
+        &quot;lower&quot;: null,
+        &quot;upper&quot;: null
+      },
+      &quot;dominant_value_percentage&quot;: 55.12
+    },
+    {
+      &quot;name&quot;: &quot;condition&quot;,
+      &quot;dtype&quot;: &quot;object&quot;,
+      &quot;detected_type&quot;: &quot;categorical&quot;,
+      &quot;missing&quot;: 5,
+      &quot;missing_percentage&quot;: 0.98,
+      &quot;unique_values&quot;: 3,
+      &quot;unique_ratio&quot;: 0.0059,
+      &quot;is_numeric&quot;: false,
+      &quot;is_constant&quot;: false,
+      &quot;is_near_constant&quot;: false,
+      &quot;is_identifier_candidate&quot;: false,
+      &quot;is_high_cardinality&quot;: false,
+      &quot;outliers&quot;: 0,
+      &quot;outlier_percentage&quot;: 0.0,
+      &quot;outlier_bounds&quot;: {
+        &quot;lower&quot;: null,
+        &quot;upper&quot;: null
+      },
+      &quot;dominant_value_percentage&quot;: 58.66
+    },
+    {
+      &quot;name&quot;: &quot;house_price_inr&quot;,
+      &quot;dtype&quot;: &quot;int64&quot;,
+      &quot;detected_type&quot;: &quot;numeric&quot;,
+      &quot;missing&quot;: 0,
+      &quot;missing_percentage&quot;: 0.0,
+      &quot;unique_values&quot;: 500,
+      &quot;unique_ratio&quot;: 0.9843,
+      &quot;is_numeric&quot;: true,
+      &quot;is_constant&quot;: false,
+      &quot;is_near_constant&quot;: false,
+      &quot;is_identifier_candidate&quot;: true,
+      &quot;is_high_cardinality&quot;: false,
+      &quot;outliers&quot;: 0,
+      &quot;outlier_percentage&quot;: 0.0,
+      &quot;outlier_bounds&quot;: {
+        &quot;lower&quot;: -1449130.375,
+        &quot;upper&quot;: 22686642.625
+      },
+      &quot;dominant_value_percentage&quot;: 0.39
+    }
+  ],
+  &quot;warnings&quot;: [
+    {
+      &quot;type&quot;: &quot;missing_values&quot;,
+      &quot;severity&quot;: &quot;medium&quot;,
+      &quot;message&quot;: &quot;26 missing values detected (0.51% of all cells).&quot;
+    },
+    {
+      &quot;type&quot;: &quot;duplicate_rows&quot;,
+      &quot;severity&quot;: &quot;medium&quot;,
+      &quot;message&quot;: &quot;8 duplicate rows detected. Review before removing them.&quot;
+    },
+    {
+      &quot;type&quot;: &quot;identifier_candidates&quot;,
+      &quot;severity&quot;: &quot;low&quot;,
+      &quot;message&quot;: &quot;Potential identifier columns detected. Review whether they should be used as features.&quot;
+    }
+  ],
+  &quot;original_missing_values&quot;: 26,
+  &quot;original_duplicate_rows&quot;: 8,
+  &quot;target_missing_values&quot;: 0,
+  &quot;target_distribution&quot;: {
+    &quot;12399137&quot;: 1,
+    &quot;5090240&quot;: 1,
+    &quot;13401521&quot;: 1,
+    &quot;10565948&quot;: 1,
+    &quot;13616308&quot;: 1,
+    &quot;7697442&quot;: 1,
+    &quot;13974253&quot;: 1,
+    &quot;8280252&quot;: 1,
+    &quot;6444485&quot;: 1,
+    &quot;13007438&quot;: 1,
+    &quot;4090024&quot;: 1,
+    &quot;15820924&quot;: 1,
+    &quot;14346004&quot;: 1,
+    &quot;12280348&quot;: 1,
+    &quot;10217369&quot;: 1,
+    &quot;9786019&quot;: 1,
+    &quot;15500105&quot;: 1,
+    &quot;13483165&quot;: 1,
+    &quot;16604800&quot;: 1,
+    &quot;6902624&quot;: 1,
+    &quot;4551499&quot;: 1,
+    &quot;15203354&quot;: 1,
+    &quot;11662330&quot;: 1,
+    &quot;6722202&quot;: 1,
+    &quot;6968561&quot;: 1,
+    &quot;9202173&quot;: 1,
+    &quot;11049013&quot;: 1,
+    &quot;10320524&quot;: 1,
+    &quot;15013069&quot;: 1,
+    &quot;10045858&quot;: 1,
+    &quot;12856211&quot;: 1,
+    &quot;15307686&quot;: 1,
+    &quot;16441731&quot;: 1,
+    &quot;7667700&quot;: 1,
+    &quot;9563756&quot;: 1,
+    &quot;10142426&quot;: 1,
+    &quot;7206228&quot;: 1,
+    &quot;14414448&quot;: 1,
+    &quot;13847822&quot;: 1,
+    &quot;15433453&quot;: 1,
+    &quot;15141873&quot;: 1,
+    &quot;9191887&quot;: 1,
+    &quot;17187252&quot;: 1,
+    &quot;5290531&quot;: 1,
+    &quot;8519132&quot;: 1,
+    &quot;13297761&quot;: 1,
+    &quot;14530447&quot;: 1,
+    &quot;7686928&quot;: 1,
+    &quot;12767730&quot;: 1,
+    &quot;7678288&quot;: 1,
+    &quot;14781744&quot;: 1,
+    &quot;14355171&quot;: 1,
+    &quot;8365065&quot;: 1,
+    &quot;15716490&quot;: 1,
+    &quot;9588771&quot;: 1,
+    &quot;8544376&quot;: 1,
+    &quot;16646600&quot;: 1,
+    &quot;8678035&quot;: 1,
+    &quot;12393262&quot;: 1,
+    &quot;16029894&quot;: 1,
+    &quot;13772332&quot;: 1,
+    &quot;12726260&quot;: 1,
+    &quot;6038836&quot;: 1,
+    &quot;10797378&quot;: 1,
+    &quot;4575272&quot;: 1,
+    &quot;11413460&quot;: 1,
+    &quot;12066757&quot;: 1,
+    &quot;10241793&quot;: 1,
+    &quot;15354349&quot;: 1,
+    &quot;6133645&quot;: 1,
+    &quot;10048411&quot;: 1,
+    &quot;16222834&quot;: 1,
+    &quot;12901812&quot;: 1,
+    &quot;11208467&quot;: 1,
+    &quot;8086985&quot;: 1,
+    &quot;7535157&quot;: 1,
+    &quot;10459646&quot;: 1,
+    &quot;12845961&quot;: 1,
+    &quot;4897651&quot;: 1,
+    &quot;9754409&quot;: 1,
+    &quot;6116946&quot;: 1,
+    &quot;15125403&quot;: 1,
+    &quot;11400622&quot;: 1,
+    &quot;5323915&quot;: 1,
+    &quot;7505088&quot;: 1,
+    &quot;12500960&quot;: 1,
+    &quot;12293652&quot;: 1,
+    &quot;8122888&quot;: 1,
+    &quot;6920583&quot;: 1,
+    &quot;15066892&quot;: 1,
+    &quot;9042365&quot;: 1,
+    &quot;14784749&quot;: 1,
+    &quot;13475888&quot;: 1,
+    &quot;10019065&quot;: 1,
+    &quot;14522131&quot;: 1,
+    &quot;13721327&quot;: 1,
+    &quot;8350635&quot;: 1,
+    &quot;5200788&quot;: 1,
+    &quot;13367648&quot;: 1,
+    &quot;12717241&quot;: 1,
+    &quot;11342533&quot;: 1,
+    &quot;10863920&quot;: 1,
+    &quot;9630598&quot;: 1,
+    &quot;10580541&quot;: 1,
+    &quot;14721069&quot;: 1,
+    &quot;7708400&quot;: 1,
+    &quot;12471571&quot;: 1,
+    &quot;9865224&quot;: 1,
+    &quot;13137054&quot;: 1,
+    &quot;14015691&quot;: 1,
+    &quot;13358896&quot;: 1,
+    &quot;14502029&quot;: 1,
+    &quot;4903718&quot;: 1,
+    &quot;14023113&quot;: 1,
+    &quot;6555520&quot;: 1,
+    &quot;14853108&quot;: 1,
+    &quot;11128997&quot;: 1,
+    &quot;12868460&quot;: 1,
+    &quot;11077674&quot;: 1,
+    &quot;10843601&quot;: 1,
+    &quot;14027296&quot;: 1,
+    &quot;5543239&quot;: 1,
+    &quot;11656982&quot;: 1,
+    &quot;15670398&quot;: 1,
+    &quot;11390484&quot;: 1,
+    &quot;12976084&quot;: 1,
+    &quot;12540999&quot;: 1,
+    &quot;11252421&quot;: 1,
+    &quot;4905790&quot;: 1,
+    &quot;7481770&quot;: 1,
+    &quot;5538138&quot;: 1,
+    &quot;6089513&quot;: 1,
+    &quot;7945806&quot;: 1,
+    &quot;5178578&quot;: 1,
+    &quot;14549772&quot;: 1,
+    &quot;16555751&quot;: 1,
+    &quot;8701453&quot;: 1,
+    &quot;7833384&quot;: 1,
+    &quot;6240462&quot;: 1,
+    &quot;15871231&quot;: 1,
+    &quot;10193848&quot;: 1,
+    &quot;9292286&quot;: 1,
+    &quot;6600193&quot;: 1,
+    &quot;11372582&quot;: 1,
+    &quot;8739092&quot;: 1,
+    &quot;15690323&quot;: 1,
+    &quot;11113170&quot;: 1,
+    &quot;6959618&quot;: 1,
+    &quot;10534626&quot;: 1,
+    &quot;9830105&quot;: 1,
+    &quot;12051238&quot;: 1,
+    &quot;16194700&quot;: 1,
+    &quot;14417462&quot;: 1,
+    &quot;10525812&quot;: 1,
+    &quot;11390425&quot;: 1,
+    &quot;6439642&quot;: 1,
+    &quot;12924445&quot;: 1,
+    &quot;9841664&quot;: 1,
+    &quot;8197884&quot;: 1,
+    &quot;16542554&quot;: 1,
+    &quot;7131233&quot;: 1,
+    &quot;15202685&quot;: 1,
+    &quot;6659030&quot;: 1,
+    &quot;14539761&quot;: 1,
+    &quot;10186557&quot;: 1,
+    &quot;15566484&quot;: 1,
+    &quot;7333140&quot;: 1,
+    &quot;13636666&quot;: 1,
+    &quot;10469984&quot;: 1,
+    &quot;12821339&quot;: 1,
+    &quot;13579817&quot;: 1,
+    &quot;13515394&quot;: 1,
+    &quot;5424546&quot;: 1,
+    &quot;5316434&quot;: 1,
+    &quot;6022271&quot;: 1,
+    &quot;7470367&quot;: 1,
+    &quot;5130695&quot;: 1,
+    &quot;7986887&quot;: 1,
+    &quot;14095389&quot;: 1,
+    &quot;9751428&quot;: 1,
+    &quot;5247934&quot;: 1,
+    &quot;15284162&quot;: 1,
+    &quot;10087244&quot;: 1,
+    &quot;11172288&quot;: 1,
+    &quot;12007612&quot;: 1,
+    &quot;13104452&quot;: 1,
+    &quot;7775832&quot;: 1,
+    &quot;8089252&quot;: 1,
+    &quot;7516761&quot;: 1,
+    &quot;7460338&quot;: 1,
+    &quot;10960800&quot;: 1,
+    &quot;10869465&quot;: 1,
+    &quot;13316682&quot;: 1,
+    &quot;10431080&quot;: 1,
+    &quot;5415406&quot;: 1,
+    &quot;15345485&quot;: 1,
+    &quot;13392526&quot;: 1,
+    &quot;8283623&quot;: 1,
+    &quot;13971679&quot;: 1,
+    &quot;7605688&quot;: 1,
+    &quot;16417669&quot;: 1,
+    &quot;14523974&quot;: 1,
+    &quot;8535950&quot;: 1,
+    &quot;10770064&quot;: 1,
+    &quot;12482238&quot;: 1,
+    &quot;11530019&quot;: 1,
+    &quot;14513050&quot;: 1,
+    &quot;9580924&quot;: 1,
+    &quot;16959124&quot;: 1,
+    &quot;9305102&quot;: 1,
+    &quot;6513115&quot;: 1,
+    &quot;7959361&quot;: 1,
+    &quot;12710057&quot;: 1,
+    &quot;15618408&quot;: 1,
+    &quot;7386569&quot;: 1,
+    &quot;12903790&quot;: 1,
+    &quot;6420456&quot;: 1,
+    &quot;12002994&quot;: 1,
+    &quot;12024411&quot;: 1,
+    &quot;5412220&quot;: 1,
+    &quot;16039729&quot;: 1,
+    &quot;9738790&quot;: 1,
+    &quot;5945284&quot;: 1,
+    &quot;5282411&quot;: 1,
+    &quot;7227966&quot;: 1,
+    &quot;12448026&quot;: 1,
+    &quot;9503414&quot;: 1,
+    &quot;13854957&quot;: 1,
+    &quot;13144983&quot;: 1,
+    &quot;6916326&quot;: 1,
+    &quot;12828325&quot;: 1,
+    &quot;6346380&quot;: 1,
+    &quot;12513442&quot;: 1,
+    &quot;8539832&quot;: 1,
+    &quot;9730956&quot;: 1,
+    &quot;12906079&quot;: 1,
+    &quot;14104911&quot;: 1,
+    &quot;11076881&quot;: 1,
+    &quot;13615246&quot;: 1,
+    &quot;4214472&quot;: 1,
+    &quot;13929962&quot;: 1,
+    &quot;9484876&quot;: 1,
+    &quot;7334652&quot;: 1,
+    &quot;10929688&quot;: 1,
+    &quot;12209259&quot;: 1,
+    &quot;5575162&quot;: 1,
+    &quot;5963681&quot;: 1,
+    &quot;12728113&quot;: 1,
+    &quot;6132559&quot;: 1,
+    &quot;12645035&quot;: 1,
+    &quot;8102605&quot;: 1,
+    &quot;7727105&quot;: 1,
+    &quot;9758627&quot;: 1,
+    &quot;7186570&quot;: 1,
+    &quot;6116914&quot;: 1,
+    &quot;14452358&quot;: 1,
+    &quot;9260338&quot;: 1,
+    &quot;14312307&quot;: 1,
+    &quot;6728561&quot;: 1,
+    &quot;12491822&quot;: 1,
+    &quot;9746094&quot;: 1,
+    &quot;10475269&quot;: 1,
+    &quot;16898734&quot;: 1,
+    &quot;6395246&quot;: 1,
+    &quot;4412615&quot;: 1,
+    &quot;9186487&quot;: 1,
+    &quot;11613694&quot;: 1,
+    &quot;12679633&quot;: 1,
+    &quot;9678951&quot;: 1,
+    &quot;9225552&quot;: 1,
+    &quot;12316167&quot;: 1,
+    &quot;17416791&quot;: 1,
+    &quot;15427095&quot;: 1,
+    &quot;9083370&quot;: 1,
+    &quot;6202094&quot;: 1,
+    &quot;13573368&quot;: 1,
+    &quot;7691435&quot;: 1,
+    &quot;13456882&quot;: 1,
+    &quot;10895677&quot;: 1,
+    &quot;11355308&quot;: 1,
+    &quot;11678191&quot;: 1,
+    &quot;6062503&quot;: 1,
+    &quot;16205448&quot;: 1,
+    &quot;9362681&quot;: 1,
+    &quot;10358054&quot;: 1,
+    &quot;12534429&quot;: 1,
+    &quot;10464148&quot;: 1,
+    &quot;7520385&quot;: 1,
+    &quot;5637309&quot;: 1,
+    &quot;5825547&quot;: 1,
+    &quot;14971489&quot;: 1,
+    &quot;12057934&quot;: 1,
+    &quot;11687461&quot;: 1,
+    &quot;8692205&quot;: 1,
+    &quot;5777578&quot;: 1,
+    &quot;12235220&quot;: 1,
+    &quot;15575573&quot;: 1,
+    &quot;4105010&quot;: 1,
+    &quot;14076897&quot;: 1,
+    &quot;8741129&quot;: 1,
+    &quot;4530086&quot;: 1,
+    &quot;7337864&quot;: 1,
+    &quot;9239126&quot;: 1,
+    &quot;15744394&quot;: 1,
+    &quot;11126730&quot;: 1,
+    &quot;11513117&quot;: 1,
+    &quot;8110957&quot;: 1,
+    &quot;16903649&quot;: 1,
+    &quot;16033994&quot;: 1,
+    &quot;12925290&quot;: 1,
+    &quot;6161965&quot;: 1,
+    &quot;9447026&quot;: 1,
+    &quot;15095391&quot;: 1,
+    &quot;16708062&quot;: 1,
+    &quot;13623726&quot;: 1,
+    &quot;13363022&quot;: 1,
+    &quot;11548943&quot;: 1,
+    &quot;7647239&quot;: 1,
+    &quot;9510598&quot;: 1,
+    &quot;7344481&quot;: 1,
+    &quot;13631224&quot;: 1,
+    &quot;12859463&quot;: 1,
+    &quot;6529385&quot;: 1,
+    &quot;8324877&quot;: 1,
+    &quot;15153330&quot;: 1,
+    &quot;8071990&quot;: 1,
+    &quot;7570635&quot;: 1,
+    &quot;16751183&quot;: 1,
+    &quot;13635415&quot;: 1,
+    &quot;9537457&quot;: 1,
+    &quot;15953643&quot;: 1,
+    &quot;8258052&quot;: 1,
+    &quot;10295036&quot;: 1,
+    &quot;9706234&quot;: 1,
+    &quot;12053990&quot;: 1,
+    &quot;6584834&quot;: 1,
+    &quot;5667761&quot;: 1,
+    &quot;7196960&quot;: 1,
+    &quot;8724601&quot;: 1,
+    &quot;16499693&quot;: 1,
+    &quot;16678183&quot;: 1,
+    &quot;15482785&quot;: 1,
+    &quot;9039041&quot;: 1,
+    &quot;8900797&quot;: 1,
+    &quot;4718982&quot;: 1,
+    &quot;10727799&quot;: 1,
+    &quot;6610833&quot;: 1,
+    &quot;7583340&quot;: 1,
+    &quot;15489225&quot;: 1,
+    &quot;16767294&quot;: 1,
+    &quot;7683538&quot;: 1,
+    &quot;15201675&quot;: 1,
+    &quot;11044549&quot;: 1,
+    &quot;12139062&quot;: 1,
+    &quot;7976942&quot;: 1,
+    &quot;10832213&quot;: 1,
+    &quot;14097706&quot;: 1,
+    &quot;7569634&quot;: 1,
+    &quot;13304640&quot;: 1,
+    &quot;5351886&quot;: 1,
+    &quot;8189876&quot;: 1,
+    &quot;11121095&quot;: 1,
+    &quot;11184155&quot;: 1,
+    &quot;5809645&quot;: 1,
+    &quot;15181434&quot;: 1,
+    &quot;6310556&quot;: 1,
+    &quot;15404333&quot;: 1,
+    &quot;15288679&quot;: 1,
+    &quot;12607394&quot;: 1,
+    &quot;6782226&quot;: 1,
+    &quot;15943491&quot;: 1,
+    &quot;5893062&quot;: 1,
+    &quot;16050939&quot;: 1,
+    &quot;5855542&quot;: 1,
+    &quot;5052452&quot;: 1,
+    &quot;4190500&quot;: 1,
+    &quot;7430233&quot;: 1,
+    &quot;15204563&quot;: 1,
+    &quot;15355148&quot;: 1,
+    &quot;5585301&quot;: 1,
+    &quot;7255057&quot;: 1,
+    &quot;9330574&quot;: 1,
+    &quot;13808828&quot;: 1,
+    &quot;13398929&quot;: 1,
+    &quot;5026154&quot;: 1,
+    &quot;16395457&quot;: 1,
+    &quot;9154511&quot;: 1,
+    &quot;10099436&quot;: 1,
+    &quot;16993713&quot;: 1,
+    &quot;8728205&quot;: 1,
+    &quot;14780085&quot;: 1,
+    &quot;17303766&quot;: 1,
+    &quot;8296885&quot;: 1,
+    &quot;7666050&quot;: 1,
+    &quot;7046416&quot;: 1,
+    &quot;4792487&quot;: 1,
+    &quot;14581508&quot;: 1,
+    &quot;13001325&quot;: 1,
+    &quot;12384079&quot;: 1,
+    &quot;8079931&quot;: 1,
+    &quot;6152982&quot;: 1,
+    &quot;15339671&quot;: 1,
+    &quot;7822170&quot;: 1,
+    &quot;14899897&quot;: 1,
+    &quot;10729244&quot;: 1,
+    &quot;7240857&quot;: 1,
+    &quot;6138428&quot;: 1,
+    &quot;16766529&quot;: 1,
+    &quot;13063518&quot;: 1,
+    &quot;4459098&quot;: 1,
+    &quot;5673799&quot;: 1,
+    &quot;7595621&quot;: 1,
+    &quot;7270784&quot;: 1,
+    &quot;6098384&quot;: 1,
+    &quot;4743462&quot;: 1,
+    &quot;15512526&quot;: 1,
+    &quot;6172964&quot;: 1,
+    &quot;9396389&quot;: 1,
+    &quot;11048525&quot;: 1,
+    &quot;10641940&quot;: 1,
+    &quot;5652448&quot;: 1,
+    &quot;9308169&quot;: 1,
+    &quot;6467130&quot;: 1,
+    &quot;14763630&quot;: 1,
+    &quot;13190135&quot;: 1,
+    &quot;6190979&quot;: 1,
+    &quot;14063093&quot;: 1,
+    &quot;5257826&quot;: 1,
+    &quot;14212880&quot;: 1,
+    &quot;14949170&quot;: 1,
+    &quot;7138642&quot;: 1,
+    &quot;9978667&quot;: 1,
+    &quot;12393165&quot;: 1,
+    &quot;13353285&quot;: 1,
+    &quot;13453713&quot;: 1,
+    &quot;15148712&quot;: 1,
+    &quot;15833814&quot;: 1,
+    &quot;15955926&quot;: 1,
+    &quot;7603839&quot;: 1,
+    &quot;10700220&quot;: 1,
+    &quot;16385718&quot;: 1,
+    &quot;8641412&quot;: 1,
+    &quot;11718364&quot;: 1,
+    &quot;11726951&quot;: 1,
+    &quot;10528891&quot;: 1,
+    &quot;7474122&quot;: 1,
+    &quot;9033114&quot;: 1,
+    &quot;17739196&quot;: 1,
+    &quot;10111849&quot;: 1,
+    &quot;4557405&quot;: 1,
+    &quot;16217224&quot;: 1,
+    &quot;11808841&quot;: 1,
+    &quot;11681681&quot;: 1,
+    &quot;5826029&quot;: 1,
+    &quot;17047145&quot;: 1,
+    &quot;4326330&quot;: 1,
+    &quot;10278650&quot;: 1,
+    &quot;13272412&quot;: 1,
+    &quot;4715237&quot;: 1,
+    &quot;13852210&quot;: 1,
+    &quot;6177581&quot;: 1,
+    &quot;15228993&quot;: 1,
+    &quot;13245716&quot;: 1,
+    &quot;6022060&quot;: 1,
+    &quot;11308865&quot;: 1,
+    &quot;11840597&quot;: 1,
+    &quot;5567180&quot;: 1,
+    &quot;10538805&quot;: 1,
+    &quot;10712218&quot;: 1,
+    &quot;14863247&quot;: 1,
+    &quot;9506525&quot;: 1,
+    &quot;6890978&quot;: 1,
+    &quot;9714213&quot;: 1,
+    &quot;7161634&quot;: 1,
+    &quot;11327618&quot;: 1,
+    &quot;13831677&quot;: 1,
+    &quot;15560393&quot;: 1,
+    &quot;16171983&quot;: 1,
+    &quot;12073832&quot;: 1,
+    &quot;12882380&quot;: 1,
+    &quot;11012469&quot;: 1,
+    &quot;8927932&quot;: 1,
+    &quot;7030078&quot;: 1,
+    &quot;10338058&quot;: 1,
+    &quot;10083783&quot;: 1,
+    &quot;13694243&quot;: 1,
+    &quot;6324565&quot;: 1,
+    &quot;10386334&quot;: 1,
+    &quot;13555631&quot;: 1,
+    &quot;13479684&quot;: 1,
+    &quot;14470022&quot;: 1,
+    &quot;11351462&quot;: 1,
+    &quot;16792385&quot;: 1,
+    &quot;11709777&quot;: 1,
+    &quot;5116200&quot;: 1,
+    &quot;5347037&quot;: 1,
+    &quot;13748637&quot;: 1,
+    &quot;6257822&quot;: 1,
+    &quot;15456560&quot;: 1,
+    &quot;11000270&quot;: 1
+  }
+}</pre>
+            </section>
+            
+            <section class="card">
+                <h2>Target Analysis</h2>
+                <pre>{
+  &quot;target_column&quot;: &quot;house_price_inr&quot;,
+  &quot;problem_type&quot;: &quot;regression&quot;,
+  &quot;suggested_problem_type&quot;: &quot;regression&quot;,
+  &quot;confidence&quot;: &quot;user_confirmed&quot;,
+  &quot;requires_confirmation&quot;: false,
+  &quot;reason&quot;: &quot;User explicitly selected regression.&quot;,
+  &quot;target_statistics&quot;: {
+    &quot;total_records&quot;: 508,
+    &quot;valid_records&quot;: 508,
+    &quot;missing_values&quot;: 0,
+    &quot;unique_values&quot;: 500,
+    &quot;data_type&quot;: &quot;int64&quot;
+  },
+  &quot;class_analysis&quot;: null,
+  &quot;numeric_analysis&quot;: {
+    &quot;mean&quot;: 10743806.066929134,
+    &quot;median&quot;: 10837907.0,
+    &quot;std&quot;: 3567634.8740406865,
+    &quot;min&quot;: 4090024.0,
+    &quot;max&quot;: 17739196.0,
+    &quot;unique_values&quot;: 500,
+    &quot;skewness&quot;: -0.02625184348498878
+  },
+  &quot;warnings&quot;: []
+}</pre>
+            </section>
+            
+            <section class="card">
+                <h2>Model Comparison</h2>
+                <pre>{
+  &quot;problem_type&quot;: &quot;regression&quot;,
+  &quot;evaluation_method&quot;: &quot;80/20 holdout + 5-fold cross-validation&quot;,
+  &quot;primary_metric&quot;: &quot;R2&quot;,
+  &quot;selection_metric&quot;: &quot;r2&quot;,
+  &quot;selection_method&quot;: &quot;cross_validation&quot;,
+  &quot;cv_folds&quot;: 5,
+  &quot;train_rows&quot;: 400,
+  &quot;test_rows&quot;: 100,
+  &quot;dataset_info&quot;: {
+    &quot;total_rows&quot;: 500,
+    &quot;total_features&quot;: 9,
+    &quot;number_of_classes&quot;: null,
+    &quot;is_imbalanced&quot;: false,
+    &quot;imbalance_ratio&quot;: null,
+    &quot;removed_empty_columns&quot;: []
+  },
+  &quot;models&quot;: [
+    {
+      &quot;model&quot;: &quot;Linear Regression&quot;,
+      &quot;model_id&quot;: &quot;linear_regression&quot;,
+      &quot;status&quot;: &quot;success&quot;,
+      &quot;cv_folds&quot;: 5,
+      &quot;cv_scoring&quot;: &quot;r2&quot;,
+      &quot;cv_mean_score&quot;: 0.979,
+      &quot;cv_std_score&quot;: 0.0119,
+      &quot;cv_scores&quot;: [
+        0.9873,
+        0.9639,
+        0.9882,
+        0.9651,
+        0.9905
+      ],
+      &quot;train_rows&quot;: 400,
+      &quot;test_rows&quot;: 100,
+      &quot;train_r2&quot;: 0.9798,
+      &quot;train_metrics&quot;: {
+        &quot;r2&quot;: 0.9798,
+        &quot;mae&quot;: 302951.0394,
+        &quot;rmse&quot;: 491359.3561
+      },
+      &quot;r2&quot;: 0.975,
+      &quot;mae&quot;: 333740.1406,
+      &quot;rmse&quot;: 616281.916,
+      &quot;score&quot;: 0.975
+    },
+    {
+      &quot;model&quot;: &quot;Ridge Regression&quot;,
+      &quot;model_id&quot;: &quot;ridge&quot;,
+      &quot;status&quot;: &quot;success&quot;,
+      &quot;cv_folds&quot;: 5,
+      &quot;cv_scoring&quot;: &quot;r2&quot;,
+      &quot;cv_mean_score&quot;: 0.979,
+      &quot;cv_std_score&quot;: 0.0117,
+      &quot;cv_scores&quot;: [
+        0.987,
+        0.9644,
+        0.988,
+        0.9651,
+        0.9903
+      ],
+      &quot;train_rows&quot;: 400,
+      &quot;test_rows&quot;: 100,
+      &quot;train_r2&quot;: 0.9797,
+      &quot;train_metrics&quot;: {
+        &quot;r2&quot;: 0.9797,
+        &quot;mae&quot;: 303552.3269,
+        &quot;rmse&quot;: 491584.5563
+      },
+      &quot;r2&quot;: 0.975,
+      &quot;mae&quot;: 335583.363,
+      &quot;rmse&quot;: 615761.4231,
+      &quot;score&quot;: 0.975
+    },
+    {
+      &quot;model&quot;: &quot;Random Forest Regressor&quot;,
+      &quot;model_id&quot;: &quot;random_forest_regressor&quot;,
+      &quot;status&quot;: &quot;success&quot;,
+      &quot;cv_folds&quot;: 5,
+      &quot;cv_scoring&quot;: &quot;r2&quot;,
+      &quot;cv_mean_score&quot;: 0.9601,
+      &quot;cv_std_score&quot;: 0.0068,
+      &quot;cv_scores&quot;: [
+        0.9582,
+        0.9521,
+        0.9615,
+        0.9562,
+        0.9723
+      ],
+      &quot;train_rows&quot;: 400,
+      &quot;test_rows&quot;: 100,
+      &quot;train_r2&quot;: 0.9947,
+      &quot;train_metrics&quot;: {
+        &quot;r2&quot;: 0.9947,
+        &quot;mae&quot;: 188642.4581,
+        &quot;rmse&quot;: 251327.2822
+      },
+      &quot;r2&quot;: 0.9548,
+      &quot;mae&quot;: 562839.5457,
+      &quot;rmse&quot;: 828942.6537,
+      &quot;score&quot;: 0.9548
+    },
+    {
+      &quot;model&quot;: &quot;Extra Trees Regressor&quot;,
+      &quot;model_id&quot;: &quot;extra_trees_regressor&quot;,
+      &quot;status&quot;: &quot;success&quot;,
+      &quot;cv_folds&quot;: 5,
+      &quot;cv_scoring&quot;: &quot;r2&quot;,
+      &quot;cv_mean_score&quot;: 0.9645,
+      &quot;cv_std_score&quot;: 0.008,
+      &quot;cv_scores&quot;: [
+        0.9669,
+        0.9551,
+        0.9663,
+        0.9566,
+        0.9773
+      ],
+      &quot;train_rows&quot;: 400,
+      &quot;test_rows&quot;: 100,
+      &quot;train_r2&quot;: 1.0,
+      &quot;train_metrics&quot;: {
+        &quot;r2&quot;: 1.0,
+        &quot;mae&quot;: 0.0,
+        &quot;rmse&quot;: 0.0
+      },
+      &quot;r2&quot;: 0.9615,
+      &quot;mae&quot;: 500815.7379,
+      &quot;rmse&quot;: 764859.6318,
+      &quot;score&quot;: 0.9615
+    },
+    {
+      &quot;model&quot;: &quot;Gradient Boosting Regressor&quot;,
+      &quot;model_id&quot;: &quot;gradient_boosting_regressor&quot;,
+      &quot;status&quot;: &quot;success&quot;,
+      &quot;cv_folds&quot;: 5,
+      &quot;cv_scoring&quot;: &quot;r2&quot;,
+      &quot;cv_mean_score&quot;: 0.9763,
+      &quot;cv_std_score&quot;: 0.0041,
+      &quot;cv_scores&quot;: [
+        0.9772,
+        0.9779,
+        0.9758,
+        0.9691,
+        0.9816
+      ],
+      &quot;train_rows&quot;: 400,
+      &quot;test_rows&quot;: 100,
+      &quot;train_r2&quot;: 0.9938,
+      &quot;train_metrics&quot;: {
+        &quot;r2&quot;: 0.9938,
+        &quot;mae&quot;: 202900.2705,
+        &quot;rmse&quot;: 272757.2986
+      },
+      &quot;r2&quot;: 0.9622,
+      &quot;mae&quot;: 454726.6058,
+      &quot;rmse&quot;: 757769.34,
+      &quot;score&quot;: 0.9622
+    },
+    {
+      &quot;model&quot;: &quot;K-Nearest Neighbors Regressor&quot;,
+      &quot;model_id&quot;: &quot;knn_regressor&quot;,
+      &quot;status&quot;: &quot;success&quot;,
+      &quot;cv_folds&quot;: 5,
+      &quot;cv_scoring&quot;: &quot;r2&quot;,
+      &quot;cv_mean_score&quot;: 0.8676,
+      &quot;cv_std_score&quot;: 0.0177,
+      &quot;cv_scores&quot;: [
+        0.8506,
+        0.8898,
+        0.8667,
+        0.8457,
+        0.885
+      ],
+      &quot;train_rows&quot;: 400,
+      &quot;test_rows&quot;: 100,
+      &quot;train_r2&quot;: 0.9145,
+      &quot;train_metrics&quot;: {
+        &quot;r2&quot;: 0.9145,
+        &quot;mae&quot;: 820863.057,
+        &quot;rmse&quot;: 1009536.6484
+      },
+      &quot;r2&quot;: 0.8791,
+      &quot;mae&quot;: 1139660.632,
+      &quot;rmse&quot;: 1355514.8159,
+      &quot;score&quot;: 0.8791
+    }
+  ],
+  &quot;cv_results&quot;: {
+    &quot;linear_regression&quot;: {
+      &quot;mean_score&quot;: 0.979,
+      &quot;std_score&quot;: 0.0119,
+      &quot;fold_scores&quot;: [
+        0.9873,
+        0.9639,
+        0.9882,
+        0.9651,
+        0.9905
+      ]
+    },
+    &quot;ridge&quot;: {
+      &quot;mean_score&quot;: 0.979,
+      &quot;std_score&quot;: 0.0117,
+      &quot;fold_scores&quot;: [
+        0.987,
+        0.9644,
+        0.988,
+        0.9651,
+        0.9903
+      ]
+    },
+    &quot;random_forest_regressor&quot;: {
+      &quot;mean_score&quot;: 0.9601,
+      &quot;std_score&quot;: 0.0068,
+      &quot;fold_scores&quot;: [
+        0.9582,
+        0.9521,
+        0.9615,
+        0.9562,
+        0.9723
+      ]
+    },
+    &quot;extra_trees_regressor&quot;: {
+      &quot;mean_score&quot;: 0.9645,
+      &quot;std_score&quot;: 0.008,
+      &quot;fold_scores&quot;: [
+        0.9669,
+        0.9551,
+        0.9663,
+        0.9566,
+        0.9773
+      ]
+    },
+    &quot;gradient_boosting_regressor&quot;: {
+      &quot;mean_score&quot;: 0.9763,
+      &quot;std_score&quot;: 0.0041,
+      &quot;fold_scores&quot;: [
+        0.9772,
+        0.9779,
+        0.9758,
+        0.9691,
+        0.9816
+      ]
+    },
+    &quot;knn_regressor&quot;: {
+      &quot;mean_score&quot;: 0.8676,
+      &quot;std_score&quot;: 0.0177,
+      &quot;fold_scores&quot;: [
+        0.8506,
+        0.8898,
+        0.8667,
+        0.8457,
+        0.885
+      ]
+    }
+  },
+  &quot;best_model&quot;: &quot;Linear Regression&quot;,
+  &quot;best_model_id&quot;: &quot;linear_regression&quot;,
+  &quot;best_score&quot;: 0.979,
+  &quot;best_cv_std&quot;: 0.0119,
+  &quot;best_test_score&quot;: 0.975,
+  &quot;baseline&quot;: {
+    &quot;r2&quot;: -0.0138,
+    &quot;mae&quot;: 3430623.424,
+    &quot;rmse&quot;: 3924671.4478,
+    &quot;train_metrics&quot;: {
+      &quot;r2&quot;: 0.0,
+      &quot;mae&quot;: 2966876.7515,
+      &quot;rmse&quot;: 3453499.8143
+    }
+  },
+  &quot;selection&quot;: {
+    &quot;problem_type&quot;: &quot;regression&quot;,
+    &quot;dataset_info&quot;: {
+      &quot;n_samples&quot;: 500,
+      &quot;n_features&quot;: 9,
+      &quot;n_classes&quot;: null,
+      &quot;is_imbalanced&quot;: false
+    },
+    &quot;selected_models&quot;: [
+      &quot;linear_regression&quot;,
+      &quot;ridge&quot;,
+      &quot;random_forest_regressor&quot;,
+      &quot;extra_trees_regressor&quot;,
+      &quot;gradient_boosting_regressor&quot;,
+      &quot;knn_regressor&quot;
+    ],
+    &quot;model_details&quot;: {
+      &quot;linear_regression&quot;: {
+        &quot;name&quot;: &quot;Linear Regression&quot;,
+        &quot;description&quot;: &quot;Linear model for continuous value prediction.&quot;,
+        &quot;requires_scaling&quot;: true,
+        &quot;supports_probability&quot;: false
+      },
+      &quot;ridge&quot;: {
+        &quot;name&quot;: &quot;Ridge Regression&quot;,
+        &quot;description&quot;: &quot;Regularized linear regression algorithm.&quot;,
+        &quot;requires_scaling&quot;: true,
+        &quot;supports_probability&quot;: false
+      },
+      &quot;random_forest_regressor&quot;: {
+        &quot;name&quot;: &quot;Random Forest Regressor&quot;,
+        &quot;description&quot;: &quot;Ensemble of regression trees.&quot;,
+        &quot;requires_scaling&quot;: false,
+        &quot;supports_probability&quot;: false
+      },
+      &quot;extra_trees_regressor&quot;: {
+        &quot;name&quot;: &quot;Extra Trees Regressor&quot;,
+        &quot;description&quot;: &quot;Ensemble of randomized regression trees.&quot;,
+        &quot;requires_scaling&quot;: false,
+        &quot;supports_probability&quot;: false
+      },
+      &quot;gradient_boosting_regressor&quot;: {
+        &quot;name&quot;: &quot;Gradient Boosting Regressor&quot;,
+        &quot;description&quot;: &quot;Sequential boosting-based regression model.&quot;,
+        &quot;requires_scaling&quot;: false,
+        &quot;supports_probability&quot;: false
+      },
+      &quot;knn_regressor&quot;: {
+        &quot;name&quot;: &quot;K-Nearest Neighbors Regressor&quot;,
+        &quot;description&quot;: &quot;Distance-based regression algorithm.&quot;,
+        &quot;requires_scaling&quot;: true,
+        &quot;supports_probability&quot;: false
+      }
+    },
+    &quot;selection_reasons&quot;: [
+      &quot;Candidates selected using dataset size and feature count.&quot;
+    ],
+    &quot;selection_note&quot;: &quot;These are candidate models, not guaranteed best models. Train and evaluate them using leakage-safe validation before selecting a final model.&quot;
+  },
+  &quot;successful_models&quot;: 6,
+  &quot;failed_models&quot;: 0,
+  &quot;score_interpretation&quot;: &quot;The best candidate was selected using cross-validation scores from training data only. The holdout test set was not used for model selection and is reserved for final evaluation. The final test score is still an estimate based on one holdout split and may vary with new data.&quot;,
+  &quot;explainability&quot;: {
+    &quot;available&quot;: false,
+    &quot;methods&quot;: [],
+    &quot;native_importance&quot;: {
+      &quot;available&quot;: false,
+      &quot;reason&quot;: &quot;No selected trained model was available.&quot;
+    },
+    &quot;coefficients&quot;: {
+      &quot;available&quot;: false,
+      &quot;reason&quot;: &quot;No selected trained model was available.&quot;
+    },
+    &quot;permutation_importance&quot;: null,
+    &quot;limitations&quot;: [
+      &quot;Feature importance does not prove causation.&quot;,
+      &quot;Native importance values are model-specific.&quot;,
+      &quot;Correlated features can share or distort importance.&quot;,
+      &quot;Permutation importance depends on evaluation data.&quot;
+    ],
+    &quot;error&quot;: &quot;Feature names and importance values must have equal lengths.&quot;
+  },
+  &quot;evaluation&quot;: {
+    &quot;problem_type&quot;: &quot;regression&quot;,
+    &quot;train_metrics&quot;: {
+      &quot;r2&quot;: 0.9798,
+      &quot;mae&quot;: 302951.0394,
+      &quot;rmse&quot;: 491359.3561
+    },
+    &quot;test_metrics&quot;: {
+      &quot;r2&quot;: 0.975,
+      &quot;mae&quot;: 333740.1406,
+      &quot;rmse&quot;: 616281.916
+    },
+    &quot;baseline_train_metrics&quot;: {
+      &quot;r2&quot;: 0.0,
+      &quot;mae&quot;: 2966876.7515,
+      &quot;rmse&quot;: 3453499.8143
+    },
+    &quot;baseline_test_metrics&quot;: {
+      &quot;r2&quot;: -0.0138,
+      &quot;mae&quot;: 3430623.424,
+      &quot;rmse&quot;: 3924671.4478
+    },
+    &quot;generalization&quot;: {
+      &quot;metric&quot;: &quot;r2&quot;,
+      &quot;train_score&quot;: 0.9798,
+      &quot;test_score&quot;: 0.975,
+      &quot;performance_gap&quot;: 0.0048,
+      &quot;gap_threshold&quot;: 0.1,
+      &quot;overfitting_suspected&quot;: false,
+      &quot;status&quot;: &quot;no_large_generalization_gap_detected&quot;,
+      &quot;interpretation&quot;: &quot;No large train-test performance gap was detected. This does not guarantee that the model generalizes well.&quot;
+    },
+    &quot;baseline_comparison&quot;: {
+      &quot;primary_metric&quot;: &quot;r2&quot;,
+      &quot;status&quot;: &quot;better_than_baseline&quot;,
+      &quot;metrics&quot;: {
+        &quot;r2&quot;: {
+          &quot;model&quot;: 0.975,
+          &quot;baseline&quot;: -0.0138,
+          &quot;difference&quot;: 0.9888,
+          &quot;improved&quot;: true
+        },
+        &quot;mae&quot;: {
+          &quot;model&quot;: 333740.1406,
+          &quot;baseline&quot;: 3430623.424,
+          &quot;difference&quot;: -3096883.2834,
+          &quot;improved&quot;: true
+        },
+        &quot;rmse&quot;: {
+          &quot;model&quot;: 616281.916,
+          &quot;baseline&quot;: 3924671.4478,
+          &quot;difference&quot;: -3308389.5318,
+          &quot;improved&quot;: true
+        }
+      }
+    },
+    &quot;underfitting&quot;: {
+      &quot;metric&quot;: &quot;r2&quot;,
+      &quot;train_score&quot;: 0.9798,
+      &quot;baseline_score&quot;: 0.0,
+      &quot;underfitting_suspected&quot;: false,
+      &quot;interpretation&quot;: &quot;Training performance exceeds the dummy baseline. This alone does not rule out underfitting.&quot;
+    },
+    &quot;warnings&quot;: [
+      &quot;No major warning was identified by the current evaluation checks. Further validation is still recommended.&quot;
+    ],
+    &quot;evaluation_note&quot;: &quot;These checks provide diagnostic indicators, not proof of model quality. Use cross-validation and an independent test dataset for stronger evidence.&quot;,
+    &quot;available&quot;: true,
+    &quot;selected_model&quot;: &quot;Linear Regression&quot;
+  }
+}</pre>
+            </section>
+            
+            <section class="card">
+                <h2>Evaluation</h2>
+                Not available
+            </section>
+            
+            <section class="card">
+                <h2>Diagnosis</h2>
+                <pre>{
+  &quot;model_name&quot;: &quot;Linear Regression&quot;,
+  &quot;status&quot;: &quot;issues_found&quot;,
+  &quot;summary&quot;: {
+    &quot;total_findings&quot;: 5,
+    &quot;critical&quot;: 0,
+    &quot;warnings&quot;: 2,
+    &quot;information&quot;: 3
+  },
+  &quot;findings&quot;: [
+    {
+      &quot;code&quot;: &quot;duplicate_rows_detected&quot;,
+      &quot;title&quot;: &quot;Duplicate Rows Detected&quot;,
+      &quot;severity&quot;: &quot;warning&quot;,
+      &quot;message&quot;: &quot;The dataset contains duplicate rows.&quot;,
+      &quot;evidence&quot;: {
+        &quot;duplicate_rows&quot;: 8
+      },
+      &quot;recommendation&quot;: &quot;Inspect duplicates and determine whether they represent valid observations.&quot;
+    },
+    {
+      &quot;code&quot;: &quot;possible_identifier_features&quot;,
+      &quot;title&quot;: &quot;Possible Identifier Columns&quot;,
+      &quot;severity&quot;: &quot;warning&quot;,
+      &quot;message&quot;: &quot;Some columns appear to contain identifiers and may not provide useful predictive information.&quot;,
+      &quot;evidence&quot;: {
+        &quot;columns&quot;: [
+          &quot;house_price_inr&quot;
+        ]
+      },
+      &quot;recommendation&quot;: &quot;Check whether these columns represent genuine identifiers and remove them if they are not useful.&quot;
+    },
+    {
+      &quot;code&quot;: &quot;no_large_generalization_gap&quot;,
+      &quot;title&quot;: &quot;No Large Generalization Gap Detected&quot;,
+      &quot;severity&quot;: &quot;info&quot;,
+      &quot;message&quot;: &quot;No large train-test performance gap was identified. This does not guarantee good real-world performance.&quot;,
+      &quot;evidence&quot;: {
+        &quot;metric&quot;: &quot;r2&quot;,
+        &quot;train_score&quot;: 0.9798,
+        &quot;test_score&quot;: 0.975,
+        &quot;performance_gap&quot;: 0.0048
+      },
+      &quot;recommendation&quot;: &quot;Validate performance with cross-validation and independent data where possible.&quot;
+    },
+    {
+      &quot;code&quot;: &quot;better_than_baseline&quot;,
+      &quot;title&quot;: &quot;Model Outperforms Dummy Baseline&quot;,
+      &quot;severity&quot;: &quot;info&quot;,
+      &quot;message&quot;: &quot;The model performs better than the dummy baseline on the primary evaluation metric.&quot;,
+      &quot;evidence&quot;: {
+        &quot;primary_metric&quot;: &quot;r2&quot;,
+        &quot;status&quot;: &quot;better_than_baseline&quot;,
+        &quot;metrics&quot;: {
+          &quot;r2&quot;: {
+            &quot;model&quot;: 0.975,
+            &quot;baseline&quot;: -0.0138,
+            &quot;difference&quot;: 0.9888,
+            &quot;improved&quot;: true
+          },
+          &quot;mae&quot;: {
+            &quot;model&quot;: 333740.1406,
+            &quot;baseline&quot;: 3430623.424,
+            &quot;difference&quot;: -3096883.2834,
+            &quot;improved&quot;: true
+          },
+          &quot;rmse&quot;: {
+            &quot;model&quot;: 616281.916,
+            &quot;baseline&quot;: 3924671.4478,
+            &quot;difference&quot;: -3308389.5318,
+            &quot;improved&quot;: true
+          }
+        }
+      },
+      &quot;recommendation&quot;: &quot;Continue evaluating with cross-validation and check whether the improvement is consistent.&quot;
+    },
+    {
+      &quot;code&quot;: &quot;profiler_warnings&quot;,
+      &quot;title&quot;: &quot;Dataset Profiler Warnings&quot;,
+      &quot;severity&quot;: &quot;info&quot;,
+      &quot;message&quot;: &quot;The dataset profiler reported additional observations.&quot;,
+      &quot;evidence&quot;: {
+        &quot;warnings&quot;: [
+          {
+            &quot;type&quot;: &quot;missing_values&quot;,
+            &quot;severity&quot;: &quot;medium&quot;,
+            &quot;message&quot;: &quot;26 missing values detected (0.51% of all cells).&quot;
+          },
+          {
+            &quot;type&quot;: &quot;duplicate_rows&quot;,
+            &quot;severity&quot;: &quot;medium&quot;,
+            &quot;message&quot;: &quot;8 duplicate rows detected. Review before removing them.&quot;
+          },
+          {
+            &quot;type&quot;: &quot;identifier_candidates&quot;,
+            &quot;severity&quot;: &quot;low&quot;,
+            &quot;message&quot;: &quot;Potential identifier columns detected. Review whether they should be used as features.&quot;
+          }
+        ]
+      },
+      &quot;recommendation&quot;: &quot;Review the profiler warnings before finalizing dataset preparation.&quot;
+    }
+  ],
+  &quot;feature_importance&quot;: null,
+  &quot;limitations&quot;: [
+    &quot;Diagnosis depends on the completeness of supplied inputs.&quot;,
+    &quot;Heuristic findings are signals for investigation, not proof.&quot;,
+    &quot;Feature importance does not establish causation.&quot;,
+    &quot;A small train-test gap does not guarantee real-world performance.&quot;
+  ]
+}</pre>
+            </section>
+            
+            <section class="card">
+                <h2>Explainability</h2>
+                Not available
+            </section>
+            
+            <section class="card">
+                <h2>Hyperparameter Tuning</h2>
+                Not available
+            </section>
+            
+
+<footer>
+    Generated by ML Model Doctor
+</footer>
+
+</div>
+</body>
+</html>

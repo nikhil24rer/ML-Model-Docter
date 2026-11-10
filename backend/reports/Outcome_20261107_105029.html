@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ML Model Doctor Report</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 30px;
+    font-family: Arial, sans-serif;
+    background: #f4f6fa;
+    color: #202938;
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+}
+
+header {
+    background: #182338;
+    color: white;
+    padding: 30px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+}
+
+header h1 {
+    margin: 0 0 10px;
+}
+
+.card {
+    background: white;
+    padding: 22px;
+    margin-bottom: 18px;
+    border-radius: 10px;
+    border: 1px solid #e1e6ed;
+    overflow-wrap: anywhere;
+}
+
+.card h2 {
+    margin-top: 0;
+    color: #244a80;
+}
+
+pre {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    background: #f4f6fa;
+    padding: 14px;
+    border-radius: 6px;
+}
+
+footer {
+    text-align: center;
+    color: #667085;
+    margin-top: 25px;
+}
+
+@media print {
+    body {
+        background: white;
+        padding: 10px;
+    }
+
+    .card, header {
+        break-inside: avoid;
+    }
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<header>
+    <h1>ML Model Doctor</h1>
+    <p>Automated Machine Learning Analysis Report</p>
+    <small>Generated: 2026-11-07T10:50:33.613088+00:00</small>
+</header>
+
+
+            <section class="card">
+                <h2>Executive Summary</h2>
+                <pre>{
+  &quot;dataset&quot;: {
+    &quot;rows&quot;: 200,
+    &quot;columns&quot;: 6
+  },
+  &quot;problem_type&quot;: &quot;binary_classification&quot;,
+  &quot;best_model&quot;: {
+    &quot;name&quot;: &quot;Logistic Regression&quot;
+  },
+  &quot;evaluation&quot;: {
+    &quot;generalization&quot;: null,
+    &quot;baseline_comparison&quot;: null
+  },
+  &quot;diagnosis_status&quot;: &quot;issues_found&quot;,
+  &quot;diagnostic_findings&quot;: {
+    &quot;total_findings&quot;: 3,
+    &quot;critical&quot;: 0,
+    &quot;warnings&quot;: 1,
+    &quot;information&quot;: 2
+  },
+  &quot;conclusion&quot;: &quot;Review the evaluation metrics and diagnostic findings before using the model in production.&quot;
+}</pre>
+            </section>
+            
+            <section class="card">
+                <h2>Dataset Profile</h2>
+                <pre>{
+  &quot;rows&quot;: 200,
+  &quot;columns&quot;: 6,
+  &quot;total_cells&quot;: 1200,
+  &quot;column_names&quot;: [
+    &quot;Glucose&quot;,
+    &quot;BloodPres&quot;,
+    &quot;SkinThickn&quot;,
+    &quot;BMI&quot;,
+    &quot;Age&quot;,
+    &quot;Outcome&quot;
+  ],
+  &quot;numeric_columns&quot;: [
+    &quot;Glucose&quot;,
+    &quot;BloodPres&quot;,
+    &quot;SkinThickn&quot;,
+    &quot;BMI&quot;,
+    &quot;Age&quot;,
+    &quot;Outcome&quot;
+  ],
+  &quot;categorical_columns&quot;: [],
+  &quot;boolean_columns&quot;: [],
+  &quot;datetime_columns&quot;: [],
+  &quot;datetime_candidates&quot;: [],
+  &quot;other_columns&quot;: [],
+  &quot;data_type_summary&quot;: {
+    &quot;numeric&quot;: 6,
+    &quot;categorical&quot;: 0,
+    &quot;boolean&quot;: 0,
+    &quot;datetime&quot;: 0,
+    &quot;datetime_candidates&quot;: 0,
+    &quot;other&quot;: 0
+  },
+  &quot;missing_values&quot;: 0,
+  &quot;missing_percentage&quot;: 0.0,
+  &quot;columns_with_missing&quot;: 0,
+  &quot;duplicate_rows&quot;: 0,
+  &quot;duplicate_columns&quot;: [],
+  &quot;outlier_values&quot;: 0,
+  &quot;outlier_rows&quot;: 0,
+  &quot;outlier_details&quot;: [],
+  &quot;constant_columns&quot;: [],
+  &quot;near_constant_columns&quot;: [],
+  &quot;identifier_candidates&quot;: [],
+  &quot;high_cardinality_columns&quot;: [],
+  &quot;numerical_summary&quot;: {
+    &quot;Glucose&quot;: {
+      &quot;mean&quot;: 138.5,
+      &quot;median&quot;: 139.5,
+      &quot;std&quot;: 38.55805516478304,
+      &quot;min&quot;: 70,
+      &quot;max&quot;: 199,
+      &quot;skewness&quot;: -0.11912146603534235,
+      &quot;variance&quot;: 1486.7236180904522
+    },
+    &quot;BloodPres&quot;: {
+      &quot;mean&quot;: 72.28,
+      &quot;median&quot;: 72.0,
+      &quot;std&quot;: 16.879162617063272,
+      &quot;min&quot;: 40,
+      &quot;max&quot;: 99,
+      &quot;skewness&quot;: -0.1872410830080296,
+      &quot;variance&quot;: 284.9061306532663
+    },
+    &quot;SkinThickn&quot;: {
+      &quot;mean&quot;: 34.99,
+      &quot;median&quot;: 35.0,
+      &quot;std&quot;: 14.19391546335628,
+      &quot;min&quot;: 10,
+      &quot;max&quot;: 59,
+      &quot;skewness&quot;: -0.01757142394749162,
+      &quot;variance&quot;: 201.4672361809045
+    },
+    &quot;BMI&quot;: {
+      &quot;mean&quot;: 31.383499999999998,
+      &quot;median&quot;: 31.3,
+      &quot;std&quot;: 8.06744046948245,
+      &quot;min&quot;: 18.3,
+      &quot;max&quot;: 45.0,
+      &quot;skewness&quot;: 0.06151927980569344,
+      &quot;variance&quot;: 65.08359572864322
+    },
+    &quot;Age&quot;: {
+      &quot;mean&quot;: 44.43,
+      &quot;median&quot;: 46.0,
+      &quot;std&quot;: 14.524804637197146,
+      &quot;min&quot;: 21,
+      &quot;max&quot;: 69,
+      &quot;skewness&quot;: -0.03897648810442509,
+      &quot;variance&quot;: 210.96994974874374
+    },
+    &quot;Outcome&quot;: {
+      &quot;mean&quot;: 0.49,
+      &quot;median&quot;: 0.0,
+      &quot;std&quot;: 0.5011544461485624,
+      &quot;min&quot;: 0,
+      &quot;max&quot;: 1,
+      &quot;skewness&quot;: 0.04031096672348286,
+      &quot;variance&quot;: 0.2511557788944724
+    }
+  },
+  &quot;column_info&quot;: [
+    {
+      &quot;name&quot;: &quot;Glucose&quot;,
+      &quot;dtype&quot;: &quot;int64&quot;,
+      &quot;detected_type&quot;: &quot;numeric&quot;,
+      &quot;missing&quot;: 0,
+      &quot;missing_percentage&quot;: 0.0,
+      &quot;unique_values&quot;: 93,
+      &quot;unique_ratio&quot;: 0.465,
+      &quot;is_numeric&quot;: true,
+      &quot;is_constant&quot;: false,
+      &quot;is_near_constant&quot;: false,
+      &quot;is_identifier_candidate&quot;: false,
+      &quot;is_high_cardinality&quot;: false,
+      &quot;outliers&quot;: 0,
+      &quot;outlier_percentage&quot;: 0.0,
+      &quot;outlier_bounds&quot;: {
+        &quot;lower&quot;: 11.375,
+        &quot;upper&quot;: 268.375
+      },
+      &quot;dominant_value_percentage&quot;: 3.0
+    },
+    {
+      &quot;name&quot;: &quot;BloodPres&quot;,
+      &quot;dtype&quot;: &quot;int64&quot;,
+      &quot;detected_type&quot;: &quot;numeric&quot;,
+      &quot;missing&quot;: 0,
+      &quot;missing_percentage&quot;: 0.0,
+      &quot;unique_values&quot;: 58,
+      &quot;unique_ratio&quot;: 0.29,
+      &quot;is_numeric&quot;: true,
+      &quot;is_constant&quot;: false,
+      &quot;is_near_constant&quot;: false,
+      &quot;is_identifier_candidate&quot;: false,
+      &quot;is_high_cardinality&quot;: false,
+      &quot;outliers&quot;: 0,
+      &quot;outlier_percentage&quot;: 0.0,
+      &quot;outlier_bounds&quot;: {
+        &quot;lower&quot;: 21.375,
+        &quot;upper&quot;: 126.375
+      },
+      &quot;dominant_value_percentage&quot;: 4.5
+    },
+    {
+      &quot;name&quot;: &quot;SkinThickn&quot;,
+      &quot;dtype&quot;: &quot;int64&quot;,
+      &quot;detected_type&quot;: &quot;numeric&quot;,
+      &quot;missing&quot;: 0,
+      &quot;missing_percentage&quot;: 0.0,
+      &quot;unique_values&quot;: 48,
+      &quot;unique_ratio&quot;: 0.24,
+      &quot;is_numeric&quot;: true,
+      &quot;is_constant&quot;: false,
+      &quot;is_near_constant&quot;: false,
+      &quot;is_identifier_candidate&quot;: false,
+      &quot;is_high_cardinality&quot;: false,
+      &quot;outliers&quot;: 0,
+      &quot;outlier_percentage&quot;: 0.0,
+      &quot;outlier_bounds&quot;: {
+        &quot;lower&quot;: -14.0,
+        &quot;upper&quot;: 82.0
+      },
+      &quot;dominant_value_percentage&quot;: 5.0
+    },
+    {
+      &quot;name&quot;: &quot;BMI&quot;,
+      &quot;dtype&quot;: &quot;float64&quot;,
+      &quot;detected_type&quot;: &quot;numeric&quot;,
+      &quot;missing&quot;: 0,
+      &quot;missing_percentage&quot;: 0.0,
+      &quot;unique_values&quot;: 153,
+      &quot;unique_ratio&quot;: 0.765,
+      &quot;is_numeric&quot;: true,
+      &quot;is_constant&quot;: false,
+      &quot;is_near_constant&quot;: false,
+      &quot;is_identifier_candidate&quot;: false,
+      &quot;is_high_cardinality&quot;: false,
+      &quot;outliers&quot;: 0,
+      &quot;outlier_percentage&quot;: 0.0,
+      &quot;outlier_bounds&quot;: {
+        &quot;lower&quot;: 2.9999999999999964,
+        &quot;upper&quot;: 59.400000000000006
+      },
+      &quot;dominant_value_percentage&quot;: 2.0
+    },
+    {
+      &quot;name&quot;: &quot;Age&quot;,
+      &quot;dtype&quot;: &quot;int64&quot;,
+      &quot;detected_type&quot;: &quot;numeric&quot;,
+      &quot;missing&quot;: 0,
+      &quot;missing_percentage&quot;: 0.0,
+      &quot;unique_values&quot;: 47,
+      &quot;unique_ratio&quot;: 0.235,
+      &quot;is_numeric&quot;: true,
+      &quot;is_constant&quot;: false,
+      &quot;is_near_constant&quot;: false,
+      &quot;is_identifier_candidate&quot;: false,
+      &quot;is_high_cardinality&quot;: false,
+      &quot;outliers&quot;: 0,
+      &quot;outlier_percentage&quot;: 0.0,
+      &quot;outlier_bounds&quot;: {
+        &quot;lower&quot;: -8.0,
+        &quot;upper&quot;: 96.0
+      },
+      &quot;dominant_value_percentage&quot;: 5.0
+    },
+    {
+      &quot;name&quot;: &quot;Outcome&quot;,
+      &quot;dtype&quot;: &quot;int64&quot;,
+      &quot;detected_type&quot;: &quot;numeric&quot;,
+      &quot;missing&quot;: 0,
+      &quot;missing_percentage&quot;: 0.0,
+      &quot;unique_values&quot;: 2,
+      &quot;unique_ratio&quot;: 0.01,
+      &quot;is_numeric&quot;: true,
+      &quot;is_constant&quot;: false,
+      &quot;is_near_constant&quot;: false,
+      &quot;is_identifier_candidate&quot;: false,
+      &quot;is_high_cardinality&quot;: false,
+      &quot;outliers&quot;: 0,
+      &quot;outlier_percentage&quot;: 0.0,
+      &quot;outlier_bounds&quot;: {
+        &quot;lower&quot;: -1.5,
+        &quot;upper&quot;: 2.5
+      },
+      &quot;dominant_value_percentage&quot;: 51.0
+    }
+  ],
+  &quot;warnings&quot;: [],
+  &quot;original_missing_values&quot;: 0,
+  &quot;original_duplicate_rows&quot;: 0,
+  &quot;target_missing_values&quot;: 0,
+  &quot;target_distribution&quot;: {
+    &quot;0&quot;: 102,
+    &quot;1&quot;: 98
+  }
+}</pre>
+            </section>
+            
+            <section class="card">
+                <h2>Target Analysis</h2>
+                <pre>{
+  &quot;target_column&quot;: &quot;Outcome&quot;,
+  &quot;problem_type&quot;: &quot;binary_classification&quot;,
+  &quot;suggested_problem_type&quot;: &quot;binary_classification&quot;,
+  &quot;confidence&quot;: &quot;user_confirmed&quot;,
+  &quot;requires_confirmation&quot;: false,
+  &quot;reason&quot;: &quot;User explicitly selected binary classification.&quot;,
+  &quot;target_statistics&quot;: {
+    &quot;total_records&quot;: 200,
+    &quot;valid_records&quot;: 200,
+    &quot;missing_values&quot;: 0,
+    &quot;unique_values&quot;: 2,
+    &quot;data_type&quot;: &quot;int64&quot;
+  },
+  &quot;class_analysis&quot;: {
+    &quot;class_count&quot;: 2,
+    &quot;class_distribution&quot;: [
+      {
+        &quot;class&quot;: 0,
+        &quot;count&quot;: 102,
+        &quot;percentage&quot;: 51.0
+      },
+      {
+        &quot;class&quot;: 1,
+        &quot;count&quot;: 98,
+        &quot;percentage&quot;: 49.0
+      }
+    ],
+    &quot;majority_class&quot;: 0,
+    &quot;majority_percentage&quot;: 51.0,
+    &quot;minority_percentage&quot;: 49.0,
+    &quot;imbalance_ratio&quot;: 1.04,
+    &quot;is_imbalanced&quot;: false
+  },
+  &quot;numeric_analysis&quot;: {
+    &quot;mean&quot;: 0.49,
+    &quot;median&quot;: 0.0,
+    &quot;std&quot;: 0.5011544461485624,
+    &quot;min&quot;: 0.0,
+    &quot;max&quot;: 1.0,
+    &quot;unique_values&quot;: 2,
+    &quot;skewness&quot;: 0.04031096672348286
+  },
+  &quot;warnings&quot;: []
+}</pre>
+            </section>
+            
+            <section class="card">
+                <h2>Model Comparison</h2>
+                <pre>{
+  &quot;problem_type&quot;: &quot;binary_classification&quot;,
+  &quot;evaluation_method&quot;: &quot;80/20 holdout + 5-fold cross-validation&quot;,
+  &quot;primary_metric&quot;: &quot;macro F1&quot;,
+  &quot;selection_metric&quot;: &quot;f1_macro&quot;,
+  &quot;selection_method&quot;: &quot;cross_validation&quot;,
+  &quot;cv_folds&quot;: 5,
+  &quot;train_rows&quot;: 160,
+  &quot;test_rows&quot;: 40,
+  &quot;dataset_info&quot;: {
+    &quot;total_rows&quot;: 200,
+    &quot;total_features&quot;: 5,
+    &quot;number_of_classes&quot;: 2,
+    &quot;is_imbalanced&quot;: false,
+    &quot;imbalance_ratio&quot;: 1.0408,
+    &quot;removed_empty_columns&quot;: []
+  },
+  &quot;models&quot;: [
+    {
+      &quot;model&quot;: &quot;Logistic Regression&quot;,
+      &quot;model_id&quot;: &quot;logistic_regression&quot;,
+      &quot;status&quot;: &quot;success&quot;,
+      &quot;cv_folds&quot;: 5,
+      &quot;cv_scoring&quot;: &quot;f1_macro&quot;,
+      &quot;cv_mean_score&quot;: 0.5284,
+      &quot;cv_std_score&quot;: 0.0286,
+      &quot;cv_scores&quot;: [
+        0.5,
+        0.5836,
+        0.5195,
+        0.5195,
+        0.5195
+      ],
+      &quot;train_rows&quot;: 160,
+      &quot;test_rows&quot;: 40,
+      &quot;train_accuracy&quot;: 0.5875,
+      &quot;train_metrics&quot;: {
+        &quot;accuracy&quot;: 0.5875,
+        &quot;balanced_accuracy&quot;: 0.5876,
+        &quot;precision&quot;: 0.5875,
+        &quot;recall&quot;: 0.5876,
+        &quot;f1&quot;: 0.5874,
+        &quot;confusion_matrix&quot;: [
+          [
+            48,
+            34
+          ],
+          [
+            32,
+            46
+          ]
+        ]
+      },
+      &quot;accuracy&quot;: 0.425,
+      &quot;balanced_accuracy&quot;: 0.425,
+      &quot;precision&quot;: 0.4233,
+      &quot;recall&quot;: 0.425,
+      &quot;f1&quot;: 0.4217,
+      &quot;confusion_matrix&quot;: [
+        [
+          7,
+          13
+        ],
+        [
+          10,
+          10
+        ]
+      ],
+      &quot;score&quot;: 0.4217
+    },
+    {
+      &quot;model&quot;: &quot;Random Forest Classifier&quot;,
+      &quot;model_id&quot;: &quot;random_forest&quot;,
+      &quot;status&quot;: &quot;success&quot;,
+      &quot;cv_folds&quot;: 5,
+      &quot;cv_scoring&quot;: &quot;f1_macro&quot;,
+      &quot;cv_mean_score&quot;: 0.47,
+      &quot;cv_std_score&quot;: 0.0307,
+      &quot;cv_scores&quot;: [
+        0.4555,
+        0.5271,
+        0.4353,
+        0.464,
+        0.4682
+      ],
+      &quot;train_rows&quot;: 160,
+      &quot;test_rows&quot;: 40,
+      &quot;train_accuracy&quot;: 1.0,
+      &quot;train_metrics&quot;: {
+        &quot;accuracy&quot;: 1.0,
+        &quot;balanced_accuracy&quot;: 1.0,
+        &quot;precision&quot;: 1.0,
+        &quot;recall&quot;: 1.0,
+        &quot;f1&quot;: 1.0,
+        &quot;confusion_matrix&quot;: [
+          [
+            82,
+            0
+          ],
+          [
+            0,
+            78
+          ]
+        ]
+      },
+      &quot;accuracy&quot;: 0.475,
+      &quot;balanced_accuracy&quot;: 0.475,
+      &quot;precision&quot;: 0.4749,
+      &quot;recall&quot;: 0.475,
+      &quot;f1&quot;: 0.4747,
+      &quot;confusion_matrix&quot;: [
+        [
+          9,
+          11
+        ],
+        [
+          10,
+          10
+        ]
+      ],
+      &quot;score&quot;: 0.4747
+    },
+    {
+      &quot;model&quot;: &quot;Extra Trees Classifier&quot;,
+      &quot;model_id&quot;: &quot;extra_trees&quot;,
+      &quot;status&quot;: &quot;success&quot;,
+      &quot;cv_folds&quot;: 5,
+      &quot;cv_scoring&quot;: &quot;f1_macro&quot;,
+      &quot;cv_mean_score&quot;: 0.4135,
+      &quot;cv_std_score&quot;: 0.0477,
+      &quot;cv_scores&quot;: [
+        0.3914,
+        0.4286,
+        0.375,
+        0.3725,
+        0.5
+      ],
+      &quot;train_rows&quot;: 160,
+      &quot;test_rows&quot;: 40,
+      &quot;train_accuracy&quot;: 1.0,
+      &quot;train_metrics&quot;: {
+        &quot;accuracy&quot;: 1.0,
+        &quot;balanced_accuracy&quot;: 1.0,
+        &quot;precision&quot;: 1.0,
+        &quot;recall&quot;: 1.0,
+        &quot;f1&quot;: 1.0,
+        &quot;confusion_matrix&quot;: [
+          [
+            82,
+            0
+          ],
+          [
+            0,
+            78
+          ]
+        ]
+      },
+      &quot;accuracy&quot;: 0.575,
+      &quot;balanced_accuracy&quot;: 0.575,
+      &quot;precision&quot;: 0.5752,
+      &quot;recall&quot;: 0.575,
+      &quot;f1&quot;: 0.5747,
+      &quot;confusion_matrix&quot;: [
+        [
+          11,
+          9
+        ],
+        [
+          8,
+          12
+        ]
+      ],
+      &quot;score&quot;: 0.5747
+    },
+    {
+      &quot;model&quot;: &quot;Gradient Boosting Classifier&quot;,
+      &quot;model_id&quot;: &quot;gradient_boosting&quot;,
+      &quot;status&quot;: &quot;success&quot;,
+      &quot;cv_folds&quot;: 5,
+      &quot;cv_scoring&quot;: &quot;f1_macro&quot;,
+      &quot;cv_mean_score&quot;: 0.4584,
+      &quot;cv_std_score&quot;: 0.0635,
+      &quot;cv_scores&quot;: [
+        0.3725,
+        0.401,
+        0.464,
+        0.5271,
+        0.5271
+      ],
+      &quot;train_rows&quot;: 160,
+      &quot;test_rows&quot;: 40,
+      &quot;train_accuracy&quot;: 0.9938,
+      &quot;train_metrics&quot;: {
+        &quot;accuracy&quot;: 0.9938,
+        &quot;balanced_accuracy&quot;: 0.9939,
+        &quot;precision&quot;: 0.9937,
+        &quot;recall&quot;: 0.9939,
+        &quot;f1&quot;: 0.9937,
+        &quot;confusion_matrix&quot;: [
+          [
+            81,
+            1
+          ],
+          [
+            0,
+            78
+          ]
+        ]
+      },
+      &quot;accuracy&quot;: 0.425,
+      &quot;balanced_accuracy&quot;: 0.425,
+      &quot;precision&quot;: 0.4233,
+      &quot;recall&quot;: 0.425,
+      &quot;f1&quot;: 0.4217,
+      &quot;confusion_matrix&quot;: [
+        [
+          10,
+          10
+        ],
+        [
+          13,
+          7
+        ]
+      ],
+      &quot;score&quot;: 0.4217
+    },
+    {
+      &quot;model&quot;: &quot;K-Nearest Neighbors&quot;,
+      &quot;model_id&quot;: &quot;knn&quot;,
+      &quot;status&quot;: &quot;success&quot;,
+      &quot;cv_folds&quot;: 5,
+      &quot;cv_scoring&quot;: &quot;f1_macro&quot;,
+      &quot;cv_mean_score&quot;: 0.4794,
+      &quot;cv_std_score&quot;: 0.0767,
+      &quot;cv_scores&quot;: [
+        0.3651,
+        0.5195,
+        0.4818,
+        0.5934,
+        0.4375
+      ],
+      &quot;train_rows&quot;: 160,
+      &quot;test_rows&quot;: 40,
+      &quot;train_accuracy&quot;: 0.6438,
+      &quot;train_metrics&quot;: {
+        &quot;accuracy&quot;: 0.6438,
+        &quot;balanced_accuracy&quot;: 0.6415,
+        &quot;precision&quot;: 0.6466,
+        &quot;recall&quot;: 0.6415,
+        &quot;f1&quot;: 0.6397,
+        &quot;confusion_matrix&quot;: [
+          [
+            60,
+            22
+          ],
+          [
+            35,
+            43
+          ]
+        ]
+      },
+      &quot;accuracy&quot;: 0.6,
+      &quot;balanced_accuracy&quot;: 0.6,
+      &quot;precision&quot;: 0.6042,
+      &quot;recall&quot;: 0.6,
+      &quot;f1&quot;: 0.596,
+      &quot;confusion_matrix&quot;: [
+        [
+          10,
+          10
+        ],
+        [
+          6,
+          14
+        ]
+      ],
+      &quot;score&quot;: 0.596
+    },
+    {
+      &quot;model&quot;: &quot;Gaussian Naive Bayes&quot;,
+      &quot;model_id&quot;: &quot;naive_bayes&quot;,
+      &quot;status&quot;: &quot;success&quot;,
+      &quot;cv_folds&quot;: 5,
+      &quot;cv_scoring&quot;: &quot;f1_macro&quot;,
+      &quot;cv_mean_score&quot;: 0.5071,
+      &quot;cv_std_score&quot;: 0.0634,
+      &quot;cv_scores&quot;: [
+        0.498,
+        0.5271,
+        0.4818,
+        0.6113,
+        0.417
+      ],
+      &quot;train_rows&quot;: 160,
+      &quot;test_rows&quot;: 40,
+      &quot;train_accuracy&quot;: 0.6062,
+      &quot;train_metrics&quot;: {
+        &quot;accuracy&quot;: 0.6062,
+        &quot;balanced_accuracy&quot;: 0.6058,
+        &quot;precision&quot;: 0.6059,
+        &quot;recall&quot;: 0.6058,
+        &quot;f1&quot;: 0.6059,
+        &quot;confusion_matrix&quot;: [
+          [
+            51,
+            31
+          ],
+          [
+            32,
+            46
+          ]
+        ]
+      },
+      &quot;accuracy&quot;: 0.475,
+      &quot;balanced_accuracy&quot;: 0.475,
+      &quot;precision&quot;: 0.4744,
+      &quot;recall&quot;: 0.475,
+      &quot;f1&quot;: 0.472,
+      &quot;confusion_matrix&quot;: [
+        [
+          8,
+          12
+        ],
+        [
+          9,
+          11
+        ]
+      ],
+      &quot;score&quot;: 0.472
+    }
+  ],
+  &quot;cv_results&quot;: {
+    &quot;logistic_regression&quot;: {
+      &quot;mean_score&quot;: 0.5284,
+      &quot;std_score&quot;: 0.0286,
+      &quot;fold_scores&quot;: [
+        0.5,
+        0.5836,
+        0.5195,
+        0.5195,
+        0.5195
+      ]
+    },
+    &quot;random_forest&quot;: {
+      &quot;mean_score&quot;: 0.47,
+      &quot;std_score&quot;: 0.0307,
+      &quot;fold_scores&quot;: [
+        0.4555,
+        0.5271,
+        0.4353,
+        0.464,
+        0.4682
+      ]
+    },
+    &quot;extra_trees&quot;: {
+      &quot;mean_score&quot;: 0.4135,
+      &quot;std_score&quot;: 0.0477,
+      &quot;fold_scores&quot;: [
+        0.3914,
+        0.4286,
+        0.375,
+        0.3725,
+        0.5
+      ]
+    },
+    &quot;gradient_boosting&quot;: {
+      &quot;mean_score&quot;: 0.4584,
+      &quot;std_score&quot;: 0.0635,
+      &quot;fold_scores&quot;: [
+        0.3725,
+        0.401,
+        0.464,
+        0.5271,
+        0.5271
+      ]
+    },
+    &quot;knn&quot;: {
+      &quot;mean_score&quot;: 0.4794,
+      &quot;std_score&quot;: 0.0767,
+      &quot;fold_scores&quot;: [
+        0.3651,
+        0.5195,
+        0.4818,
+        0.5934,
+        0.4375
+      ]
+    },
+    &quot;naive_bayes&quot;: {
+      &quot;mean_score&quot;: 0.5071,
+      &quot;std_score&quot;: 0.0634,
+      &quot;fold_scores&quot;: [
+        0.498,
+        0.5271,
+        0.4818,
+        0.6113,
+        0.417
+      ]
+    }
+  },
+  &quot;best_model&quot;: &quot;Logistic Regression&quot;,
+  &quot;best_model_id&quot;: &quot;logistic_regression&quot;,
+  &quot;best_score&quot;: 0.5284,
+  &quot;best_cv_std&quot;: 0.0286,
+  &quot;best_test_score&quot;: 0.4217,
+  &quot;baseline&quot;: {
+    &quot;accuracy&quot;: 0.5,
+    &quot;balanced_accuracy&quot;: 0.5,
+    &quot;precision&quot;: 0.25,
+    &quot;recall&quot;: 0.5,
+    &quot;f1&quot;: 0.3333,
+    &quot;train_metrics&quot;: {
+      &quot;accuracy&quot;: 0.5125,
+      &quot;balanced_accuracy&quot;: 0.5,
+      &quot;precision&quot;: 0.2562,
+      &quot;recall&quot;: 0.5,
+      &quot;f1&quot;: 0.3388
+    }
+  },
+  &quot;selection&quot;: {
+    &quot;problem_type&quot;: &quot;binary_classification&quot;,
+    &quot;dataset_info&quot;: {
+      &quot;n_samples&quot;: 200,
+      &quot;n_features&quot;: 5,
+      &quot;n_classes&quot;: 2,
+      &quot;is_imbalanced&quot;: false
+    },
+    &quot;selected_models&quot;: [
+      &quot;logistic_regression&quot;,
+      &quot;random_forest&quot;,
+      &quot;extra_trees&quot;,
+      &quot;gradient_boosting&quot;,
+      &quot;knn&quot;,
+      &quot;naive_bayes&quot;
+    ],
+    &quot;model_details&quot;: {
+      &quot;logistic_regression&quot;: {
+        &quot;name&quot;: &quot;Logistic Regression&quot;,
+        &quot;description&quot;: &quot;Linear model for binary and multiclass classification.&quot;,
+        &quot;requires_scaling&quot;: true,
+        &quot;supports_probability&quot;: true
+      },
+      &quot;random_forest&quot;: {
+        &quot;name&quot;: &quot;Random Forest Classifier&quot;,
+        &quot;description&quot;: &quot;Ensemble of decision trees.&quot;,
+        &quot;requires_scaling&quot;: false,
+        &quot;supports_probability&quot;: true
+      },
+      &quot;extra_trees&quot;: {
+        &quot;name&quot;: &quot;Extra Trees Classifier&quot;,
+        &quot;description&quot;: &quot;Ensemble of highly randomized decision trees.&quot;,
+        &quot;requires_scaling&quot;: false,
+        &quot;supports_probability&quot;: true
+      },
+      &quot;gradient_boosting&quot;: {
+        &quot;name&quot;: &quot;Gradient Boosting Classifier&quot;,
+        &quot;description&quot;: &quot;Sequential boosting-based classification model.&quot;,
+        &quot;requires_scaling&quot;: false,
+        &quot;supports_probability&quot;: true
+      },
+      &quot;knn&quot;: {
+        &quot;name&quot;: &quot;K-Nearest Neighbors&quot;,
+        &quot;description&quot;: &quot;Distance-based classification algorithm.&quot;,
+        &quot;requires_scaling&quot;: true,
+        &quot;supports_probability&quot;: true
+      },
+      &quot;naive_bayes&quot;: {
+        &quot;name&quot;: &quot;Gaussian Naive Bayes&quot;,
+        &quot;description&quot;: &quot;Probabilistic classification algorithm.&quot;,
+        &quot;requires_scaling&quot;: false,
+        &quot;supports_probability&quot;: true
+      }
+    },
+    &quot;selection_reasons&quot;: [
+      &quot;Candidates selected using dataset size and feature count.&quot;
+    ],
+    &quot;selection_note&quot;: &quot;These are candidate models, not guaranteed best models. Train and evaluate them using leakage-safe validation before selecting a final model.&quot;
+  },
+  &quot;successful_models&quot;: 6,
+  &quot;failed_models&quot;: 0,
+  &quot;score_interpretation&quot;: &quot;The best candidate was selected using cross-validation scores from training data only. The holdout test set was not used for model selection and is reserved for final evaluation. The final test score is still an estimate based on one holdout split and may vary with new data.&quot;,
+  &quot;explainability&quot;: {
+    &quot;available&quot;: true,
+    &quot;methods&quot;: [
+      &quot;model_coefficients&quot;,
+      &quot;permutation_importance&quot;
+    ],
+    &quot;native_importance&quot;: {
+      &quot;available&quot;: false,
+      &quot;reason&quot;: &quot;This estimator does not expose native feature_importances_.&quot;
+    },
+    &quot;coefficients&quot;: {
+      &quot;available&quot;: true,
+      &quot;method&quot;: &quot;model_coefficients&quot;,
+      &quot;total_features&quot;: 5,
+      &quot;top_features&quot;: [
+        {
+          &quot;feature&quot;: &quot;BloodPres&quot;,
+          &quot;importance&quot;: 0.37637817446145483,
+          &quot;absolute_importance&quot;: 0.37637817446145483
+        },
+        {
+          &quot;feature&quot;: &quot;BMI&quot;,
+          &quot;importance&quot;: 0.21221170880293053,
+          &quot;absolute_importance&quot;: 0.21221170880293053
+        },
+        {
+          &quot;feature&quot;: &quot;SkinThickn&quot;,
+          &quot;importance&quot;: 0.08188817526321769,
+          &quot;absolute_importance&quot;: 0.08188817526321769
+        },
+        {
+          &quot;feature&quot;: &quot;Age&quot;,
+          &quot;importance&quot;: 0.05303677348147059,
+          &quot;absolute_importance&quot;: 0.05303677348147059
+        },
+        {
+          &quot;feature&quot;: &quot;Glucose&quot;,
+          &quot;importance&quot;: 0.01434174834043708,
+          &quot;absolute_importance&quot;: 0.01434174834043708
+        }
+      ],
+      &quot;all_features&quot;: [
+        {
+          &quot;feature&quot;: &quot;BloodPres&quot;,
+          &quot;importance&quot;: 0.37637817446145483,
+          &quot;absolute_importance&quot;: 0.37637817446145483
+        },
+        {
+          &quot;feature&quot;: &quot;BMI&quot;,
+          &quot;importance&quot;: 0.21221170880293053,
+          &quot;absolute_importance&quot;: 0.21221170880293053
+        },
+        {
+          &quot;feature&quot;: &quot;SkinThickn&quot;,
+          &quot;importance&quot;: 0.08188817526321769,
+          &quot;absolute_importance&quot;: 0.08188817526321769
+        },
+        {
+          &quot;feature&quot;: &quot;Age&quot;,
+          &quot;importance&quot;: 0.05303677348147059,
+          &quot;absolute_importance&quot;: 0.05303677348147059
+        },
+        {
+          &quot;feature&quot;: &quot;Glucose&quot;,
+          &quot;importance&quot;: 0.01434174834043708,
+          &quot;absolute_importance&quot;: 0.01434174834043708
+        }
+      ],
+      &quot;interpretation&quot;: &quot;Importance represents model-specific feature influence. It does not establish causation.&quot;
+    },
+    &quot;permutation_importance&quot;: {
+      &quot;available&quot;: true,
+      &quot;method&quot;: &quot;permutation_importance&quot;,
+      &quot;total_features&quot;: 5,
+      &quot;top_features&quot;: [
+        {
+          &quot;feature&quot;: &quot;SkinThickn&quot;,
+          &quot;importance&quot;: -0.055000000000000014,
+          &quot;absolute_importance&quot;: 0.055000000000000014,
+          &quot;importance_std&quot;: 0.04301162633521315
+        },
+        {
+          &quot;feature&quot;: &quot;BloodPres&quot;,
+          &quot;importance&quot;: -0.045000000000000005,
+          &quot;absolute_importance&quot;: 0.045000000000000005,
+          &quot;importance_std&quot;: 0.08860022573334675
+        },
+        {
+          &quot;feature&quot;: &quot;Age&quot;,
+          &quot;importance&quot;: -0.045000000000000005,
+          &quot;absolute_importance&quot;: 0.045000000000000005,
+          &quot;importance_std&quot;: 0.0291547594742265
+        },
+        {
+          &quot;feature&quot;: &quot;BMI&quot;,
+          &quot;importance&quot;: -0.040000000000000036,
+          &quot;absolute_importance&quot;: 0.040000000000000036,
+          &quot;importance_std&quot;: 0.06244997998398399
+        },
+        {
+          &quot;feature&quot;: &quot;Glucose&quot;,
+          &quot;importance&quot;: -0.0050000000000000044,
+          &quot;absolute_importance&quot;: 0.0050000000000000044,
+          &quot;importance_std&quot;: 0.024494897427831768
+        }
+      ],
+      &quot;all_features&quot;: [
+        {
+          &quot;feature&quot;: &quot;SkinThickn&quot;,
+          &quot;importance&quot;: -0.055000000000000014,
+          &quot;absolute_importance&quot;: 0.055000000000000014,
+          &quot;importance_std&quot;: 0.04301162633521315
+        },
+        {
+          &quot;feature&quot;: &quot;BloodPres&quot;,
+          &quot;importance&quot;: -0.045000000000000005,
+          &quot;absolute_importance&quot;: 0.045000000000000005,
+          &quot;importance_std&quot;: 0.08860022573334675
+        },
+        {
+          &quot;feature&quot;: &quot;Age&quot;,
+          &quot;importance&quot;: -0.045000000000000005,
+          &quot;absolute_importance&quot;: 0.045000000000000005,
+          &quot;importance_std&quot;: 0.0291547594742265
+        },
+        {
+          &quot;feature&quot;: &quot;BMI&quot;,
+          &quot;importance&quot;: -0.040000000000000036,
+          &quot;absolute_importance&quot;: 0.040000000000000036,
+          &quot;importance_std&quot;: 0.06244997998398399
+        },
+        {
+          &quot;feature&quot;: &quot;Glucose&quot;,
+          &quot;importance&quot;: -0.0050000000000000044,
+          &quot;absolute_importance&quot;: 0.0050000000000000044,
+          &quot;importance_std&quot;: 0.024494897427831768
+        }
+      ],
+      &quot;interpretation&quot;: &quot;Importance represents model-specific feature influence. It does not establish causation.&quot;
+    },
+    &quot;limitations&quot;: [
+      &quot;Feature importance does not prove causation.&quot;,
+      &quot;Native importance values are model-specific.&quot;,
+      &quot;Correlated features can share or distort importance.&quot;,
+      &quot;Permutation importance depends on the evaluation dataset.&quot;
+    ]
+  },
+  &quot;evaluation&quot;: {
+    &quot;problem_type&quot;: &quot;binary_classification&quot;,
+    &quot;train_metrics&quot;: {
+      &quot;accuracy&quot;: 0.5875,
+      &quot;balanced_accuracy&quot;: 0.5876,
+      &quot;precision&quot;: 0.5875,
+      &quot;recall&quot;: 0.5876,
+      &quot;f1&quot;: 0.5874,
+      &quot;confusion_matrix&quot;: [
+        [
+          48,
+          34
+        ],
+        [
+          32,
+          46
+        ]
+      ]
+    },
+    &quot;test_metrics&quot;: {
+      &quot;accuracy&quot;: 0.425,
+      &quot;balanced_accuracy&quot;: 0.425,
+      &quot;precision&quot;: 0.4233,
+      &quot;recall&quot;: 0.425,
+      &quot;f1&quot;: 0.4217,
+      &quot;confusion_matrix&quot;: [
+        [
+          7,
+          13
+        ],
+        [
+          10,
+          10
+        ]
+      ]
+    },
+    &quot;baseline_train_metrics&quot;: {
+      &quot;accuracy&quot;: 0.5125,
+      &quot;balanced_accuracy&quot;: 0.5,
+      &quot;precision&quot;: 0.2562,
+      &quot;recall&quot;: 0.5,
+      &quot;f1&quot;: 0.3388
+    },
+    &quot;baseline_test_metrics&quot;: {
+      &quot;accuracy&quot;: 0.5,
+      &quot;balanced_accuracy&quot;: 0.5,
+      &quot;precision&quot;: 0.25,
+      &quot;recall&quot;: 0.5,
+      &quot;f1&quot;: 0.3333
+    },
+    &quot;generalization&quot;: {
+      &quot;metric&quot;: &quot;f1&quot;,
+      &quot;train_score&quot;: 0.5874,
+      &quot;test_score&quot;: 0.4217,
+      &quot;performance_gap&quot;: 0.1657,
+      &quot;gap_threshold&quot;: 0.1,
+      &quot;overfitting_suspected&quot;: true,
+      &quot;status&quot;: &quot;possible_overfitting&quot;,
+      &quot;interpretation&quot;: &quot;Training performance is substantially higher than testing performance. Possible overfitting should be investigated.&quot;
+    },
+    &quot;baseline_comparison&quot;: {
+      &quot;primary_metric&quot;: &quot;f1&quot;,
+      &quot;status&quot;: &quot;better_than_baseline&quot;,
+      &quot;metrics&quot;: {
+        &quot;accuracy&quot;: {
+          &quot;model&quot;: 0.425,
+          &quot;baseline&quot;: 0.5,
+          &quot;difference&quot;: -0.075,
+          &quot;improved&quot;: false
+        },
+        &quot;balanced_accuracy&quot;: {
+          &quot;model&quot;: 0.425,
+          &quot;baseline&quot;: 0.5,
+          &quot;difference&quot;: -0.075,
+          &quot;improved&quot;: false
+        },
+        &quot;f1&quot;: {
+          &quot;model&quot;: 0.4217,
+          &quot;baseline&quot;: 0.3333,
+          &quot;difference&quot;: 0.0884,
+          &quot;improved&quot;: true
+        }
+      }
+    },
+    &quot;underfitting&quot;: {
+      &quot;metric&quot;: &quot;f1&quot;,
+      &quot;train_score&quot;: 0.5874,
+      &quot;baseline_score&quot;: 0.3388,
+      &quot;underfitting_suspected&quot;: false,
+      &quot;interpretation&quot;: &quot;Training performance exceeds the dummy baseline. This alone does not rule out underfitting.&quot;
+    },
+    &quot;warnings&quot;: [
+      &quot;Possible overfitting: training performance is substantially higher than testing performance.&quot;
+    ],
+    &quot;evaluation_note&quot;: &quot;These checks provide diagnostic indicators, not proof of model quality. Use cross-validation and an independent test dataset for stronger evidence.&quot;,
+    &quot;available&quot;: true,
+    &quot;selected_model&quot;: &quot;Logistic Regression&quot;
+  }
+}</pre>
+            </section>
+            
+            <section class="card">
+                <h2>Evaluation</h2>
+                Not available
+            </section>
+            
+            <section class="card">
+                <h2>Diagnosis</h2>
+                <pre>{
+  &quot;model_name&quot;: &quot;Logistic Regression&quot;,
+  &quot;status&quot;: &quot;issues_found&quot;,
+  &quot;summary&quot;: {
+    &quot;total_findings&quot;: 3,
+    &quot;critical&quot;: 0,
+    &quot;warnings&quot;: 1,
+    &quot;information&quot;: 2
+  },
+  &quot;findings&quot;: [
+    {
+      &quot;code&quot;: &quot;possible_overfitting&quot;,
+      &quot;title&quot;: &quot;Possible Overfitting&quot;,
+      &quot;severity&quot;: &quot;warning&quot;,
+      &quot;message&quot;: &quot;Training performance is substantially higher than testing performance. The model may not generalize well to unseen data.&quot;,
+      &quot;evidence&quot;: {
+        &quot;metric&quot;: &quot;f1&quot;,
+        &quot;train_score&quot;: 0.5874,
+        &quot;test_score&quot;: 0.4217,
+        &quot;performance_gap&quot;: 0.1657,
+        &quot;gap_threshold&quot;: 0.1
+      },
+      &quot;recommendation&quot;: &quot;Investigate model complexity, possible data leakage, dataset size and validation strategy. Consider regularization or simpler models.&quot;
+    },
+    {
+      &quot;code&quot;: &quot;better_than_baseline&quot;,
+      &quot;title&quot;: &quot;Model Outperforms Dummy Baseline&quot;,
+      &quot;severity&quot;: &quot;info&quot;,
+      &quot;message&quot;: &quot;The model performs better than the dummy baseline on the primary evaluation metric.&quot;,
+      &quot;evidence&quot;: {
+        &quot;primary_metric&quot;: &quot;f1&quot;,
+        &quot;status&quot;: &quot;better_than_baseline&quot;,
+        &quot;metrics&quot;: {
+          &quot;accuracy&quot;: {
+            &quot;model&quot;: 0.425,
+            &quot;baseline&quot;: 0.5,
+            &quot;difference&quot;: -0.075,
+            &quot;improved&quot;: false
+          },
+          &quot;balanced_accuracy&quot;: {
+            &quot;model&quot;: 0.425,
+            &quot;baseline&quot;: 0.5,
+            &quot;difference&quot;: -0.075,
+            &quot;improved&quot;: false
+          },
+          &quot;f1&quot;: {
+            &quot;model&quot;: 0.4217,
+            &quot;baseline&quot;: 0.3333,
+            &quot;difference&quot;: 0.0884,
+            &quot;improved&quot;: true
+          }
+        }
+      },
+      &quot;recommendation&quot;: &quot;Continue evaluating with cross-validation and check whether the improvement is consistent.&quot;
+    },
+    {
+      &quot;code&quot;: &quot;feature_importance_available&quot;,
+      &quot;title&quot;: &quot;Feature Importance Available&quot;,
+      &quot;severity&quot;: &quot;info&quot;,
+      &quot;message&quot;: &quot;Feature importance information is available for the evaluated model.&quot;,
+      &quot;evidence&quot;: {
+        &quot;available&quot;: true,
+        &quot;top_features&quot;: [
+          {
+            &quot;feature&quot;: &quot;BloodPres&quot;,
+            &quot;importance&quot;: 0.37637817446145483
+          },
+          {
+            &quot;feature&quot;: &quot;BMI&quot;,
+            &quot;importance&quot;: 0.21221170880293053
+          },
+          {
+            &quot;feature&quot;: &quot;SkinThickn&quot;,
+            &quot;importance&quot;: 0.08188817526321769
+          },
+          {
+            &quot;feature&quot;: &quot;Age&quot;,
+            &quot;importance&quot;: 0.05303677348147059
+          },
+          {
+            &quot;feature&quot;: &quot;Glucose&quot;,
+            &quot;importance&quot;: 0.01434174834043708
+          }
+        ],
+        &quot;total_features&quot;: 5,
+        &quot;interpretation&quot;: &quot;Importance indicates relative model reliance, not causation.&quot;
+      },
+      &quot;recommendation&quot;: &quot;Review important features with domain knowledge. Do not interpret importance as causation.&quot;
+    }
+  ],
+  &quot;feature_importance&quot;: {
+    &quot;available&quot;: true,
+    &quot;top_features&quot;: [
+      {
+        &quot;feature&quot;: &quot;BloodPres&quot;,
+        &quot;importance&quot;: 0.37637817446145483
+      },
+      {
+        &quot;feature&quot;: &quot;BMI&quot;,
+        &quot;importance&quot;: 0.21221170880293053
+      },
+      {
+        &quot;feature&quot;: &quot;SkinThickn&quot;,
+        &quot;importance&quot;: 0.08188817526321769
+      },
+      {
+        &quot;feature&quot;: &quot;Age&quot;,
+        &quot;importance&quot;: 0.05303677348147059
+      },
+      {
+        &quot;feature&quot;: &quot;Glucose&quot;,
+        &quot;importance&quot;: 0.01434174834043708
+      }
+    ],
+    &quot;total_features&quot;: 5,
+    &quot;interpretation&quot;: &quot;Importance indicates relative model reliance, not causation.&quot;
+  },
+  &quot;limitations&quot;: [
+    &quot;Diagnosis depends on the completeness of supplied inputs.&quot;,
+    &quot;Heuristic findings are signals for investigation, not proof.&quot;,
+    &quot;Feature importance does not establish causation.&quot;,
+    &quot;A small train-test gap does not guarantee real-world performance.&quot;
+  ]
+}</pre>
+            </section>
+            
+            <section class="card">
+                <h2>Explainability</h2>
+                Not available
+            </section>
+            
+            <section class="card">
+                <h2>Hyperparameter Tuning</h2>
+                Not available
+            </section>
+            
+
+<footer>
+    Generated by ML Model Doctor
+</footer>
+
+</div>
+</body>
+</html>

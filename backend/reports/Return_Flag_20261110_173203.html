@@ -1,0 +1,2061 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ML Model Doctor Report</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 30px;
+    font-family: Arial, sans-serif;
+    background: #f4f6fa;
+    color: #202938;
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+}
+
+header {
+    background: #182338;
+    color: white;
+    padding: 30px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+}
+
+header h1 {
+    margin: 0 0 10px;
+}
+
+.card {
+    background: white;
+    padding: 22px;
+    margin-bottom: 18px;
+    border-radius: 10px;
+    border: 1px solid #e1e6ed;
+    overflow-wrap: anywhere;
+}
+
+.card h2 {
+    margin-top: 0;
+    color: #244a80;
+}
+
+pre {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    background: #f4f6fa;
+    padding: 14px;
+    border-radius: 6px;
+}
+
+footer {
+    text-align: center;
+    color: #667085;
+    margin-top: 25px;
+}
+
+@media print {
+    body {
+        background: white;
+        padding: 10px;
+    }
+
+    .card, header {
+        break-inside: avoid;
+    }
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<header>
+    <h1>ML Model Doctor</h1>
+    <p>Automated Machine Learning Analysis Report</p>
+    <small>Generated: 2026-11-10T17:45:51.691321+00:00</small>
+</header>
+
+
+            <section class="card">
+                <h2>Executive Summary</h2>
+                <pre>{
+  &quot;dataset&quot;: {
+    &quot;rows&quot;: 18045,
+    &quot;columns&quot;: 36
+  },
+  &quot;problem_type&quot;: &quot;binary_classification&quot;,
+  &quot;best_model&quot;: {
+    &quot;name&quot;: &quot;Logistic Regression&quot;
+  },
+  &quot;evaluation&quot;: {
+    &quot;generalization&quot;: null,
+    &quot;baseline_comparison&quot;: null
+  },
+  &quot;diagnosis_status&quot;: &quot;issues_found&quot;,
+  &quot;diagnostic_findings&quot;: {
+    &quot;total_findings&quot;: 8,
+    &quot;critical&quot;: 0,
+    &quot;warnings&quot;: 3,
+    &quot;information&quot;: 5
+  },
+  &quot;conclusion&quot;: &quot;Review the evaluation metrics and diagnostic findings before using the model in production.&quot;
+}</pre>
+            </section>
+            
+            <section class="card">
+                <h2>Dataset Profile</h2>
+                <pre>{
+  &quot;rows&quot;: 18045,
+  &quot;columns&quot;: 36,
+  &quot;total_cells&quot;: 649620,
+  &quot;column_names&quot;: [
+    &quot;Transaction_ID&quot;,
+    &quot;Order_ID&quot;,
+    &quot;Customer_ID&quot;,
+    &quot;Customer_Name&quot;,
+    &quot;Customer_Age&quot;,
+    &quot;Customer_Gender&quot;,
+    &quot;Customer_Segment&quot;,
+    &quot;Order_Date&quot;,
+    &quot;Order_Time&quot;,
+    &quot;Sales_Channel&quot;,
+    &quot;Store_ID&quot;,
+    &quot;Store_Name&quot;,
+    &quot;Country&quot;,
+    &quot;Region&quot;,
+    &quot;City&quot;,
+    &quot;Product_ID&quot;,
+    &quot;Product_Name&quot;,
+    &quot;Product_Category&quot;,
+    &quot;Product_Subcategory&quot;,
+    &quot;Quantity&quot;,
+    &quot;Unit_Price&quot;,
+    &quot;Discount_Percentage&quot;,
+    &quot;Sales_Amount&quot;,
+    &quot;Cost_Amount&quot;,
+    &quot;Profit&quot;,
+    &quot;Payment_Method&quot;,
+    &quot;Order_Status&quot;,
+    &quot;Shipping_Method&quot;,
+    &quot;Delivery_Days&quot;,
+    &quot;Return_Flag&quot;,
+    &quot;Return_Reason&quot;,
+    &quot;Sales_Representative&quot;,
+    &quot;Promotion_Code&quot;,
+    &quot;Customer_Rating&quot;,
+    &quot;Inventory_Level&quot;,
+    &quot;Order_Year&quot;
+  ],
+  &quot;numeric_columns&quot;: [
+    &quot;Customer_Age&quot;,
+    &quot;Quantity&quot;,
+    &quot;Unit_Price&quot;,
+    &quot;Discount_Percentage&quot;,
+    &quot;Sales_Amount&quot;,
+    &quot;Cost_Amount&quot;,
+    &quot;Profit&quot;,
+    &quot;Delivery_Days&quot;,
+    &quot;Customer_Rating&quot;,
+    &quot;Inventory_Level&quot;,
+    &quot;Order_Year&quot;
+  ],
+  &quot;categorical_columns&quot;: [
+    &quot;Transaction_ID&quot;,
+    &quot;Order_ID&quot;,
+    &quot;Customer_ID&quot;,
+    &quot;Customer_Name&quot;,
+    &quot;Customer_Gender&quot;,
+    &quot;Customer_Segment&quot;,
+    &quot;Sales_Channel&quot;,
+    &quot;Store_ID&quot;,
+    &quot;Store_Name&quot;,
+    &quot;Country&quot;,
+    &quot;Region&quot;,
+    &quot;City&quot;,
+    &quot;Product_ID&quot;,
+    &quot;Product_Name&quot;,
+    &quot;Product_Category&quot;,
+    &quot;Product_Subcategory&quot;,
+    &quot;Payment_Method&quot;,
+    &quot;Order_Status&quot;,
+    &quot;Shipping_Method&quot;,
+    &quot;Return_Flag&quot;,
+    &quot;Return_Reason&quot;,
+    &quot;Sales_Representative&quot;,
+    &quot;Promotion_Code&quot;
+  ],
+  &quot;boolean_columns&quot;: [],
+  &quot;datetime_columns&quot;: [],
+  &quot;datetime_candidates&quot;: [
+    &quot;Order_Date&quot;,
+    &quot;Order_Time&quot;
+  ],
+  &quot;other_columns&quot;: [],
+  &quot;data_type_summary&quot;: {
+    &quot;numeric&quot;: 11,
+    &quot;categorical&quot;: 23,
+    &quot;boolean&quot;: 0,
+    &quot;datetime&quot;: 0,
+    &quot;datetime_candidates&quot;: 2,
+    &quot;other&quot;: 0
+  },
+  &quot;missing_values&quot;: 30479,
+  &quot;missing_percentage&quot;: 4.69,
+  &quot;columns_with_missing&quot;: 10,
+  &quot;duplicate_rows&quot;: 45,
+  &quot;duplicate_columns&quot;: [],
+  &quot;outlier_values&quot;: 9781,
+  &quot;outlier_rows&quot;: 4583,
+  &quot;outlier_details&quot;: [
+    {
+      &quot;column&quot;: &quot;Unit_Price&quot;,
+      &quot;count&quot;: 2051
+    },
+    {
+      &quot;column&quot;: &quot;Profit&quot;,
+      &quot;count&quot;: 1877
+    },
+    {
+      &quot;column&quot;: &quot;Cost_Amount&quot;,
+      &quot;count&quot;: 1829
+    },
+    {
+      &quot;column&quot;: &quot;Sales_Amount&quot;,
+      &quot;count&quot;: 1793
+    },
+    {
+      &quot;column&quot;: &quot;Customer_Rating&quot;,
+      &quot;count&quot;: 1318
+    },
+    {
+      &quot;column&quot;: &quot;Quantity&quot;,
+      &quot;count&quot;: 698
+    },
+    {
+      &quot;column&quot;: &quot;Inventory_Level&quot;,
+      &quot;count&quot;: 114
+    },
+    {
+      &quot;column&quot;: &quot;Customer_Age&quot;,
+      &quot;count&quot;: 88
+    },
+    {
+      &quot;column&quot;: &quot;Discount_Percentage&quot;,
+      &quot;count&quot;: 13
+    }
+  ],
+  &quot;constant_columns&quot;: [],
+  &quot;near_constant_columns&quot;: [],
+  &quot;identifier_candidates&quot;: [
+    &quot;Transaction_ID&quot;,
+    &quot;Order_ID&quot;,
+    &quot;Customer_ID&quot;,
+    &quot;Store_ID&quot;,
+    &quot;Product_ID&quot;
+  ],
+  &quot;high_cardinality_columns&quot;: [
+    &quot;Transaction_ID&quot;,
+    &quot;Order_ID&quot;
+  ],
+  &quot;numerical_summary&quot;: {
+    &quot;Customer_Age&quot;: {
+      &quot;mean&quot;: 38.91692376731923,
+      &quot;median&quot;: 39.0,
+      &quot;std&quot;: 10.727356563733347,
+      &quot;min&quot;: 4.0,
+      &quot;max&quot;: 112.0,
+      &quot;skewness&quot;: 0.20189716923787515,
+      &quot;variance&quot;: 115.0761788454729
+    },
+    &quot;Quantity&quot;: {
+      &quot;mean&quot;: 2.1271266278747576,
+      &quot;median&quot;: 2.0,
+      &quot;std&quot;: 1.786212428307723,
+      &quot;min&quot;: -3,
+      &quot;max&quot;: 11,
+      &quot;skewness&quot;: 2.6081578626150774,
+      &quot;variance&quot;: 3.1905548390409724
+    },
+    &quot;Unit_Price&quot;: {
+      &quot;mean&quot;: 232.68563291770576,
+      &quot;median&quot;: 99.87,
+      &quot;std&quot;: 294.2080215641972,
+      &quot;min&quot;: 21.39,
+      &quot;max&quot;: 1425.09,
+      &quot;skewness&quot;: 2.072664332188734,
+      &quot;variance&quot;: 86558.35995271915
+    },
+    &quot;Discount_Percentage&quot;: {
+      &quot;mean&quot;: 6.256857855361596,
+      &quot;median&quot;: 5.0,
+      &quot;std&quot;: 6.88117818102154,
+      &quot;min&quot;: 0.0,
+      &quot;max&quot;: 110.0,
+      &quot;skewness&quot;: 1.0421915009178024,
+      &quot;variance&quot;: 47.350613158966915
+    },
+    &quot;Sales_Amount&quot;: {
+      &quot;mean&quot;: 457.30902743142144,
+      &quot;median&quot;: 168.81,
+      &quot;std&quot;: 856.5971807912753,
+      &quot;min&quot;: 16.68,
+      &quot;max&quot;: 14303.07,
+      &quot;skewness&quot;: 5.722245277404069,
+      &quot;variance&quot;: 733758.7301395606
+    },
+    &quot;Cost_Amount&quot;: {
+      &quot;mean&quot;: 366.0011559988917,
+      &quot;median&quot;: 122.3,
+      &quot;std&quot;: 705.8667375328109,
+      &quot;min&quot;: 12.17,
+      &quot;max&quot;: 10791.0,
+      &quot;skewness&quot;: 5.714736232859776,
+      &quot;variance&quot;: 498247.85115521424
+    },
+    &quot;Profit&quot;: {
+      &quot;mean&quot;: 91.40413078415074,
+      &quot;median&quot;: 40.19,
+      &quot;std&quot;: 167.8278834893265,
+      &quot;min&quot;: -299.31,
+      &quot;max&quot;: 3512.08,
+      &quot;skewness&quot;: 6.603985074773834,
+      &quot;variance&quot;: 28166.198476506946
+    },
+    &quot;Delivery_Days&quot;: {
+      &quot;mean&quot;: 2.2622043281328637,
+      &quot;median&quot;: 1.0,
+      &quot;std&quot;: 2.321655947490571,
+      &quot;min&quot;: 0.0,
+      &quot;max&quot;: 10.0,
+      &quot;skewness&quot;: 0.5709724841798681,
+      &quot;variance&quot;: 5.3900863385183415
+    },
+    &quot;Customer_Rating&quot;: {
+      &quot;mean&quot;: 3.985968514715948,
+      &quot;median&quot;: 4.0,
+      &quot;std&quot;: 1.0084224524804215,
+      &quot;min&quot;: 1.0,
+      &quot;max&quot;: 5.0,
+      &quot;skewness&quot;: -1.0021630987180654,
+      &quot;variance&quot;: 1.016915842666628
+    },
+    &quot;Inventory_Level&quot;: {
+      &quot;mean&quot;: 70.25791449543341,
+      &quot;median&quot;: 70.0,
+      &quot;std&quot;: 22.042608758840224,
+      &quot;min&quot;: 0.0,
+      &quot;max&quot;: 157.0,
+      &quot;skewness&quot;: 0.02468765041212122,
+      &quot;variance&quot;: 485.8766008952998
+    },
+    &quot;Order_Year&quot;: {
+      &quot;mean&quot;: 2023.5664172901081,
+      &quot;median&quot;: 2024.0,
+      &quot;std&quot;: 1.1187438148304194,
+      &quot;min&quot;: 2022,
+      &quot;max&quot;: 2025,
+      &quot;skewness&quot;: -0.061731622132885265,
+      &quot;variance&quot;: 1.2515877232213197
+    }
+  },
+  &quot;column_info&quot;: [
+    {
+      &quot;name&quot;: &quot;Transaction_ID&quot;,
+      &quot;dtype&quot;: &quot;object&quot;,
+      &quot;detected_type&quot;: &quot;categorical&quot;,
+      &quot;missing&quot;: 0,
+      &quot;missing_percentage&quot;: 0.0,
+      &quot;unique_values&quot;: 18000,
+      &quot;unique_ratio&quot;: 0.9975,
+      &quot;is_numeric&quot;: false,
+      &quot;is_constant&quot;: false,
+      &quot;is_near_constant&quot;: false,
+      &quot;is_identifier_candidate&quot;: true,
+      &quot;is_high_cardinality&quot;: true,
+      &quot;outliers&quot;: 0,
+      &quot;outlier_percentage&quot;: 0.0,
+      &quot;outlier_bounds&quot;: {
+        &quot;lower&quot;: null,
+        &quot;upper&quot;: null
+      },
+      &quot;dominant_value_percentage&quot;: 0.01
+    },
+    {
+      &quot;name&quot;: &quot;Order_ID&quot;,
+      &quot;dtype&quot;: &quot;object&quot;,
+      &quot;detected_type&quot;: &quot;categorical&quot;,
+      &quot;missing&quot;: 0,
+      &quot;missing_percentage&quot;: 0.0,
+      &quot;unique_values&quot;: 14541,
+      &quot;unique_ratio&quot;: 0.8058,
+      &quot;is_numeric&quot;: false,
+      &quot;is_constant&quot;: false,
+      &quot;is_near_constant&quot;: false,
+      &quot;is_identifier_candidate&quot;: true,
+      &quot;is_high_cardinality&quot;: true,
+      &quot;outliers&quot;: 0,
+      &quot;outlier_percentage&quot;: 0.0,
+      &quot;outlier_bounds&quot;: {
+        &quot;lower&quot;: null,
+        &quot;upper&quot;: null
+      },
+      &quot;dominant_value_percentage&quot;: 0.02
+    },
+    {
+      &quot;name&quot;: &quot;Customer_ID&quot;,
+      &quot;dtype&quot;: &quot;object&quot;,
+      &quot;detected_type&quot;: &quot;categorical&quot;,
+      &quot;missing&quot;: 0,
+      &quot;missing_percentage&quot;: 0.0,
+      &quot;unique_values&quot;: 4882,
+      &quot;unique_ratio&quot;: 0.2705,
+      &quot;is_numeric&quot;: false,
+      &quot;is_constant&quot;: false,
+      &quot;is_near_constant&quot;: false,
+      &quot;is_identifier_candidate&quot;: true,
+      &quot;is_high_cardinality&quot;: false,
+      &quot;outliers&quot;: 0,
+      &quot;outlier_percentage&quot;: 0.0,
+      &quot;outlier_bounds&quot;: {
+        &quot;lower&quot;: null,
+        &quot;upper&quot;: null
+      },
+      &quot;dominant_value_percentage&quot;: 0.12
+    },
+    {
+      &quot;name&quot;: &quot;Customer_Name&quot;,
+      &quot;dtype&quot;: &quot;object&quot;,
+      &quot;detected_type&quot;: &quot;categorical&quot;,
+      &quot;missing&quot;: 108,
+      &quot;missing_percentage&quot;: 0.6,
+      &quot;unique_values&quot;: 1179,
+      &quot;unique_ratio&quot;: 0.0653,
+      &quot;is_numeric&quot;: false,
+      &quot;is_constant&quot;: false,
+      &quot;is_near_constant&quot;: false,
+      &quot;is_identifier_candidate&quot;: false,
+      &quot;is_high_cardinality&quot;: false,
+      &quot;outliers&quot;: 0,
+      &quot;outlier_percentage&quot;: 0.0,
+      &quot;outlier_bounds&quot;: {
+        &quot;lower&quot;: null,
+        &quot;upper&quot;: null
+      },
+      &quot;dominant_value_percentage&quot;: 0.6
+    },
+    {
+      &quot;name&quot;: &quot;Customer_Age&quot;,
+      &quot;dtype&quot;: &quot;float64&quot;,
+      &quot;detected_type&quot;: &quot;numeric&quot;,
+      &quot;missing&quot;: 218,
+      &quot;missing_percentage&quot;: 1.21,
+      &quot;unique_values&quot;: 60,
+      &quot;unique_ratio&quot;: 0.0033,
+      &quot;is_numeric&quot;: true,
+      &quot;is_constant&quot;: false,
+      &quot;is_near_constant&quot;: false,
+      &quot;is_identifier_candidate&quot;: false,
+      &quot;is_high_cardinality&quot;: false,
+      &quot;outliers&quot;: 88,
+      &quot;outlier_percentage&quot;: 0.49,
+      &quot;outlier_bounds&quot;: {
+        &quot;lower&quot;: 11.0,
+        &quot;upper&quot;: 67.0
+      },
+      &quot;dominant_value_percentage&quot;: 3.94
+    },
+    {
+      &quot;name&quot;: &quot;Customer_Gender&quot;,
+      &quot;dtype&quot;: &quot;object&quot;,
+      &quot;detected_type&quot;: &quot;categorical&quot;,
+      &quot;missing&quot;: 162,
+      &quot;missing_percentage&quot;: 0.9,
+      &quot;unique_values&quot;: 6,
+      &quot;unique_ratio&quot;: 0.0003,
+      &quot;is_numeric&quot;: false,
+      &quot;is_constant&quot;: false,
+      &quot;is_near_constant&quot;: false,
+      &quot;is_identifier_candidate&quot;: false,
+      &quot;is_high_cardinality&quot;: false,
+      &quot;outliers&quot;: 0,
+      &quot;outlier_percentage&quot;: 0.0,
+      &quot;outlier_bounds&quot;: {
+        &quot;lower&quot;: null,
+        &quot;upper&quot;: null
+      },
+      &quot;dominant_value_percentage&quot;: 48.45
+    },
+    {
+      &quot;name&quot;: &quot;Customer_Segment&quot;,
+      &quot;dtype&quot;: &quot;object&quot;,
+      &quot;detected_type&quot;: &quot;categorical&quot;,
+      &quot;missing&quot;: 0,
+      &quot;missing_percentage&quot;: 0.0,
+      &quot;unique_values&quot;: 6,
+      &quot;unique_ratio&quot;: 0.0003,
+      &quot;is_numeric&quot;: false,
+      &quot;is_constant&quot;: false,
+      &quot;is_near_constant&quot;: false,
+      &quot;is_identifier_candidate&quot;: false,
+      &quot;is_high_cardinality&quot;: false,
+      &quot;outliers&quot;: 0,
+      &quot;outlier_percentage&quot;: 0.0,
+      &quot;outlier_bounds&quot;: {
+        &quot;lower&quot;: null,
+        &quot;upper&quot;: null
+      },
+      &quot;dominant_value_percentage&quot;: 44.55
+    },
+    {
+      &quot;name&quot;: &quot;Order_Date&quot;,
+      &quot;dtype&quot;: &quot;object&quot;,
+      &quot;detected_type&quot;: &quot;datetime_candidate&quot;,
+      &quot;missing&quot;: 0,
+      &quot;missing_percentage&quot;: 0.0,
+      &quot;unique_values&quot;: 1461,
+      &quot;unique_ratio&quot;: 0.081,
+      &quot;is_numeric&quot;: false,
+      &quot;is_constant&quot;: false,
+      &quot;is_near_constant&quot;: false,
+      &quot;is_identifier_candidate&quot;: false,
+      &quot;is_high_cardinality&quot;: false,
+      &quot;outliers&quot;: 0,
+      &quot;outlier_percentage&quot;: 0.0,
+      &quot;outlier_bounds&quot;: {
+        &quot;lower&quot;: null,
+        &quot;upper&quot;: null
+      },
+      &quot;dominant_value_percentage&quot;: 0.18
+    },
+    {
+      &quot;name&quot;: &quot;Order_Time&quot;,
+      &quot;dtype&quot;: &quot;object&quot;,
+      &quot;detected_type&quot;: &quot;datetime_candidate&quot;,
+      &quot;missing&quot;: 0,
+      &quot;missing_percentage&quot;: 0.0,
+      &quot;unique_values&quot;: 15201,
+      &quot;unique_ratio&quot;: 0.8424,
+      &quot;is_numeric&quot;: false,
+      &quot;is_constant&quot;: false,
+      &quot;is_near_constant&quot;: false,
+      &quot;is_identifier_candidate&quot;: false,
+      &quot;is_high_cardinality&quot;: false,
+      &quot;outliers&quot;: 0,
+      &quot;outlier_percentage&quot;: 0.0,
+      &quot;outlier_bounds&quot;: {
+        &quot;lower&quot;: null,
+        &quot;upper&quot;: null
+      },
+      &quot;dominant_value_percentage&quot;: 0.03
+    },
+    {
+      &quot;name&quot;: &quot;Sales_Channel&quot;,
+      &quot;dtype&quot;: &quot;object&quot;,
+      &quot;detected_type&quot;: &quot;categorical&quot;,
+      &quot;missing&quot;: 0,
+      &quot;missing_percentage&quot;: 0.0,
+      &quot;unique_values&quot;: 4,
+      &quot;unique_ratio&quot;: 0.0002,
+      &quot;is_numeric&quot;: false,
+      &quot;is_constant&quot;: false,
+      &quot;is_near_constant&quot;: false,
+      &quot;is_identifier_candidate&quot;: false,
+      &quot;is_high_cardinality&quot;: false,
+      &quot;outliers&quot;: 0,
+      &quot;outlier_percentage&quot;: 0.0,
+      &quot;outlier_bounds&quot;: {
+        &quot;lower&quot;: null,
+        &quot;upper&quot;: null
+      },
+      &quot;dominant_value_percentage&quot;: 45.5
+    },
+    {
+      &quot;name&quot;: &quot;Store_ID&quot;,
+      &quot;dtype&quot;: &quot;object&quot;,
+      &quot;detected_type&quot;: &quot;categorical&quot;,
+      &quot;missing&quot;: 0,
+      &quot;missing_percentage&quot;: 0.0,
+      &quot;unique_values&quot;: 12,
+      &quot;unique_ratio&quot;: 0.0007,
+      &quot;is_numeric&quot;: false,
+      &quot;is_constant&quot;: false,
+      &quot;is_near_constant&quot;: false,
+      &quot;is_identifier_candidate&quot;: true,
+      &quot;is_high_cardinality&quot;: false,
+      &quot;outliers&quot;: 0,
+      &quot;outlier_percentage&quot;: 0.0,
+      &quot;outlier_bounds&quot;: {
+        &quot;lower&quot;: null,
+        &quot;upper&quot;: null
+      },
+      &quot;dominant_value_percentage&quot;: 12.05
+    },
+    {
+      &quot;name&quot;: &quot;Store_Name&quot;,
+      &quot;dtype&quot;: &quot;object&quot;,
+      &quot;detected_type&quot;: &quot;categorical&quot;,
+      &quot;missing&quot;: 0,
+      &quot;missing_percentage&quot;: 0.0,
+      &quot;unique_values&quot;: 12,
+      &quot;unique_ratio&quot;: 0.0007,
+      &quot;is_numeric&quot;: false,
+      &quot;is_constant&quot;: false,
+      &quot;is_near_constant&quot;: false,
+      &quot;is_identifier_candidate&quot;: false,
+      &quot;is_high_cardinality&quot;: false,
+      &quot;outliers&quot;: 0,
+      &quot;outlier_percentage&quot;: 0.0,
+      &quot;outlier_bounds&quot;: {
+        &quot;lower&quot;: null,
+        &quot;upper&quot;: null
+      },
+      &quot;dominant_value_percentage&quot;: 12.05
+    },
+    {
+      &quot;name&quot;: &quot;Country&quot;,
+      &quot;dtype&quot;: &quot;object&quot;,
+      &quot;detected_type&quot;: &quot;categorical&quot;,
+      &quot;missing&quot;: 0,
+      &quot;missing_percentage&quot;: 0.0,
+      &quot;unique_values&quot;: 6,
+      &quot;unique_ratio&quot;: 0.0003,
+      &quot;is_numeric&quot;: false,
+      &quot;is_constant&quot;: false,
+      &quot;is_near_constant&quot;: false,
+      &quot;is_identifier_candidate&quot;: false,
+      &quot;is_high_cardinality&quot;: false,
+      &quot;outliers&quot;: 0,
+      &quot;outlier_percentage&quot;: 0.0,
+      &quot;outlier_bounds&quot;: {
+        &quot;lower&quot;: null,
+        &quot;upper&quot;: null
+      },
+      &quot;dominant_value_percentage&quot;: 41.81
+    },
+    {
+      &quot;name&quot;: &quot;Region&quot;,
+      &quot;dtype&quot;: &quot;object&quot;,
+      &quot;detected_type&quot;: &quot;categorical&quot;,
+      &quot;missing&quot;: 0,
+      &quot;missing_percentage&quot;: 0.0,
+      &quot;unique_values&quot;: 14,
+      &quot;unique_ratio&quot;: 0.0008,
+      &quot;is_numeric&quot;: false,
+      &quot;is_constant&quot;: false,
+      &quot;is_near_constant&quot;: false,
+      &quot;is_identifier_candidate&quot;: false,
+      &quot;is_high_cardinality&quot;: false,
+      &quot;outliers&quot;: 0,
+      &quot;outlier_percentage&quot;: 0.0,
+      &quot;outlier_bounds&quot;: {
+        &quot;lower&quot;: null,
+        &quot;upper&quot;: null
+      },
+      &quot;dominant_value_percentage&quot;: 16.52
+    },
+    {
+      &quot;name&quot;: &quot;City&quot;,
+      &quot;dtype&quot;: &quot;object&quot;,
+      &quot;detected_type&quot;: &quot;categorical&quot;,
+      &quot;missing&quot;: 0,
+      &quot;missing_percentage&quot;: 0.0,
+      &quot;unique_values&quot;: 15,
+      &quot;unique_ratio&quot;: 0.0008,
+      &quot;is_numeric&quot;: false,
+      &quot;is_constant&quot;: false,
+      &quot;is_near_constant&quot;: false,
+      &quot;is_identifier_candidate&quot;: false,
+      &quot;is_high_cardinality&quot;: false,
+      &quot;outliers&quot;: 0,
+      &quot;outlier_percentage&quot;: 0.0,
+      &quot;outlier_bounds&quot;: {
+        &quot;lower&quot;: null,
+        &quot;upper&quot;: null
+      },
+      &quot;dominant_value_percentage&quot;: 11.98
+    },
+    {
+      &quot;name&quot;: &quot;Product_ID&quot;,
+      &quot;dtype&quot;: &quot;object&quot;,
+      &quot;detected_type&quot;: &quot;categorical&quot;,
+      &quot;missing&quot;: 0,
+      &quot;missing_percentage&quot;: 0.0,
+      &quot;unique_values&quot;: 28,
+      &quot;unique_ratio&quot;: 0.0016,
+      &quot;is_numeric&quot;: false,
+      &quot;is_constant&quot;: false,
+      &quot;is_near_constant&quot;: false,
+      &quot;is_identifier_candidate&quot;: true,
+      &quot;is_high_cardinality&quot;: false,
+      &quot;outliers&quot;: 0,
+      &quot;outlier_percentage&quot;: 0.0,
+      &quot;outlier_bounds&quot;: {
+        &quot;lower&quot;: null,
+        &quot;upper&quot;: null
+      },
+      &quot;dominant_value_percentage&quot;: 5.45
+    },
+    {
+      &quot;name&quot;: &quot;Product_Name&quot;,
+      &quot;dtype&quot;: &quot;object&quot;,
+      &quot;detected_type&quot;: &quot;categorical&quot;,
+      &quot;missing&quot;: 144,
+      &quot;missing_percentage&quot;: 0.8,
+      &quot;unique_values&quot;: 28,
+      &quot;unique_ratio&quot;: 0.0016,
+      &quot;is_numeric&quot;: false,
+      &quot;is_constant&quot;: false,
+      &quot;is_near_constant&quot;: false,
+      &quot;is_identifier_candidate&quot;: false,
+      &quot;is_high_cardinality&quot;: false,
+      &quot;outliers&quot;: 0,
+      &quot;outlier_percentage&quot;: 0.0,
+      &quot;outlier_bounds&quot;: {
+        &quot;lower&quot;: null,
+        &quot;upper&quot;: null
+      },
+      &quot;dominant_value_percentage&quot;: 5.4
+    },
+    {
+      &quot;name&quot;: &quot;Product_Category&quot;,
+      &quot;dtype&quot;: &quot;object&quot;,
+      &quot;detected_type&quot;: &quot;categorical&quot;,
+      &quot;missing&quot;: 0,
+      &quot;missing_percentage&quot;: 0.0,
+      &quot;unique_values&quot;: 7,
+      &quot;unique_ratio&quot;: 0.0004,
+      &quot;is_numeric&quot;: false,
+      &quot;is_constant&quot;: false,
+      &quot;is_near_constant&quot;: false,
+      &quot;is_identifier_candidate&quot;: false,
+      &quot;is_high_cardinality&quot;: false,
+      &quot;outliers&quot;: 0,
+      &quot;outlier_percentage&quot;: 0.0,
+      &quot;outlier_bounds&quot;: {
+        &quot;lower&quot;: null,
+        &quot;upper&quot;: null
+      },
+      &quot;dominant_value_percentage&quot;: 45.12
+    },
+    {
+      &quot;name&quot;: &quot;Product_Subcategory&quot;,
+      &quot;dtype&quot;: &quot;object&quot;,
+      &quot;detected_type&quot;: &quot;categorical&quot;,
+      &quot;missing&quot;: 0,
+      &quot;missing_percentage&quot;: 0.0,
+      &quot;unique_values&quot;: 17,
+      &quot;unique_ratio&quot;: 0.0009,
+      &quot;is_numeric&quot;: false,
+      &quot;is_constant&quot;: false,
+      &quot;is_near_constant&quot;: false,
+      &quot;is_identifier_candidate&quot;: false,
+      &quot;is_high_cardinality&quot;: false,
+      &quot;outliers&quot;: 0,
+      &quot;outlier_percentage&quot;: 0.0,
+      &quot;outlier_bounds&quot;: {
+        &quot;lower&quot;: null,
+        &quot;upper&quot;: null
+      },
+      &quot;dominant_value_percentage&quot;: 17.98
+    },
+    {
+      &quot;name&quot;: &quot;Quantity&quot;,
+      &quot;dtype&quot;: &quot;int64&quot;,
+      &quot;detected_type&quot;: &quot;numeric&quot;,
+      &quot;missing&quot;: 0,
+      &quot;missing_percentage&quot;: 0.0,
+      &quot;unique_values&quot;: 15,
+      &quot;unique_ratio&quot;: 0.0008,
+      &quot;is_numeric&quot;: true,
+      &quot;is_constant&quot;: false,
+      &quot;is_near_constant&quot;: false,
+      &quot;is_identifier_candidate&quot;: false,
+      &quot;is_high_cardinality&quot;: false,
+      &quot;outliers&quot;: 698,
+      &quot;outlier_percentage&quot;: 3.87,
+      &quot;outlier_bounds&quot;: {
+        &quot;lower&quot;: -2.0,
+        &quot;upper&quot;: 6.0
+      },
+      &quot;dominant_value_percentage&quot;: 49.81
+    },
+    {
+      &quot;name&quot;: &quot;Unit_Price&quot;,
+      &quot;dtype&quot;: &quot;float64&quot;,
+      &quot;detected_type&quot;: &quot;numeric&quot;,
+      &quot;missing&quot;: 0,
+      &quot;missing_percentage&quot;: 0.0,
+      &quot;unique_values&quot;: 12445,
+      &quot;unique_ratio&quot;: 0.6897,
+      &quot;is_numeric&quot;: true,
+      &quot;is_constant&quot;: false,
+      &quot;is_near_constant&quot;: false,
+      &quot;is_identifier_candidate&quot;: false,
+      &quot;is_high_cardinality&quot;: false,
+      &quot;outliers&quot;: 2051,
+      &quot;outlier_percentage&quot;: 11.37,
+      &quot;outlier_bounds&quot;: {
+        &quot;lower&quot;: -294.91999999999996,
+        &quot;upper&quot;: 633.8799999999999
+      },
+      &quot;dominant_value_percentage&quot;: 0.06
+    },
+    {
+      &quot;name&quot;: &quot;Discount_Percentage&quot;,
+      &quot;dtype&quot;: &quot;float64&quot;,
+      &quot;detected_type&quot;: &quot;numeric&quot;,
+      &quot;missing&quot;: 0,
+      &quot;missing_percentage&quot;: 0.0,
+      &quot;unique_values&quot;: 10,
+      &quot;unique_ratio&quot;: 0.0006,
+      &quot;is_numeric&quot;: true,
+      &quot;is_constant&quot;: false,
+      &quot;is_near_constant&quot;: false,
+      &quot;is_identifier_candidate&quot;: false,
+      &quot;is_high_cardinality&quot;: false,
+      &quot;outliers&quot;: 13,
+      &quot;outlier_percentage&quot;: 0.07,
+      &quot;outlier_bounds&quot;: {
+        &quot;lower&quot;: -15.0,
+        &quot;upper&quot;: 25.0
+      },
+      &quot;dominant_value_percentage&quot;: 42.4
+    },
+    {
+      &quot;name&quot;: &quot;Sales_Amount&quot;,
+      &quot;dtype&quot;: &quot;float64&quot;,
+      &quot;detected_type&quot;: &quot;numeric&quot;,
+      &quot;missing&quot;: 0,
+      &quot;missing_percentage&quot;: 0.0,
+      &quot;unique_values&quot;: 15083,
+      &quot;unique_ratio&quot;: 0.8359,
+      &quot;is_numeric&quot;: true,
+      &quot;is_constant&quot;: false,
+      &quot;is_near_constant&quot;: false,
+      &quot;is_identifier_candidate&quot;: false,
+      &quot;is_high_cardinality&quot;: false,
+      &quot;outliers&quot;: 1793,
+      &quot;outlier_percentage&quot;: 9.94,
+      &quot;outlier_bounds&quot;: {
+        &quot;lower&quot;: -512.3499999999999,
+        &quot;upper&quot;: 1063.33
+      },
+      &quot;dominant_value_percentage&quot;: 0.04
+    },
+    {
+      &quot;name&quot;: &quot;Cost_Amount&quot;,
+      &quot;dtype&quot;: &quot;float64&quot;,
+      &quot;detected_type&quot;: &quot;numeric&quot;,
+      &quot;missing&quot;: 0,
+      &quot;missing_percentage&quot;: 0.0,
+      &quot;unique_values&quot;: 14213,
+      &quot;unique_ratio&quot;: 0.7876,
+      &quot;is_numeric&quot;: true,
+      &quot;is_constant&quot;: false,
+      &quot;is_near_constant&quot;: false,
+      &quot;is_identifier_candidate&quot;: false,
+      &quot;is_high_cardinality&quot;: false,
+      &quot;outliers&quot;: 1829,
+      &quot;outlier_percentage&quot;: 10.14,
+      &quot;outlier_bounds&quot;: {
+        &quot;lower&quot;: -423.72999999999996,
+        &quot;upper&quot;: 855.8699999999999
+      },
+      &quot;dominant_value_percentage&quot;: 0.04
+    },
+    {
+      &quot;name&quot;: &quot;Profit&quot;,
+      &quot;dtype&quot;: &quot;float64&quot;,
+      &quot;detected_type&quot;: &quot;numeric&quot;,
+      &quot;missing&quot;: 0,
+      &quot;missing_percentage&quot;: 0.0,
+      &quot;unique_values&quot;: 10667,
+      &quot;unique_ratio&quot;: 0.5911,
+      &quot;is_numeric&quot;: true,
+      &quot;is_constant&quot;: false,
+      &quot;is_near_constant&quot;: false,
+      &quot;is_identifier_candidate&quot;: false,
+      &quot;is_high_cardinality&quot;: false,
+      &quot;outliers&quot;: 1877,
+      &quot;outlier_percentage&quot;: 10.4,
+      &quot;outlier_bounds&quot;: {
+        &quot;lower&quot;: -91.20499999999998,
+        &quot;upper&quot;: 203.95499999999998
+      },
+      &quot;dominant_value_percentage&quot;: 0.06
+    },
+    {
+      &quot;name&quot;: &quot;Payment_Method&quot;,
+      &quot;dtype&quot;: &quot;object&quot;,
+      &quot;detected_type&quot;: &quot;categorical&quot;,
+      &quot;missing&quot;: 147,
+      &quot;missing_percentage&quot;: 0.81,
+      &quot;unique_values&quot;: 10,
+      &quot;unique_ratio&quot;: 0.0006,
+      &quot;is_numeric&quot;: false,
+      &quot;is_constant&quot;: false,
+      &quot;is_near_constant&quot;: false,
+      &quot;is_identifier_candidate&quot;: false,
+      &quot;is_high_cardinality&quot;: false,
+      &quot;outliers&quot;: 0,
+      &quot;outlier_percentage&quot;: 0.0,
+      &quot;outlier_bounds&quot;: {
+        &quot;lower&quot;: null,
+        &quot;upper&quot;: null
+      },
+      &quot;dominant_value_percentage&quot;: 37.36
+    },
+    {
+      &quot;name&quot;: &quot;Order_Status&quot;,
+      &quot;dtype&quot;: &quot;object&quot;,
+      &quot;detected_type&quot;: &quot;categorical&quot;,
+      &quot;missing&quot;: 0,
+      &quot;missing_percentage&quot;: 0.0,
+      &quot;unique_values&quot;: 8,
+      &quot;unique_ratio&quot;: 0.0004,
+      &quot;is_numeric&quot;: false,
+      &quot;is_constant&quot;: false,
+      &quot;is_near_constant&quot;: false,
+      &quot;is_identifier_candidate&quot;: false,
+      &quot;is_high_cardinality&quot;: false,
+      &quot;outliers&quot;: 0,
+      &quot;outlier_percentage&quot;: 0.0,
+      &quot;outlier_bounds&quot;: {
+        &quot;lower&quot;: null,
+        &quot;upper&quot;: null
+      },
+      &quot;dominant_value_percentage&quot;: 63.52
+    },
+    {
+      &quot;name&quot;: &quot;Shipping_Method&quot;,
+      &quot;dtype&quot;: &quot;object&quot;,
+      &quot;detected_type&quot;: &quot;categorical&quot;,
+      &quot;missing&quot;: 0,
+      &quot;missing_percentage&quot;: 0.0,
+      &quot;unique_values&quot;: 4,
+      &quot;unique_ratio&quot;: 0.0002,
+      &quot;is_numeric&quot;: false,
+      &quot;is_constant&quot;: false,
+      &quot;is_near_constant&quot;: false,
+      &quot;is_identifier_candidate&quot;: false,
+      &quot;is_high_cardinality&quot;: false,
+      &quot;outliers&quot;: 0,
+      &quot;outlier_percentage&quot;: 0.0,
+      &quot;outlier_bounds&quot;: {
+        &quot;lower&quot;: null,
+        &quot;upper&quot;: null
+      },
+      &quot;dominant_value_percentage&quot;: 42.97
+    },
+    {
+      &quot;name&quot;: &quot;Delivery_Days&quot;,
+      &quot;dtype&quot;: &quot;float64&quot;,
+      &quot;detected_type&quot;: &quot;numeric&quot;,
+      &quot;missing&quot;: 162,
+      &quot;missing_percentage&quot;: 0.9,
+      &quot;unique_values&quot;: 11,
+      &quot;unique_ratio&quot;: 0.0006,
+      &quot;is_numeric&quot;: true,
+      &quot;is_constant&quot;: false,
+      &quot;is_near_constant&quot;: false,
+      &quot;is_identifier_candidate&quot;: false,
+      &quot;is_high_cardinality&quot;: false,
+      &quot;outliers&quot;: 0,
+      &quot;outlier_percentage&quot;: 0.0,
+      &quot;outlier_bounds&quot;: {
+        &quot;lower&quot;: -6.0,
+        &quot;upper&quot;: 10.0
+      },
+      &quot;dominant_value_percentage&quot;: 38.18
+    },
+    {
+      &quot;name&quot;: &quot;Return_Flag&quot;,
+      &quot;dtype&quot;: &quot;object&quot;,
+      &quot;detected_type&quot;: &quot;categorical&quot;,
+      &quot;missing&quot;: 0,
+      &quot;missing_percentage&quot;: 0.0,
+      &quot;unique_values&quot;: 2,
+      &quot;unique_ratio&quot;: 0.0001,
+      &quot;is_numeric&quot;: false,
+      &quot;is_constant&quot;: false,
+      &quot;is_near_constant&quot;: false,
+      &quot;is_identifier_candidate&quot;: false,
+      &quot;is_high_cardinality&quot;: false,
+      &quot;outliers&quot;: 0,
+      &quot;outlier_percentage&quot;: 0.0,
+      &quot;outlier_bounds&quot;: {
+        &quot;lower&quot;: null,
+        &quot;upper&quot;: null
+      },
+      &quot;dominant_value_percentage&quot;: 89.6
+    },
+    {
+      &quot;name&quot;: &quot;Return_Reason&quot;,
+      &quot;dtype&quot;: &quot;object&quot;,
+      &quot;detected_type&quot;: &quot;categorical&quot;,
+      &quot;missing&quot;: 16168,
+      &quot;missing_percentage&quot;: 89.6,
+      &quot;unique_values&quot;: 6,
+      &quot;unique_ratio&quot;: 0.0003,
+      &quot;is_numeric&quot;: false,
+      &quot;is_constant&quot;: false,
+      &quot;is_near_constant&quot;: false,
+      &quot;is_identifier_candidate&quot;: false,
+      &quot;is_high_cardinality&quot;: false,
+      &quot;outliers&quot;: 0,
+      &quot;outlier_percentage&quot;: 0.0,
+      &quot;outlier_bounds&quot;: {
+        &quot;lower&quot;: null,
+        &quot;upper&quot;: null
+      },
+      &quot;dominant_value_percentage&quot;: 89.6
+    },
+    {
+      &quot;name&quot;: &quot;Sales_Representative&quot;,
+      &quot;dtype&quot;: &quot;object&quot;,
+      &quot;detected_type&quot;: &quot;categorical&quot;,
+      &quot;missing&quot;: 0,
+      &quot;missing_percentage&quot;: 0.0,
+      &quot;unique_values&quot;: 16,
+      &quot;unique_ratio&quot;: 0.0009,
+      &quot;is_numeric&quot;: false,
+      &quot;is_constant&quot;: false,
+      &quot;is_near_constant&quot;: false,
+      &quot;is_identifier_candidate&quot;: false,
+      &quot;is_high_cardinality&quot;: false,
+      &quot;outliers&quot;: 0,
+      &quot;outlier_percentage&quot;: 0.0,
+      &quot;outlier_bounds&quot;: {
+        &quot;lower&quot;: null,
+        &quot;upper&quot;: null
+      },
+      &quot;dominant_value_percentage&quot;: 6.46
+    },
+    {
+      &quot;name&quot;: &quot;Promotion_Code&quot;,
+      &quot;dtype&quot;: &quot;object&quot;,
+      &quot;detected_type&quot;: &quot;categorical&quot;,
+      &quot;missing&quot;: 9737,
+      &quot;missing_percentage&quot;: 53.96,
+      &quot;unique_values&quot;: 10,
+      &quot;unique_ratio&quot;: 0.0006,
+      &quot;is_numeric&quot;: false,
+      &quot;is_constant&quot;: false,
+      &quot;is_near_constant&quot;: false,
+      &quot;is_identifier_candidate&quot;: false,
+      &quot;is_high_cardinality&quot;: false,
+      &quot;outliers&quot;: 0,
+      &quot;outlier_percentage&quot;: 0.0,
+      &quot;outlier_bounds&quot;: {
+        &quot;lower&quot;: null,
+        &quot;upper&quot;: null
+      },
+      &quot;dominant_value_percentage&quot;: 53.96
+    },
+    {
+      &quot;name&quot;: &quot;Customer_Rating&quot;,
+      &quot;dtype&quot;: &quot;float64&quot;,
+      &quot;detected_type&quot;: &quot;numeric&quot;,
+      &quot;missing&quot;: 3435,
+      &quot;missing_percentage&quot;: 19.04,
+      &quot;unique_values&quot;: 5,
+      &quot;unique_ratio&quot;: 0.0003,
+      &quot;is_numeric&quot;: true,
+      &quot;is_constant&quot;: false,
+      &quot;is_near_constant&quot;: false,
+      &quot;is_identifier_candidate&quot;: false,
+      &quot;is_high_cardinality&quot;: false,
+      &quot;outliers&quot;: 1318,
+      &quot;outlier_percentage&quot;: 9.02,
+      &quot;outlier_bounds&quot;: {
+        &quot;lower&quot;: 2.5,
+        &quot;upper&quot;: 6.5
+      },
+      &quot;dominant_value_percentage&quot;: 32.11
+    },
+    {
+      &quot;name&quot;: &quot;Inventory_Level&quot;,
+      &quot;dtype&quot;: &quot;float64&quot;,
+      &quot;detected_type&quot;: &quot;numeric&quot;,
+      &quot;missing&quot;: 198,
+      &quot;missing_percentage&quot;: 1.1,
+      &quot;unique_values&quot;: 148,
+      &quot;unique_ratio&quot;: 0.0082,
+      &quot;is_numeric&quot;: true,
+      &quot;is_constant&quot;: false,
+      &quot;is_near_constant&quot;: false,
+      &quot;is_identifier_candidate&quot;: false,
+      &quot;is_high_cardinality&quot;: false,
+      &quot;outliers&quot;: 114,
+      &quot;outlier_percentage&quot;: 0.64,
+      &quot;outlier_bounds&quot;: {
+        &quot;lower&quot;: 10.0,
+        &quot;upper&quot;: 130.0
+      },
+      &quot;dominant_value_percentage&quot;: 1.9
+    },
+    {
+      &quot;name&quot;: &quot;Order_Year&quot;,
+      &quot;dtype&quot;: &quot;int64&quot;,
+      &quot;detected_type&quot;: &quot;numeric&quot;,
+      &quot;missing&quot;: 0,
+      &quot;missing_percentage&quot;: 0.0,
+      &quot;unique_values&quot;: 4,
+      &quot;unique_ratio&quot;: 0.0002,
+      &quot;is_numeric&quot;: true,
+      &quot;is_constant&quot;: false,
+      &quot;is_near_constant&quot;: false,
+      &quot;is_identifier_candidate&quot;: false,
+      &quot;is_high_cardinality&quot;: false,
+      &quot;outliers&quot;: 0,
+      &quot;outlier_percentage&quot;: 0.0,
+      &quot;outlier_bounds&quot;: {
+        &quot;lower&quot;: 2020.0,
+        &quot;upper&quot;: 2028.0
+      },
+      &quot;dominant_value_percentage&quot;: 27.59
+    }
+  ],
+  &quot;warnings&quot;: [
+    {
+      &quot;type&quot;: &quot;missing_values&quot;,
+      &quot;severity&quot;: &quot;medium&quot;,
+      &quot;message&quot;: &quot;30479 missing values detected (4.69% of all cells).&quot;
+    },
+    {
+      &quot;type&quot;: &quot;duplicate_rows&quot;,
+      &quot;severity&quot;: &quot;medium&quot;,
+      &quot;message&quot;: &quot;45 duplicate rows detected. Review before removing them.&quot;
+    },
+    {
+      &quot;type&quot;: &quot;identifier_candidates&quot;,
+      &quot;severity&quot;: &quot;low&quot;,
+      &quot;message&quot;: &quot;Potential identifier columns detected. Review whether they should be used as features.&quot;
+    },
+    {
+      &quot;type&quot;: &quot;high_cardinality&quot;,
+      &quot;severity&quot;: &quot;medium&quot;,
+      &quot;message&quot;: &quot;High-cardinality categorical columns detected.&quot;
+    },
+    {
+      &quot;type&quot;: &quot;datetime_candidates&quot;,
+      &quot;severity&quot;: &quot;low&quot;,
+      &quot;message&quot;: &quot;Some string columns appear to contain dates. Review their data types.&quot;
+    },
+    {
+      &quot;type&quot;: &quot;outliers&quot;,
+      &quot;severity&quot;: &quot;medium&quot;,
+      &quot;message&quot;: &quot;9781 potential numerical outlier values detected using IQR.&quot;
+    }
+  ],
+  &quot;original_missing_values&quot;: 30479,
+  &quot;original_duplicate_rows&quot;: 45,
+  &quot;target_missing_values&quot;: 0,
+  &quot;target_distribution&quot;: {
+    &quot;No&quot;: 16127,
+    &quot;Yes&quot;: 1873
+  }
+}</pre>
+            </section>
+            
+            <section class="card">
+                <h2>Target Analysis</h2>
+                <pre>{
+  &quot;target_column&quot;: &quot;Return_Flag&quot;,
+  &quot;problem_type&quot;: &quot;binary_classification&quot;,
+  &quot;suggested_problem_type&quot;: &quot;binary_classification&quot;,
+  &quot;confidence&quot;: &quot;user_confirmed&quot;,
+  &quot;requires_confirmation&quot;: false,
+  &quot;reason&quot;: &quot;User explicitly selected binary classification.&quot;,
+  &quot;target_statistics&quot;: {
+    &quot;total_records&quot;: 18045,
+    &quot;valid_records&quot;: 18045,
+    &quot;missing_values&quot;: 0,
+    &quot;unique_values&quot;: 2,
+    &quot;data_type&quot;: &quot;object&quot;
+  },
+  &quot;class_analysis&quot;: {
+    &quot;class_count&quot;: 2,
+    &quot;class_distribution&quot;: [
+      {
+        &quot;class&quot;: &quot;No&quot;,
+        &quot;count&quot;: 16168,
+        &quot;percentage&quot;: 89.6
+      },
+      {
+        &quot;class&quot;: &quot;Yes&quot;,
+        &quot;count&quot;: 1877,
+        &quot;percentage&quot;: 10.4
+      }
+    ],
+    &quot;majority_class&quot;: &quot;No&quot;,
+    &quot;majority_percentage&quot;: 89.6,
+    &quot;minority_percentage&quot;: 10.4,
+    &quot;imbalance_ratio&quot;: 8.61,
+    &quot;is_imbalanced&quot;: true
+  },
+  &quot;numeric_analysis&quot;: null,
+  &quot;warnings&quot;: []
+}</pre>
+            </section>
+            
+            <section class="card">
+                <h2>Model Comparison</h2>
+                <pre>{
+  &quot;problem_type&quot;: &quot;binary_classification&quot;,
+  &quot;evaluation_method&quot;: &quot;80/20 holdout + 5-fold cross-validation&quot;,
+  &quot;primary_metric&quot;: &quot;macro F1&quot;,
+  &quot;selection_metric&quot;: &quot;f1_macro&quot;,
+  &quot;selection_method&quot;: &quot;cross_validation&quot;,
+  &quot;cv_folds&quot;: 5,
+  &quot;train_rows&quot;: 14400,
+  &quot;test_rows&quot;: 3600,
+  &quot;dataset_info&quot;: {
+    &quot;total_rows&quot;: 18000,
+    &quot;total_features&quot;: 35,
+    &quot;number_of_classes&quot;: 2,
+    &quot;is_imbalanced&quot;: true,
+    &quot;imbalance_ratio&quot;: 8.6103,
+    &quot;removed_empty_columns&quot;: []
+  },
+  &quot;models&quot;: [
+    {
+      &quot;model&quot;: &quot;Logistic Regression&quot;,
+      &quot;model_id&quot;: &quot;logistic_regression&quot;,
+      &quot;status&quot;: &quot;success&quot;,
+      &quot;cv_folds&quot;: 5,
+      &quot;cv_scoring&quot;: &quot;f1_macro&quot;,
+      &quot;cv_mean_score&quot;: 1.0,
+      &quot;cv_std_score&quot;: 0.0,
+      &quot;cv_scores&quot;: [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      &quot;train_rows&quot;: 14400,
+      &quot;test_rows&quot;: 3600,
+      &quot;train_accuracy&quot;: 1.0,
+      &quot;train_metrics&quot;: {
+        &quot;accuracy&quot;: 1.0,
+        &quot;balanced_accuracy&quot;: 1.0,
+        &quot;precision&quot;: 1.0,
+        &quot;recall&quot;: 1.0,
+        &quot;f1&quot;: 1.0,
+        &quot;confusion_matrix&quot;: [
+          [
+            12902,
+            0
+          ],
+          [
+            0,
+            1498
+          ]
+        ]
+      },
+      &quot;accuracy&quot;: 1.0,
+      &quot;balanced_accuracy&quot;: 1.0,
+      &quot;precision&quot;: 1.0,
+      &quot;recall&quot;: 1.0,
+      &quot;f1&quot;: 1.0,
+      &quot;confusion_matrix&quot;: [
+        [
+          3225,
+          0
+        ],
+        [
+          0,
+          375
+        ]
+      ],
+      &quot;score&quot;: 1.0
+    },
+    {
+      &quot;model&quot;: &quot;Random Forest Classifier&quot;,
+      &quot;model_id&quot;: &quot;random_forest&quot;,
+      &quot;status&quot;: &quot;success&quot;,
+      &quot;cv_folds&quot;: 5,
+      &quot;cv_scoring&quot;: &quot;f1_macro&quot;,
+      &quot;cv_mean_score&quot;: 1.0,
+      &quot;cv_std_score&quot;: 0.0,
+      &quot;cv_scores&quot;: [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      &quot;train_rows&quot;: 14400,
+      &quot;test_rows&quot;: 3600,
+      &quot;train_accuracy&quot;: 1.0,
+      &quot;train_metrics&quot;: {
+        &quot;accuracy&quot;: 1.0,
+        &quot;balanced_accuracy&quot;: 1.0,
+        &quot;precision&quot;: 1.0,
+        &quot;recall&quot;: 1.0,
+        &quot;f1&quot;: 1.0,
+        &quot;confusion_matrix&quot;: [
+          [
+            12902,
+            0
+          ],
+          [
+            0,
+            1498
+          ]
+        ]
+      },
+      &quot;accuracy&quot;: 1.0,
+      &quot;balanced_accuracy&quot;: 1.0,
+      &quot;precision&quot;: 1.0,
+      &quot;recall&quot;: 1.0,
+      &quot;f1&quot;: 1.0,
+      &quot;confusion_matrix&quot;: [
+        [
+          3225,
+          0
+        ],
+        [
+          0,
+          375
+        ]
+      ],
+      &quot;score&quot;: 1.0
+    },
+    {
+      &quot;model&quot;: &quot;Extra Trees Classifier&quot;,
+      &quot;model_id&quot;: &quot;extra_trees&quot;,
+      &quot;status&quot;: &quot;success&quot;,
+      &quot;cv_folds&quot;: 5,
+      &quot;cv_scoring&quot;: &quot;f1_macro&quot;,
+      &quot;cv_mean_score&quot;: 1.0,
+      &quot;cv_std_score&quot;: 0.0,
+      &quot;cv_scores&quot;: [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      &quot;train_rows&quot;: 14400,
+      &quot;test_rows&quot;: 3600,
+      &quot;train_accuracy&quot;: 1.0,
+      &quot;train_metrics&quot;: {
+        &quot;accuracy&quot;: 1.0,
+        &quot;balanced_accuracy&quot;: 1.0,
+        &quot;precision&quot;: 1.0,
+        &quot;recall&quot;: 1.0,
+        &quot;f1&quot;: 1.0,
+        &quot;confusion_matrix&quot;: [
+          [
+            12902,
+            0
+          ],
+          [
+            0,
+            1498
+          ]
+        ]
+      },
+      &quot;accuracy&quot;: 1.0,
+      &quot;balanced_accuracy&quot;: 1.0,
+      &quot;precision&quot;: 1.0,
+      &quot;recall&quot;: 1.0,
+      &quot;f1&quot;: 1.0,
+      &quot;confusion_matrix&quot;: [
+        [
+          3225,
+          0
+        ],
+        [
+          0,
+          375
+        ]
+      ],
+      &quot;score&quot;: 1.0
+    },
+    {
+      &quot;model&quot;: &quot;Gradient Boosting Classifier&quot;,
+      &quot;model_id&quot;: &quot;gradient_boosting&quot;,
+      &quot;status&quot;: &quot;success&quot;,
+      &quot;cv_folds&quot;: 5,
+      &quot;cv_scoring&quot;: &quot;f1_macro&quot;,
+      &quot;cv_mean_score&quot;: 1.0,
+      &quot;cv_std_score&quot;: 0.0,
+      &quot;cv_scores&quot;: [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      &quot;train_rows&quot;: 14400,
+      &quot;test_rows&quot;: 3600,
+      &quot;train_accuracy&quot;: 1.0,
+      &quot;train_metrics&quot;: {
+        &quot;accuracy&quot;: 1.0,
+        &quot;balanced_accuracy&quot;: 1.0,
+        &quot;precision&quot;: 1.0,
+        &quot;recall&quot;: 1.0,
+        &quot;f1&quot;: 1.0,
+        &quot;confusion_matrix&quot;: [
+          [
+            12902,
+            0
+          ],
+          [
+            0,
+            1498
+          ]
+        ]
+      },
+      &quot;accuracy&quot;: 1.0,
+      &quot;balanced_accuracy&quot;: 1.0,
+      &quot;precision&quot;: 1.0,
+      &quot;recall&quot;: 1.0,
+      &quot;f1&quot;: 1.0,
+      &quot;confusion_matrix&quot;: [
+        [
+          3225,
+          0
+        ],
+        [
+          0,
+          375
+        ]
+      ],
+      &quot;score&quot;: 1.0
+    },
+    {
+      &quot;model&quot;: &quot;K-Nearest Neighbors&quot;,
+      &quot;model_id&quot;: &quot;knn&quot;,
+      &quot;status&quot;: &quot;success&quot;,
+      &quot;cv_folds&quot;: 5,
+      &quot;cv_scoring&quot;: &quot;f1_macro&quot;,
+      &quot;cv_mean_score&quot;: 0.5662,
+      &quot;cv_std_score&quot;: 0.0109,
+      &quot;cv_scores&quot;: [
+        0.566,
+        0.5851,
+        0.5653,
+        0.5636,
+        0.551
+      ],
+      &quot;train_rows&quot;: 14400,
+      &quot;test_rows&quot;: 3600,
+      &quot;train_accuracy&quot;: 0.9206,
+      &quot;train_metrics&quot;: {
+        &quot;accuracy&quot;: 0.9206,
+        &quot;balanced_accuracy&quot;: 0.6194,
+        &quot;precision&quot;: 0.9552,
+        &quot;recall&quot;: 0.6194,
+        &quot;f1&quot;: 0.6714,
+        &quot;confusion_matrix&quot;: [
+          [
+            12899,
+            3
+          ],
+          [
+            1140,
+            358
+          ]
+        ]
+      },
+      &quot;accuracy&quot;: 0.9011,
+      &quot;balanced_accuracy&quot;: 0.5277,
+      &quot;precision&quot;: 0.907,
+      &quot;recall&quot;: 0.5277,
+      &quot;f1&quot;: 0.5266,
+      &quot;confusion_matrix&quot;: [
+        [
+          3223,
+          2
+        ],
+        [
+          354,
+          21
+        ]
+      ],
+      &quot;score&quot;: 0.5266
+    },
+    {
+      &quot;model&quot;: &quot;Gaussian Naive Bayes&quot;,
+      &quot;model_id&quot;: &quot;naive_bayes&quot;,
+      &quot;status&quot;: &quot;success&quot;,
+      &quot;cv_folds&quot;: 5,
+      &quot;cv_scoring&quot;: &quot;f1_macro&quot;,
+      &quot;cv_mean_score&quot;: 0.9389,
+      &quot;cv_std_score&quot;: 0.0067,
+      &quot;cv_scores&quot;: [
+        0.9364,
+        0.943,
+        0.927,
+        0.9433,
+        0.945
+      ],
+      &quot;train_rows&quot;: 14400,
+      &quot;test_rows&quot;: 3600,
+      &quot;train_accuracy&quot;: 1.0,
+      &quot;train_metrics&quot;: {
+        &quot;accuracy&quot;: 1.0,
+        &quot;balanced_accuracy&quot;: 1.0,
+        &quot;precision&quot;: 1.0,
+        &quot;recall&quot;: 1.0,
+        &quot;f1&quot;: 1.0,
+        &quot;confusion_matrix&quot;: [
+          [
+            12902,
+            0
+          ],
+          [
+            0,
+            1498
+          ]
+        ]
+      },
+      &quot;accuracy&quot;: 0.9806,
+      &quot;balanced_accuracy&quot;: 0.9679,
+      &quot;precision&quot;: 0.9336,
+      &quot;recall&quot;: 0.9679,
+      &quot;f1&quot;: 0.9499,
+      &quot;confusion_matrix&quot;: [
+        [
+          3173,
+          52
+        ],
+        [
+          18,
+          357
+        ]
+      ],
+      &quot;score&quot;: 0.9499
+    }
+  ],
+  &quot;cv_results&quot;: {
+    &quot;logistic_regression&quot;: {
+      &quot;mean_score&quot;: 1.0,
+      &quot;std_score&quot;: 0.0,
+      &quot;fold_scores&quot;: [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    &quot;random_forest&quot;: {
+      &quot;mean_score&quot;: 1.0,
+      &quot;std_score&quot;: 0.0,
+      &quot;fold_scores&quot;: [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    &quot;extra_trees&quot;: {
+      &quot;mean_score&quot;: 1.0,
+      &quot;std_score&quot;: 0.0,
+      &quot;fold_scores&quot;: [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    &quot;gradient_boosting&quot;: {
+      &quot;mean_score&quot;: 1.0,
+      &quot;std_score&quot;: 0.0,
+      &quot;fold_scores&quot;: [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    &quot;knn&quot;: {
+      &quot;mean_score&quot;: 0.5662,
+      &quot;std_score&quot;: 0.0109,
+      &quot;fold_scores&quot;: [
+        0.566,
+        0.5851,
+        0.5653,
+        0.5636,
+        0.551
+      ]
+    },
+    &quot;naive_bayes&quot;: {
+      &quot;mean_score&quot;: 0.9389,
+      &quot;std_score&quot;: 0.0067,
+      &quot;fold_scores&quot;: [
+        0.9364,
+        0.943,
+        0.927,
+        0.9433,
+        0.945
+      ]
+    }
+  },
+  &quot;best_model&quot;: &quot;Logistic Regression&quot;,
+  &quot;best_model_id&quot;: &quot;logistic_regression&quot;,
+  &quot;best_score&quot;: 1.0,
+  &quot;best_cv_std&quot;: 0.0,
+  &quot;best_test_score&quot;: 1.0,
+  &quot;baseline&quot;: {
+    &quot;accuracy&quot;: 0.8958,
+    &quot;balanced_accuracy&quot;: 0.5,
+    &quot;precision&quot;: 0.4479,
+    &quot;recall&quot;: 0.5,
+    &quot;f1&quot;: 0.4725,
+    &quot;train_metrics&quot;: {
+      &quot;accuracy&quot;: 0.896,
+      &quot;balanced_accuracy&quot;: 0.5,
+      &quot;precision&quot;: 0.448,
+      &quot;recall&quot;: 0.5,
+      &quot;f1&quot;: 0.4726
+    }
+  },
+  &quot;selection&quot;: {
+    &quot;problem_type&quot;: &quot;binary_classification&quot;,
+    &quot;dataset_info&quot;: {
+      &quot;n_samples&quot;: 18000,
+      &quot;n_features&quot;: 35,
+      &quot;n_classes&quot;: 2,
+      &quot;is_imbalanced&quot;: true
+    },
+    &quot;selected_models&quot;: [
+      &quot;logistic_regression&quot;,
+      &quot;random_forest&quot;,
+      &quot;extra_trees&quot;,
+      &quot;gradient_boosting&quot;,
+      &quot;knn&quot;,
+      &quot;naive_bayes&quot;
+    ],
+    &quot;model_details&quot;: {
+      &quot;logistic_regression&quot;: {
+        &quot;name&quot;: &quot;Logistic Regression&quot;,
+        &quot;description&quot;: &quot;Linear model for binary and multiclass classification.&quot;,
+        &quot;requires_scaling&quot;: true,
+        &quot;supports_probability&quot;: true
+      },
+      &quot;random_forest&quot;: {
+        &quot;name&quot;: &quot;Random Forest Classifier&quot;,
+        &quot;description&quot;: &quot;Ensemble of decision trees.&quot;,
+        &quot;requires_scaling&quot;: false,
+        &quot;supports_probability&quot;: true
+      },
+      &quot;extra_trees&quot;: {
+        &quot;name&quot;: &quot;Extra Trees Classifier&quot;,
+        &quot;description&quot;: &quot;Ensemble of highly randomized decision trees.&quot;,
+        &quot;requires_scaling&quot;: false,
+        &quot;supports_probability&quot;: true
+      },
+      &quot;gradient_boosting&quot;: {
+        &quot;name&quot;: &quot;Gradient Boosting Classifier&quot;,
+        &quot;description&quot;: &quot;Sequential boosting-based classification model.&quot;,
+        &quot;requires_scaling&quot;: false,
+        &quot;supports_probability&quot;: true
+      },
+      &quot;knn&quot;: {
+        &quot;name&quot;: &quot;K-Nearest Neighbors&quot;,
+        &quot;description&quot;: &quot;Distance-based classification algorithm.&quot;,
+        &quot;requires_scaling&quot;: true,
+        &quot;supports_probability&quot;: true
+      },
+      &quot;naive_bayes&quot;: {
+        &quot;name&quot;: &quot;Gaussian Naive Bayes&quot;,
+        &quot;description&quot;: &quot;Probabilistic classification algorithm.&quot;,
+        &quot;requires_scaling&quot;: false,
+        &quot;supports_probability&quot;: true
+      }
+    },
+    &quot;selection_reasons&quot;: [
+      &quot;Large dataset: computational cost should be considered.&quot;,
+      &quot;Class imbalance detected: use stratified evaluation and imbalance-aware metrics.&quot;
+    ],
+    &quot;selection_note&quot;: &quot;These are candidate models, not guaranteed best models. Train and evaluate them using leakage-safe validation before selecting a final model.&quot;
+  },
+  &quot;successful_models&quot;: 6,
+  &quot;failed_models&quot;: 0,
+  &quot;score_interpretation&quot;: &quot;The best candidate was selected using cross-validation scores from training data only. The holdout test set was not used for model selection and is reserved for final evaluation. The final test score is still an estimate based on one holdout split and may vary with new data.&quot;,
+  &quot;explainability&quot;: {
+    &quot;available&quot;: false,
+    &quot;methods&quot;: [],
+    &quot;native_importance&quot;: {
+      &quot;available&quot;: false,
+      &quot;reason&quot;: &quot;No selected trained model was available.&quot;
+    },
+    &quot;coefficients&quot;: {
+      &quot;available&quot;: false,
+      &quot;reason&quot;: &quot;No selected trained model was available.&quot;
+    },
+    &quot;permutation_importance&quot;: null,
+    &quot;limitations&quot;: [
+      &quot;Feature importance does not prove causation.&quot;,
+      &quot;Native importance values are model-specific.&quot;,
+      &quot;Correlated features can share or distort importance.&quot;,
+      &quot;Permutation importance depends on evaluation data.&quot;
+    ],
+    &quot;error&quot;: &quot;Feature names and importance values must have equal lengths.&quot;
+  },
+  &quot;evaluation&quot;: {
+    &quot;problem_type&quot;: &quot;binary_classification&quot;,
+    &quot;train_metrics&quot;: {
+      &quot;accuracy&quot;: 1.0,
+      &quot;balanced_accuracy&quot;: 1.0,
+      &quot;precision&quot;: 1.0,
+      &quot;recall&quot;: 1.0,
+      &quot;f1&quot;: 1.0,
+      &quot;confusion_matrix&quot;: [
+        [
+          12902,
+          0
+        ],
+        [
+          0,
+          1498
+        ]
+      ]
+    },
+    &quot;test_metrics&quot;: {
+      &quot;accuracy&quot;: 1.0,
+      &quot;balanced_accuracy&quot;: 1.0,
+      &quot;precision&quot;: 1.0,
+      &quot;recall&quot;: 1.0,
+      &quot;f1&quot;: 1.0,
+      &quot;confusion_matrix&quot;: [
+        [
+          3225,
+          0
+        ],
+        [
+          0,
+          375
+        ]
+      ]
+    },
+    &quot;baseline_train_metrics&quot;: {
+      &quot;accuracy&quot;: 0.896,
+      &quot;balanced_accuracy&quot;: 0.5,
+      &quot;precision&quot;: 0.448,
+      &quot;recall&quot;: 0.5,
+      &quot;f1&quot;: 0.4726
+    },
+    &quot;baseline_test_metrics&quot;: {
+      &quot;accuracy&quot;: 0.8958,
+      &quot;balanced_accuracy&quot;: 0.5,
+      &quot;precision&quot;: 0.4479,
+      &quot;recall&quot;: 0.5,
+      &quot;f1&quot;: 0.4725
+    },
+    &quot;generalization&quot;: {
+      &quot;metric&quot;: &quot;f1&quot;,
+      &quot;train_score&quot;: 1.0,
+      &quot;test_score&quot;: 1.0,
+      &quot;performance_gap&quot;: 0.0,
+      &quot;gap_threshold&quot;: 0.1,
+      &quot;overfitting_suspected&quot;: false,
+      &quot;status&quot;: &quot;no_large_generalization_gap_detected&quot;,
+      &quot;interpretation&quot;: &quot;No large train-test performance gap was detected. This does not guarantee that the model generalizes well.&quot;
+    },
+    &quot;baseline_comparison&quot;: {
+      &quot;primary_metric&quot;: &quot;f1&quot;,
+      &quot;status&quot;: &quot;better_than_baseline&quot;,
+      &quot;metrics&quot;: {
+        &quot;accuracy&quot;: {
+          &quot;model&quot;: 1.0,
+          &quot;baseline&quot;: 0.8958,
+          &quot;difference&quot;: 0.1042,
+          &quot;improved&quot;: true
+        },
+        &quot;balanced_accuracy&quot;: {
+          &quot;model&quot;: 1.0,
+          &quot;baseline&quot;: 0.5,
+          &quot;difference&quot;: 0.5,
+          &quot;improved&quot;: true
+        },
+        &quot;f1&quot;: {
+          &quot;model&quot;: 1.0,
+          &quot;baseline&quot;: 0.4725,
+          &quot;difference&quot;: 0.5275,
+          &quot;improved&quot;: true
+        }
+      }
+    },
+    &quot;underfitting&quot;: {
+      &quot;metric&quot;: &quot;f1&quot;,
+      &quot;train_score&quot;: 1.0,
+      &quot;baseline_score&quot;: 0.4726,
+      &quot;underfitting_suspected&quot;: false,
+      &quot;interpretation&quot;: &quot;Training performance exceeds the dummy baseline. This alone does not rule out underfitting.&quot;
+    },
+    &quot;warnings&quot;: [
+      &quot;No major warning was identified by the current evaluation checks. Further validation is still recommended.&quot;
+    ],
+    &quot;evaluation_note&quot;: &quot;These checks provide diagnostic indicators, not proof of model quality. Use cross-validation and an independent test dataset for stronger evidence.&quot;,
+    &quot;available&quot;: true,
+    &quot;selected_model&quot;: &quot;Logistic Regression&quot;
+  }
+}</pre>
+            </section>
+            
+            <section class="card">
+                <h2>Evaluation</h2>
+                Not available
+            </section>
+            
+            <section class="card">
+                <h2>Diagnosis</h2>
+                <pre>{
+  &quot;model_name&quot;: &quot;Logistic Regression&quot;,
+  &quot;status&quot;: &quot;issues_found&quot;,
+  &quot;summary&quot;: {
+    &quot;total_findings&quot;: 8,
+    &quot;critical&quot;: 0,
+    &quot;warnings&quot;: 3,
+    &quot;information&quot;: 5
+  },
+  &quot;findings&quot;: [
+    {
+      &quot;code&quot;: &quot;duplicate_rows_detected&quot;,
+      &quot;title&quot;: &quot;Duplicate Rows Detected&quot;,
+      &quot;severity&quot;: &quot;warning&quot;,
+      &quot;message&quot;: &quot;The dataset contains duplicate rows.&quot;,
+      &quot;evidence&quot;: {
+        &quot;duplicate_rows&quot;: 45
+      },
+      &quot;recommendation&quot;: &quot;Inspect duplicates and determine whether they represent valid observations.&quot;
+    },
+    {
+      &quot;code&quot;: &quot;possible_identifier_features&quot;,
+      &quot;title&quot;: &quot;Possible Identifier Columns&quot;,
+      &quot;severity&quot;: &quot;warning&quot;,
+      &quot;message&quot;: &quot;Some columns appear to contain identifiers and may not provide useful predictive information.&quot;,
+      &quot;evidence&quot;: {
+        &quot;columns&quot;: [
+          &quot;Transaction_ID&quot;,
+          &quot;Order_ID&quot;,
+          &quot;Customer_ID&quot;,
+          &quot;Store_ID&quot;,
+          &quot;Product_ID&quot;
+        ]
+      },
+      &quot;recommendation&quot;: &quot;Check whether these columns represent genuine identifiers and remove them if they are not useful.&quot;
+    },
+    {
+      &quot;code&quot;: &quot;class_imbalance_detected&quot;,
+      &quot;title&quot;: &quot;Class Imbalance Detected&quot;,
+      &quot;severity&quot;: &quot;warning&quot;,
+      &quot;message&quot;: &quot;The target has an uneven class distribution. Accuracy alone may hide poor minority-class performance.&quot;,
+      &quot;evidence&quot;: {
+        &quot;class_count&quot;: 2,
+        &quot;class_distribution&quot;: [
+          {
+            &quot;class&quot;: &quot;No&quot;,
+            &quot;count&quot;: 16168,
+            &quot;percentage&quot;: 89.6
+          },
+          {
+            &quot;class&quot;: &quot;Yes&quot;,
+            &quot;count&quot;: 1877,
+            &quot;percentage&quot;: 10.4
+          }
+        ],
+        &quot;majority_class&quot;: &quot;No&quot;,
+        &quot;majority_percentage&quot;: 89.6,
+        &quot;minority_percentage&quot;: 10.4,
+        &quot;imbalance_ratio&quot;: 8.61,
+        &quot;is_imbalanced&quot;: true
+      },
+      &quot;recommendation&quot;: &quot;Review per-class precision, recall, balanced accuracy and the confusion matrix. Consider class weights or resampling when appropriate.&quot;
+    },
+    {
+      &quot;code&quot;: &quot;no_large_generalization_gap&quot;,
+      &quot;title&quot;: &quot;No Large Generalization Gap Detected&quot;,
+      &quot;severity&quot;: &quot;info&quot;,
+      &quot;message&quot;: &quot;No large train-test performance gap was identified. This does not guarantee good real-world performance.&quot;,
+      &quot;evidence&quot;: {
+        &quot;metric&quot;: &quot;f1&quot;,
+        &quot;train_score&quot;: 1.0,
+        &quot;test_score&quot;: 1.0,
+        &quot;performance_gap&quot;: 0.0
+      },
+      &quot;recommendation&quot;: &quot;Validate performance with cross-validation and independent data where possible.&quot;
+    },
+    {
+      &quot;code&quot;: &quot;better_than_baseline&quot;,
+      &quot;title&quot;: &quot;Model Outperforms Dummy Baseline&quot;,
+      &quot;severity&quot;: &quot;info&quot;,
+      &quot;message&quot;: &quot;The model performs better than the dummy baseline on the primary evaluation metric.&quot;,
+      &quot;evidence&quot;: {
+        &quot;primary_metric&quot;: &quot;f1&quot;,
+        &quot;status&quot;: &quot;better_than_baseline&quot;,
+        &quot;metrics&quot;: {
+          &quot;accuracy&quot;: {
+            &quot;model&quot;: 1.0,
+            &quot;baseline&quot;: 0.8958,
+            &quot;difference&quot;: 0.1042,
+            &quot;improved&quot;: true
+          },
+          &quot;balanced_accuracy&quot;: {
+            &quot;model&quot;: 1.0,
+            &quot;baseline&quot;: 0.5,
+            &quot;difference&quot;: 0.5,
+            &quot;improved&quot;: true
+          },
+          &quot;f1&quot;: {
+            &quot;model&quot;: 1.0,
+            &quot;baseline&quot;: 0.4725,
+            &quot;difference&quot;: 0.5275,
+            &quot;improved&quot;: true
+          }
+        }
+      },
+      &quot;recommendation&quot;: &quot;Continue evaluating with cross-validation and check whether the improvement is consistent.&quot;
+    },
+    {
+      &quot;code&quot;: &quot;possible_outliers_detected&quot;,
+      &quot;title&quot;: &quot;Possible Outliers Detected&quot;,
+      &quot;severity&quot;: &quot;info&quot;,
+      &quot;message&quot;: &quot;The profiler identified possible statistical outliers. These values are not automatically data errors.&quot;,
+      &quot;evidence&quot;: {
+        &quot;outlier_rows&quot;: 4583,
+        &quot;outlier_values&quot;: 9781,
+        &quot;outlier_details&quot;: [
+          {
+            &quot;column&quot;: &quot;Unit_Price&quot;,
+            &quot;count&quot;: 2051
+          },
+          {
+            &quot;column&quot;: &quot;Profit&quot;,
+            &quot;count&quot;: 1877
+          },
+          {
+            &quot;column&quot;: &quot;Cost_Amount&quot;,
+            &quot;count&quot;: 1829
+          },
+          {
+            &quot;column&quot;: &quot;Sales_Amount&quot;,
+            &quot;count&quot;: 1793
+          },
+          {
+            &quot;column&quot;: &quot;Customer_Rating&quot;,
+            &quot;count&quot;: 1318
+          },
+          {
+            &quot;column&quot;: &quot;Quantity&quot;,
+            &quot;count&quot;: 698
+          },
+          {
+            &quot;column&quot;: &quot;Inventory_Level&quot;,
+            &quot;count&quot;: 114
+          },
+          {
+            &quot;column&quot;: &quot;Customer_Age&quot;,
+            &quot;count&quot;: 88
+          },
+          {
+            &quot;column&quot;: &quot;Discount_Percentage&quot;,
+            &quot;count&quot;: 13
+          }
+        ]
+      },
+      &quot;recommendation&quot;: &quot;Inspect outliers using domain knowledge before removing or transforming them.&quot;
+    },
+    {
+      &quot;code&quot;: &quot;high_cardinality_features&quot;,
+      &quot;title&quot;: &quot;High-Cardinality Features Detected&quot;,
+      &quot;severity&quot;: &quot;info&quot;,
+      &quot;message&quot;: &quot;Some categorical columns contain many distinct values.&quot;,
+      &quot;evidence&quot;: {
+        &quot;columns&quot;: [
+          &quot;Transaction_ID&quot;,
+          &quot;Order_ID&quot;
+        ]
+      },
+      &quot;recommendation&quot;: &quot;Inspect these columns and consider grouping rare categories or using an appropriate encoding strategy.&quot;
+    },
+    {
+      &quot;code&quot;: &quot;profiler_warnings&quot;,
+      &quot;title&quot;: &quot;Dataset Profiler Warnings&quot;,
+      &quot;severity&quot;: &quot;info&quot;,
+      &quot;message&quot;: &quot;The dataset profiler reported additional observations.&quot;,
+      &quot;evidence&quot;: {
+        &quot;warnings&quot;: [
+          {
+            &quot;type&quot;: &quot;missing_values&quot;,
+            &quot;severity&quot;: &quot;medium&quot;,
+            &quot;message&quot;: &quot;30479 missing values detected (4.69% of all cells).&quot;
+          },
+          {
+            &quot;type&quot;: &quot;duplicate_rows&quot;,
+            &quot;severity&quot;: &quot;medium&quot;,
+            &quot;message&quot;: &quot;45 duplicate rows detected. Review before removing them.&quot;
+          },
+          {
+            &quot;type&quot;: &quot;identifier_candidates&quot;,
+            &quot;severity&quot;: &quot;low&quot;,
+            &quot;message&quot;: &quot;Potential identifier columns detected. Review whether they should be used as features.&quot;
+          },
+          {
+            &quot;type&quot;: &quot;high_cardinality&quot;,
+            &quot;severity&quot;: &quot;medium&quot;,
+            &quot;message&quot;: &quot;High-cardinality categorical columns detected.&quot;
+          },
+          {
+            &quot;type&quot;: &quot;datetime_candidates&quot;,
+            &quot;severity&quot;: &quot;low&quot;,
+            &quot;message&quot;: &quot;Some string columns appear to contain dates. Review their data types.&quot;
+          },
+          {
+            &quot;type&quot;: &quot;outliers&quot;,
+            &quot;severity&quot;: &quot;medium&quot;,
+            &quot;message&quot;: &quot;9781 potential numerical outlier values detected using IQR.&quot;
+          }
+        ]
+      },
+      &quot;recommendation&quot;: &quot;Review the profiler warnings before finalizing dataset preparation.&quot;
+    }
+  ],
+  &quot;feature_importance&quot;: null,
+  &quot;limitations&quot;: [
+    &quot;Diagnosis depends on the completeness of supplied inputs.&quot;,
+    &quot;Heuristic findings are signals for investigation, not proof.&quot;,
+    &quot;Feature importance does not establish causation.&quot;,
+    &quot;A small train-test gap does not guarantee real-world performance.&quot;
+  ]
+}</pre>
+            </section>
+            
+            <section class="card">
+                <h2>Explainability</h2>
+                Not available
+            </section>
+            
+            <section class="card">
+                <h2>Hyperparameter Tuning</h2>
+                Not available
+            </section>
+            
+
+<footer>
+    Generated by ML Model Doctor
+</footer>
+
+</div>
+</body>
+</html>
