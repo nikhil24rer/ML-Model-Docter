@@ -6,7 +6,17 @@ from routes.analysis_routes import analysis_bp
 
 app = Flask(__name__)
 
-CORS(app)
+
+CORS(
+    app,
+    resources={
+        r"/*": {
+            "origins": [
+                "https://ml-model-docter-1.onrender.com"
+            ]
+        }
+    }
+)
 
 app.register_blueprint(analysis_bp)
 
